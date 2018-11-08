@@ -16,8 +16,17 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   constructor(private _authServiceImpl:  AuthServiceImpl) {}
 
+  /**
+   * Войти
+   */
   public signIn() {
     this._subscription = this._authServiceImpl.signIn(this._authFormData).subscribe((response: any) => {
+      console.log(response);
+    });
+  }
+
+  public registry() {
+    this._subscription = this._authServiceImpl.registry(this._authFormData).subscribe((response: any) => {
       console.log(response);
     });
   }
