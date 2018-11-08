@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginModule } from './login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material';
+import { AuthModule } from './components/auth/auth.module';
+import { FormsModule, } from '@angular/forms';
 
 
 @NgModule({
@@ -14,10 +15,13 @@ import { MatButtonModule } from '@angular/material';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    LoginModule
+    AuthModule,
+    MatButtonModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

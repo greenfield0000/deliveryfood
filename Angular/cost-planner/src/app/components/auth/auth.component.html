@@ -1,0 +1,16 @@
+<div class="login-form-wrapper">
+
+  <div class="login-form">
+    <h1>login form</h1>
+    <div class="login-row">
+      <span>login</span>
+      <input type="text" [(ngModel)]="authFormData.login" >
+    </div>
+    <div class="login-row">
+      <span>password</span>
+      <input type="password" [(ngModel)]="authFormData.password">
+    </div>
+    <button mat-button (click)="signIn()">Sign in</button>
+  </div>
+
+</div>
