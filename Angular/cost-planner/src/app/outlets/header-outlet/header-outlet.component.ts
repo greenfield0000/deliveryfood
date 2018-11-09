@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainSideNavService } from 'src/app/services/main-side-nav.service';
 
 @Component({
   selector: 'app-header-outlet',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderOutletComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private _sideNavService: MainSideNavService) { }
 
   ngOnInit() {
   }
 
+  public sideNavToggle() {
+    if (this._sideNavService.getDriwer()) {
+      this._sideNavService.getDriwer().toggle();
+    }
+  }
 }

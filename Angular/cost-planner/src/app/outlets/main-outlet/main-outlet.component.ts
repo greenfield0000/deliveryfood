@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MainSideNavService } from 'src/app/services/main-side-nav.service';
+import { MatDrawer } from '@angular/material';
 
 @Component({
   selector: 'app-main-outlet',
@@ -7,20 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainOutletComponent implements OnInit {
 
-  private _showFiller = false;
+  @ViewChild(MatDrawer)
+  private _drawer: MatDrawer;
 
-  constructor() { }
+  constructor(private _sideNavService: MainSideNavService) { }
 
   ngOnInit() {
+    this._sideNavService.setShowFilter(this._drawer);
   }
-
-  public get showFilter(): boolean {
-    return this._showFiller;
-  }
-
-  public set showFilter(showFilter: boolean) {
-    this._showFiller = showFilter;
-  }
-
 
 }

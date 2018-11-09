@@ -1,3 +1,4 @@
+import { Account } from './../../interfaces/account';
 import { HttpConstant } from '../../constants/http-constant';
 import { AuthFormData } from '../../classes/auth-formdata';
 import { Injectable, Injector } from '@angular/core';
@@ -9,7 +10,8 @@ import { Observable } from 'rxjs';
  * Сервис авторизации и регистрации пользователей в системе
  */
 @Injectable()
-export class AuthServiceImpl {
+export class AuthServiceImpl implements Account {
+  private _isAuthtorise: boolean;
 
   constructor(private _httpService: HttpClient) { }
 
@@ -36,6 +38,10 @@ export class AuthServiceImpl {
   registry(authFormData: AuthFormData, url?: string): Observable<any> {
     const body = JSON.stringify(authFormData);
     return this._httpService.post(url, body, HttpConstant.HTTP_OPTIONS);
+  }
+
+  isAuthtorise(): boolean {
+    return this._isAuthtorise;
   }
 
 }

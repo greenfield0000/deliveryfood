@@ -1,9 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@include mat-core();
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-  
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
+$custom-primary: mat-palette($mat-deep-purple);
+$custom-accent:  mat-palette($mat-pink);
+
+$custom-theme: mat-light-theme($custom-primary, $custom-accent);
+
+@include angular-material-theme($custom-theme);
 
 html, body
   width: 100%;
@@ -20,3 +23,28 @@ html, body
 
 .main-page
   height: 100%;
+
+.material-icons 
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 35px;  
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+
