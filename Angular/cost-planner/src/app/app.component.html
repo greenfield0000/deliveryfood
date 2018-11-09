@@ -1,7 +1,11 @@
 <div class="main-page">
-    <div class="header"></div>
-    <div class="outlet">
-        <router-outlet></router-outlet>
+    <div class="header">
+        <router-outlet name="headerOutlet"></router-outlet>
     </div>
-    <div class="footer"></div>
+    <div class="outlet">
+        <router-outlet name="mainOutlet"></router-outlet>
+    </div>
+    <div class="footer">
+        <router-outlet name="footerOutlet"></router-outlet>
+    </div>
 </div>

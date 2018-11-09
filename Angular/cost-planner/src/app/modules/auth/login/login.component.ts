@@ -1,20 +1,24 @@
-import { AuthFormData } from './../../classes/auth-formdata';
-import { Component, OnInit, OnDestroy, Inject, Injector } from '@angular/core';
+import { AuthFormData } from '../../../classes/auth-formdata';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthServiceImpl } from 'src/app/services/auth-service/auth-service-impl.service';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.sass']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.sass']
 })
-export class AuthComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy {
 
   private _authFormData: AuthFormData;
   private _subscription: Subscription;
 
-  constructor(private _authServiceImpl:  AuthServiceImpl) {}
+  constructor(
+    private _authServiceImpl: AuthServiceImpl,
+    private _route: ActivatedRoute
+  ) { }
 
   /**
    * Войти
@@ -26,9 +30,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   public registry() {
-    this._subscription = this._authServiceImpl.registry(this._authFormData).subscribe((response: any) => {
-      console.log(response);
-    });
+    // this._location.params.source.map('auth /registry');
   }
 
   /**

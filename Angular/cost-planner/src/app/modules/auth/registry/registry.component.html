@@ -1,0 +1,17 @@
+<div class="registry-form-wrapper" style="width: 100%; height: 100%">
+
+  <div class="registry-form">
+    <h1>Registry form</h1>
+    <div class="registry-row">
+      <span>registry</span>
+      <input type="text" [(ngModel)]="authFormData.login" >
+    </div>
+    <div class="registry-row">
+      <span>password</span>
+      <input type="password" [(ngModel)]="authFormData.password">
+    </div>
+    <button mat-button (click)="goBack()">Go back</button>
+    <button mat-button (click)="registry()">Registry</button>
+  </div>
+
+</div>

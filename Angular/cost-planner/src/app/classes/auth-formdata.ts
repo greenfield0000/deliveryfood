@@ -4,9 +4,14 @@ import { Account } from './../interfaces/account';
  * Класс - описывающий данные учетной записи
  */
 export class AuthFormData implements Account {
-    isOk: string;
+
     private _login: string;
     private _password: string;
+    private _isAuthtorise = false;
+
+    isAuthtorise(): boolean {
+        return this._isAuthtorise;
+    }
 
     /**
      * Getter $login
