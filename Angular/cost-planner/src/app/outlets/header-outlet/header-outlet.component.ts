@@ -15,7 +15,9 @@ export class HeaderOutletComponent implements OnInit {
   }
 
   public sideNavToggle() {
+    console.log('pre', this._sideNavService.getDriwer());
     if (this._sideNavService.getDriwer()) {
+      console.log('inn', this._sideNavService.getDriwer());
       this._sideNavService.getDriwer().toggle();
     }
   }

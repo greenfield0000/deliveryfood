@@ -6,19 +6,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
+import { MatButtonModule, MatToolbarModule, MatSidenavModule, MatSidenavContent } from '@angular/material';
 import { FormsModule, } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HeaderOutletComponent } from './outlets/header-outlet/header-outlet.component';
 import { MainOutletComponent } from './outlets/main-outlet/main-outlet.component';
 import { FooterOutletComponent } from './outlets/footer-outlet/footer-outlet.component';
+import { PagesModule } from './modules/pages/pages.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderOutletComponent,
-    MainOutletComponent,
-    FooterOutletComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -26,18 +24,11 @@ import { FooterOutletComponent } from './outlets/footer-outlet/footer-outlet.com
     FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatButtonModule,
-    LayoutModule,
+    HttpClientModule,
     MatToolbarModule,
     MatSidenavModule,
-    HttpClientModule
-  ],
-  exports: [
-    MatToolbarModule,
-    MatSidenavModule,
-    HeaderOutletComponent,
-    MainOutletComponent,
-    FooterOutletComponent
+    MatButtonModule
+    // PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

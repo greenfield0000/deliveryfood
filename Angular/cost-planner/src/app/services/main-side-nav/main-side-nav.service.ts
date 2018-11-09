@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { MatDrawer } from '@angular/material';
+import { MatSidenav } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainSideNavService {
 
-  private _drawer: MatDrawer;
+  private _drawer: MatSidenav;
 
   constructor() { }
 
-  public getDriwer(): MatDrawer {
+  public getDriwer(): MatSidenav {
     return this._drawer;
   }
 
-  public setDriwer(drawer: MatDrawer) {
+  public setDriwer(drawer: MatSidenav) {
     this._drawer = drawer;
   }
 
