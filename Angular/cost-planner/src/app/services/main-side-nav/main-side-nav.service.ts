@@ -14,7 +14,11 @@ export class MainSideNavService {
     return this._drawer;
   }
 
-  public setShowFilter(drawer: MatDrawer) {
+  public setDriwer(drawer: MatDrawer) {
     this._drawer = drawer;
+  }
+
+  public drawerToggle() {
+    this._drawer.toggle();
   }
 }

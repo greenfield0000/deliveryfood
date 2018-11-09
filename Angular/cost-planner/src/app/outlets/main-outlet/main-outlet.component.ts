@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MainSideNavService } from 'src/app/services/main-side-nav.service';
+import { MainSideNavService } from 'src/app/services/main-side-nav/main-side-nav.service';
 import { MatDrawer } from '@angular/material';
 
 @Component({
@@ -15,7 +15,7 @@ export class MainOutletComponent implements OnInit {
   constructor(private _sideNavService: MainSideNavService) { }
 
   ngOnInit() {
-    this._sideNavService.setShowFilter(this._drawer);
+    this._sideNavService.setDriwer(this._drawer);
   }
 
 }

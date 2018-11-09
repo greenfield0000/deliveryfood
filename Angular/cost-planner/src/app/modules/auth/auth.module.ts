@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistryComponent } from './registry/registry.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
+import { MainOutletComponent } from 'src/app/outlets/main-outlet/main-outlet.component';
 
 @NgModule({
   declarations: [LoginComponent, RegistryComponent],
@@ -17,8 +18,7 @@ import { LoginComponent } from './login/login.component';
     RouterModule,
     AuthRoutingModule
   ],
-  providers: [
-    AuthServiceImpl
-  ]
+  exports: [LoginComponent, RegistryComponent],
+  providers: []
 })
 export class AuthModule { }

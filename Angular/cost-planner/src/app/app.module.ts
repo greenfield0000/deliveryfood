@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { AuthServiceImpl } from './services/auth-service/auth-service-impl.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -27,11 +29,15 @@ import { FooterOutletComponent } from './outlets/footer-outlet/footer-outlet.com
     MatButtonModule,
     LayoutModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    HttpClientModule
   ],
   exports: [
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    HeaderOutletComponent,
+    MainOutletComponent,
+    FooterOutletComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

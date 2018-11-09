@@ -9,7 +9,9 @@ import { Observable } from 'rxjs';
 /**
  * Сервис авторизации и регистрации пользователей в системе
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthServiceImpl implements Account {
   private _isAuthtorise: boolean;
 

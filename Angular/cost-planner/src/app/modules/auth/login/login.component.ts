@@ -16,8 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   private _subscription: Subscription;
 
   constructor(
-    private _authServiceImpl: AuthServiceImpl,
-    private _route: ActivatedRoute
+    private _authServiceImpl: AuthServiceImpl
   ) { }
 
   /**
