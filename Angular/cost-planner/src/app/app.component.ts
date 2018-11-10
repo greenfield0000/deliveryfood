@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDrawer, MatSidenav } from '@angular/material';
-import { MainSideNavService } from './services/main-side-nav/main-side-nav.service';
+import { MatSidenav } from '@angular/material';
+import { MainSideNavService } from './services/main-side-nav-service/main-side-nav.service';
 
 @Component({
   selector: 'app-root',

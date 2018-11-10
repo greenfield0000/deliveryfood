@@ -3,7 +3,7 @@ import { Account } from './../interfaces/account';
 /**
  * Класс - описывающий данные учетной записи
  */
-export class AuthFormData implements Account {
+export class AccountEntity implements Account {
 
     private _login: string;
     private _password: string;

@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { OutletChildrenConstant } from './constants/outlet-children-constant';
+import { PermissionGuard } from './guards/permission.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
   { path: 'auth', loadChildren: './modules/auth/auth.module#AuthModule' },
-  { path: 'planner', loadChildren: './modules/pages/pages.module#PagesModule' }
+  {
+    path: 'dashbord', loadChildren: './modules/dashbord/dashbord.module#DashbordModule', canActivate: [PermissionGuard]
+  }
 ];
 
 @NgModule({

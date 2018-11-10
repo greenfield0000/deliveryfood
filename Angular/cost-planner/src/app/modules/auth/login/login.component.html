@@ -5,11 +5,11 @@
     <h1>login form</h1>
     <div class="login-row">
       <span>login</span>
-      <input type="text" [(ngModel)]="authFormData.login" >
+      <input type="text" [(ngModel)]="accountEntity.login" >
     </div>
     <div class="login-row">
       <span>password</span>
-      <input type="password" [(ngModel)]="authFormData.password">
+      <input type="password" [(ngModel)]="accountEntity.password">
     </div>
     <button mat-button (click)="signIn()">Sign in</button>
     <button mat-button (click)="registry()">Registry</button>

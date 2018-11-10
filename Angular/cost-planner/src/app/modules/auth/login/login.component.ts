@@ -1,57 +1,35 @@
-import { AuthFormData } from '../../../classes/auth-formdata';
+import { AccountEntity } from './../../../classes/accountEntity';
+import { AppAccountContextService } from './../../../services/app-account-context-service/app-account-context.service';
+import { AppRouteService } from './../../../services/app-route-service/app-route.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthServiceImpl } from 'src/app/services/auth-service/auth-service-impl.service';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass']
 })
-export class LoginComponent implements OnInit, OnDestroy {
-
-  private _authFormData: AuthFormData;
-  private _subscription: Subscription;
+export class LoginComponent implements OnInit {
 
   constructor(
-    private _authServiceImpl: AuthServiceImpl
+    private _appAccount: AppAccountContextService,
+    private _router: AppRouteService
   ) { }
 
   /**
    * Войти
    */
   public signIn() {
-    this._subscription = this._authServiceImpl.signIn(this._authFormData).subscribe((response: any) => {
-      console.log(response);
-    });
+    this._appAccount.login();
   }
 
   public registry() {
-    // this._location.params.source.map('auth /registry');
+    this._router.goTo('auth/registry');
   }
 
-  /**
-   * Getter authFormData
-   */
-  public get authFormData(): AuthFormData {
-    return this._authFormData;
-  }
-
-  /**
-   * Setter authFormData
-   */
-  public set authFormData(value: AuthFormData) {
-    this._authFormData = value;
+  public get accountEntity(): AccountEntity {
+    return this._appAccount.getAccountEntity();
   }
 
   ngOnInit() {
-    this._authFormData = new AuthFormData();
   }
-
-  ngOnDestroy(): void {
-    this._subscription.unsubscribe();
-  }
-
 }

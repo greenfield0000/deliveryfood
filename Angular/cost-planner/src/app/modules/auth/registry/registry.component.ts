@@ -1,41 +1,32 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthServiceImpl } from 'src/app/services/auth-service/auth-service-impl.service';
-import { Subscription } from 'rxjs';
-import { AuthFormData } from 'src/app/classes/auth-formdata';
+import { AccountEntity } from 'src/app/classes/accountEntity';
+import { AppAccountContextService } from './../../../services/app-account-context-service/app-account-context.service';
+import { AppRouteService } from './../../../services/app-route-service/app-route.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-registry',
   templateUrl: './registry.component.html',
   styleUrls: ['./registry.component.sass']
 })
-export class RegistryComponent implements OnInit, OnDestroy {
-
-  private _authFormData: AuthFormData;
-  private _subscription: Subscription;
+export class RegistryComponent implements OnInit {
 
   constructor(
-    private _authServiceImpl: AuthServiceImpl,
-    private _router: Router) { }
+    private _appAccount: AppAccountContextService,
+    private _router: AppRouteService) { }
 
-  public goBack () {
-    this._router.navigateByUrl('/auth');
+  public backToLoginForm() {
+    this._router.goTo('auth/login');
   }
 
   public registry() {
-    console.log('Try to registry');
-    this._subscription = this._authServiceImpl.signIn(this._authFormData).subscribe((response: any) => {
-      console.log(response);
-    });
+    this._appAccount.regitry();
   }
 
   ngOnInit() {
-    this._authFormData = new AuthFormData();
   }
 
-  ngOnDestroy(): void {
-    this._subscription.unsubscribe();
+  public get accountEntity(): AccountEntity {
+    return this._appAccount.getAccountEntity();
   }
-
 
 }
