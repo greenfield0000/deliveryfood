@@ -3,8 +3,10 @@
         <router-outlet name="headerOutlet"></router-outlet>
     </div>
     <div class="main">
-        <router-outlet class="experimental"></router-outlet>
-        <mat-sidenav-container class="example-container">
+        <div *ngIf="!accountService.isAuthtorise()" class="experimental">
+            <router-outlet></router-outlet>
+        </div>
+        <mat-sidenav-container [hidden]="accountService.isAuthtorise()" class="">
             <mat-sidenav #sidenav class="example-sidenav">
                 <p class="main-menu-caption">Main menu</p>
             </mat-sidenav>

@@ -1,18 +1,30 @@
-
-<div class="login-form-wrapper">
-
-  <div class="login-form">
-    <h1>login form</h1>
-    <div class="login-row">
-      <span>login</span>
-      <input type="text" [(ngModel)]="accountEntity.login" >
-    </div>
-    <div class="login-row">
-      <span>password</span>
-      <input type="password" [(ngModel)]="accountEntity.password">
-    </div>
-    <button mat-button (click)="signIn()">Sign in</button>
-    <button mat-button (click)="registry()">Registry</button>
-  </div>
-
-</div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Username" [(ngModel)]="accountEntity.login" name="username" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Password" [(ngModel)]="accountEntity.password" type="password" name="password" required>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <!--<mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>-->
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="signIn()" color="primary">Login</button>
+    <button mat-raised-button (click)="registry()" color="primary">Registry</button>
+  </mat-card-actions>
+</mat-card>

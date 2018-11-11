@@ -8,7 +8,6 @@ import { MainSideNavService } from 'src/app/services/main-side-nav-service/main-
 })
 export class HeaderOutletComponent implements OnInit {
 
-
   constructor(private _sideNavService: MainSideNavService) { }
 
   ngOnInit() {

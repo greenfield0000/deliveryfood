@@ -6,6 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistryComponent } from './registry/registry.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
+import {
+  MatToolbarModule, MatSidenavModule, MatButtonModule, MatCardModule,
+  MatFormFieldModule, MatProgressSpinnerModule, MatInputModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [LoginComponent, RegistryComponent],
@@ -14,7 +18,15 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     HttpClientModule,
     RouterModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    MatInputModule
+
   ],
   exports: [LoginComponent, RegistryComponent],
   providers: []

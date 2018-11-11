@@ -9,6 +9,12 @@ export class AccountEntity implements Account {
     private _password: string;
     private _isAuthtorise = false;
 
+    constructor(login?: string, password?: string, isAuthtorise?: boolean) {
+        this._login = login;
+        this._password = password;
+        this._isAuthtorise = isAuthtorise;
+    }
+
     isAuthtorise(): boolean {
         return this._isAuthtorise;
     }

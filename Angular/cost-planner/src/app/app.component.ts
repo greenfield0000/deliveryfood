@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { MainSideNavService } from './services/main-side-nav-service/main-side-nav.service';
+import { AppAccountContextService } from './services/app-account-context-service/app-account-context.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
   @ViewChild(MatSidenav)
   private _drawer: MatSidenav;
 
-  constructor(private _sideNavService: MainSideNavService) { }
+  constructor(private _sideNavService: MainSideNavService,
+    private accountService: AppAccountContextService) { }
 
   ngOnInit() {
     this._sideNavService.setDriwer(this._drawer);
