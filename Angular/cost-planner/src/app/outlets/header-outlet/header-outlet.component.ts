@@ -1,3 +1,4 @@
+import { AppAccountContextService } from './../../services/app-account-context-service/app-account-context.service';
 import { Component, OnInit } from '@angular/core';
 import { MainSideNavService } from 'src/app/services/main-side-nav-service/main-side-nav.service';
 
@@ -8,16 +9,33 @@ import { MainSideNavService } from 'src/app/services/main-side-nav-service/main-
 })
 export class HeaderOutletComponent implements OnInit {
 
-  constructor(private _sideNavService: MainSideNavService) { }
+  constructor(private sideNavService: MainSideNavService,
+    private appAccountContextService: AppAccountContextService) { }
 
   ngOnInit() {
   }
 
+  /**
+   * switch menu toggle
+   */
   public sideNavToggle() {
-    console.log('pre', this._sideNavService.getDriwer());
-    if (this._sideNavService.getDriwer()) {
-      console.log('inn', this._sideNavService.getDriwer());
-      this._sideNavService.getDriwer().toggle();
+    if (this.sideNavService.getDriwer()) {
+      this.sideNavService.getDriwer().toggle();
     }
   }
+
+  /**
+   * Edit account profile
+   */
+  public editAccount() {
+
+  }
+
+  /**
+   * Exit application
+   */
+  public signOut() {
+    this.appAccountContextService.logOut();
+  }
+
 }

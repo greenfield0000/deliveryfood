@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
    * Войти
    */
   public signIn() {
+    console.log('signIn');
     this._appAccount.login();
   }
 

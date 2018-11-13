@@ -10,14 +10,16 @@ import { AppAccountContextService } from './services/app-account-context-service
 })
 export class AppComponent implements OnInit {
   title = 'cost-planner';
+  private appAccountContextService: AppAccountContextService;
 
   @ViewChild(MatSidenav)
   private _drawer: MatSidenav;
 
   constructor(private _sideNavService: MainSideNavService,
-    private accountService: AppAccountContextService) { }
+    private _appAccountContextService: AppAccountContextService) { }
 
   ngOnInit() {
     this._sideNavService.setDriwer(this._drawer);
+    this.appAccountContextService = this._appAccountContextService;
   }
 }
