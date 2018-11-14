@@ -6,15 +6,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AppRouteService {
 
-  constructor(private _router: Router,
-    private route: ActivatedRoute) { }
+  constructor(private _router: Router) { }
 
   /**
    * Перейти по имени пути
    */
   public goTo(urlName: string, params?: any) {
     if (urlName && urlName.length > 0) {
-      this._router.navigateByUrl(urlName)  // , { relativeTo: this.route }
+      this._router.navigate([urlName], { replaceUrl: true })
         .catch((reson: any) => console.log('Неверный url. Error = ', reson));
     }
   }

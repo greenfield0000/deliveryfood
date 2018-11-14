@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   public registry() {
-    this._router.goTo('auth/registry');
+    this._router.goTo('/auth/registry');
   }
 
   public get accountEntity(): AccountEntity {

@@ -15,7 +15,7 @@ export class RegistryComponent implements OnInit {
     private _router: AppRouteService) { }
 
   public backToLoginForm() {
-    this._router.goTo('auth/login');
+    this._router.goTo('/auth/login');
   }
 
   public registry() {

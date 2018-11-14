@@ -33,13 +33,14 @@ export class AppAccountContextService {
       this._accountEntity.password,
       true
     );
-    this.temp.goTo('dashbord');
+    this.temp.goTo('/dashbord');
   }
 
   logOut() {
     this._authService.signOut(this._accountEntity)
       .subscribe((res: AccountEntity) => res ? this._accountEntity = res : null)
       .unsubscribe();
+    this._accountEntity = new AccountEntity();
     this.temp.goTo('/');
   }
 

@@ -6,7 +6,7 @@
         <div [hidden]="appAccountContextService.getAccountEntity().isAuthtorise()" class="experimental">
             <router-outlet></router-outlet>
         </div>
-        <mat-sidenav-container [hidden]="appAccountContextService.getAccountEntity().isAuthtorise()" class="">
+        <mat-sidenav-container [hidden]="appAccountContextService.getAccountEntity().isAuthtorise()">
             <mat-sidenav #sidenav class="example-sidenav">
                 <p class="main-menu-caption">Main menu</p>
             </mat-sidenav>

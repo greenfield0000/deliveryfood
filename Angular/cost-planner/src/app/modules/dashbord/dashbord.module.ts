@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { DashbordRoutingModule } from './dashbord-routing.module';
 import { DashbordComponent } from './dashbord.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,7 @@ import { MatToolbarModule, MatSidenavModule, MatButtonModule, MatIconModule } fr
   imports: [
     CommonModule,
     DashbordRoutingModule,
+    RouterModule,
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
