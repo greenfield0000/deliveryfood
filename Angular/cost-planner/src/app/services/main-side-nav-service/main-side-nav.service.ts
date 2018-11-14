@@ -6,19 +6,19 @@ import { MatSidenav } from '@angular/material';
 })
 export class MainSideNavService {
 
-  private _drawer: MatSidenav;
+  private drawer: MatSidenav;
 
   constructor() { }
 
   public getDriwer(): MatSidenav {
-    return this._drawer;
+    return this.drawer;
   }
 
   public setDriwer(drawer: MatSidenav) {
-    this._drawer = drawer;
+    this.drawer = drawer;
   }
 
   public drawerToggle() {
-    this._drawer.toggle();
+    this.drawer.toggle();
   }
 }

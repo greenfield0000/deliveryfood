@@ -1,7 +1,7 @@
+import { AppAccountContextService } from './services/app-account-context-service/app-account-context.service';
 import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { MainSideNavService } from './services/main-side-nav-service/main-side-nav.service';
-import { AppAccountContextService } from './services/app-account-context-service/app-account-context.service';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +10,15 @@ import { AppAccountContextService } from './services/app-account-context-service
 })
 export class AppComponent implements OnInit {
   title = 'cost-planner';
-  private appAccountContextService: AppAccountContextService;
 
   @ViewChild(MatSidenav)
-  private drawer: MatSidenav;  
+  private drawer: MatSidenav;
 
-  constructor(private _sideNavService: MainSideNavService,
-    private _appAccountContextService: AppAccountContextService) {
-    this.appAccountContextService = this._appAccountContextService;
+  constructor(private sideNavService: MainSideNavService,
+    private appAccountContextService: AppAccountContextService) {
   }
 
   ngOnInit() {
-    this._sideNavService.setDriwer(this.drawer);
+    this.sideNavService.setDriwer(this.drawer);
   }
 }
