@@ -1,36 +1,40 @@
 package greenfield.group.com.authservice.gates;
 
 import greenfield.group.com.authservice.entities.Account;
-import greenfield.group.com.authservice.repositories.AccountRepository;
+import greenfield.group.com.authservice.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController(value = "/auth")
 public class AuthGate {
 
     @Autowired
-    private AccountRepository accountRepository;
+    private AccountService accountService;
 
-    @RequestMapping(method = RequestMethod.POST, path = "/login")
+    @RequestMapping(path = "/login")
     public Account signIn(Account account) {
-        Account account1 = new Account();
-        account1.setAuthtorise(true);
-        accountRepository.save(account1);
-        return account1;
+        return accountService.signIn(account);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/logout")
+    @RequestMapping(path = "/logout")
     public Account signOut(Account account) {
-        Account account1 = new Account();
-        account1.setAuthtorise(false);
-        return account1;
+        return accountService.signOut(account);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/registry")
-    public Account registry() {
-        return new Account();
+    @RequestMapping(path = "/registry")
+    public Account registry(Account account) {
+        return accountService.registry(account);
+    }
+
+    @RequestMapping(path = "/greeting")
+    public Account greeting() {
+        Account account = new Account();
+        account.setAuthtorise(true);
+        account.setLogin("123");
+        account.setPassword("123");
+        return account;
     }
 
 }
