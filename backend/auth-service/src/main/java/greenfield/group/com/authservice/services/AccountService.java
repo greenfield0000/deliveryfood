@@ -1,10 +1,11 @@
 package greenfield.group.com.authservice.services;
 
+import enums.Status;
 import greenfield.group.com.authservice.entities.Account;
 import greenfield.group.com.authservice.repositories.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import results.SimpleResult;
 
 import java.util.Optional;
 
@@ -14,47 +15,107 @@ import java.util.Optional;
 @Service
 public class AccountService {
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private static final boolean AUTHTORIZE = true;
+    private static final boolean NON_AUTHTORIZE = false;
+
     @Autowired
     private AccountRepository accountRepository;
 
-    public Account signIn(Account account) {
-        return setAthtorizeFlagAndSave(account, true);
-    }
-
-    public Account signOut(Account account) {
-        return setAthtorizeFlagAndSave(account, false);
-    }
-
-    public Account registry(Account account) {
-        // some bussines logic
-        return new Account();
-    }
-
     /**
-     * Temp function
+     * Залогиниться
      *
+     * @param account
      * @return
      */
-    public Account greeting() {
-        Account account = new Account();
-        account.setAuthtorise(true);
-        account.setLogin("123");
-        account.setPassword("123");
-        return account;
-    }
+    public SimpleResult<Account> signIn(Account account) {
+        // Должен быть известен логин и пароль
+        if ((account == null) || ((account.getLogin() == null) || (account.getLogin().isEmpty()))
+                || ((account.getPassword() == null) || (account.getPassword().isEmpty()))) {
+            return new SimpleResult<>(Status.ERROR, "Ошибка авторизации", null);
+        }
 
-
-    private Account setAthtorizeFlagAndSave(Account account, boolean isAuth) {
         Optional<Account> finderAccount = accountRepository
                 .findByLoginAndPassword(account.getLogin(), account.getPassword());
 
+        // если пытаемся залогиниться под пользователем, которого нет
         if (!finderAccount.isPresent()) {
-            finderAccount = Optional.of(new Account(account.getLogin(), account.getPassword()));
+            return new SimpleResult<>(Status.ERROR, "Ошибка авторизации", null);
         }
 
-        finderAccount.get().setAuthtorise(isAuth);
-        return accountRepository.save(finderAccount.get());
+        account = finderAccount.get();
+        setAuthtorized(account, AUTHTORIZE);
+        accountRepository.save(account);
+        return new SimpleResult<>(Status.OK, account);
+    }
+
+    /**
+     * Разлогиниться
+     *
+     * @param account
+     * @return
+     */
+    public SimpleResult<Account> signOut(Account account) {
+        // Должен быть известен логин и пароль
+        if ((account == null) || ((account.getLogin() == null) || (account.getLogin().isEmpty()))
+                || ((account.getPassword() == null) || (account.getPassword().isEmpty()))) {
+            return new SimpleResult<>(Status.ERROR, "Невозможно выполнить данное действие", null);
+        }
+        Optional<Account> finderAccount = accountRepository
+                .findByLoginAndPassword(account.getLogin(), account.getPassword());
+
+        // если пытаемся залогиниться под пользователем, которого нет
+        if (!finderAccount.isPresent()) {
+            return new SimpleResult<>(Status.ERROR, "Невозможно выполнить данное действие", null);
+        }
+
+        account = finderAccount.get();
+        setAuthtorized(account, NON_AUTHTORIZE);
+        accountRepository.save(account);
+        return new SimpleResult<>(Status.OK, account);
+    }
+
+    /**
+     * Зарегистрироваться
+     *
+     * @param account
+     * @return
+     */
+    public SimpleResult<Account> registry(Account account) {
+        // Должен быть известен логин и пароль
+        if ((account == null) || ((account.getLogin() == null) || (account.getLogin().isEmpty()))
+                || ((account.getPassword() == null) || (account.getPassword().isEmpty()))) {
+            return new SimpleResult<>(Status.ERROR, "Недостаточно данных для регистрации, попробуйте еще раз.", null);
+        }
+
+        // найдем пользователя с таким именем
+        Optional<Account> finderAccount = accountRepository.findByLogin(account.getLogin());
+        // если не нашли
+        if (!finderAccount.isPresent()) {
+            account = finderAccount.get();
+            setAuthtorized(account, AUTHTORIZE);
+            accountRepository.save(account);
+            return new SimpleResult<>(Status.OK, account);
+        }
+
+        return new SimpleResult<>(Status.ERROR, "Пользователь с таким логином уже существует, выберите другое имя", null);
+    }
+
+    /**
+     * Установка признака авторизации у пользователя
+     *
+     * @param account
+     * @param isAuth
+     * @return
+     */
+    private Account setAuthtorized(Account account, boolean isAuth) {
+        // берем либо существующего, либо того, которого запрашиваем
+        Account finderAccount = Optional.of(accountRepository
+                .findByLoginAndPassword(account.getLogin(), account.getPassword())
+                .orElse(account))
+                .get();
+
+        finderAccount.setAuthtorise(isAuth);
+
+        return finderAccount;
     }
 }
