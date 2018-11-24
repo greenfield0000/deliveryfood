@@ -3,48 +3,84 @@ import { Account } from './../interfaces/account';
 /**
  * Класс - описывающий данные учетной записи
  */
-export class AccountEntity implements Account {
+export class AccountEntity {
 
-    private _login: string;
-    private _password: string;
-    private _isAuthtorise = false;
+    private _id: number = null;
+    private _login: string = '';
+    private _password: string = '';
+    private _isAuthtorise: boolean = false;
 
-    constructor(login?: string, password?: string, isAuthtorise?: boolean) {
+    constructor(id?: number, login?: string, password?: string, isAuthtorise?: boolean) {
+        this._id = id;
         this._login = login;
         this._password = password;
         this._isAuthtorise = isAuthtorise;
     }
 
-    isAuthtorise(): boolean {
-        return this._isAuthtorise;
+    /**
+     * Getter id
+     * @return {number }
+     */
+    public get $id(): number {
+        return this._id;
     }
 
     /**
-     * Getter $login
+     * Getter login
+     * @return {string }
      */
-    public get login(): string {
+    public get $login(): string {
         return this._login;
     }
 
     /**
-     * Getter $password
+     * Getter password
+     * @return {string }
      */
-    public get password(): string {
+    public get $password(): string {
         return this._password;
     }
 
     /**
-     * Setter $login
+     * Setter id
+     * @param {number } value
      */
-    public set login(value: string) {
+    public set $id(value: number) {
+        this._id = value;
+    }
+
+    /**
+     * Setter login
+     * @param {string } value
+     */
+    public set $login(value: string) {
         this._login = value;
     }
 
     /**
-     * Setter $password
+     * Setter password
+     * @param {string } value
      */
-    public set password(value: string) {
+    public set $password(value: string) {
         this._password = value;
     }
+
+
+    /**
+     * Getter isAuthtorise
+     * @return {boolean }
+     */
+    public get $isAuthtorise(): boolean {
+        return this._isAuthtorise;
+    }
+
+    /**
+     * Setter isAuthtorise
+     * @param {boolean } value
+     */
+    public set $isAuthtorise(value: boolean) {
+        this._isAuthtorise = value;
+    }
+
 
 }

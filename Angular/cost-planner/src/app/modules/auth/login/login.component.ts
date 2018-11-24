@@ -2,6 +2,7 @@ import { AccountEntity } from './../../../classes/accountEntity';
 import { AppAccountContextService } from './../../../services/app-account-context-service/app-account-context.service';
 import { AppRouteService } from './../../../services/app-route-service/app-route.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { RouteConstant } from 'src/app/constants/route-constant';
 
 @Component({
   selector: 'app-login',
@@ -19,12 +20,11 @@ export class LoginComponent implements OnInit {
    * Войти
    */
   public signIn() {
-    console.log('signIn');
     this._appAccount.login();
   }
 
   public registry() {
-    this._router.goTo('/auth/registry');
+    this._router.goTo(RouteConstant.auth_location + '/registry');
   }
 
   public get accountEntity(): AccountEntity {

@@ -91,8 +91,7 @@ public class AccountService {
         Optional<Account> finderAccount = accountRepository.findByLogin(account.getLogin());
         // если не нашли
         if (!finderAccount.isPresent()) {
-            account = finderAccount.get();
-            setAuthtorized(account, AUTHTORIZE);
+            setAuthtorized(account, NON_AUTHTORIZE);
             accountRepository.save(account);
             return new SimpleResult<>(Status.OK, account);
         }

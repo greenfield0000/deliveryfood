@@ -2,6 +2,7 @@ import { AccountEntity } from 'src/app/classes/accountEntity';
 import { AppAccountContextService } from './../../../services/app-account-context-service/app-account-context.service';
 import { AppRouteService } from './../../../services/app-route-service/app-route.service';
 import { Component, OnInit } from '@angular/core';
+import { RouteConstant } from 'src/app/constants/route-constant';
 
 @Component({
   selector: 'app-registry',
@@ -15,7 +16,7 @@ export class RegistryComponent implements OnInit {
     private _router: AppRouteService) { }
 
   public backToLoginForm() {
-    this._router.goTo('/auth/login');
+    this._router.goTo(RouteConstant.auth_location + '/login');
   }
 
   public registry() {

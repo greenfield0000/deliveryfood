@@ -14,10 +14,10 @@ export class PermissionGuard implements CanActivate {
 
     const accountEntity = this.appAccountContextService.getAccountEntity();
 
-    if (!accountEntity || !accountEntity.isAuthtorise()) {
+    if (!accountEntity || !accountEntity.$isAuthtorise) {
       this.appRouter.goTo('/auth/login');
     }
 
-    return accountEntity.isAuthtorise();
+    return accountEntity.$isAuthtorise;
   }
 }

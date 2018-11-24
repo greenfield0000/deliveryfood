@@ -18,28 +18,22 @@ export class AppAccountContextService {
 
   regitry() {
     this._authService.registry(this._accountEntity)
-      .subscribe((res: AccountEntity) => res ? this._accountEntity = res : null)
-      .unsubscribe();
+      .subscribe((res: AccountEntity) => res ? this._accountEntity = res : null);
   }
 
   login() {
     this._authService.signIn(this._accountEntity)
-      .subscribe((res: AccountEntity) => res ? this._accountEntity = res : null)
-      .unsubscribe();
-
-
-    this._accountEntity = new AccountEntity(
-      this._accountEntity.login,
-      this._accountEntity.password,
-      true
-    );
-    this.temp.goTo('/dashbord');
+      .subscribe((res: any) => {
+        console.log(res);
+        if (res && res.isAuthtorise) {
+          this.temp.goTo('/dashbord');
+        }
+      });
   }
 
   logOut() {
     this._authService.signOut(this._accountEntity)
-      .subscribe((res: AccountEntity) => res ? this._accountEntity = res : null)
-      .unsubscribe();
+      .subscribe((res: AccountEntity) => res ? this._accountEntity = res : null);
     this._accountEntity = new AccountEntity();
     this.temp.goTo('/');
   }
