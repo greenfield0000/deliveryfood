@@ -1,7 +1,7 @@
 package greenfield.group.com.authservice.services;
 
+import entities.account.Account;
 import enums.Status;
-import greenfield.group.com.authservice.entities.Account;
 import greenfield.group.com.authservice.repositories.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

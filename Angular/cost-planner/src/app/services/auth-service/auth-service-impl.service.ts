@@ -41,11 +41,19 @@ export class AuthServiceImpl implements Auth {
   /**
    * Зарегистрироваться в системе
    */
-  registry(accountEntity: AccountEntity, url?: string): Observable<AccountEntity> {
+  registry(accountEntity: AccountEntity, url?: string): Observable<any> {
     if (!url) {
       url = RouteConstant.auth_location + '/registry';
     }
     return this._httpService.post<AccountEntity>(url, accountEntity, HttpConstant.HTTP_OPTIONS);
+  }
+
+  g(accountEntity: AccountEntity, url?: string): Observable<any> {
+
+    if (!url) {
+      url = RouteConstant.auth_location + '/g';
+    }
+    return this._httpService.post(url, accountEntity, HttpConstant.HTTP_OPTIONS);
   }
 
 }

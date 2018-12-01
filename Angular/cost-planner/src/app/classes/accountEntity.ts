@@ -9,6 +9,7 @@ export class AccountEntity {
     private _login: string = '';
     private _password: string = '';
     private _isAuthtorise: boolean = false;
+    private _nickName: string = '';
 
     constructor(id?: number, login?: string, password?: string, isAuthtorise?: boolean) {
         this._id = id;
@@ -38,9 +39,9 @@ export class AccountEntity {
      * @return {string }
      */
     public get $password(): string {
+
         return this._password;
     }
-
     /**
      * Setter id
      * @param {number } value
@@ -81,6 +82,24 @@ export class AccountEntity {
     public set $isAuthtorise(value: boolean) {
         this._isAuthtorise = value;
     }
+
+
+    /**
+     * Getter nickName
+     * @return {string }
+     */
+    public get $nickName(): string {
+        return this._nickName;
+    }
+
+    /**
+     * Setter nickName
+     * @param {string } value
+     */
+    public set $nickName(value: string) {
+        this._nickName = value;
+    }
+
 
 
 }

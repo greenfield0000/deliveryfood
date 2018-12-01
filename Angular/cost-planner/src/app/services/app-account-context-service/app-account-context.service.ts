@@ -38,6 +38,11 @@ export class AppAccountContextService {
     this.temp.goTo('/');
   }
 
+  g() {
+    this._authService.g(this._accountEntity)
+    .subscribe(res => console.log(res));
+  }
+
   getAccountEntity(): AccountEntity {
     return this._accountEntity;
   }

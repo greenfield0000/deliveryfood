@@ -1,4 +1,4 @@
-package greenfield.group.com.authservice.entities;
+package entities.account;
 
 import javax.persistence.*;
 
@@ -7,6 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "gr_accounts", schema = "account-msql")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Account {
 
     @Id

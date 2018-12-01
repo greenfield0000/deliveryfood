@@ -9,6 +9,13 @@
         <tr>
           <td>
             <mat-form-field class="example-full-width">
+              <input matInput placeholder="NickName" [(ngModel)]="accountEntity.nickName" name="nickName" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
               <input matInput placeholder="Login" [(ngModel)]="accountEntity.login" name="login" required>
             </mat-form-field>
           </td>

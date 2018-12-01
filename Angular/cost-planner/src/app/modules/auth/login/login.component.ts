@@ -24,12 +24,18 @@ export class LoginComponent implements OnInit {
   }
 
   public registry() {
-    this._router.goTo(RouteConstant.auth_location + '/registry');
+    this._router.goTo('/auth/registry');
   }
 
   public get accountEntity(): AccountEntity {
     return this._appAccount.getAccountEntity();
   }
+
+
+  public g() {
+    this._appAccount.g();
+  }
+
 
   ngOnInit() {
   }

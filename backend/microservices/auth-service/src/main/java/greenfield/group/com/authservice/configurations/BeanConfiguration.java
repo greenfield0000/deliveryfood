@@ -1,4 +1,4 @@
-package greenfield.group.com.authservice.beans;
+package greenfield.group.com.authservice.configurations;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;

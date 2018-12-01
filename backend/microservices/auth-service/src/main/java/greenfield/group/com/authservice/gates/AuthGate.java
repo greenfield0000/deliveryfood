@@ -5,6 +5,7 @@ import greenfield.group.com.authservice.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import response.GateResponse;
 import results.SimpleResult;
 
@@ -14,6 +15,8 @@ public class AuthGate {
 
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private RestTemplate restTemplate;
 
     @RequestMapping(path = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<Account> login(@RequestBody Account account) {
