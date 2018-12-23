@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Auth } from 'src/app/interfaces/auth';
 import { RouteConstant } from 'src/app/constants/route-constant';
 import { Router } from '@angular/router';
+import { SimpleResult } from 'src/app/utils/simple-result.class';
 
 /**
  * Сервис авторизации и регистрации пользователей в системе
@@ -15,45 +16,36 @@ import { Router } from '@angular/router';
 })
 export class AuthServiceImpl implements Auth {
 
-  constructor(private _httpService: HttpClient,
-    private router: Router) { }
+  constructor(private _httpService: HttpClient) { }
 
   /**
    * Выйти из системы
    */
-  signOut(accountEntity: AccountEntity, url?: string): Observable<any> {
+  signOut(accountEntity: AccountEntity, url?: string): Observable<SimpleResult<AccountEntity>> {
     if (!url) {
       url = RouteConstant.auth_location + '/logout';
     }
-    return this._httpService.post(url, accountEntity, HttpConstant.HTTP_OPTIONS);
+    return this._httpService.post<SimpleResult<AccountEntity>>(url, accountEntity, HttpConstant.HTTP_OPTIONS);
   }
 
   /**
    * Войти в систему
    */
-  signIn(accountEntity: AccountEntity, url?: string): Observable<any> {
+  signIn(accountEntity: AccountEntity, url?: string): Observable<SimpleResult<AccountEntity>> {
     if (!url) {
       url = RouteConstant.auth_location + '/login';
     }
-    return this._httpService.post<AccountEntity>(url, accountEntity, HttpConstant.HTTP_OPTIONS);
+    return this._httpService.post<SimpleResult<AccountEntity>>(url, JSON.stringify(accountEntity), HttpConstant.HTTP_OPTIONS);
   }
 
   /**
    * Зарегистрироваться в системе
    */
-  registry(accountEntity: AccountEntity, url?: string): Observable<any> {
+  registry(accountEntity: AccountEntity, url?: string): Observable<SimpleResult<AccountEntity>> {
     if (!url) {
       url = RouteConstant.auth_location + '/registry';
     }
-    return this._httpService.post<AccountEntity>(url, accountEntity, HttpConstant.HTTP_OPTIONS);
-  }
-
-  g(accountEntity: AccountEntity, url?: string): Observable<any> {
-
-    if (!url) {
-      url = RouteConstant.auth_location + '/g';
-    }
-    return this._httpService.post(url, accountEntity, HttpConstant.HTTP_OPTIONS);
+    return this._httpService.post<SimpleResult<AccountEntity>>(url, JSON.stringify(accountEntity), HttpConstant.HTTP_OPTIONS);
   }
 
 }

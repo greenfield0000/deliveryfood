@@ -5,101 +5,99 @@ import { Account } from './../interfaces/account';
  */
 export class AccountEntity {
 
-    private _id: number = null;
-    private _login: string = '';
-    private _password: string = '';
-    private _isAuthtorise: boolean = false;
-    private _nickName: string = '';
+    private id: number = null;
+    private login: string = '';
+    private password: string = '';
+    private authtorised: boolean = false;
+    private nickName: string = '';
 
-    constructor(id?: number, login?: string, password?: string, isAuthtorise?: boolean) {
-        this._id = id;
-        this._login = login;
-        this._password = password;
-        this._isAuthtorise = isAuthtorise;
+    constructor(obj?: any) {
+        this.id = obj && obj.id;
+        this.login = obj && obj.login;
+        this.password = obj && obj.password;
+        this.authtorised = obj && obj.authtorised;
     }
 
+
     /**
-     * Getter id
+     * Getter $id
      * @return {number }
      */
     public get $id(): number {
-        return this._id;
+        return this.id;
     }
 
     /**
-     * Getter login
+     * Getter $login
      * @return {string }
      */
     public get $login(): string {
-        return this._login;
+        return this.login;
     }
 
     /**
-     * Getter password
+     * Getter $password
      * @return {string }
      */
     public get $password(): string {
-
-        return this._password;
-    }
-    /**
-     * Setter id
-     * @param {number } value
-     */
-    public set $id(value: number) {
-        this._id = value;
+        return this.password;
     }
 
     /**
-     * Setter login
-     * @param {string } value
-     */
-    public set $login(value: string) {
-        this._login = value;
-    }
-
-    /**
-     * Setter password
-     * @param {string } value
-     */
-    public set $password(value: string) {
-        this._password = value;
-    }
-
-
-    /**
-     * Getter isAuthtorise
+     * Getter $isAuthtorise
      * @return {boolean }
      */
-    public get $isAuthtorise(): boolean {
-        return this._isAuthtorise;
+    public get $authtorised(): boolean {
+        return this.authtorised;
     }
 
     /**
-     * Setter isAuthtorise
-     * @param {boolean } value
-     */
-    public set $isAuthtorise(value: boolean) {
-        this._isAuthtorise = value;
-    }
-
-
-    /**
-     * Getter nickName
+     * Getter $nickName
      * @return {string }
      */
     public get $nickName(): string {
-        return this._nickName;
+        return this.nickName;
     }
 
     /**
-     * Setter nickName
+     * Setter $id
+     * @param {number } value
+     */
+    public set $id(value: number) {
+        this.id = value;
+    }
+
+    /**
+     * Setter $login
+     * @param {string } value
+     */
+    public set $login(value: string) {
+        this.login = value;
+    }
+
+    /**
+     * Setter $password
+     * @param {string } value
+     */
+    public set $password(value: string) {
+        this.password = value;
+    }
+
+    /**
+     * Setter $isAuthtorise
+     * @param {boolean } value
+     */
+    public set $authtorised(value: boolean) {
+        this.authtorised = value;
+    }
+
+    /**
+     * Setter $nickName
      * @param {string } value
      */
     public set $nickName(value: string) {
-        this._nickName = value;
+        this.nickName = value;
     }
-
 
 
 }

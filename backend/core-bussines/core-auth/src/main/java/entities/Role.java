@@ -1,4 +1,4 @@
-package account;
+package entities;
 
 import javax.persistence.*;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.List;
  * Роли для аккаунта
  */
 @Entity
-@Table(name = "gr_role", schema = "account-msql")
+@Table(name = "gr_role", schema = "entities-msql")
 public class Role {
 
     @Id

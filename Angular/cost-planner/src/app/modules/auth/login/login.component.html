@@ -8,14 +8,14 @@
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Login" [(ngModel)]="accountEntity.login" name="login" required>
+              <input matInput placeholder="Login" [(ngModel)]="account.login" name="login" required>
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Password" [(ngModel)]="accountEntity.password" type="password" name="password" required>
+              <input matInput placeholder="Password" [(ngModel)]="account.password" type="password" name="password" required>
             </mat-form-field>
           </td>
         </tr>
@@ -27,5 +27,4 @@
     <button mat-raised-button (click)="signIn()" color="primary">Login</button>
     <button mat-raised-button (click)="registry()" color="primary">Registry</button>
   </mat-card-actions>
-  <button mat-raised-button (click)="g()" color="primary">Login with google</button>
 </mat-card>

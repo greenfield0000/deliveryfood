@@ -1,6 +1,6 @@
 package greenfield.group.com.authservice.gates;
 
-import greenfield.group.com.authservice.entities.Account;
+import entities.Account;
 import greenfield.group.com.authservice.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -23,12 +23,12 @@ public class AuthGate {
         return new GateResponse<>(accountService.signIn(account)).getResult();
     }
 
-    @RequestMapping(path = "/logout")
+    @RequestMapping(path = "/logout", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<Account> logout(@RequestBody Account account) {
         return new GateResponse<>(accountService.signOut(account)).getResult();
     }
 
-    @RequestMapping(path = "/registry")
+    @RequestMapping(path = "/registry", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<Account> registry(@RequestBody Account account) {
         return new GateResponse<>(accountService.registry(account)).getResult();
     }

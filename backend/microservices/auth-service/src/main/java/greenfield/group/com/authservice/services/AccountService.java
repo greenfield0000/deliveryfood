@@ -1,6 +1,6 @@
 package greenfield.group.com.authservice.services;
 
-import entities.account.Account;
+import entities.Account;
 import enums.Status;
 import greenfield.group.com.authservice.repositories.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,7 +113,7 @@ public class AccountService {
                 .orElse(account))
                 .get();
 
-        finderAccount.setAuthtorise(isAuth);
+        finderAccount.setAuthtorised(isAuth);
 
         return finderAccount;
     }

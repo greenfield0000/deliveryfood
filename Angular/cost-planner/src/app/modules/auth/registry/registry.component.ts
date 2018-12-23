@@ -11,6 +11,8 @@ import { RouteConstant } from 'src/app/constants/route-constant';
 })
 export class RegistryComponent implements OnInit {
 
+  private account: AccountEntity = this._appAccount.getAccount();
+
   constructor(
     private _appAccount: AppAccountContextService,
     private _router: AppRouteService) { }
@@ -24,10 +26,6 @@ export class RegistryComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  public get accountEntity(): AccountEntity {
-    return this._appAccount.getAccountEntity();
   }
 
 }

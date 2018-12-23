@@ -13,7 +13,7 @@ export class AppRouteService {
    */
   public goTo(urlName: string, params?: any) {
     if (urlName && urlName.length > 0) {
-      this._router.navigate([urlName], { replaceUrl: true })
+      this._router.navigate([urlName], { replaceUrl: false })
         .catch((reson: any) => console.log('Неверный url. Error = ', reson));
     }
   }

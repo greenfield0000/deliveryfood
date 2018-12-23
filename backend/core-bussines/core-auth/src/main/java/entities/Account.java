@@ -1,4 +1,4 @@
-package account;
+package entities;
 
 import javax.persistence.*;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.List;
  * Описание аккаунта
  */
 @Entity
-@Table(name = "gr_accounts", schema = "account-msql")
+@Table(name = "gr_accounts", schema = "entities-msql")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Account {
 
@@ -23,8 +23,8 @@ public class Account {
     @Column(name = "account_role_id")
     private List<Role> roles;
 
-    @Column(name = "is_authtorise")
-    private boolean isAuthtorise;
+    @Column(name = "is_authtorised")
+    private boolean isAuthtorised;
 
     public Account() {
     }
@@ -61,12 +61,12 @@ public class Account {
         this.roles = roles;
     }
 
-    public boolean isAuthtorise() {
-        return isAuthtorise;
+    public boolean isAuthtorised() {
+        return isAuthtorised;
     }
 
-    public void setAuthtorise(boolean authtorise) {
-        isAuthtorise = authtorise;
+    public void setAuthtorised(boolean authtorised) {
+        isAuthtorised = authtorised;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class Account {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", roles=" + roles +
-                ", isAuthtorise=" + isAuthtorise +
+                ", isAuthtorise=" + isAuthtorised +
                 '}';
     }
 }

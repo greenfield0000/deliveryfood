@@ -1,7 +1,8 @@
+import { AuthServiceImpl } from './../auth-service/auth-service-impl.service';
 import { AppRouteService } from './../app-route-service/app-route.service';
 import { AccountEntity } from './../../classes/accountEntity';
-import { AuthServiceImpl } from 'src/app/services/auth-service/auth-service-impl.service';
 import { Injectable } from '@angular/core';
+import { SimpleResult } from 'src/app/utils/simple-result.class';
 
 @Injectable({
   providedIn: 'root'
@@ -9,41 +10,38 @@ import { Injectable } from '@angular/core';
 export class AppAccountContextService {
 
   // сущность на контекст приложения
-  private _accountEntity: AccountEntity;
+  private _account: AccountEntity = new AccountEntity();
 
   constructor(private _authService: AuthServiceImpl,
     private temp: AppRouteService) {
-    this._accountEntity = new AccountEntity();
   }
 
   regitry() {
-    this._authService.registry(this._accountEntity)
-      .subscribe((res: AccountEntity) => res ? this._accountEntity = res : null);
+    this._authService.registry(this._account)
+      .subscribe((simpleResult: SimpleResult<AccountEntity>) => (simpleResult && simpleResult.result) ?
+        this._account = new AccountEntity(simpleResult.result) : new AccountEntity());
   }
 
   login() {
-    this._authService.signIn(this._accountEntity)
-      .subscribe((res: any) => {
-        console.log(res);
-        if (res && res.isAuthtorise) {
+    this._authService.signIn(this._account)
+      .subscribe((simpleResult: SimpleResult<AccountEntity>) => {
+        const account: AccountEntity = simpleResult && simpleResult.result && new AccountEntity(simpleResult.result);
+        if (account) {
+          this._account = account;
           this.temp.goTo('/dashbord');
         }
       });
   }
 
   logOut() {
-    this._authService.signOut(this._accountEntity)
-      .subscribe((res: AccountEntity) => res ? this._accountEntity = res : null);
-    this._accountEntity = new AccountEntity();
-    this.temp.goTo('/');
+    this._authService.signOut(this._account)
+      .subscribe((simpleResult: SimpleResult<AccountEntity>) => {
+        this._account = (simpleResult && simpleResult.result) ? new AccountEntity(simpleResult.result) : new AccountEntity();
+        this.temp.goTo('/');
+      });
   }
 
-  g() {
-    this._authService.g(this._accountEntity)
-    .subscribe(res => console.log(res));
-  }
-
-  getAccountEntity(): AccountEntity {
-    return this._accountEntity;
+  getAccount(): AccountEntity {
+    return this._account;
   }
 }
