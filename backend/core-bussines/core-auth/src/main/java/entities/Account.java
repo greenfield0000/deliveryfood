@@ -1,6 +1,7 @@
-package entities.account;
+package account;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Описание аккаунта
@@ -12,20 +13,20 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "account_id")
     private Long id;
 
     private String login;
     private String password;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Role.class)
+    @Column(name = "account_role_id")
+    private List<Role> roles;
+
     @Column(name = "is_authtorise")
     private boolean isAuthtorise;
 
     public Account() {
-    }
-
-    public Account(String login, String password) {
-        this.login = login;
-        this.password = password;
     }
 
     public Long getId() {
@@ -52,6 +53,14 @@ public class Account {
         this.password = password;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
     public boolean isAuthtorise() {
         return isAuthtorise;
     }
@@ -63,9 +72,10 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", roles=" + roles +
                 ", isAuthtorise=" + isAuthtorise +
                 '}';
     }
