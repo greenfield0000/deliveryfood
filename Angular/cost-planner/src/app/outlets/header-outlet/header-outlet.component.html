@@ -1,6 +1,6 @@
 <mat-toolbar class="header">
   <mat-toolbar-row color="primary">
-    <span>Cost-planner</span>
+    <span>Суппбери</span>
     <div class="menu-block">
       <button mat-icon-button (click)="sideNavToggle()">
         <i class="material-icons">apps</i>
@@ -14,7 +14,7 @@
           <i class="material-icons">account_circle</i>
         </button>
 
-        <span class="account-name">NickName aksmddkasmdlkmald</span>
+        <span class="account-name">Добрый день, {{account.$nickName}}</span>
 
         <button mat-raised-button (click)="signOut()" color="primary">
           Log out

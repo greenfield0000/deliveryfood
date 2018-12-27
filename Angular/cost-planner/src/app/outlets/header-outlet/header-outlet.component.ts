@@ -1,3 +1,4 @@
+import { AccountEntity } from './../../classes/accountEntity';
 import { AppAccountContextService } from './../../services/app-account-context-service/app-account-context.service';
 import { Component, OnInit } from '@angular/core';
 import { MainSideNavService } from 'src/app/services/main-side-nav-service/main-side-nav.service';
@@ -9,10 +10,13 @@ import { MainSideNavService } from 'src/app/services/main-side-nav-service/main-
 })
 export class HeaderOutletComponent implements OnInit {
 
+  private account: AccountEntity = new AccountEntity();
+
   constructor(private sideNavService: MainSideNavService,
     private appAccountContextService: AppAccountContextService) { }
 
   ngOnInit() {
+    this.account = this.appAccountContextService.getAccount();
   }
 
   /**

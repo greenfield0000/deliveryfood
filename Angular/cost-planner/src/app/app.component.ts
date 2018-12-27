@@ -1,7 +1,8 @@
-import { AppAccountContextService } from './services/app-account-context-service/app-account-context.service';
-import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { MainSideNavService } from './services/main-side-nav-service/main-side-nav.service';
+import { AccountEntity } from './classes/accountEntity';
+import { AppAccountContextService } from './services/app-account-context-service/app-account-context.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { MainSideNavService } from './services/main-side-nav-service/main-side-n
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
-  title = 'cost-planner';
+
+  private account: AccountEntity = new AccountEntity();
 
   @ViewChild(MatSidenav)
   private drawer: MatSidenav;
@@ -19,6 +21,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.account = this.appAccountContextService.getAccount();
+    console.log('account initialized', this.account);
     this.sideNavService.setDriwer(this.drawer);
+  }
+
+  isAuthtorised(): boolean {
+    return this.account && this.account.$authtorised || false;
   }
 }

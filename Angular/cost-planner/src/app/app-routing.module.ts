@@ -4,7 +4,7 @@ import { PermissionGuard } from './guards/permission.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  { path: 'auth', loadChildren: './modules/auth/auth.module#AuthModule' },
+  { path: 'auth', loadChildren: './modules/auth/auth.module#AuthModule'},
   {
     path: 'dashbord', loadChildren: './modules/dashbord/dashbord.module#DashbordModule', canActivate: [PermissionGuard]
   }

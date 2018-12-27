@@ -65,7 +65,15 @@ html, body
 .main-menu-caption
   min-width: 300px;
 
-.mat-drawer-container
-  background-color: white;
-  width: 100%;
-  height: 100%;
+.display-none
+  display: none;
+
+.mat-drawer-container 
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;

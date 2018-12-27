@@ -12,10 +12,13 @@ export class AccountEntity {
     private nickName: string = '';
 
     constructor(obj?: any) {
-        this.id = obj && obj.id;
-        this.login = obj && obj.login;
-        this.password = obj && obj.password;
-        this.authtorised = obj && obj.authtorised;
+        if (obj) {
+            this.id = obj && obj.id;
+            this.login = obj && obj.login;
+            this.password = obj && obj.password;
+            this.authtorised = obj && obj.authtorised;
+            this.nickName = obj && obj.nickName;
+        }
     }
 
 
@@ -98,6 +101,5 @@ export class AccountEntity {
     public set $nickName(value: string) {
         this.nickName = value;
     }
-
 
 }

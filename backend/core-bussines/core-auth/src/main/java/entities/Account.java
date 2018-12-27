@@ -26,6 +26,9 @@ public class Account {
     @Column(name = "is_authtorised")
     private boolean isAuthtorised;
 
+    @Column(name = "nick_name")
+    private String nickName;
+
     public Account() {
     }
 
@@ -69,6 +72,14 @@ public class Account {
         isAuthtorised = authtorised;
     }
 
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -76,7 +87,8 @@ public class Account {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", roles=" + roles +
-                ", isAuthtorise=" + isAuthtorised +
+                ", isAuthtorised=" + isAuthtorised +
+                ", nickName='" + nickName + '\'' +
                 '}';
     }
 }

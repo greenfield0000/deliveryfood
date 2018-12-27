@@ -1,6 +1,6 @@
 <mat-card class="example-card">
   <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
+    <mat-card-title>Вход</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form class="example-form">
@@ -8,23 +8,23 @@
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Login" [(ngModel)]="account.login" name="login" required>
+              <input matInput placeholder="Логин" [(ngModel)]="account.login" name="login" required>
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Password" [(ngModel)]="account.password" type="password" name="password" required>
+              <input matInput placeholder="Пароль" [(ngModel)]="account.password" type="password" name="password"
+                required>
             </mat-form-field>
           </td>
         </tr>
       </table>
     </form>
     <!--<mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>-->
+    <mat-card-actions>
+      <button mat-raised-button (click)="signIn()" color="primary">Войти</button>
+      <button mat-raised-button (click)="registry()" color="primary">Перейти на страницу регистрации</button>
+    </mat-card-actions>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="signIn()" color="primary">Login</button>
-    <button mat-raised-button (click)="registry()" color="primary">Registry</button>
-  </mat-card-actions>
-</mat-card>

@@ -13,7 +13,6 @@ export class PermissionGuard implements CanActivate {
     private appRouter: AppRouteService) { }
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const account: AccountEntity = this.appAccountContextService.getAccount();
-    debugger;
     if (!account || !account.$authtorised) {
       return false;
     }

@@ -9,13 +9,9 @@ import { MainSideNavService } from 'src/app/services/main-side-nav-service/main-
 })
 export class MainOutletComponent implements OnInit {
 
-  @ViewChild(MatSidenav)
-  private _drawer: MatSidenav;
-
-  constructor(private _sideNavService: MainSideNavService) { }
+  constructor() { }
 
   ngOnInit() {
-    this._sideNavService.setDriwer(this._drawer);
   }
 
 }
