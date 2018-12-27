@@ -21,6 +21,7 @@ import { MatToolbarModule, MatSidenavModule, MatButtonModule, MatIconModule } fr
   ],
   exports: [
     HeaderOutletComponent, MainOutletComponent, FooterOutletComponent
-  ]
+  ],
+  bootstrap: [HeaderOutletComponent, MainOutletComponent, FooterOutletComponent]
 })
 export class DashbordModule { }
