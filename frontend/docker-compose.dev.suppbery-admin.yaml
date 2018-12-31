@@ -1,5 +1,7 @@
 version: '3.4'
 services:
+
+  # frontend
   suppbery-admin:
     container_name: suppbery-admin 
     build: ./cost-planner
@@ -9,3 +11,15 @@ services:
      - "/home/roman/repository/frontend/cost-planner/sources:/angular/suppbery-admin"
     hostname: localhost
     network_mode: host
+    depends_on: 
+      - "account-db"
+
+  # account-db
+  account-db:
+    container_name: account-db
+    image: mysql:latest
+    ports: 
+      - "3306:3306"
+    environment: 
+      - "MYSQL_ROOT_PASSWORD=123"
+      - "MYSQL_DATABASE=account-msql"
