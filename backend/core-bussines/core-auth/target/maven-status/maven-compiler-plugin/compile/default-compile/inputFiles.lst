@@ -1,2 +1,2 @@
-/home/roman/repository/backend/core-bussines/core-auth/src/main/java/entities/Role.java
-/home/roman/repository/backend/core-bussines/core-auth/src/main/java/entities/Account.java
+/home/roman/repository/backend/core-bussines/core-auth/src/main/java/entities/authservice/Account.java
+/home/roman/repository/backend/core-bussines/core-auth/src/main/java/entities/authservice/Role.java

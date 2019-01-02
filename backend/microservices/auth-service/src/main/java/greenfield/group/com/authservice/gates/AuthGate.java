@@ -1,6 +1,6 @@
 package greenfield.group.com.authservice.gates;
 
-import entities.Account;
+import entities.authservice.Account;
 import greenfield.group.com.authservice.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

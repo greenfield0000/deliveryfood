@@ -1,6 +1,6 @@
 package greenfield.group.com.authservice.services;
 
-import entities.Account;
+import entities.authservice.Account;
 import enums.Status;
 import greenfield.group.com.authservice.repositories.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;

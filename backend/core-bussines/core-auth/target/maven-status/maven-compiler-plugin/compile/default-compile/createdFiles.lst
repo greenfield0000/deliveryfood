@@ -1,2 +1,2 @@
-entities/Role.class
-entities/Account.class
+entities/authservice/Role.class
+entities/authservice/Account.class

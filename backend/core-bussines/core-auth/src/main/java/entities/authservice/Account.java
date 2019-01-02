@@ -1,4 +1,4 @@
-package entities;
+package entities.authservice;
 
 import javax.persistence.*;
 import java.util.List;

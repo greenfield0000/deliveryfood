@@ -1,0 +1,78 @@
+version: '3.4'
+services:
+
+  # frontend
+  suppbery-admin:
+    container_name: suppbery-admin 
+    build: ./frontend/cost-planner
+    ports:
+     - "4200:4200"
+    volumes: 
+     - "/home/roman/repository/frontend/cost-planner/sources:/angular/suppbery-admin"
+    depends_on: 
+      - "auth-service"
+      - "menu-service"
+    links: 
+      - auth-service
+      - menu-service
+    networks:
+      - "frontend"
+
+  #auth-service
+  auth-service:
+    container_name: auth-service
+    build: ./backend/microservices/auth-service
+    ports:
+     - "8081:8081"
+    depends_on:
+      - auth-db
+    links: 
+      - auth-db
+    networks:
+      - "frontend"
+      - "backend"
+
+  # auth-db
+  auth-db:
+    container_name: auth-db
+    image: mysql:latest
+    ports: 
+      - "3306:3306"
+    environment: 
+      - "MYSQL_ROOT_PASSWORD=123"
+      - "MYSQL_DATABASE=auth-db"
+    networks:
+      - "backend"
+
+  #menu-service
+  menu-service:
+    container_name: menu-service
+    build: ./backend/microservices/menu-service
+    ports:
+      - "8082:8082"
+    links: 
+      - menu-db
+    depends_on:
+      - "menu-db"
+    networks:
+      - "backend"
+      - "frontend"
+
+
+  #menu-db
+  menu-db:
+    container_name: menu-db
+    image: mysql:latest
+    ports:
+      - "3307:3306"
+    environment:
+      - "MYSQL_DATABASE=menu-db"
+      - "MYSQL_ROOT_PASSWORD=123"
+    networks:
+      - "frontend"
+      - "backend"
+
+  # setting network with all containers
+networks:
+  frontend:
+  backend:
