@@ -8,4 +8,4 @@ ADD /target /menu-service
 #create user
 USER root
 #run service
-ENTRYPOINT ["java", "-jar", "menu-service-0.0.1.jar"]
+ENTRYPOINT ["java", "-jar", "menu-service-0.0.1-SNAPSHOT.jar"]

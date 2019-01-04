@@ -9,25 +9,16 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+
+    <artifactId>utils</artifactId>
+    <version>${utils.version}</version>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>core-bussines</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <description>Contains bussines relative with all entities</description>
-
-    <!--<dependencies>-->
-        <!--<dependency>-->
-            <!--<groupId>greenfield.group.com</groupId>-->
-            <!--<artifactId>utils</artifactId>-->
-            <!--<version>0.0.1-SNAPSHOT</version>-->
-        <!--</dependency>-->
-    <!--</dependencies>-->
-
     <modules>
-        <module>core-mysql</module>
-        <module>core-mongodb</module>
+        <module>gateway-utils</module>
+        <module>privilegies-utils</module>
     </modules>
 
 </project>

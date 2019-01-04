@@ -56,20 +56,30 @@ services:
       - frontend
       - backend
 
-  # menu-db
+# menu-db
+#  menu-db:
+#   container_name: menu-db
+#  hostname: menu-db
+# image: mysql:latest
+#   ports: 
+#      - "3307:3307"
+#    environment: 
+#      - "MYSQL_ROOT_PASSWORD=123"
+#      - "MYSQL_DATABASE=menu-db"
+#      - "MYSQL_TCP_PORT=3307"
+#    networks:
+#      - backend
+
+
+  # menu-db (try mongodb)
   menu-db:
     container_name: menu-db
     hostname: menu-db
-    image: mysql:latest
+    image: mongo:latest
     ports: 
-      - "3307:3307"
-    environment: 
-      - "MYSQL_ROOT_PASSWORD=123"
-      - "MYSQL_DATABASE=menu-db"
-      - "MYSQL_TCP_PORT=3307"
+      - "27017:27017"
     networks:
       - backend
-      
 
   # setting network with all containers
 networks:

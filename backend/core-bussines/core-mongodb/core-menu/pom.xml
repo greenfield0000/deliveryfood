@@ -2,24 +2,22 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <parent>
-        <artifactId>backend</artifactId>
+        <artifactId>core-mongodb</artifactId>
         <groupId>greenfield.group.com</groupId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-
-    <artifactId>microservices</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
 
-    <modules>
-        <module>auth-service</module>
-        <module>menu-service</module>
-        <module>../utils</module>
-    </modules>
+    <artifactId>core-menu</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>greenfield.group.com</groupId>
+            <artifactId>privilegies-utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 </project>
