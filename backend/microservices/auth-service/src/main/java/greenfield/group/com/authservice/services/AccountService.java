@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import results.SimpleResult;
 
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Сервис по работе с аккаунтом
@@ -89,14 +90,16 @@ public class AccountService {
 
         // найдем пользователя с таким именем
         Optional<Account> finderAccount = accountRepository.findByLogin(account.getLogin());
-        // если не нашли
+        // если не нашли, то значит это не повторная регистрация
         if (!finderAccount.isPresent()) {
+            // тогда регистрируем и выходим
             setAuthtorized(account, NON_AUTHTORIZE);
+            account.setUuid(UUID.randomUUID().toString());
             accountRepository.save(account);
-            return new SimpleResult<>(Status.OK, account);
+            return new SimpleResult<>(Status.ERROR, "Пользователь с таким логином уже существует, выберите другое имя", null);
         }
 
-        return new SimpleResult<>(Status.ERROR, "Пользователь с таким логином уже существует, выберите другое имя", null);
+        return new SimpleResult<>(Status.OK, account);
     }
 
     /**

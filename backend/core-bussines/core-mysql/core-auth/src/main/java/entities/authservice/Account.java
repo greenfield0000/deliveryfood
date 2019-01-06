@@ -29,6 +29,9 @@ public class Account {
     @Column(name = "nick_name")
     private String nickName;
 
+    @Column(name = "uuid")
+    private String uuid;
+
     public Account() {
     }
 
@@ -80,15 +83,11 @@ public class Account {
         this.nickName = nickName;
     }
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", roles=" + roles +
-                ", isAuthtorised=" + isAuthtorised +
-                ", nickName='" + nickName + '\'' +
-                '}';
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }
