@@ -1,28 +1,42 @@
 package entities.authservice;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Роли для аккаунта
  */
 @Entity
-@Table(name = "gr_role", schema = "entities-msql")
+@Table(name = "Role")
 public class Role {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String sysName;
+    private String sysname;
+//    private Set<Account> accounts = new HashSet<>();
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Account.class)
-    @JoinColumn(name = "account_role_id")
-    private List<Account> accounts;
 
     public Role() {
     }
 
+//    public Role(Long id, String name, String sysname, Set<Account> accounts) {
+//        this.id = id;
+//        this.name = name;
+//        this.sysname = sysname;
+//        this.accounts = accounts;
+//    }
+
+
+    public Role(Long id, String name, String sysname) {
+        this.id = id;
+        this.name = name;
+        this.sysname = sysname;
+    }
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     public Long getId() {
         return id;
     }
@@ -31,6 +45,7 @@ public class Role {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -39,28 +54,31 @@ public class Role {
         this.name = name;
     }
 
-    public String getSysName() {
-        return sysName;
+    @Column(name = "sysname")
+    public String getSysname() {
+        return sysname;
     }
 
-    public void setSysName(String sysName) {
-        this.sysName = sysName;
+    public void setSysname(String sysname) {
+        this.sysname = sysname;
     }
+//
+//    @OneToMany(mappedBy = "accountRole", fetch = FetchType.EAGER)
+//    public Set<Account> getAccounts() {
+//        return accounts;
+//    }
+//
+//    public void setAccounts(Set<Account> accounts) {
+//        this.accounts = accounts;
+//    }
 
-    public List<Account> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(List<Account> accounts) {
-        this.accounts = accounts;
-    }
-
-    @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", sysName='" + sysName + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Role{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", sysname='" + sysname + '\'' +
+//                ", accounts=" + accounts +
+//                '}';
+//    }
 }

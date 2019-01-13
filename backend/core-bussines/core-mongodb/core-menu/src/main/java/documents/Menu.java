@@ -1,7 +1,5 @@
 package documents;
 
-import enums.UserRole;
-import helped.menu.Structure;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,41 +14,41 @@ import java.util.List;
 public class Menu {
 
     @Id
-    private Long id;
+    private String id;
     // Описание
-    private String note;
+    private String name;
     // Системное имя
     private String sysname;
-    // Владелец меню
-    private List<UserRole> ownerRole;
-    // Структура меню
-    private Structure structure;
+    // Структура меню, описанная в json
+    private String jsonMenu;
+    // Системные имена ролей пользователей, которым доступно это меню
+    private List<String> ownerRole;
 
     public Menu() {
     }
 
-    public Menu(Long id, String note, String sysname, List<UserRole> ownerRole, Structure structure) {
+    public Menu(String id, String name, String sysname, String jsonMenu, List<String> ownerRole) {
         this.id = id;
-        this.note = note;
+        this.name = name;
         this.sysname = sysname;
+        this.jsonMenu = jsonMenu;
         this.ownerRole = ownerRole;
-        this.structure = structure;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getNote() {
-        return note;
+    public String getName() {
+        return name;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSysname() {
@@ -61,30 +59,30 @@ public class Menu {
         this.sysname = sysname;
     }
 
-    public List<UserRole> getOwnerRole() {
+    public String getJsonMenu() {
+        return jsonMenu;
+    }
+
+    public void setJsonMenu(String jsonMenu) {
+        this.jsonMenu = jsonMenu;
+    }
+
+    public List<String> getOwnerRole() {
         return ownerRole;
     }
 
-    public void setOwnerRole(List<UserRole> ownerRole) {
+    public void setOwnerRole(List<String> ownerRole) {
         this.ownerRole = ownerRole;
-    }
-
-    public Structure getStructure() {
-        return structure;
-    }
-
-    public void setStructure(Structure structure) {
-        this.structure = structure;
     }
 
     @Override
     public String toString() {
         return "Menu{" +
                 "id=" + id +
-                ", note='" + note + '\'' +
+                ", name='" + name + '\'' +
                 ", sysname='" + sysname + '\'' +
+                ", jsonMenu='" + jsonMenu + '\'' +
                 ", ownerRole=" + ownerRole +
-                ", structure=" + structure +
                 '}';
     }
 }

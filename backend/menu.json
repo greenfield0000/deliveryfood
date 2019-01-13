@@ -1,0 +1,63 @@
+{
+  "name": "Меню для роли ROOT",
+  "sysname": "ROOT_MENU",
+  "jsonMenu": {
+    "node-1": {
+      "sysname": "Administration",
+      "name": "Администрирование",
+      "children": [
+        {
+          "node-1-1": {
+            "sysname": "RegistryEmployee",
+            "name": "Зарегистировать нового сотрудника"
+          }
+        },
+        {
+          "node-1-2": {
+            "sysname": "ViewEmployee",
+            "name": "Посмотреть список сотружников"
+          }
+        }
+      ]
+    },
+    "node-2": {
+      "sysname": "Booking",
+      "name": "Бронирование",
+      "children": [
+        {
+          "node-2-1": {
+            "sysname": "OrderACake",
+            "name": "Заказать торт"
+          }
+        },
+        {
+          "node-2-2": {
+            "sysname": "Reservations",
+            "name": "Бронирование столов"
+          }
+        }
+      ]
+    },
+    "node-3": {
+      "sysname": "Planning",
+      "name": "Планирование",
+      "children": [
+        {
+          "node-3-1": {
+            "sysname": "ViewShedule",
+            "name": "Просмотреть график работы"
+          }
+        },
+        {
+          "node-3-2": {
+            "sysname": "EditShedule",
+            "name": "Изменить график работы"
+          }
+        }
+      ]
+    }
+  },
+  "ownerRole": [
+    "TEST"
+  ]
+}

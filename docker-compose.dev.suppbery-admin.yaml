@@ -18,13 +18,14 @@ services:
     build: ./backend/microservices/auth-service
     ports:
      - "8081:8081"
+     - "9081:9081"
     depends_on:
       - auth-db
     links: 
-      - auth-db:mysql1
-    networks:
-      - frontend
-      - backend
+      - auth-db:auth-db
+  #  networks:
+  #    - frontend
+  #    - backend
 
   # auth-db
   auth-db:
@@ -33,12 +34,14 @@ services:
     image: mysql:latest
     ports: 
       - "3306:3306"
+    volumes: 
+      - "/home/roman/backup_database/mysql/auth-db:/var/lib/mysql"
     environment: 
       - "MYSQL_ROOT_PASSWORD=123"
       - "MYSQL_DATABASE=auth-db"
       - "MYSQL_TCP_PORT=3306"
-    networks:
-      - backend
+   # networks:
+    #  - backend
 
 
   #menu-service
@@ -48,40 +51,29 @@ services:
     build: ./backend/microservices/menu-service
     ports:
      - "8082:8082"
+     - "9082:9082"
     depends_on:
       - menu-db
-    links: 
-      - menu-db:mysql2
-    networks:
-      - frontend
-      - backend
+    links:
+      - menu-db:menu-db
+      - auth-service:auth-service
+         # networks:
+    #  - frontend
+    #  - backend
 
-# menu-db
-#  menu-db:
-#   container_name: menu-db
-#  hostname: menu-db
-# image: mysql:latest
-#   ports: 
-#      - "3307:3307"
-#    environment: 
-#      - "MYSQL_ROOT_PASSWORD=123"
-#      - "MYSQL_DATABASE=menu-db"
-#      - "MYSQL_TCP_PORT=3307"
-#    networks:
-#      - backend
-
-
-  # menu-db (try mongodb)
+  # menu-db
   menu-db:
     container_name: menu-db
     hostname: menu-db
     image: mongo:latest
+    volumes: 
+      - "/home/roman/backup_database/mongodb/volume/menu-db:/data/db"
     ports: 
       - "27017:27017"
-    networks:
-      - backend
+   # networks:
+    #  - backend
 
   # setting network with all containers
-networks:
-  frontend:
-  backend:
+#networks:
+ # frontend:
+  #backend:

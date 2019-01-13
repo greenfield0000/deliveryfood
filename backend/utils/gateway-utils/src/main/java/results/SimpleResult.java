@@ -7,6 +7,9 @@ public class SimpleResult<T> {
     private String message;
     private T result;
 
+    public SimpleResult() {
+    }
+
     public SimpleResult(Status status, String message, T result) {
         this.status = status;
         this.message = message;

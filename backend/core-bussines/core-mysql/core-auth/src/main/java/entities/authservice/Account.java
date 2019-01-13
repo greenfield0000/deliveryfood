@@ -1,40 +1,38 @@
 package entities.authservice;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Описание аккаунта
  */
 @Entity
-@Table(name = "gr_accounts", schema = "entities-msql")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "Account")
 public class Account {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "account_id")
     private Long id;
-
     private String login;
     private String password;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Role.class)
-    @Column(name = "account_role_id")
-    private List<Role> roles;
-
-    @Column(name = "is_authtorised")
-    private boolean isAuthtorised;
-
-    @Column(name = "nick_name")
+    private Boolean isAuthtorised;
     private String nickName;
-
-    @Column(name = "uuid")
     private String uuid;
+    private Role accountRole = new Role();
 
     public Account() {
     }
 
+    public Account(Long id, String login, String password, boolean isAuthtorised, String nickName, String uuid, Role accountRole) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.isAuthtorised = isAuthtorised;
+        this.nickName = nickName;
+        this.uuid = uuid;
+        this.accountRole = accountRole;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     public Long getId() {
         return id;
     }
@@ -43,6 +41,7 @@ public class Account {
         this.id = id;
     }
 
+    @Column(name = "login")
     public String getLogin() {
         return login;
     }
@@ -51,6 +50,7 @@ public class Account {
         this.login = login;
     }
 
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -59,14 +59,7 @@ public class Account {
         this.password = password;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
-
+    @Column(name = "is_authtorised")
     public boolean isAuthtorised() {
         return isAuthtorised;
     }
@@ -75,6 +68,7 @@ public class Account {
         isAuthtorised = authtorised;
     }
 
+    @Column(name = "nick_name")
     public String getNickName() {
         return nickName;
     }
@@ -83,11 +77,35 @@ public class Account {
         this.nickName = nickName;
     }
 
+    @Column(name = "uuid")
     public String getUuid() {
         return uuid;
     }
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
+    public Role getAccountRole() {
+        return accountRole;
+    }
+
+    public void setAccountRole(Role accountRole) {
+        this.accountRole = accountRole;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", isAuthtorised=" + isAuthtorised +
+                ", nickName='" + nickName + '\'' +
+                ", uuid='" + uuid + '\'' +
+                ", accountRole=" + accountRole +
+                '}';
     }
 }

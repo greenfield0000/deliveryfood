@@ -18,11 +18,11 @@
     <description>Contains bussines relative with all entities</description>
 
     <!--<dependencies>-->
-        <!--<dependency>-->
-            <!--<groupId>greenfield.group.com</groupId>-->
-            <!--<artifactId>utils</artifactId>-->
-            <!--<version>0.0.1-SNAPSHOT</version>-->
-        <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>greenfield.group.com</groupId>-->
+    <!--<artifactId>utils</artifactId>-->
+    <!--<version>0.0.1-SNAPSHOT</version>-->
+    <!--</dependency>-->
     <!--</dependencies>-->
 
     <modules>

@@ -1,6 +1,8 @@
 package greenfield.group.com.authservice.services;
 
 import entities.authservice.Account;
+import entities.authservice.Role;
+import enums.AccountRole;
 import enums.Status;
 import greenfield.group.com.authservice.repositories.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import results.SimpleResult;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 /**
  * Сервис по работе с аккаунтом
@@ -16,9 +19,9 @@ import java.util.UUID;
 @Service
 public class AccountService {
 
+    public static final String GUID_PATTERN = "([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}";
     private static final boolean AUTHTORIZE = true;
     private static final boolean NON_AUTHTORIZE = false;
-
     @Autowired
     private AccountRepository accountRepository;
 
@@ -95,11 +98,53 @@ public class AccountService {
             // тогда регистрируем и выходим
             setAuthtorized(account, NON_AUTHTORIZE);
             account.setUuid(UUID.randomUUID().toString());
+            AccountRole accountRole = AccountRole.WAITER;
+            Role role = account.getAccountRole();
+            if (role == null) {
+                role = new Role();
+            }
+            role.setId(accountRole.getId());
+            role.setName(accountRole.getName());
+            role.setSysname(accountRole.getSysname());
+            account.setAccountRole(role);
             accountRepository.save(account);
             return new SimpleResult<>(Status.ERROR, "Пользователь с таким логином уже существует, выберите другое имя", null);
         }
 
         return new SimpleResult<>(Status.OK, account);
+    }
+
+    /**
+     * Получить роль аккаунта по UUID
+     *
+     * @param
+     * @return
+     */
+    public Role getAccountRoleSysNameByUUID(String uuid) {
+        final Role emptyRole = new Role();
+        if ((uuid == null) || (uuid.isEmpty()) || !uuidMachetPattern(uuid)) {
+            return emptyRole;
+        }
+        // Грузим пользователя с таким uuid
+        final Optional<Account> byUUIDAccount = accountRepository
+                .findByUuid(uuid);
+        // Если null или не нашли
+        return byUUIDAccount
+                .map(Account::getAccountRole)
+                .orElse(emptyRole);
+    }
+
+    /**
+     * Метод, проверяющий маску uuid
+     *
+     * @param uuid
+     * @return
+     */
+    private boolean uuidMachetPattern(String uuid) {
+        return Pattern
+                .compile(GUID_PATTERN)
+                .matcher(uuid)
+                .matches();
     }
 
     /**
