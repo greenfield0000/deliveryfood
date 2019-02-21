@@ -19,6 +19,9 @@ public class Menu {
     private String name;
     // Системное имя
     private String sysname;
+    // Url страницы, на которую необходим переход, при
+    // клике на пункт меню
+    private String pathOfDash;
     // Структура меню, описанная в json
     private String jsonMenu;
     // Системные имена ролей пользователей, которым доступно это меню
@@ -27,10 +30,11 @@ public class Menu {
     public Menu() {
     }
 
-    public Menu(String id, String name, String sysname, String jsonMenu, List<String> ownerRole) {
+    public Menu(String id, String name, String sysname, String pathOfDash, String jsonMenu, List<String> ownerRole) {
         this.id = id;
         this.name = name;
         this.sysname = sysname;
+        this.pathOfDash = pathOfDash;
         this.jsonMenu = jsonMenu;
         this.ownerRole = ownerRole;
     }
@@ -75,12 +79,21 @@ public class Menu {
         this.ownerRole = ownerRole;
     }
 
+    public String getPathOfDash() {
+        return pathOfDash;
+    }
+
+    public void setPathOfDash(String pathOfDash) {
+        this.pathOfDash = pathOfDash;
+    }
+
     @Override
     public String toString() {
         return "Menu{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", sysname='" + sysname + '\'' +
+                ", pathOfDash='" + pathOfDash + '\'' +
                 ", jsonMenu='" + jsonMenu + '\'' +
                 ", ownerRole=" + ownerRole +
                 '}';
