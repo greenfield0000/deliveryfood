@@ -1,0 +1,81 @@
+
+
+{
+    "name" : "Меню для роли ROOT",
+    "sysname" : "ROOT_MENU",
+    "jsonMenu" : {
+        "node-1" : {
+            "sysname" : "Personals",
+            "name" : "Персонал",
+            "pathOfDash" : "personal"
+        },
+        "node-2" : {
+            "sysname" : "Reservations",
+            "name" : "Бронирование столов",
+            "pathOfDash" : "reservations"
+        },
+        "node-3" : {
+            "sysname" : "WorkSchedule",
+            "name" : "Рабочий график",
+            "pathOfDash" : "work-schedule"
+        },
+        "node-4" : {
+            "sysname" : "Orders",
+            "name" : "Заказы (beta)",
+            "pathOfDash" : "orders"
+        },
+        "node-5" : {
+            "sysname" : "SuggestNews",
+            "name" : "Предложить новость",
+            "pathOfDash" : "suggest-news"
+        },
+        "node-6" : {
+            "sysname" : "StopSheet",
+            "name" : "Стоп лист",
+            "pathOfDash" : "stop-sheet"
+        },
+        "node-7" : {
+            "sysname" : "Menu",
+            "name" : "Меню",
+            "pathOfDash" : "menu"
+        },
+        "node-8" : {
+            "sysname" : "Delivery",
+            "name" : "Доставка",
+            "pathOfDash" : "delivery"
+        },
+        "node-9" : {
+            "sysname" : "MasterClasses",
+            "name" : "Мастерклассы",
+            "pathOfDash" : "master-classes"
+        },
+        "node-10" : {
+            "sysname" : "Festivals",
+            "name" : "Фестивали",
+            "pathOfDash" : "festivals"
+        },
+        "node-11" : {
+            "sysname" : "Purchases",
+            "name" : "Закупки",
+            "pathOfDash" : "purchases"
+        },
+        "node-12" : {
+            "sysname" : "VacationSchedule",
+            "name" : "График отпусков",
+            "pathOfDash" : "vacation-schedule"
+        },
+        "node-13" : {
+            "sysname" : "VacationSchedule",
+            "name" : "График отпусков",
+            "pathOfDash" : "vacation-schedule"
+        },
+        "node-14" : {
+            "sysname" : "ProfessionalStaffTraining",
+            "name" : "Проф подготовка персонала",
+            "pathOfDash" : "professional-staff-training"
+        }
+    },
+    "ownerRole" : [ 
+        "TEST"
+    ]
+}

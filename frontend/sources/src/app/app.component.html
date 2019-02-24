@@ -1,0 +1,24 @@
+<div class="main-page">
+    <div class="header">
+        <router-outlet name="headerOutlet"></router-outlet>
+    </div>
+    <div class="main">
+        <div [hidden]="isAuthtorised()">
+            <router-outlet></router-outlet>
+        </div>
+        <mat-sidenav-container class="main-full-page" [hidden]="!isAuthtorised()">
+            <mat-sidenav #sidenav [mode]="'push'" class="example-sidenav">
+                <app-tree-flat-overview></app-tree-flat-overview>
+            </mat-sidenav>
+            <mat-sidenav-content>
+                <div class="content">
+                    <router-outlet></router-outlet>
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+
+    </div>
+    <div class="footer">
+        <router-outlet name="footerOutlet"></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+.mat-tree {
+  padding: 20px;
+}
+
+.mat-tree-node {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  flex: 1;
+  overflow: hidden;
+  word-wrap: break-word;
+  padding: 10px 30px 10px 30px;
+}
+
+.mat-tree-node:hover {
+  color: white;
+  background-color: #3f51b5;
+}
+
+// common-image properties
+.image,
+.personal,
+.delivery,
+.festivals,
+.master-classes,
+.menu,
+.orders,
+.purchases,
+.professional-staff-training,
+.reservations,
+.stop-sheet,
+.work-schedule,
+.suggest-news,
+.vacation-schedule {
+  width: 40px;
+  height: 40px;
+  margin: 0px 10px 0px 10px;
+}
+
+.personal {
+  background: url("../../../assets/i/png/personal.png");
+  background-size: contain;
+}
+
+.reservations {
+  background: url("../../../assets/i/png/reservations.png");
+  background-size: contain;
+}
+
+.work-schedule {
+  background: url("../../../assets/i/png/work-schedule.png");
+  background-size: contain;
+}
+
+.orders {
+  background: url("../../../assets/i/png/orders.png");
+  background-size: contain;
+}
+
+.suggest-news {
+  background: url("../../../assets/i/png/suggest-news.png");
+  background-size: contain;
+}
+
+.stop-sheet {
+  background: url("../../../assets/i/png/stop-sheet.png");
+  background-size: contain;
+}
+
+.menu {
+  background: url("../../../assets/i/png/menu.png");
+  background-size: contain;
+}
+
+.delivery {
+  background: url("../../../assets/i/png/delivery.png");
+  background-size: contain;
+}
+
+.master-classes {
+  background: url("../../../assets/i/png/master-classes.png");
+  background-size: contain;
+}
+
+.festivals {
+  background: url("../../../assets/i/png/festivals.png");
+  background-size: contain;
+}
+
+.purchases {
+  background: url("../../../assets/i/png/purchases.png");
+  background-size: contain;
+}
+
+.vacation-schedule {
+  background: url("../../../assets/i/png/vacation-schedule.png");
+  background-size: contain;
+}
+
+.professional-staff-training {
+  background: url("../../../assets/i/png/professional-staff-training.png");
+  background-size: contain;
+}
