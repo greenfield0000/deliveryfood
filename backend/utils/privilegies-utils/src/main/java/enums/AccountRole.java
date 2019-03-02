@@ -9,12 +9,14 @@ public enum AccountRole {
     ROOT(1L, "ROOT", "Супер пользователь"),
     // Администратор
     ADMINISTRATOR(2L, "ADMINISTRATOR", "Администратор"),
-    // Бармен
-    BARMEN(3L, "BARMEN", "Бармен"),
+    // Бармен (менеджер)
+    BARMEN_MANAGER(3L, "BARMEN_MANAGER", "Бармен (менеджер)"),
     // Главный официант
     MAINWAITER(4L, "MAINWAITER", "Главный официант"),
     // Официант
-    WAITER(5L, "WAITER", "Официант");
+    WAITER(5L, "WAITER", "Официант"),
+    // Бармен
+    BARMEN(6L, "BARMEN", "Бармен");
 
     private final String sysname;
     private final String name;

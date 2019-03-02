@@ -14,5 +14,4 @@ export class HttpConstant {
             'Access-Control-Allow-Origin': '*'
         })
     };
-
 }

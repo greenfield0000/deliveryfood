@@ -4,11 +4,11 @@ services:
   # frontend
   suppbery-admin:
     container_name: suppbery-admin 
-    build: ./frontend/cost-planner
+    build: ./frontend
     ports:
      - "4200:4200"
     volumes: 
-     - "/home/roman/repository/frontend/cost-planner/sources:/angular/suppbery-admin"
+     - "/home/roman/repository/frontend/sources:/angular/suppbery-admin"
     network_mode: host
 
   #auth-service
@@ -67,11 +67,37 @@ services:
     hostname: menu-db
     image: mongo:latest
     volumes: 
-      - "/home/roman/backup_database/mongodb/volume/menu-db:/data/db"
+      - "/home/roman/backup_database/mongodb/volume/menu-db:/data/menu-db"
     ports: 
       - "27017:27017"
    # networks:
     #  - backend
+
+  #journal-service
+  journal-service:
+    container_name: journal-service
+    restart: always
+    build: ./backend/microservices/journal-service
+    ports:
+     - "8083:8083"
+     - "9083:9083"
+    depends_on:
+      - journal-db
+    links:
+      - journal-db:journal-db
+
+  # journal-db
+  journal-db:
+    container_name: journal-db
+    hostname: journal-db
+    image: mongo:latest
+    volumes:
+      - "/home/roman/backup_database/mongodb/volume/journal-db:/data/journal-db"
+    ports:
+      - "27018:27017"
+   # networks:
+    #  - backend
+
 
   # setting network with all containers
 #networks:

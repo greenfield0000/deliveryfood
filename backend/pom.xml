@@ -38,6 +38,7 @@
     <modules>
         <module>core-bussines</module>
         <module>microservices</module>
+        <module>utils</module>
     </modules>
 
 </project>

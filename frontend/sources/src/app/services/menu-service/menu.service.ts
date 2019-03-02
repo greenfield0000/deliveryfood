@@ -27,7 +27,7 @@ export class MenuService {
 
   loadMenuByAccountUUID(uuid: string): Observable<SimpleResult<string>> {
     return this.http
-      .post<SimpleResult<string>>(RouteConstant.menu_location, { uuid: uuid });
+      .post<SimpleResult<string>>(RouteConstant.menu_location + '/getMenu', { uuid: uuid });
   }
 
   initialize() {

@@ -1,3 +1,4 @@
+import { JournalComponent } from './../../../components/journal/journal.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,6 +17,7 @@ import { FestivalsComponent } from './festivals/festivals.component';
 import { PurchasesComponent } from './purchases/purchases.component';
 import { VacationScheduleComponent } from './vacation-schedule/vacation-schedule.component';
 import { ProfessionalStaffTrainingComponent } from './professional-staff-training/professional-staff-training.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -32,11 +34,15 @@ import { ProfessionalStaffTrainingComponent } from './professional-staff-trainin
     FestivalsComponent,
     PurchasesComponent,
     VacationScheduleComponent,
-    ProfessionalStaffTrainingComponent],
+    ProfessionalStaffTrainingComponent,
+     JournalComponent
+  ],
   imports: [
     CommonModule,
     MenuRoutingModule,
-    RouterModule
+    RouterModule,
+        // Angular Ag-grid
+        AgGridModule.withComponents([])
   ]
 })
 export class MenuModule { }

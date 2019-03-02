@@ -19,7 +19,7 @@
     <modules>
         <module>auth-service</module>
         <module>menu-service</module>
-        <module>../utils</module>
+        <module>journal-service</module>
     </modules>
 
 </project>

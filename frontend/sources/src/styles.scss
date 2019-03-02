@@ -31,7 +31,7 @@ html, body {
   display: flex;
 }
 
-.app-root {
+.app-root > * {
   margin: 0px;
   width: 100%;
   height: 100%;
@@ -106,3 +106,7 @@ html, body {
 .mat-sidenav-content {
   padding: 15px 25px 15px 25px;
 }
+
+// ag-grid setting 
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";

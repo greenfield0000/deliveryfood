@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalComponent implements OnInit {
 
-  constructor() { }
+  // тестовые поля для сетки данных
+  public columnDefs = [
+    { headerName: 'Make', field: 'make', sortable: true, filter: true, checkboxSelection: true },
+    { headerName: 'Model', field: 'model', sortable: true, filter: true },
+    { headerName: 'Price', field: 'price', sortable: true, filter: true }
+  ];
+
+  public rowData: any;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.rowData = this.http.get('https://api.myjson.com/bins/15psn9');
   }
 
 }

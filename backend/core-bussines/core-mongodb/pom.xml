@@ -31,6 +31,7 @@
 
     <modules>
         <module>core-menu</module>
+        <module>core-journal</module>
     </modules>
 
 </project>
