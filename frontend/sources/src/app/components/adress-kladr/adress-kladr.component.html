@@ -1,0 +1,25 @@
+<form [formGroup]="addressGroup" class="form-step">
+  <mat-form-field class="example-full-width">
+    <input matInput formControlName="cityId" placeholder="Город, нас. пункт" name="cityId" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput formControlName="streetId" placeholder="Улица" name="streetId" required>
+  </mat-form-field>
+  <!--
+      <mat-form-field class="example-full-width">
+        <input matInput formControlName="house" placeholder="Дом" [(ngModel)]="adress.house" name="house"
+          required>
+      </mat-form-field>-->
+  <mat-form-field class="example-full-width">
+    <input matInput formControlName="buildingId" placeholder="Корпус" name="buildingId" required>
+  </mat-form-field>
+  <!--
+      <mat-form-field class="example-full-width">
+        <input matInput formControlName="password" placeholder="Квартира" [(ngModel)]="adress" type="password" name="password"
+          required>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput formControlName="password" placeholder="Почтовый индекс" [(ngModel)]="adress" type="password"
+          name="password" required>
+      </mat-form-field>-->
+</form>

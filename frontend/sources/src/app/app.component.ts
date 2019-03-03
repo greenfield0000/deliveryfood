@@ -27,6 +27,6 @@ export class AppComponent implements OnInit {
   }
 
   isAuthtorised(): boolean {
-    return this.account && this.account.$authtorised || false;
+    return this.account && this.account.$authtorised;
   }
 }

@@ -1,11 +1,44 @@
-.app-login {
-  width: 100%;
-  height: 100%;
-}
+/**
+  ПК версия
+**/
+@media screen and (min-width: 1024px) {
+  .login-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px 10px 0px;
+    width: 350px;
+  }
 
-.login-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0px 10px 0px;
-  width: 350px;
+  .form-login-content {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .form-login-main-logo {
+    width: 60%;
+    height: 100%;
+    background: url("../../../../assets/i/png/supberry-main-logo.jpg") no-repeat;
+    background-size: cover;
+    padding: 0px 0px 20px 0px;
+  }
+
+  .form-login {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    height: 40%;
+    margin: 100px auto auto auto;
+    position: initial;
+    justify-content: center;
+  }
+
+  .form-login-button {
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    justify-content: space-evenly;
+  }
 }

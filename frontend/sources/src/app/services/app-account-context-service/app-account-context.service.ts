@@ -1,3 +1,4 @@
+import { Account } from './../../interfaces/account';
 import { AuthServiceImpl } from './../auth-service/auth-service-impl.service';
 import { AppRouteService } from './../app-route-service/app-route.service';
 import { AccountEntity } from './../../classes/accountEntity';
@@ -42,6 +43,6 @@ export class AppAccountContextService {
   }
 
   getAccount(): AccountEntity {
-    return this._account;
+    return this._account || new AccountEntity();
   }
 }

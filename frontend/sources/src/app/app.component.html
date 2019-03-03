@@ -1,24 +1,36 @@
 <div class="main-page">
-    <div class="header">
-        <router-outlet name="headerOutlet"></router-outlet>
-    </div>
-    <div class="main">
-        <div [hidden]="isAuthtorised()">
-            <router-outlet></router-outlet>
-        </div>
-        <mat-sidenav-container class="main-full-page" [hidden]="!isAuthtorised()">
-            <mat-sidenav #sidenav [mode]="'push'" class="example-sidenav">
-                <app-tree-flat-overview></app-tree-flat-overview>
-            </mat-sidenav>
-            <mat-sidenav-content>
-                <div class="content">
-                    <router-outlet></router-outlet>
-                </div>
-            </mat-sidenav-content>
-        </mat-sidenav-container>
 
+  <header [hidden]="!appAccountContextService.getAccount().$authtorised" class="header">
+    <router-outlet name="headerOutlet"></router-outlet>
+  </header>
+
+  <!-- Main conten -->
+  <div class="main">
+    <div [hidden]="appAccountContextService.getAccount().$authtorised">
+      <router-outlet></router-outlet>
     </div>
-    <div class="footer">
-        <router-outlet name="footerOutlet"></router-outlet>
+    <mat-sidenav-container class="main-full-page" [hidden]="!appAccountContextService.getAccount().$authtorised">
+      <mat-sidenav #sidenav [mode]="'push'" class="example-sidenav">
+        <app-tree-flat-overview></app-tree-flat-overview>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div class="content">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+
+  </div>
+  <!-- Footer -->
+  <footer [hidden]="!appAccountContextService.getAccount().$authtorised" class="page-footer font-small special-color-dark pt-4">
+    <!-- Footer Elements -->
+    <div class="container">
     </div>
+    <!-- Footer Elements -->
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+      © 2019 Copyright: Ivanov Roman. Все права защищены
+    </div>
+    <!-- Copyright -->
+  </footer>
 </div>

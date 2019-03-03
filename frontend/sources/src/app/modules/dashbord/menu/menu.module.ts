@@ -21,6 +21,9 @@ import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
+    // common components
+    JournalComponent,
+    // menu (menu pages) component
     DashbordComponent,
     PersonalComponent,
     ReservationsComponent,
@@ -34,15 +37,15 @@ import { AgGridModule } from 'ag-grid-angular';
     FestivalsComponent,
     PurchasesComponent,
     VacationScheduleComponent,
-    ProfessionalStaffTrainingComponent,
-     JournalComponent
+    ProfessionalStaffTrainingComponent
   ],
   imports: [
     CommonModule,
     MenuRoutingModule,
     RouterModule,
-        // Angular Ag-grid
-        AgGridModule.withComponents([])
+
+    // Angular Ag-grid
+    AgGridModule.withComponents([])
   ]
 })
 export class MenuModule { }

@@ -1,0 +1,58 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Аккаунта</ng-template>
+      <div class="step-form-1-2">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="nickName" placeholder="Никнейм" name="nickName" required>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="login" placeholder="Логин" name="login" required>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="password" placeholder="Пароль" name="password" required>
+        </mat-form-field>
+      </div>
+
+      <button mat-button matStepperPrevious>Назад</button>
+      <button mat-button matStepperNext>Далее</button>
+
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Контактные данные</ng-template>
+      <div class="step-form-1-2">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="phone" placeholder="Номер телефона" name="phone" required>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="email" placeholder="E-mail" name="email" type="email" required>
+        </mat-form-field>
+      </div>
+      <button mat-button matStepperPrevious>Назад</button>
+      <button mat-button matStepperNext>Далее</button>
+
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Адрес</ng-template>
+      <div class="step-form-1-2">
+        <app-adress-kladr></app-adress-kladr>
+      </div>
+      <button mat-button matStepperPrevious>Назад</button>
+      <button mat-button matStepperNext>Далее</button>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fourFormGroup">
+    <form [formGroup]="fourFormGroup">
+      <ng-template matStepLabel>Пользовательское соглашение</ng-template>
+      <div class="step-form">
+        <div class="client-agreement" [innerHTML]="agreementHTML"></div>
+        <mat-checkbox class="client-agreement-checkbox">Я подтверждаю, что ознакомлен со всеми пунктами настоящего
+          Соглашения и безусловно принимаю их.</mat-checkbox>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
