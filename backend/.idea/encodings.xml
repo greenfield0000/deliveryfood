@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-bussines" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-bussines/core-mongodb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-bussines/core-mongodb/core-journal" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-bussines/core-mongodb/core-menu" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-bussines/core-mysql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-bussines/core-mysql/core-auth" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservices" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservices/auth-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservices/journal-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservices/menu-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/utils" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/utils/gateway-utils" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/utils/privilegies-utils" charset="UTF-8" />
+  </component>
+</project>

@@ -1,6 +1,8 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Adress } from './../../classes/adress';
-import { Component, OnInit, Input } from '@angular/core';
+import { Address } from '../../classes/address';
+import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
+import { ReactiveForm } from 'src/app/classes/reactive-form';
 
 /**
  * Компонент работы с kladr.
@@ -37,26 +39,48 @@ import { Component, OnInit, Input } from '@angular/core';
  *  */
 
 @Component({
-  selector: 'app-adress-kladr',
-  templateUrl: './adress-kladr.component.html',
-  styleUrls: ['./adress-kladr.component.scss']
+  selector: 'app-address-kladr',
+  templateUrl: './address-kladr.component.html',
+  styleUrls: ['./address-kladr.component.scss']
 })
-export class AdressKladrComponent implements OnInit {
+export class AddressKladrComponent extends ReactiveForm implements OnInit, OnDestroy {
 
   @Input()
-  private adress: Adress = new Adress();
+  public address: Address = new Address();
+  @Output()
+  public addressChange = new EventEmitter();
 
   private addressGroup: FormGroup;
+  private subject: Subscription;
 
   constructor(private formBuildfer: FormBuilder) {
+    super();
     this.addressGroup = this.formBuildfer.group({
-      buildingId: [],
-      streetId: [],
-      cityId: []
+      buildingId: this.address.$buildingId,
+      streetId: this.address.$streetId,
+      cityId: this.address.$cityId
     });
+
+    this.registrySubscription();
+  }
+
+  protected registrySubscription(): void {
+    if (this.addressGroup) {
+      this.subject = this.addressGroup.valueChanges.subscribe((values: any) => {
+        this.address = new Address(values);
+        this.addressChange.emit(this.address);
+      });
+    }
   }
 
   ngOnInit() {
+
+  }
+
+  ngOnDestroy(): void {
+    if (this.subject && !this.subject.closed) {
+      this.subject.unsubscribe();
+    }
   }
 
 }

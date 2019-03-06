@@ -15,7 +15,7 @@ import { TreeFlatOverviewComponent } from './components/tree-flat-overview/tree-
 import { AgGridModule } from 'ag-grid-angular';
 import { MatStepperModule } from '@angular/material/stepper';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AdressKladrComponent } from './components/adress-kladr/adress-kladr.component';
+import { AddressKladrComponent } from './components/address-kladr/address-kladr.component';
 
 const modules = [
   BrowserModule,

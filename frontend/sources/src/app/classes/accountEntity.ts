@@ -1,3 +1,4 @@
+import { User } from './user';
 import { Account } from './../interfaces/account';
 
 /**
@@ -11,6 +12,7 @@ export class AccountEntity {
     private password: string = '';
     private authtorised: boolean = false;
     private nickName: string = '';
+    private user: User = new User();
 
     constructor(obj?: any) {
         if (obj) {
@@ -20,23 +22,8 @@ export class AccountEntity {
             this.authtorised = obj && obj.authtorised;
             this.nickName = obj && obj.nickName;
             this.uuid = obj && obj.uuid;
+            this.user = obj && obj.user;
         }
-    }
-
-    /**
-     * Getter $uuid
-     * @return {string }
-     */
-    public get $uuid(): string {
-        return this.uuid;
-    }
-
-    /**
-     * Setter $uuid
-     * @param {string } value
-     */
-    public set $uuid(value: string) {
-        this.uuid = value;
     }
 
     /**
@@ -45,6 +32,14 @@ export class AccountEntity {
      */
     public get $id(): number {
         return this.id;
+    }
+
+    /**
+     * Getter $uuid
+     * @return {string }
+     */
+    public get $uuid(): string {
+        return this.uuid;
     }
 
     /**
@@ -64,7 +59,7 @@ export class AccountEntity {
     }
 
     /**
-     * Getter $isAuthtorise
+     * Getter $authtorised
      * @return {boolean }
      */
     public get $authtorised(): boolean {
@@ -80,11 +75,27 @@ export class AccountEntity {
     }
 
     /**
+     * Getter $user
+     * @return {User }
+     */
+    public get $user(): User {
+        return this.user;
+    }
+
+    /**
      * Setter $id
      * @param {number } value
      */
     public set $id(value: number) {
         this.id = value;
+    }
+
+    /**
+     * Setter $uuid
+     * @param {string } value
+     */
+    public set $uuid(value: string) {
+        this.uuid = value;
     }
 
     /**
@@ -104,7 +115,7 @@ export class AccountEntity {
     }
 
     /**
-     * Setter $isAuthtorise
+     * Setter $authtorised
      * @param {boolean } value
      */
     public set $authtorised(value: boolean) {
@@ -117,6 +128,14 @@ export class AccountEntity {
      */
     public set $nickName(value: string) {
         this.nickName = value;
+    }
+
+    /**
+     * Setter $user
+     * @param {User } value
+     */
+    public set $user(value: User) {
+        this.user = value;
     }
 
 }

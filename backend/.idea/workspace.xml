@@ -1,31 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="317ccd25-732e-4d05-abce-2036c69775c5" name="Default Changelist" comment="" />
+    <list default="true" id="317ccd25-732e-4d05-abce-2036c69775c5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-bussines/core-bussines.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/microservices.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/app.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/components/registy-stepper/registry-stepper.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/components/registy-stepper/registry-stepper.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/components/registy-stepper/registry-stepper.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/components/registy-stepper/registry-stepper.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/components/registy-stepper/registry-stepper.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/components/registy-stepper/registry-stepper.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/modules/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/modules/auth/auth.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/modules/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/modules/auth/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/modules/auth/login/login.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/modules/auth/login/login.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/modules/auth/registry/registry.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/modules/auth/registry/registry.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/modules/auth/registry/registry.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/modules/auth/registry/registry.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/services/app-account-context-service/app-account-context.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/services/app-account-context-service/app-account-context.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/styles.scss" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/microservices/auth-service/target/" />
+    <ignored path="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/target/" />
+    <ignored path="$PROJECT_DIR$/core-bussines/target/" />
+    <ignored path="$PROJECT_DIR$/microservices/menu-service/target/" />
+    <ignored path="$PROJECT_DIR$/core-bussines/core-mongodb/core-menu/target/" />
+    <ignored path="$PROJECT_DIR$/core-bussines/core-mongodb/core-journal/target/" />
+    <ignored path="$PROJECT_DIR$/microservices/journal-service/target/" />
+    <ignored path="$PROJECT_DIR$/utils/privilegies-utils/target/" />
+    <ignored path="$PROJECT_DIR$/utils/target/" />
+    <ignored path="$PROJECT_DIR$/microservices/target/" />
+    <ignored path="$PROJECT_DIR$/core-bussines/core-mysql/target/" />
+    <ignored path="$PROJECT_DIR$/core-bussines/core-mongodb/target/" />
+    <ignored path="$PROJECT_DIR$/utils/gateway-utils/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-1591304060">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.11" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Role.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/utils/privilegies-utils/src/main/java/enums/AccountRole.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="133" />
@@ -46,6 +101,62 @@
               <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="core-bussines" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="core-bussines" type="462c0819:PsiDirectoryNode" />
+              <item name="core-mongodb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="privilegies-utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="privilegies-utils" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="privilegies-utils" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="privilegies-utils" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="privilegies-utils" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="enums" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -53,6 +164,9 @@
       <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -78,14 +192,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1533" height="875" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Designer" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24949563" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2528581" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -93,21 +206,43 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="right" id="Maven" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
     </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Role.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/privilegies-utils/src/main/java/enums/AccountRole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
         </state>
       </provider>
     </entry>

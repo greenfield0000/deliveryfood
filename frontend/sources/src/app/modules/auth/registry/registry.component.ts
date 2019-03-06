@@ -1,40 +1,35 @@
 import { AccountEntity } from 'src/app/classes/accountEntity';
 import { AppAccountContextService } from './../../../services/app-account-context-service/app-account-context.service';
 import { AppRouteService } from './../../../services/app-route-service/app-route.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { RegistryStepperComponent } from 'src/app/components/registy-stepper/registry-stepper.component';
 
 @Component({
   selector: 'app-registry',
   templateUrl: './registry.component.html',
   styleUrls: ['./registry.component.scss']
 })
-export class RegistryComponent implements OnInit {
-  isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+export class RegistryComponent extends RegistryStepperComponent implements OnInit {
 
-  private account: AccountEntity = this._appAccount.getAccount();
-
-  constructor(
-    private _appAccount: AppAccountContextService,
-    private _router: AppRouteService,
-    private _formBuilder: FormBuilder) { }
-
-  public backToLoginForm() {
-    this._router.goTo('/auth/login');
+  constructor() {
+    super(Inject(AppRouteService), Inject(AppAccountContextService), Inject(FormBuilder));
   }
 
-  public registry() {
-    this._appAccount.regitry();
+  public backToLoginForm(appRouter: AppRouteService) {
+    if (appRouter) {
+      appRouter.goTo('/auth/login');
+    }
   }
 
-  ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+  public registryAndLogin() {
+    this._appAccount.regitry()
+      .subscribe((isCompleteRegistry: boolean) => {
+        if (isCompleteRegistry) {
+          this._appAccount.login();
+        }
+      });
   }
+
+  ngOnInit() { }
 }

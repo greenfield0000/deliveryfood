@@ -1,15 +1,16 @@
 <form class="form-login">
   <a class="form-login-main-logo" href="../../../../assets/i/png/supberry-main-logo.jpg"></a>
   <div class="form-login-content">
+    <h2>Вход</h2>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Логин" [(ngModel)]="account.login" name="login" required>
+      <input matInput placeholder="Логин" [(ngModel)]="login" name="login" required>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Пароль" [(ngModel)]="account.password" type="password" name="password" required>
+      <input matInput placeholder="Пароль" [(ngModel)]="password" type="password" name="password" required>
     </mat-form-field>
 
-    <div class="form-login-button">
+    <div class="form-button">
       <button mat-raised-button (click)="signIn()" color="primary">Войти</button>
       <button mat-raised-button (click)="registry()" color="primary">Перейти на страницу регистрации</button>
     </div>

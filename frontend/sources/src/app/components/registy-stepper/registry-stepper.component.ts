@@ -1,8 +1,22 @@
+import { ReactiveForm } from './../../classes/reactive-form';
+import { Address } from '../../classes/address';
 import { AccountEntity } from './../../classes/accountEntity';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import * as clientAgreement from '../../json/registry-stepper-agreement.json';
+import { AppRouteService } from 'src/app/services/app-route-service/app-route.service';
+import { AppAccountContextService } from 'src/app/services/app-account-context-service/app-account-context.service';
+import { User } from 'src/app/classes/user';
+
+// временная константа хранения справочника типов учетных записей
+// тип взят с сервисов
+export enum AccountRole {
+  // Официант
+  WAITER = 5,
+  // Бармен
+  BARMEN = 6
+}
 
 @Component({
   selector: 'app-registry-stepper',
@@ -11,52 +25,91 @@ import * as clientAgreement from '../../json/registry-stepper-agreement.json';
   providers: [
     {
       provide: MAT_STEPPER_GLOBAL_OPTIONS,
-      useValue: { displayDefaultIndicatorType: false }
+      useValue: { displayDefaultIndicatorType: true, showError: true }
     }
   ]
 })
-export class RegistryStepperComponent implements OnInit {
+export class RegistryStepperComponent extends ReactiveForm implements OnInit {
+
   // флаг, отвечающий за свойство степпера (true - возможно переходить только
   // из шага в шаг, false - в любом порядке)
-  isLinear = false;
+  private isLinear = true;
   // Форм группы для валидаций и тд.
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
-  fourFormGroup: FormGroup;
+  private accountDataFormGroup: FormGroup;
+  private personalDataFormGroup: FormGroup;
+  private fourFormGroup: FormGroup;
   // вставка пользовательского соглашения
   private agreementHTML: string;
+  private isAgree: boolean = false;
+  private accountRoles: any[] = [
+    { viewValue: 'Бармен', id: AccountRole.BARMEN },
+    { viewValue: 'Официант', id: AccountRole.WAITER }
+  ];
 
   @Input()
-  private account: AccountEntity = new AccountEntity();
+  protected account: AccountEntity = new AccountEntity();
+  // функция возврата из степпера
+  @Input()
+  private goBackFn: Function = (() => {
+    console.log('function goBack not implemented');
+  });
+  // функция для продолжения работы
+  @Input()
+  private goNextFn: Function = (() => {
+    console.log('function goNext not implemented');
+  });
 
-  constructor(private _formBuilder: FormBuilder) { }
+  // основные аттрибуты для групп
+  private passwordRepeat: string = '';
+  private user = this.account && this.account.$user || new User();
+  private address: Address = new Address({ token: 'token123s' });
+
+  constructor(protected router: AppRouteService, protected _appAccount: AppAccountContextService,
+    protected _formBuilder: FormBuilder) { super(); }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      nickName: ['', Validators.required],
-      login: ['', Validators.required],
-      password: ['', Validators.required]
+    this.accountDataFormGroup = this._formBuilder.group({
+      accountRole: this.accountRoles,
+      nickName: [this.account.$nickName, Validators.required],
+      login: [this.account.$login, Validators.required],
+      password: [this.account.$password, Validators.required],
+      passwordRepeat: [this.passwordRepeat, Validators.required]
     });
-    this.secondFormGroup = this._formBuilder.group({
-      phone: ['', Validators.required],
-      email: ['', Validators.required]
+    this.personalDataFormGroup = this._formBuilder.group({
+      name: [this.user.$name, Validators.required],
+      surname: [this.user.$surname, Validators.required],
+      lastname: [this.user.$lastname, Validators.required],
+      birthDay: [this.user.$birthDay, Validators.required],
+      phone: [this.user.$phone, Validators.required],
+      email: [this.user.$email, Validators.required]
     });
-    this.thirdFormGroup = this._formBuilder.group({});
 
     this.fourFormGroup = this._formBuilder.group({
-      isAgree: ['', Validators.required, Validators.requiredTrue]
+      isAgree: this.isAgree
     });
 
     this.agreementHTML = <string>clientAgreement.agreement;
+    this.registrySubscription();
   }
 
-  form1() {
-    console.log(this.firstFormGroup.value);
+  /**
+   * Метод регистрации подписок формы
+   */
+  protected registrySubscription(): void {
+    // регистрация подписки на изменения значений
+    this.accountDataFormGroup.valueChanges.subscribe(accountData => this.account = new AccountEntity(accountData));
+    this.personalDataFormGroup.valueChanges.subscribe(userData => this.user = new User(userData));
+    this.fourFormGroup.get('isAgree').valueChanges.subscribe(isAgree => this.isAgree = isAgree);
   }
 
-  form2() {
-    console.log(this.secondFormGroup.value);
+  onSubmit() {
+    debugger
+    this.user.$addressList.push(new Address(this.address));
+    this.account.$user = this.user;
+    console.log('form group accountDataFormGroup', this.accountDataFormGroup);
+    console.log('form group personalDataFormGroup', this.personalDataFormGroup);
+    console.log('Account info = ', this.account);
+    this.goNextFn(this.router);
   }
 
 }

@@ -1,4 +1,4 @@
-import { AdressKladrComponent } from './../../components/adress-kladr/adress-kladr.component';
+import { AddressKladrComponent } from './../../components/address-kladr/address-kladr.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import {
   MatToolbarModule, MatSidenavModule, MatButtonModule, MatCardModule,
-  MatFormFieldModule, MatProgressSpinnerModule, MatInputModule, MatStepperModule, MatCheckboxModule
+  MatFormFieldModule, MatProgressSpinnerModule, MatInputModule, MatStepperModule, MatCheckboxModule, MatSelectModule, MatDatepickerModule
 } from '@angular/material';
 import { RegistryStepperComponent } from 'src/app/components/registy-stepper/registry-stepper.component';
 
@@ -18,7 +18,7 @@ import { RegistryStepperComponent } from 'src/app/components/registy-stepper/reg
     LoginComponent,
     RegistryComponent,
     RegistryStepperComponent,
-    AdressKladrComponent
+    AddressKladrComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +37,9 @@ import { RegistryStepperComponent } from 'src/app/components/registy-stepper/reg
     MatProgressSpinnerModule,
     MatInputModule,
     MatStepperModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDatepickerModule
   ],
   exports: [LoginComponent, RegistryComponent],
   providers: []

@@ -1,5 +1,5 @@
-<app-registry-stepper account="account"></app-registry-stepper>
-
-
-<button mat-raised-button (click)="backToLoginForm()" color="primary">Вернуться на страницу входа</button>
-<button mat-raised-button (click)="registry()" color="primary">Зарегистрировать</button>
+<form class="form-content">
+    <h2>Регистрация</h2>
+    <app-registry-stepper [goBackFn]="backToLoginForm" [goNextFn]="registryAndLogin" [(account)]="account">
+    </app-registry-stepper>
+</form>

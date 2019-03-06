@@ -10,7 +10,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  private account: AccountEntity = this._appAccount.getAccount();
+  private login: string;
+  private password: string;
 
   constructor(
     private _appAccount: AppAccountContextService,
@@ -21,7 +22,10 @@ export class LoginComponent implements OnInit {
    * Войти
    */
   public signIn() {
-    this._appAccount.login();
+    this._appAccount.login({
+      login: this.login,
+      password: this.password
+    });
   }
 
   public registry() {

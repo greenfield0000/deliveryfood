@@ -1,8 +1,15 @@
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Аккаунта</ng-template>
+  <mat-step [stepControl]="accountDataFormGroup">
+    <form [formGroup]="accountDataFormGroup">
+      <ng-template matStepLabel>Аккаунт</ng-template>
       <div class="step-form-1-2">
+        <mat-form-field>
+          <mat-select placeholder="Тип учетной записи" formControlName="accountRole" name="accountRole">
+            <mat-option *ngFor="let role of accountRoles" [value]="role.id">
+              {{role.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
         <mat-form-field class="example-full-width">
           <input matInput formControlName="nickName" placeholder="Никнейм" name="nickName" required>
         </mat-form-field>
@@ -10,39 +17,60 @@
           <input matInput formControlName="login" placeholder="Логин" name="login" required>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="password" placeholder="Пароль" name="password" required>
+          <input matInput formControlName="password" placeholder="Пароль" name="password" type="password" required>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="passwordRepeat" placeholder="Повторите пароль" name="passwordRepeat"
+            type="password" required>
         </mat-form-field>
       </div>
-
-      <button mat-button matStepperPrevious>Назад</button>
-      <button mat-button matStepperNext>Далее</button>
-
+      <div class="form-button">
+        <button mat-button color="primary" (click)="goBackFn(router)" matStepperPrevious>Вернуться</button>
+        <button mat-button color="primary" matStepperNext>Далее</button>
+      </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Контактные данные</ng-template>
+  <mat-step [stepControl]="personalDataFormGroup">
+    <form [formGroup]="personalDataFormGroup">
+      <ng-template matStepLabel>Персональные данные</ng-template>
       <div class="step-form-1-2">
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="phone" placeholder="Номер телефона" name="phone" required>
+          <input matInput formControlName="name" placeholder="Имя" name="name" required>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="email" placeholder="E-mail" name="email" type="email" required>
+          <input matInput formControlName="surname" placeholder="Фамилия" name="surname" required>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="lastname" placeholder="Отчество" name="lastname" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="birthDayPicker" placeholder="Дата рождения" formControlName="birthDay">
+          <mat-datepicker-toggle matSuffix [for]="birthDayPicker"></mat-datepicker-toggle>
+          <mat-datepicker #birthDayPicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input type="number" matInput formControlName="phone" placeholder="Номер телефона" name="phone" required>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input type="email" matInput formControlName="email" placeholder="E-mail" name="email" type="email" required>
         </mat-form-field>
       </div>
-      <button mat-button matStepperPrevious>Назад</button>
-      <button mat-button matStepperNext>Далее</button>
-
+      <div class="form-button">
+        <button mat-button color="primary" matStepperPrevious>Назад</button>
+        <button mat-button color="primary" matStepperNext>Далее</button>
+      </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="thirdFormGroup">
-    <form [formGroup]="thirdFormGroup">
+  <mat-step [stepControl]="addressDataFormGroup">
+    <form>
       <ng-template matStepLabel>Адрес</ng-template>
       <div class="step-form-1-2">
-        <app-adress-kladr></app-adress-kladr>
+        <app-address-kladr [(address)]="address"></app-address-kladr>
       </div>
-      <button mat-button matStepperPrevious>Назад</button>
-      <button mat-button matStepperNext>Далее</button>
+      <div class="form-button">
+        <button mat-button color="primary" matStepperPrevious>Назад</button>
+        <button mat-button color="primary" matStepperNext>Далее</button>
+      </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="fourFormGroup">
@@ -50,8 +78,14 @@
       <ng-template matStepLabel>Пользовательское соглашение</ng-template>
       <div class="step-form">
         <div class="client-agreement" [innerHTML]="agreementHTML"></div>
-        <mat-checkbox class="client-agreement-checkbox">Я подтверждаю, что ознакомлен со всеми пунктами настоящего
+        <mat-checkbox formControlName="isAgree" class="client-agreement-checkbox">Я подтверждаю, что
+          ознакомлен со всеми
+          пунктами настоящего
           Соглашения и безусловно принимаю их.</mat-checkbox>
+      </div>
+      <div class="form-button">
+        <button mat-button color="primary" matStepperPrevious>Назад</button>
+        <button mat-button color="primary" [disabled]="!isAgree" (click)="onSubmit()">Принять</button>
       </div>
     </form>
   </mat-step>

@@ -4,6 +4,8 @@ import { AppRouteService } from './../app-route-service/app-route.service';
 import { AccountEntity } from './../../classes/accountEntity';
 import { Injectable } from '@angular/core';
 import { SimpleResult } from 'src/app/utils/simple-result.class';
+import { Observable, from, of } from 'rxjs';
+import { ObserversModule } from '@angular/cdk/observers';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +19,20 @@ export class AppAccountContextService {
     private temp: AppRouteService) {
   }
 
-  regitry() {
-    this._authService.registry(this._account)
-      .subscribe((simpleResult: SimpleResult<AccountEntity>) => (simpleResult && simpleResult.result) ?
-        this._account = new AccountEntity(simpleResult.result) : new AccountEntity());
+  regitry(): Observable<boolean> {
+    return new Observable((outerObservable) => {
+      this._authService.registry(this._account)
+        .subscribe((simpleResult: SimpleResult<AccountEntity>) => {
+          this._account = (simpleResult && simpleResult.result) ?
+            new AccountEntity(simpleResult.result) : new AccountEntity();
+          // по окончанию регистрации передадим готовность выше
+          outerObservable.next(true);
+        });
+    });
   }
 
-  login() {
-    this._authService.signIn(this._account)
+  login(loginData: any) {
+    this._authService.signIn(loginData)
       .subscribe((simpleResult: SimpleResult<AccountEntity>) => {
         const account: AccountEntity = simpleResult && simpleResult.result && new AccountEntity(simpleResult.result);
         if (account) {

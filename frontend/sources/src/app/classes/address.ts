@@ -2,7 +2,7 @@
 /**
  * Класс для хранения структуры информации о адресе
  */
-export class Adress {
+export class Address {
 
     private token: string;
     private regionId: string;
@@ -19,8 +19,24 @@ export class Adress {
     private zip: string;
     private callback: Function;
 
-    constructor() { }
-
+    constructor(data?: any) {
+        if (data) {
+            this.token = data && data.token || '';
+            this.regionId = data && data.regionId || '';
+            this.districtId = data && data.districtId || '';
+            this.cityId = data && data.cityId || '';
+            this.streetId = data && data.streetId || '';
+            this.buildingId = data && data.buildingId || '';
+            this.query = data && data.query || '';
+            this.contentType = data && data.contentType || '';
+            this.withParent = data && data.withParent || 0;
+            this.limit = data && data.limit || '';
+            this.offset = data && data.offset || '';
+            this.typeCode = data && data.typeCode || '';
+            this.zip = data && data.zip || 0;
+            this.callback = data && data.callback || null;
+        }
+    }
 
     /**
      * Getter $token
