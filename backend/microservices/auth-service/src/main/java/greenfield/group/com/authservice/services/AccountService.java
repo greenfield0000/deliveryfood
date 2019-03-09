@@ -7,6 +7,7 @@ import enums.Status;
 import greenfield.group.com.authservice.repositories.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import results.SimpleResult;
 
 import java.util.Optional;
@@ -84,6 +85,7 @@ public class AccountService {
      * @param account
      * @return
      */
+    @Transactional
     public SimpleResult<Account> registry(Account account) {
         // Должен быть известен логин и пароль
         if ((account == null) || ((account.getLogin() == null) || (account.getLogin().isEmpty()))
@@ -103,12 +105,11 @@ public class AccountService {
             if (role == null) {
                 role = new Role();
             }
-            role.setId(accountRole.getId());
             role.setName(accountRole.getName());
             role.setSysname(accountRole.getSysname());
             account.setAccountRole(role);
-            accountRepository.save(account);
-            return new SimpleResult<>(Status.ERROR, "Пользователь с таким логином уже существует, выберите другое имя", null);
+            final Account savedAccount = accountRepository.saveAndFlush(account);
+            return new SimpleResult<>(Status.OK, savedAccount);
         }
 
         return new SimpleResult<>(Status.OK, account);

@@ -67,7 +67,7 @@ services:
     hostname: menu-db
     image: mongo:latest
     volumes: 
-      - "/home/roman/backup_database/mongodb/volume/menu-db:/data/menu-db"
+      - "/home/roman/backup_database/mongodb/volume/menu-db:/data/db"
     ports: 
       - "27017:27017"
    # networks:
@@ -92,7 +92,7 @@ services:
     hostname: journal-db
     image: mongo:latest
     volumes:
-      - "/home/roman/backup_database/mongodb/volume/journal-db:/data/journal-db"
+      - "/home/roman/backup_database/mongodb/volume/journal-db:/data/db"
     ports:
       - "27018:27017"
    # networks:

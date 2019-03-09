@@ -4,8 +4,8 @@ import { Address } from './address';
  */
 export class User {
     private name: string = '';
-    private surname: string = '';
-    private lastname: string = '';
+    private surName: string = '';
+    private lastName: string = '';
     private birthDay: Date;
     private phone: string = '';
     private email: string = '';
@@ -14,8 +14,8 @@ export class User {
     constructor(data?: any) {
         if (data) {
             this.name = data && data.name || '';
-            this.surname = data && data.surname || '';
-            this.lastname = data && data.lastname || '';
+            this.surName = data && data.surName || '';
+            this.lastName = data && data.lastName || '';
             this.birthDay = data && data.birthDay || null;
             this.phone = data && data.phone || '';
             this.email = data && data.email || '';
@@ -32,19 +32,19 @@ export class User {
     }
 
     /**
-     * Getter $surname
+     * Getter $surName
      * @return {string }
      */
-    public get $surname(): string {
-        return this.surname;
+    public get $surName(): string {
+        return this.surName;
     }
 
     /**
-     * Getter $lastname
+     * Getter $lastName
      * @return {string }
      */
-    public get $lastname(): string {
-        return this.lastname;
+    public get $lastName(): string {
+        return this.lastName;
     }
 
     /**
@@ -88,19 +88,19 @@ export class User {
     }
 
     /**
-     * Setter $surname
+     * Setter $surName
      * @param {string } value
      */
-    public set $surname(value: string) {
-        this.surname = value;
+    public set $surName(value: string) {
+        this.surName = value;
     }
 
     /**
-     * Setter $lastname
+     * Setter $lastName
      * @param {string } value
      */
-    public set $lastname(value: string) {
-        this.lastname = value;
+    public set $lastName(value: string) {
+        this.lastName = value;
     }
 
     /**

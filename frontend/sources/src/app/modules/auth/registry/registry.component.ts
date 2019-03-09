@@ -4,6 +4,7 @@ import { AppRouteService } from './../../../services/app-route-service/app-route
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegistryStepperComponent } from 'src/app/components/registy-stepper/registry-stepper.component';
+import { SimpleResult } from 'src/app/utils/simple-result.class';
 
 @Component({
   selector: 'app-registry',
@@ -24,9 +25,12 @@ export class RegistryComponent extends RegistryStepperComponent implements OnIni
 
   public registryAndLogin() {
     this._appAccount.regitry()
-      .subscribe((isCompleteRegistry: boolean) => {
-        if (isCompleteRegistry) {
-          this._appAccount.login();
+      .subscribe((result: SimpleResult<AccountEntity>) => {
+        if (result) {
+          const account: AccountEntity = new AccountEntity(result.result);
+          if (account) {
+            this._appAccount.login(account);
+          }
         }
       });
   }

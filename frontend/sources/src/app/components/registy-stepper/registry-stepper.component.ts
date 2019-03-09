@@ -62,7 +62,7 @@ export class RegistryStepperComponent extends ReactiveForm implements OnInit {
   // основные аттрибуты для групп
   private passwordRepeat: string = '';
   private user = this.account && this.account.$user || new User();
-  private address: Address = new Address({ token: 'token123s' });
+  private address: Address = new Address();
 
   constructor(protected router: AppRouteService, protected _appAccount: AppAccountContextService,
     protected _formBuilder: FormBuilder) { super(); }
@@ -77,8 +77,8 @@ export class RegistryStepperComponent extends ReactiveForm implements OnInit {
     });
     this.personalDataFormGroup = this._formBuilder.group({
       name: [this.user.$name, Validators.required],
-      surname: [this.user.$surname, Validators.required],
-      lastname: [this.user.$lastname, Validators.required],
+      surName: [this.user.$surName, Validators.required],
+      lastName: [this.user.$lastName, Validators.required],
       birthDay: [this.user.$birthDay, Validators.required],
       phone: [this.user.$phone, Validators.required],
       email: [this.user.$email, Validators.required]
@@ -103,12 +103,11 @@ export class RegistryStepperComponent extends ReactiveForm implements OnInit {
   }
 
   onSubmit() {
-    debugger
-    this.user.$addressList.push(new Address(this.address));
+    if (!this.user.$addressList.includes(this.address)) {
+      this.user.$addressList.push(this.address);
+    }
     this.account.$user = this.user;
-    console.log('form group accountDataFormGroup', this.accountDataFormGroup);
-    console.log('form group personalDataFormGroup', this.personalDataFormGroup);
-    console.log('Account info = ', this.account);
+    this._appAccount.setAccount(this.account);
     this.goNextFn(this.router);
   }
 

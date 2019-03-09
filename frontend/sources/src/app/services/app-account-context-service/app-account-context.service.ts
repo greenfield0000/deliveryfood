@@ -19,16 +19,8 @@ export class AppAccountContextService {
     private temp: AppRouteService) {
   }
 
-  regitry(): Observable<boolean> {
-    return new Observable((outerObservable) => {
-      this._authService.registry(this._account)
-        .subscribe((simpleResult: SimpleResult<AccountEntity>) => {
-          this._account = (simpleResult && simpleResult.result) ?
-            new AccountEntity(simpleResult.result) : new AccountEntity();
-          // по окончанию регистрации передадим готовность выше
-          outerObservable.next(true);
-        });
-    });
+  regitry(): Observable<SimpleResult<AccountEntity>> {
+    return this._authService.registry(this._account);
   }
 
   login(loginData: any) {
@@ -52,5 +44,9 @@ export class AppAccountContextService {
 
   getAccount(): AccountEntity {
     return this._account || new AccountEntity();
+  }
+
+  setAccount(account: AccountEntity) {
+    this._account = account;
   }
 }

@@ -1,12 +1,15 @@
 package entities.authservice;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 /**
  * Роли для аккаунта
  */
 @Entity
-@Table(name = "Role")
+@Table(name = "AccountRole")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Role {
 
     private Long id;

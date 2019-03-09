@@ -13,7 +13,7 @@ export class Address {
     private query: string;
     private contentType: string;
     private withParent: number;
-    private limit: string;
+    private limit_property: string;
     private offset: string;
     private typeCode: number;
     private zip: string;
@@ -30,7 +30,7 @@ export class Address {
             this.query = data && data.query || '';
             this.contentType = data && data.contentType || '';
             this.withParent = data && data.withParent || 0;
-            this.limit = data && data.limit || '';
+            this.limit_property = data && data.limit_property || '';
             this.offset = data && data.offset || '';
             this.typeCode = data && data.typeCode || '';
             this.zip = data && data.zip || 0;
@@ -111,11 +111,11 @@ export class Address {
     }
 
     /**
-     * Getter $limit
+     * Getter $limit_property
      * @return {string}
      */
-    public get $limit(): string {
-        return this.limit;
+    public get $limit_property(): string {
+        return this.limit_property;
     }
 
     /**
@@ -223,11 +223,11 @@ export class Address {
     }
 
     /**
-     * Setter $limit
+     * Setter $limit_property
      * @param {string} value
      */
-    public set $limit(value: string) {
-        this.limit = value;
+    public set $limit_property(value: string) {
+        this.limit_property = value;
     }
 
     /**

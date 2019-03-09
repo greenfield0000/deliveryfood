@@ -1,5 +1,7 @@
 package entities.authservice;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 /**
@@ -7,6 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "Account")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Account {
 
     private Long id;
@@ -15,18 +18,20 @@ public class Account {
     private Boolean isAuthtorised;
     private String nickName;
     private String uuid;
-    private Role accountRole = new Role();
+    private User user;
+    private Role accountRole;
 
     public Account() {
     }
 
-    public Account(Long id, String login, String password, boolean isAuthtorised, String nickName, String uuid, Role accountRole) {
+    public Account(Long id, String login, String password, Boolean isAuthtorised, String nickName, String uuid, User user, Role accountRole) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.isAuthtorised = isAuthtorised;
         this.nickName = nickName;
         this.uuid = uuid;
+        this.user = user;
         this.accountRole = accountRole;
     }
 
@@ -59,13 +64,10 @@ public class Account {
         this.password = password;
     }
 
+    @Transient
     @Column(name = "is_authtorised")
     public boolean isAuthtorised() {
         return isAuthtorised;
-    }
-
-    public void setAuthtorised(boolean authtorised) {
-        isAuthtorised = authtorised;
     }
 
     @Column(name = "nick_name")
@@ -86,7 +88,7 @@ public class Account {
         this.uuid = uuid;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     public Role getAccountRole() {
         return accountRole;
@@ -94,6 +96,28 @@ public class Account {
 
     public void setAccountRole(Role accountRole) {
         this.accountRole = accountRole;
+    }
+
+    public Boolean getAuthtorised() {
+        return isAuthtorised;
+    }
+
+    public void setAuthtorised(boolean authtorised) {
+        isAuthtorised = authtorised;
+    }
+
+    public void setAuthtorised(Boolean authtorised) {
+        isAuthtorised = authtorised;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -105,6 +129,7 @@ public class Account {
                 ", isAuthtorised=" + isAuthtorised +
                 ", nickName='" + nickName + '\'' +
                 ", uuid='" + uuid + '\'' +
+                ", user=" + user +
                 ", accountRole=" + accountRole +
                 '}';
     }

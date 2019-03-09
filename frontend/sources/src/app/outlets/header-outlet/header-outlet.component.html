@@ -1,5 +1,5 @@
-<mat-toolbar class="header">
-  <mat-toolbar-row color="primary">
+<mat-toolbar class="header" color="primary">
+  <mat-toolbar-row>
     <span>Суппбери</span>
     <div class="menu-block">
       <button mat-icon-button (click)="sideNavToggle()">
@@ -11,13 +11,13 @@
 
         <mat-icon matBadge='5' matBadgeHidden='false' matBadgeColor="warn">notification_important</mat-icon>
 
-        <button mat-icon-button (click)="editAccount()" color="primary">
+        <button mat-icon-button (click)="editAccount()">
           <i class="material-icons">account_circle</i>
         </button>
 
         <span class="account-name">Добрый день, {{account.$nickName}}</span>
 
-        <button mat-raised-button (click)="signOut()" color="primary">
+        <button mat-raised-button (click)="signOut()">
           Log out
         </button>
       </div>
