@@ -15,7 +15,6 @@ import results.SimpleResult;
 import java.io.IOException;
 import java.util.Map;
 
-@CrossOrigin
 @RestController(value = "/auth")
 public class AuthGate {
 

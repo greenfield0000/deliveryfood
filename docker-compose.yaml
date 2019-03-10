@@ -16,13 +16,16 @@ services:
     container_name: auth-service
     restart: always
     build: ./backend/microservices/auth-service
+    command: redis-cli -h redis-session-storage
     ports:
      - "8081:8081"
      - "9081:9081"
     depends_on:
       - auth-db
+      - redis-session-storage
     links: 
       - auth-db:auth-db
+      - redis-session-storage:redis-session-storage
   #  networks:
   #    - frontend
   #    - backend
@@ -74,29 +77,43 @@ services:
     #  - backend
 
   #journal-service
-  journal-service:
-    container_name: journal-service
-    restart: always
-    build: ./backend/microservices/journal-service
-    ports:
-     - "8083:8083"
-     - "9083:9083"
-    depends_on:
-      - journal-db
-    links:
-      - journal-db:journal-db
+ # journal-service:
+ #   container_name: journal-service
+ #   restart: always
+ #   build: ./backend/microservices/journal-service
+ #   ports:
+ #    - "8083:8083"
+ #    - "9083:9083"
+ #   depends_on:
+ #     - journal-db
+ #   links:
+ #     - journal-db:journal-db
 
   # journal-db
-  journal-db:
-    container_name: journal-db
-    hostname: journal-db
-    image: mongo:latest
-    volumes:
-      - "/home/roman/backup_database/mongodb/volume/journal-db:/data/db"
-    ports:
-      - "27018:27017"
+#  journal-db:
+ #   container_name: journal-db
+  #  hostname: journal-db
+  #  image: mongo:latest
+  #  volumes:
+  #    - "/home/roman/backup_database/mongodb/volume/journal-db:/data/db"
+  #  ports:
+  #    - "27018:27017"
    # networks:
     #  - backend
+
+  # account-session storage
+  redis-session-storage:
+    image: redis:latest
+    container_name: redis-session-storage
+#    command: redis-cli -h redis
+    environment:
+      - REDIS_PASSWORD=mypass
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    volumes:
+      - '~/rediss-storage/redis/data:/data'
+    ports:
+      - "6379:6379"
+
 
 
   # setting network with all containers

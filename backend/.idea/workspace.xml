@@ -2,24 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="317ccd25-732e-4d05-abce-2036c69775c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/repositories/AddressRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/repositories/RoleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/CorsConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/RedisConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/SpringSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/filters/CorsFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/filters/SessionFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-bussines/core-mysql/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core-bussines/core-mysql/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/services/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.dev.suppbery-admin.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.dev.suppbery-admin.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/classes/address.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/classes/address.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/classes/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/classes/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/components/registy-stepper/registry-stepper.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/components/registy-stepper/registry-stepper.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/components/registy-stepper/registry-stepper.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/components/registy-stepper/registry-stepper.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/modules/auth/registry/registry.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/modules/auth/registry/registry.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/sources/src/app/services/app-account-context-service/app-account-context.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/sources/src/app/services/app-account-context-service/app-account-context.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/auth-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/gates/AuthGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/gates/AuthGate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/auth-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/auth-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.dev.suppbery-admin.yaml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -42,19 +34,18 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Role.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/SpringSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="257">
+              <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="docComment;class#Role#0" />
-                <element signature="method#Role#0;class#Role#0" />
-                <element signature="method#Role#1;class#Role#0" />
-                <element signature="method#toString#0;class#Role#0" />
               </folding>
             </state>
           </provider>
@@ -63,62 +54,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/gates/AuthGate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="60">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.1.3.RELEASE/spring-aop-5.1.3.RELEASE.jar!/org/springframework/aop/framework/CglibAopProxy.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="485" selection-start-line="485" selection-end-line="485" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/services/AccountService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-              <folding>
-                <element signature="docComment;class#User#0" />
-                <element signature="method#User#0;class#User#0" />
-                <element signature="method#User#1;class#User#0" />
-                <element signature="method#toString#0;class#User#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/repositories/RoleRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/repositories/AddressRepository.java">
+        <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/CorsConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="70" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
+              <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,33 +73,65 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/repositories/AccountRepository.java">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.2.RELEASE/spring-security-config-5.1.2.RELEASE-sources.jar!/org/springframework/security/config/annotation/web/servlet/configuration/WebMvcSecurityConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+            <state relative-caret-position="149">
+              <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Account.java">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.1.3.RELEASE/spring-webmvc-5.1.3.RELEASE-sources.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurerAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="112" column="65" selection-start-line="112" selection-start-column="65" selection-end-line="112" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="docComment;class#Account#0" />
-                <element signature="method#Account#0;class#Account#0" />
-                <element signature="method#toString#0;class#Account#0" />
-              </folding>
+            <state relative-caret-position="149">
+              <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/menu.json">
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.1.3.RELEASE/spring-webmvc-5.1.3.RELEASE-sources.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-572" />
+            <state relative-caret-position="149">
+              <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.2.RELEASE/spring-security-config-5.1.2.RELEASE-sources.jar!/org/springframework/security/config/annotation/web/configuration/OAuth2ClientConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.2.RELEASE/spring-security-config-5.1.2.RELEASE-sources.jar!/org/springframework/security/config/annotation/web/configuration/WebMvcSecurityConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="43" column="33" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/filters/CorsFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/9.0.13/tomcat-embed-core-9.0.13-sources.jar!/org/apache/catalina/core/ApplicationFilterChain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="192" selection-start-line="192" selection-end-line="192" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -162,8 +140,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -174,11 +152,15 @@
       <find>: number;</find>
       <find>auth-db</find>
       <find>user</find>
+      <find>userDetailsService</find>
       <find>5</find>
+      <find>=</find>
+      <find>addCorsMapping</find>
     </findStrings>
     <replaceStrings>
       <replace>private String</replace>
       <replace>;</replace>
+      <replace>=</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice</dir>
@@ -191,7 +173,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/core-bussines/core-mysql/pom.xml" />
-        <option value="$PROJECT_DIR$/microservices/auth-service/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Address.java" />
         <option value="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/User.java" />
         <option value="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/repositories/UserRepository.java" />
@@ -202,6 +183,18 @@
         <option value="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Role.java" />
         <option value="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/services/AccountService.java" />
         <option value="$PROJECT_DIR$/core-bussines/core-mysql/core-auth/src/main/java/entities/authservice/Account.java" />
+        <option value="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/cors/filter/CustomCorsFilter.java" />
+        <option value="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/CustomCorsFilterConfiguration.java" />
+        <option value="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/AuthServiceApplication.java" />
+        <option value="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/RedisSessionConfiguration.java" />
+        <option value="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/BeanConfiguration.java" />
+        <option value="$PROJECT_DIR$/microservices/auth-service/pom.xml" />
+        <option value="$PROJECT_DIR$/microservices/auth-service/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/RedisConfiguration.java" />
+        <option value="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/filters/SessionFilter.java" />
+        <option value="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/SpringSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/CorsConfiguration.java" />
+        <option value="$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/gates/AuthGate.java" />
       </list>
     </option>
   </component>
@@ -217,20 +210,20 @@
       <expand>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="backend" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="auth-service" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="backend" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="auth-service" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="core-auth" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="backend" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="core-auth" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="backend" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
       </expand>
@@ -258,12 +251,99 @@
               <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="authservice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="authservice" type="462c0819:PsiDirectoryNode" />
+              <item name="configurations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="authservice" type="462c0819:PsiDirectoryNode" />
+              <item name="filters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="authservice" type="462c0819:PsiDirectoryNode" />
+              <item name="gates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="auth-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -340,8 +420,33 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1533" height="875" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25958306" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26294553" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3297587" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3994638" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" order="10" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3297587" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.24949563" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="right" id="Maven" order="5" weight="0.2273033" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25958306" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -362,24 +467,12 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info anchor="right" id="Maven" order="5" visible="true" weight="0.32952252" />
-    </layout>
+      <window_info active="true" anchor="right" id="Maven" order="5" visible="true" weight="0.32952252" />
+    </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/gates/AuthGate.java</url>
-          <line>40</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/gates/AuthGate.java</url>
-          <line>30</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/services/AccountService.java</url>
           <line>90</line>
@@ -398,45 +491,28 @@
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/RedisConfiguration.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/RedisConfiguration.java</url>
+          <line>34</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/SpringSecurityConfig.java</url>
+          <line>15</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2.jar!/javax/persistence/Transient.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core-bussines/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core-bussines/core-mysql/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2.jar!/javax/persistence/CascadeType.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -483,13 +559,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="511" selection-start-line="511" selection-end-line="511" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/AuthServiceApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -589,24 +658,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/gates/AuthGate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.1.3.RELEASE/spring-aop-5.1.3.RELEASE.jar!/org/springframework/aop/framework/CglibAopProxy.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="485" selection-start-line="485" selection-end-line="485" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/services/AccountService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
         </state>
       </provider>
     </entry>
@@ -623,9 +678,235 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.1.RELEASE/spring-boot-autoconfigure-2.1.1.RELEASE.jar!/org/springframework/boot/autoconfigure/session/SessionAutoConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/menu.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-572" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/2.1.1.RELEASE/spring-boot-2.1.1.RELEASE.jar!/org/springframework/boot/SpringApplication.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.2.RELEASE/spring-security-config-5.1.2.RELEASE.jar!/org/springframework/security/config/annotation/web/configuration/WebSecurityConfigurerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.3.RELEASE/spring-web-5.1.3.RELEASE.jar!/org/springframework/web/server/session/CookieWebSessionIdResolver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#0#3081#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.3.RELEASE/spring-web-5.1.3.RELEASE-sources.jar!/org/springframework/web/server/session/WebSessionIdResolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.3.RELEASE/spring-web-5.1.3.RELEASE-sources.jar!/org/springframework/web/server/session/CookieWebSessionIdResolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="38" column="58" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.2.RELEASE/spring-security-config-5.1.2.RELEASE-sources.jar!/org/springframework/security/config/annotation/web/configuration/WebSecurityConfigurerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="92" column="22" selection-start-line="92" selection-start-column="22" selection-end-line="92" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.1.RELEASE/spring-boot-autoconfigure-2.1.1.RELEASE.jar!/org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/2.1.1.RELEASE/spring-boot-2.1.1.RELEASE-sources.jar!/org/springframework/boot/SpringApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="158" column="13" selection-start-line="158" selection-start-column="13" selection-end-line="158" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/AuthServiceApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding>
+            <element signature="e#470#471#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.1.RELEASE/spring-boot-autoconfigure-2.1.1.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/RedisSessionConfiguration.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.2.RELEASE/spring-security-config-5.1.2.RELEASE-sources.jar!/org/springframework/security/config/annotation/web/builders/WebSecurity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="78" column="19" selection-start-line="78" selection-start-column="19" selection-end-line="78" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.2.RELEASE/spring-security-config-5.1.2.RELEASE-sources.jar!/org/springframework/security/config/http/SessionCreationPolicy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="29" column="10" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/services/AccountService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/BeanConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/RedisConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/auth-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/filters/SessionFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/9.0.13/tomcat-embed-core-9.0.13-sources.jar!/org/apache/catalina/core/ApplicationFilterChain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="192" selection-start-line="192" selection-end-line="192" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.2.RELEASE/spring-security-config-5.1.2.RELEASE-sources.jar!/org/springframework/security/config/annotation/web/configuration/WebMvcSecurityConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="43" column="33" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.2.RELEASE/spring-security-config-5.1.2.RELEASE-sources.jar!/org/springframework/security/config/annotation/web/servlet/configuration/WebMvcSecurityConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.1.3.RELEASE/spring-webmvc-5.1.3.RELEASE-sources.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/CorsConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.1.3.RELEASE/spring-webmvc-5.1.3.RELEASE-sources.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.2.RELEASE/spring-security-config-5.1.2.RELEASE-sources.jar!/org/springframework/security/config/annotation/web/configuration/OAuth2ClientConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/gates/AuthGate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/filters/CorsFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservices/auth-service/src/main/java/greenfield/group/com/authservice/configurations/SpringSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
