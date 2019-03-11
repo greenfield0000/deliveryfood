@@ -15,6 +15,7 @@ import results.SimpleResult;
 import java.io.IOException;
 import java.util.Map;
 
+@CrossOrigin(origins = "http://localhost:4200/**")
 @RestController(value = "/auth")
 public class AuthGate {
 

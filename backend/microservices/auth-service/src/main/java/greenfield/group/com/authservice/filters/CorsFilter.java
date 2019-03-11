@@ -9,12 +9,14 @@ import java.io.IOException;
 @Component
 public class CorsFilter implements Filter {
 
+    private static final String ALLOW_HEADERS = "access-control-allow-methods,access-control-allow-origin,content-type";
+
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+        response.setHeader("Access-Control-Allow-Headers", ALLOW_HEADERS);
         chain.doFilter(req, res);
     }
 
