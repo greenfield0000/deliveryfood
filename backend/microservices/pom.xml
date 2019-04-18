@@ -6,7 +6,7 @@
     <parent>
         <artifactId>backend</artifactId>
         <groupId>greenfield.group.com</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${backend.version}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 

@@ -8,7 +8,7 @@ services:
     ports:
      - "4200:4200"
     volumes: 
-     - "/home/roman/repository/frontend/sources:/angular/suppbery-admin"
+     - "/home/aleksey/repository/frontend/sources:/angular/suppbery-admin"
     network_mode: host
 
   #auth-service
@@ -38,7 +38,7 @@ services:
     ports: 
       - "3306:3306"
     volumes: 
-      - "/home/roman/backup_database/mysql/auth-db:/var/lib/mysql"
+      - "/home/aleksey/backup_database/mysql/auth-db:/var/lib/mysql"
     environment: 
       - "MYSQL_ROOT_PASSWORD=123"
       - "MYSQL_DATABASE=auth-db"
@@ -70,7 +70,7 @@ services:
     hostname: menu-db
     image: mongo:latest
     volumes: 
-      - "/home/roman/backup_database/mongodb/volume/menu-db:/data/db"
+      - "/home/aleksey/backup_database/mongodb/volume/menu-db:/data/db"
     ports: 
       - "27017:27017"
    # networks:
@@ -95,7 +95,7 @@ services:
   #  hostname: journal-db
   #  image: mongo:latest
   #  volumes:
-  #    - "/home/roman/backup_database/mongodb/volume/journal-db:/data/db"
+  #    - "/home/aleksey/backup_database/mongodb/volume/journal-db:/data/db"
   #  ports:
   #    - "27018:27017"
    # networks:
