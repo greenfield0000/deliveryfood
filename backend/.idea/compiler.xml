@@ -6,20 +6,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="auth-service" />
-        <module name="core-auth" />
-        <module name="core-journal" />
         <module name="core-menu" />
         <module name="gateway-utils" />
-        <module name="journal-service" />
         <module name="menu-service" />
         <module name="privilegies-utils" />
+        <module name="core-journal" />
+        <module name="journal-service" />
+        <module name="auth-service" />
+        <module name="core-auth" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="auth-service" options="-parameters" />
+      <module name="backend" options="" />
       <module name="core-auth" options="-parameters" />
       <module name="core-journal" options="-parameters" />
       <module name="core-menu" options="-parameters" />

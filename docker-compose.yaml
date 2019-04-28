@@ -78,6 +78,19 @@ services:
  #   links:
  #     - journal-db:journal-db
 
+  # journal-db
+#  journal-db:
+ #   container_name: journal-db
+  #  hostname: journal-db
+  #  image: mongo:latest
+  #  volumes:
+  #    - "/home/aleksey/backup_database/mongodb/volume/journal-db:/data/db"
+  #  ports:
+  #    - "27018:27017"
+   # networks:
+    #  - backend
+
+  # account-session storage
   redis-session-storage:
     image: redis:latest
     container_name: redis-session-storage

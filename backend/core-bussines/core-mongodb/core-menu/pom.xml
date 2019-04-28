@@ -15,7 +15,7 @@
         <dependency>
             <groupId>greenfield.group.com</groupId>
             <artifactId>privilegies-utils</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${privilegies-utils.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

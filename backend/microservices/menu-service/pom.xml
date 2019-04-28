@@ -39,7 +39,7 @@
         <dependency>
             <groupId>greenfield.group.com</groupId>
             <artifactId>gateway-utils</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${gateway-utils.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
