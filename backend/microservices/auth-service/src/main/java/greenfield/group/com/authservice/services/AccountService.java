@@ -25,6 +25,8 @@ public class AccountService {
     private static final boolean NON_AUTHTORIZE = false;
     @Autowired
     private AccountRepository accountRepository;
+    @Autowired
+    private RedisSessionService redisSessionService;
 
     /**
      * Залогиниться
@@ -50,6 +52,7 @@ public class AccountService {
         account = finderAccount.get();
         setAuthtorized(account, AUTHTORIZE);
         accountRepository.save(account);
+        redisSessionService.putSessionByKey(account.getUuid(), account.toString());
         return new SimpleResult<>(Status.OK, account);
     }
 
@@ -76,6 +79,7 @@ public class AccountService {
         account = finderAccount.get();
         setAuthtorized(account, NON_AUTHTORIZE);
         accountRepository.save(account);
+        redisSessionService.deleteSessionByKey(account.getUuid());
         return new SimpleResult<>(Status.OK, account);
     }
 
@@ -109,6 +113,7 @@ public class AccountService {
             role.setSysname(accountRole.getSysname());
             account.setAccountRole(role);
             final Account savedAccount = accountRepository.saveAndFlush(account);
+            redisSessionService.putSessionByKey(savedAccount.getUuid(), savedAccount.toString());
             return new SimpleResult<>(Status.OK, savedAccount);
         }
 

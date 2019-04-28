@@ -1,6 +1,6 @@
 version: '3.4'
 services:
-  # еще тест
+  
   # frontend
   suppbery-admin:
     container_name: suppbery-admin 
@@ -8,7 +8,7 @@ services:
     ports:
      - "4200:4200"
     volumes: 
-     - "/home/roman/repository/frontend/sources:/angular/suppbery-admin"
+     - "~/repository/frontend/sources:/angular/suppbery-admin"
     network_mode: host
 
   #auth-service
@@ -26,9 +26,6 @@ services:
     links: 
       - auth-db:auth-db
       - redis-session-storage:redis-session-storage
-  #  networks:
-  #    - frontend
-  #    - backend
 
   # auth-db
   auth-db:
@@ -38,14 +35,11 @@ services:
     ports: 
       - "3306:3306"
     volumes: 
-      - "/home/roman/backup_database/mysql/auth-db:/var/lib/mysql"
+      - "~/backup_database/mysql/auth-db:/var/lib/mysql"
     environment: 
       - "MYSQL_ROOT_PASSWORD=123"
       - "MYSQL_DATABASE=auth-db"
       - "MYSQL_TCP_PORT=3306"
-   # networks:
-    #  - backend
-
 
   #menu-service
   menu-service:
@@ -60,21 +54,16 @@ services:
     links:
       - menu-db:menu-db
       - auth-service:auth-service
-         # networks:
-    #  - frontend
-    #  - backend
-
+  
   # menu-db
   menu-db:
     container_name: menu-db
     hostname: menu-db
     image: mongo:latest
     volumes: 
-      - "/home/roman/backup_database/mongodb/volume/menu-db:/data/db"
+      - "~/backup_database/mongodb/volume/menu-db:/data/db"
     ports: 
       - "27017:27017"
-   # networks:
-    #  - backend
 
   #journal-service
  # journal-service:
@@ -89,23 +78,9 @@ services:
  #   links:
  #     - journal-db:journal-db
 
-  # journal-db
-#  journal-db:
- #   container_name: journal-db
-  #  hostname: journal-db
-  #  image: mongo:latest
-  #  volumes:
-  #    - "/home/roman/backup_database/mongodb/volume/journal-db:/data/db"
-  #  ports:
-  #    - "27018:27017"
-   # networks:
-    #  - backend
-
-  # account-session storage
   redis-session-storage:
     image: redis:latest
     container_name: redis-session-storage
-#    command: redis-cli -h redis
     environment:
       - REDIS_PASSWORD=mypass
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
@@ -113,10 +88,3 @@ services:
       - '~/rediss-storage/redis/data:/data'
     ports:
       - "6379:6379"
-
-
-
-  # setting network with all containers
-#networks:
- # frontend:
-  #backend:

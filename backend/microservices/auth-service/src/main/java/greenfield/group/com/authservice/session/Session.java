@@ -1,4 +1,8 @@
 package greenfield.group.com.authservice.session;
 
-public class Session {
+import org.springframework.data.redis.core.RedisHash;
+
+@RedisHash(value = "session")
+public class Session<T> {
+    T sessionEntity;
 }
