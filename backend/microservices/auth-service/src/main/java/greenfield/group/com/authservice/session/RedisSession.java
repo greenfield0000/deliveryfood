@@ -1,4 +1,4 @@
-package greenfield.group.com.authservice.services.interfaces;
+package greenfield.group.com.authservice.session;
 
 /**
  * Api работы с Redis хранилищем

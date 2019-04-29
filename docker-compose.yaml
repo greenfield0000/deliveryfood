@@ -62,6 +62,7 @@ services:
     image: mongo:latest
     volumes: 
       - "~/backup_database/mongodb/volume/menu-db:/data/db"
+      - "~/backup_database/mongodb/volume/menu-db/log:/var/log/mongodb"
     ports: 
       - "27017:27017"
 

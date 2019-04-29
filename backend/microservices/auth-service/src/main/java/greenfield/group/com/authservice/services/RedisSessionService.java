@@ -1,6 +1,6 @@
 package greenfield.group.com.authservice.services;
 
-import greenfield.group.com.authservice.services.interfaces.RedisSession;
+import greenfield.group.com.authservice.session.RedisSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;

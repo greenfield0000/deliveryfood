@@ -5,6 +5,7 @@ import entities.authservice.Role;
 import enums.AccountRole;
 import enums.Status;
 import greenfield.group.com.authservice.repositories.AccountRepository;
+import greenfield.group.com.authservice.session.sessionimpl.AccountRedisSessionImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +13,7 @@ import results.SimpleResult;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 /**
@@ -26,7 +28,7 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
-    private RedisSessionService redisSessionService;
+    private AccountRedisSessionImpl accountRedisSessionImpl;
 
     /**
      * Залогиниться
@@ -52,7 +54,7 @@ public class AccountService {
         account = finderAccount.get();
         setAuthtorized(account, AUTHTORIZE);
         accountRepository.save(account);
-        redisSessionService.putSessionByKey(account.getUuid(), account.toString());
+        accountRedisSessionImpl.sessionSave(account, 20L, TimeUnit.SECONDS);
         return new SimpleResult<>(Status.OK, account);
     }
 
@@ -79,7 +81,7 @@ public class AccountService {
         account = finderAccount.get();
         setAuthtorized(account, NON_AUTHTORIZE);
         accountRepository.save(account);
-        redisSessionService.deleteSessionByKey(account.getUuid());
+        accountRedisSessionImpl.sessionDelete(account);
         return new SimpleResult<>(Status.OK, account);
     }
 
@@ -113,7 +115,7 @@ public class AccountService {
             role.setSysname(accountRole.getSysname());
             account.setAccountRole(role);
             final Account savedAccount = accountRepository.saveAndFlush(account);
-            redisSessionService.putSessionByKey(savedAccount.getUuid(), savedAccount.toString());
+            accountRedisSessionImpl.sessionSave(account, 20L, TimeUnit.SECONDS);
             return new SimpleResult<>(Status.OK, savedAccount);
         }
 
