@@ -45,9 +45,8 @@ public class AuthGate {
     public Role getAccountRoleSysNameByUUID(@RequestBody String jsonUuid) {
         Role role = new Role();
         try {
-            TypeReference valueTypeRef = new TypeReference<Map<String, Object>>() {
-            };
-            Map<String, Object> mappedvalues = objectMapper.readValue(jsonUuid, valueTypeRef);
+            Map<String, Object> mappedvalues = objectMapper.readValue(jsonUuid, new TypeReference<Map<String, Object>>() {
+            });
             if ((mappedvalues != null) && (mappedvalues.get("uuid") != null)) {
                 String uuid = mappedvalues.get("uuid").toString();
                 return accountService.getAccountRoleSysNameByUUID(uuid);

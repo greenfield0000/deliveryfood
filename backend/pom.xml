@@ -30,6 +30,7 @@
         <utils.version>0.0.1</utils.version>
         <gateway-utils.version>0.0.1</gateway-utils.version>
         <privilegies-utils.version>0.0.1</privilegies-utils.version>
+        <pattern-utils.version>0.0.1</pattern-utils.version>
     </properties>
 
     <modules>

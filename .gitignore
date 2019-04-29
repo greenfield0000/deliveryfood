@@ -2,3 +2,7 @@
 backend/utils/privilegies-utils/target/maven-status/maven-compiler-plugin/compile/default-compile/
 
 backend/\.idea/
+
+backend/utils/pattern-utils/target/
+
+backend/utils/privilegies-utils/target/

@@ -5,7 +5,7 @@ import entities.authservice.Role;
 import enums.AccountRole;
 import enums.Status;
 import greenfield.group.com.authservice.repositories.AccountRepository;
-import greenfield.group.com.authservice.session.sessionimpl.AccountRedisSessionImpl;
+import greenfield.group.com.authservice.session.sessionimpl.AccountRedisSessionSeriveImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,8 +13,9 @@ import results.SimpleResult;
 
 import java.util.Optional;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
+
+import static pattern.PatternConstant.GUID_PATTERN;
 
 /**
  * Сервис по работе с аккаунтом
@@ -22,13 +23,13 @@ import java.util.regex.Pattern;
 @Service
 public class AccountService {
 
-    public static final String GUID_PATTERN = "([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}";
     private static final boolean AUTHTORIZE = true;
     private static final boolean NON_AUTHTORIZE = false;
+
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
-    private AccountRedisSessionImpl accountRedisSessionImpl;
+    private AccountRedisSessionSeriveImpl accountRedisSessionImpl;
 
     /**
      * Залогиниться
@@ -54,8 +55,21 @@ public class AccountService {
         account = finderAccount.get();
         setAuthtorized(account, AUTHTORIZE);
         accountRepository.save(account);
-        accountRedisSessionImpl.sessionSave(account, 20L, TimeUnit.SECONDS);
+        saveAccountSession(account);
         return new SimpleResult<>(Status.OK, account);
+    }
+
+    /**
+     * Метод сохранения сессии
+     *
+     * @param account - аккаунт для которого сохраняем сессию
+     */
+    private void saveAccountSession(Account account) {
+        accountRedisSessionImpl.sessionSave(
+                account,
+                accountRedisSessionImpl.getDurationByTimeUnit(),
+                accountRedisSessionImpl.getSessionTimeUnit()
+        );
     }
 
     /**
@@ -115,7 +129,7 @@ public class AccountService {
             role.setSysname(accountRole.getSysname());
             account.setAccountRole(role);
             final Account savedAccount = accountRepository.saveAndFlush(account);
-            accountRedisSessionImpl.sessionSave(account, 20L, TimeUnit.SECONDS);
+            saveAccountSession(account);
             return new SimpleResult<>(Status.OK, savedAccount);
         }
 
@@ -130,7 +144,7 @@ public class AccountService {
      */
     public Role getAccountRoleSysNameByUUID(String uuid) {
         final Role emptyRole = new Role();
-        if ((uuid == null) || (uuid.isEmpty()) || !uuidMachetPattern(uuid)) {
+        if ((uuid == null) || (uuid.isEmpty()) || !uuidMachesPattern(uuid)) {
             return emptyRole;
         }
         // Грузим пользователя с таким uuid
@@ -148,7 +162,7 @@ public class AccountService {
      * @param uuid
      * @return
      */
-    private boolean uuidMachetPattern(String uuid) {
+    private boolean uuidMachesPattern(String uuid) {
         return Pattern
                 .compile(GUID_PATTERN)
                 .matcher(uuid)
