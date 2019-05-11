@@ -5,12 +5,12 @@
 	<parent>
 		<artifactId>microservices</artifactId>
 		<groupId>greenfield.group.com</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>journal-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>journal-service</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -38,8 +38,7 @@
 		<dependency>
 			<groupId>greenfield.group.com</groupId>
 			<artifactId>gateway-utils</artifactId>
-			<version>${gateway-utils.version}</version>
-			<scope>compile</scope>
+			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
 

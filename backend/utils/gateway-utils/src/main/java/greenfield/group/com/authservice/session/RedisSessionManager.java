@@ -35,7 +35,7 @@ public interface RedisSessionManager<T> {
     /**
      * Установить время действия сессии
      *
-     * @param duration - время действия сессии согласно параметру timeUnit
+     * @param durationByTimeUnit - время действия сессии согласно параметру timeUnit
      */
     void sessionDuration(long durationByTimeUnit);
 

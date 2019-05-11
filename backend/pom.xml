@@ -9,29 +9,17 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>backend</artifactId>
-    <groupId>greenfield.group.com</groupId>
-    <version>${backend.version}</version>
-    <packaging>pom</packaging>
-
     <properties>
-        <backend.version>0.0.1</backend.version>
-
         <!--with all version-->
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <!--microservice-version-->
-        <auth-service.version>0.0.1</auth-service.version>
-        <menu-service.version>0.0.1</menu-service.version>
-
-        <!--utils-version-->
-        <utils.version>0.0.1</utils.version>
-        <gateway-utils.version>0.0.1</gateway-utils.version>
-        <privilegies-utils.version>0.0.1</privilegies-utils.version>
-        <pattern-utils.version>0.0.1</pattern-utils.version>
     </properties>
+
+    <artifactId>backend</artifactId>
+    <groupId>greenfield.group.com</groupId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
 
     <modules>
         <module>core-bussines</module>

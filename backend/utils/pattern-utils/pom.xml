@@ -8,11 +8,11 @@
     <parent>
         <artifactId>utils</artifactId>
         <groupId>greenfield.group.com</groupId>
-        <version>${utils.version}</version>
+        <version>0.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>pattern-utils</artifactId>
-    <version>${gateway-utils.version}</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 </project>

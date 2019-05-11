@@ -7,13 +7,13 @@
     <parent>
         <artifactId>backend</artifactId>
         <groupId>greenfield.group.com</groupId>
-        <version>${backend.version}</version>
+        <version>0.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
 
     <artifactId>core-bussines</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>pom</packaging>
 
     <description>Contains bussines relative with all entities</description>

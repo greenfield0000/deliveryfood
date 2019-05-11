@@ -7,12 +7,12 @@
     <parent>
         <artifactId>utils</artifactId>
         <groupId>greenfield.group.com</groupId>
-        <version>${utils.version}</version>
+        <version>0.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>privilegies-utils</artifactId>
-    <version>${privilegies-utils.version}</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
 </project>

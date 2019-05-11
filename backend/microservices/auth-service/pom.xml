@@ -7,12 +7,12 @@
     <parent>
         <artifactId>microservices</artifactId>
         <groupId>greenfield.group.com</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>auth-service</artifactId>
-    <version>${auth-service.version}</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>auth-service</name>
@@ -30,23 +30,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>5.1.4.RELEASE</version>
-        </dependency>
-
-        <!-- session-->
-        <dependency>
-            <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session-data-redis</artifactId>
-            <version>2.1.4.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.lettuce</groupId>
-            <artifactId>lettuce-core</artifactId>
-            <version>5.1.4.RELEASE</version>
-            <optional>true</optional>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <dependency>
@@ -57,32 +42,20 @@
 
         <dependency>
             <groupId>greenfield.group.com</groupId>
-            <artifactId>core-auth</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>greenfield.group.com</groupId>
             <artifactId>gateway-utils</artifactId>
-            <version>${gateway-utils.version}</version>
+            <version>0.0.1</version>
         </dependency>
 
         <dependency>
             <groupId>greenfield.group.com</groupId>
             <artifactId>privilegies-utils</artifactId>
-            <version>${privilegies-utils.version}</version>
+            <version>0.0.1</version>
         </dependency>
 
         <dependency>
             <groupId>greenfield.group.com</groupId>
             <artifactId>pattern-utils</artifactId>
-            <version>${pattern-utils.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>5.1.2.RELEASE</version>
+            <version>0.0.1</version>
         </dependency>
     </dependencies>
 
