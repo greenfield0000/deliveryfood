@@ -1,5 +1,7 @@
-package session.configuration;
+package greenfield.group.com.gatewayutils.session.configuration;
 
+import greenfield.group.com.gatewayutils.configuration.redis.SpringRedisPropertiesConfig;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
@@ -10,13 +12,20 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 
 @Configuration
 @EnableRedisHttpSession
+@EnableConfigurationProperties
 class RedisConfiguration {
+
+    private final SpringRedisPropertiesConfig redisPropertiesConfig;
+
+    public RedisConfiguration(SpringRedisPropertiesConfig redisPropertiesConfig) {
+        this.redisPropertiesConfig = redisPropertiesConfig;
+    }
 
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
         LettuceConnectionFactory redisConnectionFactory = new LettuceConnectionFactory();
-        redisConnectionFactory.getStandaloneConfiguration().setHostName("redis-session-storage");
-        redisConnectionFactory.getStandaloneConfiguration().setPort(6379);
+        redisConnectionFactory.getStandaloneConfiguration().setHostName(redisPropertiesConfig.getHost());
+        redisConnectionFactory.getStandaloneConfiguration().setPort(redisPropertiesConfig.getPort());
         return redisConnectionFactory;
     }
 

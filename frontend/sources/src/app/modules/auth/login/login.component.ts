@@ -1,7 +1,10 @@
+import { KladrService } from 'src/app/services/kladr-service/kladr.service';
+
 import { AccountEntity } from './../../../classes/accountEntity';
 import { AppAccountContextService } from './../../../services/app-account-context-service/app-account-context.service';
 import { AppRouteService } from './../../../services/app-route-service/app-route.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+
 
 @Component({
   selector: 'app-login',
@@ -15,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _appAccount: AppAccountContextService,
-    private _router: AppRouteService
+    private _router: AppRouteService,
+    private kladr: KladrService
   ) { }
 
   /**
@@ -34,4 +38,27 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  public a() {
+    this.kladr.loadRegion('Я').subscribe(res => {
+      console.log(res);
+    });
+
+  }
+
+  public b() {
+    console.log('b' + this.kladr.loadDistrict('Рыби', 1));
+  }
+
+  public c() {
+    console.log('c' + this.kladr.loadCity('Рыби', 1));
+  }
+
+  public d() {
+    console.log('d' + this.kladr.loadStreet('Рыби', 1));
+  }
+
+  public e() {
+  }
+
 }

@@ -3,13 +3,13 @@ package greenfield.group.com.authservice.services;
 import entities.authservice.Account;
 import entities.authservice.Role;
 import enums.AccountRole;
-import enums.Status;
 import greenfield.group.com.authservice.repositories.AccountRepository;
 import greenfield.group.com.authservice.session.sessionimpl.AccountRedisSessionSeriveImpl;
+import greenfield.group.com.gatewayutils.enums.Status;
+import greenfield.group.com.gatewayutils.results.SimpleResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import results.SimpleResult;
 
 import java.util.Optional;
 import java.util.UUID;

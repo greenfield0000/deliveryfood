@@ -1,6 +1,6 @@
-package results;
+package greenfield.group.com.gatewayutils.results;
 
-import enums.Status;
+import greenfield.group.com.gatewayutils.enums.Status;
 
 public class SimpleResult<T> {
     private Status status;

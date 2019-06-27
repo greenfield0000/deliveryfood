@@ -5,12 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.authservice.Account;
 import entities.authservice.Role;
 import greenfield.group.com.authservice.services.AccountService;
+import greenfield.group.com.gatewayutils.response.GateResponse;
+import greenfield.group.com.gatewayutils.results.SimpleResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import response.GateResponse;
-import results.SimpleResult;
 
 import java.io.IOException;
 import java.util.Map;
@@ -28,17 +28,17 @@ public class AuthGate {
 
     @RequestMapping(path = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<Account> login(@RequestBody Account account) {
-        return new GateResponse<>(accountService.signIn(account)).getResult();
+        return accountService.signIn(account);
     }
 
     @RequestMapping(path = "/logout", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<Account> logout(@RequestBody Account account) {
-        return new GateResponse<>(accountService.signOut(account)).getResult();
+        return accountService.signOut(account);
     }
 
     @RequestMapping(path = "/registry", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<Account> registry(@RequestBody Account account) {
-        return new GateResponse<>(accountService.registry(account)).getResult();
+        return accountService.registry(account);
     }
 
     @RequestMapping(path = "/getAccountRoleSysNameByUUID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

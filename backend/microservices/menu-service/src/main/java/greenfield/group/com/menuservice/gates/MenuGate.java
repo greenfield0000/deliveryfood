@@ -1,13 +1,13 @@
 package greenfield.group.com.menuservice.gates;
 
 import entities.authservice.Role;
-import enums.Status;
+import greenfield.group.com.gatewayutils.enums.Status;
+import greenfield.group.com.gatewayutils.results.SimpleResult;
 import greenfield.group.com.menuservice.services.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import results.SimpleResult;
 
 @CrossOrigin
 @RestController(value = "/menu")

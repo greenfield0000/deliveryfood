@@ -1,4 +1,4 @@
-package enums;
+package greenfield.group.com.gatewayutils.enums;
 
 /**
  * Статусы ответа сервера

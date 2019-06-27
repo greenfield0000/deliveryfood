@@ -1,9 +1,9 @@
 package greenfield.group.com.journalservice.gates;
 
-import enums.Status;
+import greenfield.group.com.gatewayutils.enums.Status;
+import greenfield.group.com.gatewayutils.results.SimpleResult;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import results.SimpleResult;
 
 @CrossOrigin
 @RestController(value = "/journal")

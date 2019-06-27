@@ -7,10 +7,7 @@ import greenfield.group.com.fiascloudkladr.api.exception.KladrApiServiceExceptio
 import greenfield.group.com.fiascloudkladr.api.types.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -20,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 27.06.19
  * @since 8
  **/
+@CrossOrigin
 @RestController(value = "/kladr")
 public class KladrGate {
 
@@ -41,35 +39,35 @@ public class KladrGate {
         return ResultContext;
     }
 
-    @RequestMapping(path = "/getRegion", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/getRegion", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResultContext getRegion(@RequestBody RequestContext requestContext) {
         RequestContext context = new RequestContext(requestContext);
         context.setContentType(ContentType.region);
         return kladrCall(context);
     }
 
-    @RequestMapping(path = "/getDistrict", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/getDistrict", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResultContext getDistrict(@RequestBody RequestContext requestContext) {
         RequestContext context = new RequestContext(requestContext);
         context.setContentType(ContentType.district);
         return kladrCall(context);
     }
 
-    @RequestMapping(path = "/getCity", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/getCity", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResultContext getCity(@RequestBody RequestContext requestContext) {
         RequestContext context = new RequestContext(requestContext);
         context.setContentType(ContentType.city);
         return kladrCall(context);
     }
 
-    @RequestMapping(path = "/getStreet", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/getStreet", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResultContext getStreet(@RequestBody RequestContext requestContext) {
         RequestContext context = new RequestContext(requestContext);
         context.setContentType(ContentType.street);
         return kladrCall(context);
     }
 
-    @RequestMapping(path = "/getBuilding", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/getBuilding", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResultContext getBuilding(@RequestBody RequestContext requestContext) {
         RequestContext context = new RequestContext(requestContext);
         context.setContentType(ContentType.building);

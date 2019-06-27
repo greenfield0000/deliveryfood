@@ -1,6 +1,6 @@
-package response;
+package greenfield.group.com.gatewayutils.response;
 
-import results.SimpleResult;
+import greenfield.group.com.gatewayutils.results.SimpleResult;
 
 public class GateResponse<T> {
 
