@@ -11,7 +11,7 @@
 
 	<artifactId>fiascloudkladr</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>fiascloudkladr</name>
+	<name>fiascloudkladr-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

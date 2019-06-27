@@ -1,8 +1,9 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Address } from '../../classes/address';
 import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { ReactiveForm } from 'src/app/classes/reactive-form';
+import { map, startWith } from 'rxjs/operators';
 
 /**
  * Компонент работы с kladr.
@@ -37,7 +38,11 @@ import { ReactiveForm } from 'src/app/classes/reactive-form';
  *  18) callback – JavaScript метод которому будет передан ответ базы
  *
  *  */
-
+export interface State {
+  flag: string;
+  name: string;
+  population: string;
+}
 @Component({
   selector: 'app-address-kladr',
   templateUrl: './address-kladr.component.html',
@@ -50,19 +55,88 @@ export class AddressKladrComponent extends ReactiveForm implements OnInit, OnDes
   @Output()
   public addressChange = new EventEmitter();
 
+
   private addressGroup: FormGroup;
   private subject: Subscription;
+
+  private regionCtrl = new FormControl();
+  private cityCtrl = new FormControl();
+  private streetCtrl = new FormControl();
+  private buildingCtrl = new FormControl();
+
+  private stateList: State[] = [
+    {
+      name: 'Arkansas',
+      population: '2.978M',
+      // https://commons.wikimedia.org/wiki/File:Flag_of_Arkansas.svg
+      flag: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Arkansas.svg'
+    },
+    {
+      name: 'California',
+      population: '39.14M',
+      // https://commons.wikimedia.org/wiki/File:Flag_of_California.svg
+      flag: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg'
+    },
+    {
+      name: 'Florida',
+      population: '20.27M',
+      // https://commons.wikimedia.org/wiki/File:Flag_of_Florida.svg
+      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Florida.svg'
+    },
+    {
+      name: 'Texas',
+      population: '27.47M',
+      // https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
+      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
+    }
+  ];
+
+  private filteredRegion: Observable<State[]>;
+  private filteredCity: Observable<State[]>;
+  private filteredStreet: Observable<State[]>;
+  private filteredBuilding: Observable<State[]>;
 
   constructor(private formBuildfer: FormBuilder) {
     super();
     this.addressGroup = this.formBuildfer.group({
       buildingId: this.address.$buildingId,
       streetId: this.address.$streetId,
-      cityId: this.address.$cityId
+      cityId: this.address.$cityId,
+      apartment: this.address.$apartment,
+      zip: this.address.$zip
     });
 
     this.registrySubscription();
+
+    this.filteredRegion = this.regionCtrl.valueChanges
+      .pipe(
+        startWith(''),
+        map(state => state ? this._filterStates(this.filteredRegion, state) : this.stateList.slice())
+      );
+
+    this.filteredCity = this.cityCtrl.valueChanges
+      .pipe(
+        startWith(''),
+        map(state => state ? this._filterStates(this.filteredCity, state) : this.stateList.slice())
+      );
+    this.filteredStreet = this.streetCtrl.valueChanges
+      .pipe(
+        startWith(''),
+        map(state => state ? this._filterStates(this.filteredStreet, state) : this.stateList.slice())
+      );
+    this.filteredBuilding = this.buildingCtrl.valueChanges
+      .pipe(
+        startWith(''),
+        map(state => state ? this._filterStates(this.filteredBuilding, state) : this.stateList.slice())
+      );
   }
+
+  private _filterStates(filteredList: Observable<State[]>, value: string): State[] {
+    const filterValue = value.toLowerCase();
+
+    return this.stateList.filter(state => state.name.toLowerCase().indexOf(filterValue) === 0);
+  }
+
 
   protected registrySubscription(): void {
     if (this.addressGroup) {

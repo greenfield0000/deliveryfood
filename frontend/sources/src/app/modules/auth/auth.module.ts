@@ -9,7 +9,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import {
   MatToolbarModule, MatSidenavModule, MatButtonModule, MatCardModule,
-  MatFormFieldModule, MatProgressSpinnerModule, MatInputModule, MatStepperModule, MatCheckboxModule, MatSelectModule, MatDatepickerModule
+  MatFormFieldModule, MatProgressSpinnerModule, MatInputModule, MatStepperModule, MatCheckboxModule, MatSelectModule, MatDatepickerModule, MatAutocompleteModule
 } from '@angular/material';
 import { RegistryStepperComponent } from 'src/app/components/registy-stepper/registry-stepper.component';
 
@@ -39,7 +39,8 @@ import { RegistryStepperComponent } from 'src/app/components/registy-stepper/reg
     MatStepperModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatAutocompleteModule
   ],
   exports: [LoginComponent, RegistryComponent],
   providers: []

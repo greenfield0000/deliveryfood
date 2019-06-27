@@ -4,12 +4,14 @@
  */
 export class Address {
 
+    private name: string;
     private token: string;
     private regionId: string;
     private districtId: string;
     private cityId: string;
     private streetId: string;
     private buildingId: string;
+    private apartment: string;
     private query: string;
     private contentType: string;
     private withParent: number;
@@ -21,6 +23,7 @@ export class Address {
 
     constructor(data?: any) {
         if (data) {
+            this.name = data && data.name || '';
             this.token = data && data.token || '';
             this.regionId = data && data.regionId || '';
             this.districtId = data && data.districtId || '';
@@ -33,6 +36,7 @@ export class Address {
             this.limit_property = data && data.limit_property || '';
             this.offset = data && data.offset || '';
             this.typeCode = data && data.typeCode || '';
+            this.apartment = data && data.apartment || '';
             this.zip = data && data.zip || 0;
             this.callback = data && data.callback || null;
         }
@@ -261,4 +265,40 @@ export class Address {
     public set $callback(value: Function) {
         this.callback = value;
     }
+
+
+    /**
+     * Getter $apartment
+     * @return {string}
+     */
+    public get $apartment(): string {
+        return this.apartment;
+    }
+
+    /**
+     * Setter $apartment
+     * @param {string} value
+     */
+    public set $apartment(value: string) {
+        this.apartment = value;
+    }
+
+
+    /**
+     * Getter $name
+     * @return {string}
+     */
+    public get $name(): string {
+        return this.name;
+    }
+
+    /**
+     * Setter $name
+     * @param {string} value
+     */
+    public set $name(value: string) {
+        this.name = value;
+    }
+
+
 }
