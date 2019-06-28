@@ -1,38 +1,35 @@
 <form [formGroup]="addressGroup"  class="form-step">
   <mat-form-field class="example-full-width">
-    <input matInput type="text" placeholder="Регион" aria-label="Регион" [matAutocomplete]="auto" [formControl]="regionCtrl">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let region of filteredRegion | async" [value]="region.name">
-        <span>{{region.name}}</span> |
+    <input matInput type="text" placeholder="Регион" aria-label="Регион" [matAutocomplete]="autoRegion" [formControl]="regionCtrl" (ngModelChange)="loadRegion($event)">
+    <mat-autocomplete #autoRegion="matAutocomplete" >
+      <mat-option *ngFor="let region of (filteredRegionList | async)" [value]="region.name">
+        <span>{{region.name}}</span>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <!--input matInput formControlName="cityId" placeholder="Город, нас. пункт" name="cityId" required-->
-    <input matInput placeholder="Город, нас. пункт" aria-label="Город, нас. пункт" [matAutocomplete]="auto" [formControl]="cityCtrl">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let city of filteredCity | async" [value]="city.name">
+    <input matInput placeholder="Город, нас. пункт" aria-label="Город, нас. пункт" [matAutocomplete]="autoCity" [formControl]="cityCtrl" (ngModelChange)="loadCity($event)">
+    <mat-autocomplete #autoCity="matAutocomplete">
+      <mat-option *ngFor="let city of filteredCityList | async" [value]="city.name">
         <span>{{city.name}}</span> |
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <!-- input matInput formControlName="streetId" placeholder="Улица" name="streetId" required-->
-    <input matInput placeholder="Улица" aria-label="Улица" [matAutocomplete]="auto" [formControl]="streetCtrl">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let street of filteredStreet | async" [value]="street.name">
+    <input matInput placeholder="Улица" aria-label="Улица" [matAutocomplete]="autoStreet" [formControl]="streetCtrl" (ngModelChange)="loadStreet($event)">
+    <mat-autocomplete #autoStreet="matAutocomplete">
+      <mat-option *ngFor="let street of filteredStreetList | async" [value]="street.name">
         <span>{{street.name}}</span>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <!--input matInput formControlName="buildingId" placeholder="Корпус" name="buildingId" required-->
-    <input matInput placeholder="Корпус" aria-label="Корпус" [matAutocomplete]="auto" [formControl]="buildingCtrl">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let building of filteredBuilding | async" [value]="building.name">
+    <input matInput placeholder="Корпус" aria-label="Корпус" [matAutocomplete]="autoBuilding" [formControl]="buildingCtrl" (ngModelChange)="loadBuilding($event)">
+    <mat-autocomplete #autoBuilding="matAutocomplete">
+      <mat-option *ngFor="let building of filteredBuildingList | async" [value]="building.name">
         <span>{{building.name}}</span>
       </mat-option>
     </mat-autocomplete>

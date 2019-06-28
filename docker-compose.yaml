@@ -1,29 +1,27 @@
-version: '3.4'
+version: "3.4"
 services:
-  
   # frontend
   suppbery-admin:
-    container_name: suppbery-admin 
+    container_name: suppbery-admin
     build: ./frontend
     ports:
-     - "4200:4200"
-    volumes: 
-     - "~/repository/frontend/sources:/angular/suppbery-admin"
+      - "4200:4200"
+    volumes:
+      - "~/repository/frontend/sources:/angular/suppbery-admin"
     network_mode: host
 
   #auth-service
   auth-service:
     container_name: auth-service
-    restart: always
     build: ./backend/microservices/auth-service
     command: redis-cli -h redis-session-storage
     ports:
-     - "8081:8081"
-     - "9081:9081"
+      - "8081:8081"
+      - "9081:9081"
     depends_on:
-     - auth-db
-     - redis-session-storage
-    links: 
+      - auth-db
+      - redis-session-storage
+    links:
       - auth-db:auth-db
       - redis-session-storage:redis-session-storage
 
@@ -32,11 +30,11 @@ services:
     container_name: auth-db
     hostname: auth-db
     image: mysql:latest
-    ports: 
+    ports:
       - "3306:3306"
-    volumes: 
+    volumes:
       - "~/backup_database/mysql/auth-db:/var/lib/mysql"
-    environment: 
+    environment:
       - "MYSQL_ROOT_PASSWORD=123"
       - "MYSQL_DATABASE=auth-db"
       - "MYSQL_TCP_PORT=3306"
@@ -44,52 +42,59 @@ services:
   #menu-service
   menu-service:
     container_name: menu-service
-    restart: always
     build: ./backend/microservices/menu-service
     ports:
-     - "8082:8082"
-     - "9082:9082"
+      - "8082:8082"
+      - "9082:9082"
     depends_on:
       - menu-db
     links:
       - menu-db:menu-db
       - auth-service:auth-service
-  
+
   # menu-db
   menu-db:
     container_name: menu-db
     hostname: menu-db
     image: mongo:latest
-    volumes: 
+    volumes:
       - "~/backup_database/mongodb/volume/menu-db:/data/db"
       - "~/backup_database/mongodb/volume/menu-db/log:/var/log/mongodb"
-    ports: 
+    ports:
       - "27017:27017"
 
   #journal-service
- # journal-service:
- #   container_name: journal-service
- #   restart: always
- #   build: ./backend/microservices/journal-service
- #   ports:
- #    - "8083:8083"
- #    - "9083:9083"
- #   depends_on:
- #     - journal-db
- #   links:
- #     - journal-db:journal-db
+  # journal-service:
+  #   container_name: journal-service
+  #   restart: always
+  #   build: ./backend/microservices/journal-service
+  #   ports:
+  #    - "8083:8083"
+  #    - "9083:9083"
+  #   depends_on:
+  #     - journal-db
+  #   links:
+  #     - journal-db:journal-db
 
   # journal-db
-#  journal-db:
- #   container_name: journal-db
+  #  journal-db:
+  #   container_name: journal-db
   #  hostname: journal-db
   #  image: mongo:latest
   #  volumes:
   #    - "/home/aleksey/backup_database/mongodb/volume/journal-db:/data/db"
   #  ports:
   #    - "27018:27017"
-   # networks:
-    #  - backend
+  # networks:
+  #  - backend
+
+  # fias-kladr-service
+  kladr-service:
+    container_name: kladr-service
+    restart: always
+    build: ./backend/microservices/fiascloudkladr-service
+    ports:
+      - "8084:8084"
 
   # account-session storage
   redis-session-storage:
@@ -99,6 +104,6 @@ services:
       - REDIS_PASSWORD=mypass
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     volumes:
-      - '~/rediss-storage/redis/data:/data'
+      - "~/rediss-storage/redis/data:/data"
     ports:
       - "6379:6379"

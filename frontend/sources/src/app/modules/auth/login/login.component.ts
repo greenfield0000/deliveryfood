@@ -39,26 +39,4 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  public a() {
-    this.kladr.loadRegion('Я').subscribe(res => {
-      console.log(res);
-    });
-
-  }
-
-  public b() {
-    console.log('b' + this.kladr.loadDistrict('Рыби', 1));
-  }
-
-  public c() {
-    console.log('c' + this.kladr.loadCity('Рыби', 1));
-  }
-
-  public d() {
-    console.log('d' + this.kladr.loadStreet('Рыби', 1));
-  }
-
-  public e() {
-  }
-
 }
