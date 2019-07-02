@@ -70,7 +70,9 @@ export class AddressKladrComponent extends ReactiveForm
   public addressChange = new EventEmitter();
 
   public addressGroup: FormGroup;
-  private subject: Subscription;
+  private subject: Subscription = new Subscription();
+
+  public apartmentOFFCtrl = new FormControl();
 
   public regionCtrl = new FormControl();
   public cityCtrl = new FormControl();
@@ -94,13 +96,14 @@ export class AddressKladrComponent extends ReactiveForm
 
   constructor(private formBuildfer: FormBuilder, private kladr: KladrService) {
     super();
-    this.addressGroup = this.formBuildfer.group({
-      buildingId: this.buildingCtrl.value,
-      streetId: this.streetCtrl.value,
-      cityId: this.cityCtrl.value,
-      apartment: this.apartmentCtrl.value,
-      zip: this.zipCtrl.value
-    });
+    this.addressGroup = this.formBuildfer.group([{
+      buildingId: [{ value: this.buildingCtrl.value }],
+      streetId: [{ value: this.streetCtrl.value }],
+      cityId: [{ value: this.cityCtrl.value }],
+      apartment: [{ value: this.apartmentCtrl.value }],
+      zip: [{ value: this.zipCtrl.value }],
+      apartmentOFF: [{ value: this.apartmentOFFCtrl.value }]
+    }]);
 
     this.registrySubscription();
   }
@@ -115,10 +118,13 @@ export class AddressKladrComponent extends ReactiveForm
 
   protected registrySubscription(): void {
     if (this.addressGroup) {
-      this.subject = this.addressGroup.valueChanges.subscribe((values: any) => {
+      this.subject.add(this.addressGroup.valueChanges.subscribe((values: any) => {
         this.address = new Address(values);
         this.addressChange.emit(this.address);
-      });
+      }));
+      this.subject.add(this.apartmentOFFCtrl.valueChanges.subscribe((value: any) =>
+        value ? this.apartmentCtrl.disable() : this.apartmentCtrl.reset({value: '', disabled: false})
+      ));
     }
   }
 
@@ -221,4 +227,5 @@ export class AddressKladrComponent extends ReactiveForm
     };
     this.callerEmmiter.next(test);
   }
+
 }

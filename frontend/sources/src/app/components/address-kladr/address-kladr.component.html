@@ -18,7 +18,7 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Улица" aria-label="Улица" [matAutocomplete]="autoStreet" [formControl]="streetCtrl" (ngModelChange)="loadStreet($event)">
+    <input matInput  placeholder="Улица" aria-label="Улица" [matAutocomplete]="autoStreet" [formControl]="streetCtrl" (ngModelChange)="loadStreet($event)">
     <mat-autocomplete #autoStreet="matAutocomplete">
       <mat-option *ngFor="let street of filteredStreetList | async" [value]="street.name">
         <span>{{street.name}}</span>
@@ -27,7 +27,7 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Корпус" aria-label="Корпус" [matAutocomplete]="autoBuilding" [formControl]="buildingCtrl" (ngModelChange)="loadBuilding($event)">
+    <input matInput placeholder="Корпус" aria-label="Корпус, дом, строение " [matAutocomplete]="autoBuilding" [formControl]="buildingCtrl" (ngModelChange)="loadBuilding($event)">
     <mat-autocomplete #autoBuilding="matAutocomplete">
       <mat-option *ngFor="let building of filteredBuildingList | async" [value]="building.name">
         <span>{{building.name}}</span>
@@ -36,11 +36,13 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput [formControl]="apartmentCtrl" placeholder="Квартира" name="apartment">
+    <input matInput [formControl]="apartmentCtrl" placeholder="Квартира">
   </mat-form-field>
 
+  <mat-checkbox class="example-margin" [formControl]="apartmentOFFCtrl">отсутствует</mat-checkbox>
+
   <mat-form-field class="example-full-width">
-    <input matInput [formControl]="zipCtrl" placeholder="Индекс" name="zip" required>
+    <input matInput [formControl]="zipCtrl" placeholder="Индекс" required>
   </mat-form-field>
 
 </form>

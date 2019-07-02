@@ -33,7 +33,7 @@ export class RegistryStepperComponent extends ReactiveForm implements OnInit {
 
   // флаг, отвечающий за свойство степпера (true - возможно переходить только
   // из шага в шаг, false - в любом порядке)
-  private isLinear = true;
+  private isLinear = false;
   // Форм группы для валидаций и тд.
   private accountDataFormGroup: FormGroup;
   private personalDataFormGroup: FormGroup;
