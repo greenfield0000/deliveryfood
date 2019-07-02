@@ -36,11 +36,11 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput formControlName="apartment" placeholder="Квартира" name="apartment">
+    <input matInput [formControl]="apartmentCtrl" placeholder="Квартира" name="apartment">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput formControlName="zip" placeholder="Индекс" name="zip" required>
+    <input matInput [formControl]="zipCtrl" placeholder="Индекс" name="zip" required>
   </mat-form-field>
 
 </form>

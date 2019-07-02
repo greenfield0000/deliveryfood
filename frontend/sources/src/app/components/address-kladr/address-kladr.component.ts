@@ -21,6 +21,7 @@ import {
 } from 'rxjs/operators';
 
 import { AddressEmmiter, AddressItemType } from './model/address-emiter.model';
+import { SimpleResult } from 'src/app/utils/simple-result.class';
 
 /**
  * Компонент работы с kladr.
@@ -75,6 +76,8 @@ export class AddressKladrComponent extends ReactiveForm
   public cityCtrl = new FormControl();
   public streetCtrl = new FormControl();
   public buildingCtrl = new FormControl();
+  public apartmentCtrl = new FormControl();
+  public zipCtrl = new FormControl();
 
   public filteredRegionList: Observable<AddressModel[]>;
   public filteredCityList: Observable<AddressModel[]>;
@@ -85,14 +88,18 @@ export class AddressKladrComponent extends ReactiveForm
    */
   private callerEmmiter: Subject<AddressEmmiter> = new Subject<AddressEmmiter>();
 
+  private regionId: string = '';
+  private cityId: string = '';
+  private streetId: string = '';
+
   constructor(private formBuildfer: FormBuilder, private kladr: KladrService) {
     super();
     this.addressGroup = this.formBuildfer.group({
-      buildingId: this.address.$buildingId,
-      streetId: this.address.$streetId,
-      cityId: this.address.$cityId,
-      apartment: this.address.$apartment,
-      zip: this.address.$zip
+      buildingId: this.buildingCtrl.value,
+      streetId: this.streetCtrl.value,
+      cityId: this.cityCtrl.value,
+      apartment: this.apartmentCtrl.value,
+      zip: this.zipCtrl.value
     });
 
     this.registrySubscription();
@@ -122,27 +129,32 @@ export class AddressKladrComponent extends ReactiveForm
       .pipe(debounceTime(1000)) // wait 1 sec after the last event before emitting last event
       .pipe(distinctUntilChanged()) // only emit if value is different from previous value
       .subscribe(emmiter => {
-        console.log('this.regionCtrl = ', this.regionCtrl);
-        this.kladr
+        const queryId: string = this[emmiter.parentId] ? this[emmiter.parentId] : '';
+        this.subject.add(this.kladr
           .load(emmiter.type, {
-            id: emmiter.id,
+            id: queryId,
             query: emmiter.query
           })
-          .subscribe(res => {
-            console.log('res = ', res);
-            this[emmiter.filteredListName] = from(
-              this[emmiter.formControllerName].valueChanges.pipe(
-                startWith(''),
-                map(item =>
-                  item
-                    ? this._filterStates(res.result, (<string> item))
-                    : res.result
+          .subscribe((res: SimpleResult<AddressModel[]>) => {
+            if (res && res.result) {
+              const firstElementAddress: AddressModel = res && res.result && res.result[0] || null;
+              if (firstElementAddress) {
+                this[emmiter.currentId] = firstElementAddress && firstElementAddress.id || '';
+              }
+
+              this[emmiter.filteredListName] = from(
+                this[emmiter.formControllerName].valueChanges.pipe(
+                  startWith(''),
+                  map(item =>
+                    item
+                      ? this._filterStates(res.result, (<string>item))
+                      : res.result
+                  )
                 )
-              )
-            );
-            console.log('this.regionCtrl = ', this.regionCtrl);
-            console.log('filteredRegion = ', emmiter.filteredListName);
-          });
+              );
+              this.zipCtrl.setValue(firstElementAddress && firstElementAddress.zip && firstElementAddress.zip);
+            }
+          }));
       });
   }
 
@@ -156,10 +168,12 @@ export class AddressKladrComponent extends ReactiveForm
   }
 
   public loadRegion(event: any) {
+    this.regionId = '';
     console.log('event = ' + event);
     const test: AddressEmmiter = {
       query: event,
-      id: '',
+      parentId: '',
+      currentId: 'regionId',
       type: AddressItemType.region,
       filteredListName: 'filteredRegionList',
       formControllerName: 'regionCtrl'
@@ -168,10 +182,12 @@ export class AddressKladrComponent extends ReactiveForm
   }
 
   public loadCity(event: any) {
+    this.cityId = '';
     console.log('event = ' + event);
     const test: AddressEmmiter = {
       query: event,
-      id: '',
+      parentId: 'regionId',
+      currentId: 'cityId',
       type: AddressItemType.city,
       filteredListName: 'filteredCityList',
       formControllerName: 'cityCtrl'
@@ -180,10 +196,12 @@ export class AddressKladrComponent extends ReactiveForm
   }
 
   public loadStreet(event: any) {
+    this.streetId = '';
     console.log('event = ' + event);
     const test: AddressEmmiter = {
       query: event,
-      id: '',
+      parentId: 'cityId',
+      currentId: 'streetId',
       type: AddressItemType.street,
       filteredListName: 'filteredStreetList',
       formControllerName: 'streetCtrl'
@@ -195,7 +213,8 @@ export class AddressKladrComponent extends ReactiveForm
     console.log('event = ' + event);
     const test: AddressEmmiter = {
       query: event,
-      id: '',
+      parentId: 'streetId',
+      currentId: '',
       type: AddressItemType.building,
       filteredListName: 'filteredBuildingList',
       formControllerName: 'buildingCtrl'

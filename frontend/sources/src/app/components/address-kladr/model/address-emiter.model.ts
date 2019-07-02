@@ -9,7 +9,8 @@ export enum AddressItemType {
 
 export interface AddressEmmiter {
   query: string;
-  id: string;
+  parentId: string;
+  currentId: string;
   type: AddressItemType;
   filteredListName: string;
   formControllerName: string;
