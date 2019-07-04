@@ -1,4 +1,5 @@
-import { Address } from './address';
+import { Address } from './address/address.class';
+
 /**
  * Сущность - пользователь
  */

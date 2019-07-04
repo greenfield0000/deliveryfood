@@ -1,7 +1,7 @@
-import { AddressEmmiter } from './address-emiter.model';
+import { AddressItemType } from 'src/app/components/address-kladr/model/address-emiter.model';
 export interface AddressModel {
   cadnum: string;
-  contentType: AddressEmmiter;
+  contentType: AddressItemType;
   guid: string;
   id: string;
   ifnsfl: string;

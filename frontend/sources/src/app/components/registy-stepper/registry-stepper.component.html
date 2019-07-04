@@ -3,23 +3,23 @@
     <form [formGroup]="accountDataFormGroup">
       <ng-template matStepLabel>Аккаунт</ng-template>
       <div class="step-form-1-2">
-        <mat-form-field>
+        <mat-form-field class="form-field">
           <mat-select placeholder="Тип учетной записи" formControlName="accountRole" name="accountRole">
             <mat-option *ngFor="let role of accountRoles" [value]="role.id">
               {{role.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="form-field">
           <input matInput formControlName="nickName" placeholder="Никнейм" name="nickName" required>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="form-field">
           <input matInput formControlName="login" placeholder="Логин" name="login" required>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="form-field">
           <input matInput formControlName="password" placeholder="Пароль" name="password" type="password" required>
         </mat-form-field>
-        <mat-form-field class="example-full-width"> 
+        <mat-form-field class="form-field"> 
           <input matInput formControlName="passwordRepeat" placeholder="Повторите пароль" name="passwordRepeat"
             type="password" required>
         </mat-form-field>
@@ -34,24 +34,24 @@
     <form [formGroup]="personalDataFormGroup">
       <ng-template matStepLabel>Персональные данные</ng-template>
       <div class="step-form-1-2">
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="form-field">
           <input matInput formControlName="name" placeholder="Имя" name="name" required>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="form-field">
           <input matInput formControlName="surName" placeholder="Фамилия" name="surName" required>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="form-field">
           <input matInput formControlName="lastName" placeholder="Отчество" name="lastName" required>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="form-field">
           <input matInput [matDatepicker]="birthDayPicker" placeholder="Дата рождения" formControlName="birthDay">
           <mat-datepicker-toggle matSuffix [for]="birthDayPicker"></mat-datepicker-toggle>
           <mat-datepicker #birthDayPicker></mat-datepicker>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="form-field">
           <input type="number" matInput formControlName="phone" placeholder="Номер телефона" name="phone" required>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="form-field">
           <input type="email" matInput formControlName="email" placeholder="E-mail" name="email" type="email" required>
         </mat-form-field>
       </div>

@@ -1,5 +1,5 @@
 import { ReactiveForm } from './../../classes/reactive-form';
-import { Address } from '../../classes/address';
+import { Address } from '../../classes/address/address.class';
 import { AccountEntity } from './../../classes/accountEntity';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';

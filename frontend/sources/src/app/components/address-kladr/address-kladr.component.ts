@@ -1,26 +1,20 @@
+import { AddressItem } from './../../classes/address/address-item.class';
 import { AddressModel } from './model/address.model';
 import { KladrService } from 'src/app/services/kladr-service/kladr.service';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { Address } from '../../classes/address';
-import {
-  Component,
-  OnInit,
-  Input,
-  OnDestroy,
-  Output,
-  EventEmitter
-} from '@angular/core';
-import { Subscription, Observable, Subject, from } from 'rxjs';
+import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveForm } from 'src/app/classes/reactive-form';
 import {
   map,
-  startWith,
   filter,
   debounceTime,
-  distinctUntilChanged
+  distinctUntilChanged,
+  startWith
 } from 'rxjs/operators';
 
 import { AddressEmmiter, AddressItemType } from './model/address-emiter.model';
+import { Component, OnInit, Input, OnDestroy, Output } from '@angular/core';
+import { Address } from 'src/app/classes/address/address.class';
+import { Subscription, Observable, Subject, from } from 'rxjs';
 import { SimpleResult } from 'src/app/utils/simple-result.class';
 
 /**
@@ -65,9 +59,8 @@ import { SimpleResult } from 'src/app/utils/simple-result.class';
 export class AddressKladrComponent extends ReactiveForm
   implements OnInit, OnDestroy {
   @Input()
-  public address: Address = new Address();
   @Output()
-  public addressChange = new EventEmitter();
+  public address: Address = new Address();
 
   public addressGroup: FormGroup;
   private subject: Subscription = new Subscription();
@@ -93,39 +86,16 @@ export class AddressKladrComponent extends ReactiveForm
   private regionId: string = '';
   private cityId: string = '';
   private streetId: string = '';
+  private addressList: AddressModel[] = [];
 
-  constructor(private formBuildfer: FormBuilder, private kladr: KladrService) {
+  constructor(private kladr: KladrService) {
     super();
-    this.addressGroup = this.formBuildfer.group([{
-      buildingId: [{ value: this.buildingCtrl.value }],
-      streetId: [{ value: this.streetCtrl.value }],
-      cityId: [{ value: this.cityCtrl.value }],
-      apartment: [{ value: this.apartmentCtrl.value }],
-      zip: [{ value: this.zipCtrl.value }],
-      apartmentOFF: [{ value: this.apartmentOFFCtrl.value }]
-    }]);
-
     this.registrySubscription();
   }
-
-  private _filterStates(sourseList: AddressModel[], value: string): any[] {
-    const filterValue = value.toLowerCase();
-
-    return sourseList.filter(
-      (item: AddressModel) => item.name.toLowerCase().indexOf(filterValue) === 0
-    );
-  }
-
   protected registrySubscription(): void {
-    if (this.addressGroup) {
-      this.subject.add(this.addressGroup.valueChanges.subscribe((values: any) => {
-        this.address = new Address(values);
-        this.addressChange.emit(this.address);
-      }));
-      this.subject.add(this.apartmentOFFCtrl.valueChanges.subscribe((value: any) =>
-        value ? this.apartmentCtrl.reset({ value: '', disabled: true }) : this.apartmentCtrl.reset({ value: '', disabled: false })
-      ));
-    }
+    this.subject.add(this.apartmentOFFCtrl.valueChanges.subscribe((value: any) =>
+      value ? this.apartmentCtrl.reset({ value: '', disabled: true }) : this.apartmentCtrl.reset({ value: '', disabled: false })
+    ));
   }
 
 
@@ -143,6 +113,7 @@ export class AddressKladrComponent extends ReactiveForm
           })
           .subscribe((res: SimpleResult<AddressModel[]>) => {
             if (res && res.result) {
+              this.addressList = res && res.result;
               const firstElementAddress: AddressModel = res && res.result && res.result[0] || null;
               if (firstElementAddress) {
                 this[emmiter.currentId] = firstElementAddress && firstElementAddress.id || '';
@@ -151,11 +122,8 @@ export class AddressKladrComponent extends ReactiveForm
               this[emmiter.filteredListName] = from(
                 this[emmiter.formControllerName].valueChanges.pipe(
                   startWith(''),
-                  map(item =>
-                    item
-                      ? this._filterStates(res.result, (<string>item))
-                      : res.result
-                  )
+                  map((value: AddressModel) => typeof value === 'string' ? value : value.name),
+                  map((name: string) => name ? this._filter(name) : this.addressList.slice())
                 )
               );
               this.zipCtrl.setValue(firstElementAddress && firstElementAddress.zip && firstElementAddress.zip);
@@ -173,9 +141,43 @@ export class AddressKladrComponent extends ReactiveForm
     }
   }
 
+  private _filter(name: string): AddressModel[] {
+    const filterValue = name.toLowerCase();
+
+    return this.addressList.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+  }
+
   public loadRegion(event: any) {
+    if (event && event.name) {
+      if (!this.address) {
+        this.address = new Address();
+      }
+      const typeAddress: string = event.contentType.toString();
+      switch (typeAddress) {
+        case 'region': {
+          this.address.$region = new AddressItem(event);
+          break;
+        }
+        case 'district': {
+          break;
+        }
+        case 'city': {
+          this.address.$city = new AddressItem(event);
+          break;
+        }
+        case 'street': {
+          this.address.$street = new AddressItem(event);
+          break;
+        }
+        case 'building': {
+          this.address.$building = new AddressItem(event);
+          break;
+        }
+      }
+      console.log('building addres res = ', this.address);
+    }
+    event = event && event.name || event;
     this.regionId = '';
-    console.log('event = ' + event);
     const test: AddressEmmiter = {
       query: event,
       parentId: '',
@@ -188,9 +190,38 @@ export class AddressKladrComponent extends ReactiveForm
   }
 
   public loadCity(event: any) {
+    if (event && event.name) {
+      if (!this.address) {
+        this.address = new Address();
+      }
+      const typeAddress: string = event.contentType.toString();
+      switch (typeAddress) {
+        case 'region': {
+          this.address.$region = new AddressItem(event);
+          break;
+        }
+        case 'district': {
+          break;
+        }
+        case 'city': {
+          this.address.$city = new AddressItem(event);
+          break;
+        }
+        case 'street': {
+          this.address.$street = new AddressItem(event);
+          break;
+        }
+        case 'building': {
+          this.address.$building = new AddressItem(event);
+          break;
+        }
+      }
+      console.log('building addres res = ', this.address);
+    }
+    event = event && event.name || event;
     this.cityId = '';
-    console.log('event = ' + event);
-    const test: AddressEmmiter = {
+
+    const emitter: AddressEmmiter = {
       query: event,
       parentId: 'regionId',
       currentId: 'cityId',
@@ -198,13 +229,41 @@ export class AddressKladrComponent extends ReactiveForm
       filteredListName: 'filteredCityList',
       formControllerName: 'cityCtrl'
     };
-    this.callerEmmiter.next(test);
+    this.callerEmmiter.next(emitter);
   }
 
   public loadStreet(event: any) {
+    if (event && event.name) {
+      if (!this.address) {
+        this.address = new Address();
+      }
+      const typeAddress: string = event.contentType.toString();
+      switch (typeAddress) {
+        case 'region': {
+          this.address.$region = new AddressItem(event);
+          break;
+        }
+        case 'district': {
+          break;
+        }
+        case 'city': {
+          this.address.$city = new AddressItem(event);
+          break;
+        }
+        case 'street': {
+          this.address.$street = new AddressItem(event);
+          break;
+        }
+        case 'building': {
+          this.address.$building = new AddressItem(event);
+          break;
+        }
+      }
+      console.log('building addres res = ', this.address);
+    }
+    event = event && event.name || event;
     this.streetId = '';
-    console.log('event = ' + event);
-    const test: AddressEmmiter = {
+    const emitter: AddressEmmiter = {
       query: event,
       parentId: 'cityId',
       currentId: 'streetId',
@@ -212,12 +271,40 @@ export class AddressKladrComponent extends ReactiveForm
       filteredListName: 'filteredStreetList',
       formControllerName: 'streetCtrl'
     };
-    this.callerEmmiter.next(test);
+    this.callerEmmiter.next(emitter);
   }
 
   public loadBuilding(event: any) {
-    console.log('event = ' + event);
-    const test: AddressEmmiter = {
+    if (event && event.name) {
+      if (!this.address) {
+        this.address = new Address();
+      }
+      const typeAddress: string = event.contentType.toString();
+      switch (typeAddress) {
+        case 'region': {
+          this.address.$region = new AddressItem(event);
+          break;
+        }
+        case 'district': {
+          break;
+        }
+        case 'city': {
+          this.address.$city = new AddressItem(event);
+          break;
+        }
+        case 'street': {
+          this.address.$street = new AddressItem(event);
+          break;
+        }
+        case 'building': {
+          this.address.$building = new AddressItem(event);
+          break;
+        }
+      }
+      console.log('building addres res = ', this.address);
+    }
+    event = event && event.name || event;
+    const emitter: AddressEmmiter = {
       query: event,
       parentId: 'streetId',
       currentId: '',
@@ -225,7 +312,15 @@ export class AddressKladrComponent extends ReactiveForm
       filteredListName: 'filteredBuildingList',
       formControllerName: 'buildingCtrl'
     };
-    this.callerEmmiter.next(test);
+    this.callerEmmiter.next(emitter);
+  }
+
+  /**
+   * Внутри этой функции у нас область видимости АВТОКОМПЛИТА
+   * @param address 
+   */
+  public displayAddressItem(address?: AddressModel) {
+    return address ? address.name : undefined;
   }
 
 }
