@@ -123,7 +123,7 @@ export class AddressKladrComponent extends ReactiveForm
         this.addressChange.emit(this.address);
       }));
       this.subject.add(this.apartmentOFFCtrl.valueChanges.subscribe((value: any) =>
-        value ? this.apartmentCtrl.disable() : this.apartmentCtrl.reset({value: '', disabled: false})
+        value ? this.apartmentCtrl.reset({ value: '', disabled: true }) : this.apartmentCtrl.reset({ value: '', disabled: false })
       ));
     }
   }

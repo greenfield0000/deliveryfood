@@ -168,3 +168,13 @@ app-login {
   height: 100%;
   margin: auto;
 }
+
+.form-field {
+  margin: 0 5% 0 5%;
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  flex: 1;
+  justify-content: center;
+  width: 35%;
+}
