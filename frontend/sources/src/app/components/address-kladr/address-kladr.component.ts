@@ -86,6 +86,8 @@ export class AddressKladrComponent extends ReactiveForm
   private regionId: string = '';
   private cityId: string = '';
   private streetId: string = '';
+  private buildingId: string = '';
+
   private addressList: AddressModel[] = [];
 
   constructor(private kladr: KladrService) {
@@ -94,12 +96,10 @@ export class AddressKladrComponent extends ReactiveForm
   }
   protected registrySubscription(): void {
     this.subject.add(this.apartmentOFFCtrl.valueChanges.subscribe((value: any) =>
-      value ? this.apartmentCtrl.reset({ value: '', disabled: true }) : this.apartmentCtrl.reset({ value: '', disabled: false })
+      value ? this.resetControllerValue(this.apartmentCtrl, '', true) : this.resetControllerValue(this.apartmentCtrl)
     ));
   }
 
-
-  // TODO сделать передачу параметров для улицы, строения
   ngOnInit() {
     this.callerEmmiter
       .pipe(debounceTime(1000)) // wait 1 sec after the last event before emitting last event
@@ -126,7 +126,13 @@ export class AddressKladrComponent extends ReactiveForm
                   map((name: string) => name ? this._filter(name) : this.addressList.slice())
                 )
               );
-              this.zipCtrl.setValue(firstElementAddress && firstElementAddress.zip && firstElementAddress.zip);
+              // хреновый код - ПЕРЕДЕЛАТЬ!!!
+              const value1: string = firstElementAddress && AddressItemType[firstElementAddress.contentType].toString();
+              const value2: string = AddressItemType.street.toString();
+              if (value1 === value2) {
+                this.zipCtrl
+                  .setValue(firstElementAddress && firstElementAddress.zip && firstElementAddress.zip);
+              }
             }
           }));
       });
@@ -143,11 +149,42 @@ export class AddressKladrComponent extends ReactiveForm
 
   private _filter(name: string): AddressModel[] {
     const filterValue = name.toLowerCase();
-
-    return this.addressList.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+    return this.addressList.filter(
+      option => option.name.toLowerCase().indexOf(filterValue) === 0
+    );
   }
 
-  public loadRegion(event: any) {
+  /**
+   * Метод по сбросу значения у контроллера
+   * @param controller контроллер, чье значение стоит сбросить
+   */
+  private resetControllerValue(
+    controller: FormControl
+    , controllerValue: string = ''
+    , isDisable: boolean = false
+  ) {
+    if (controller) {
+      controller.reset({ value: controllerValue, disabled: isDisable });
+    }
+  }
+
+  /**
+   * Метод очистки зависимых дочерних контроллеров, относительно текущего
+   * @param formControllerList список контроллеров
+   */
+  private clearChildAddressItem(...formControllerList: FormControl[]) {
+    if (formControllerList) {
+      formControllerList.forEach(
+        (controller: FormControl) => this.resetControllerValue(controller)
+      );
+    }
+  }
+
+  /**
+   * Метод заполнения единицы адреса
+   * @param event событие с DOM
+   */
+  private fillAddressContentByEvent(event: any) {
     if (event && event.name) {
       if (!this.address) {
         this.address = new Address();
@@ -156,6 +193,14 @@ export class AddressKladrComponent extends ReactiveForm
       switch (typeAddress) {
         case 'region': {
           this.address.$region = new AddressItem(event);
+          this.clearChildAddressItem(
+            this.cityCtrl
+            , this.streetCtrl
+            , this.buildingCtrl
+            , this.apartmentCtrl
+            , this.apartmentOFFCtrl
+            , this.zipCtrl
+          );
           break;
         }
         case 'district': {
@@ -163,161 +208,140 @@ export class AddressKladrComponent extends ReactiveForm
         }
         case 'city': {
           this.address.$city = new AddressItem(event);
+          this.clearChildAddressItem(
+            this.streetCtrl
+            , this.buildingCtrl
+            , this.apartmentCtrl
+            , this.apartmentOFFCtrl
+            , this.zipCtrl
+          );
           break;
         }
         case 'street': {
           this.address.$street = new AddressItem(event);
+          this.clearChildAddressItem(
+            this.buildingCtrl
+            , this.apartmentCtrl
+            , this.apartmentOFFCtrl
+            , this.zipCtrl
+          );
           break;
         }
         case 'building': {
           this.address.$building = new AddressItem(event);
+          this.clearChildAddressItem(
+            this.apartmentCtrl
+            , this.apartmentOFFCtrl
+          );
           break;
         }
       }
       console.log('building addres res = ', this.address);
     }
-    event = event && event.name || event;
-    this.regionId = '';
+  }
+
+  /**
+   *
+   * Метод заполнения эмитера с заполнением и последующим вызовом события
+   *
+   * @param query строка, пользовательский запрос
+   * @param parentIdName строка, уникальный идентификатор родительской сущности (для региона - ничего,
+   * для города - регион, для улицы - город, и т.д.)
+   * @param currentIdName строка, текущий уникальный идентификатор, то что будем заполнять в соответствии
+   * с ответом
+   * @param addressItemType перечисление, тип того, что пытаемся найти
+   * @param filteredListName список, куда будем возвращать список
+   * @param formControllerName форм-контрол, имя контроллера, куда будет записан выбор
+   * пользователя на интерфейсе
+   */
+  private fillAddressEmitterAndCallEmmit(query: string, parentIdName: string, currentIdName: string,
+    addressItemType: AddressItemType, filteredListName: string, formControllerName: string) {
     const test: AddressEmmiter = {
-      query: event,
-      parentId: '',
-      currentId: 'regionId',
-      type: AddressItemType.region,
-      filteredListName: 'filteredRegionList',
-      formControllerName: 'regionCtrl'
+      query: query,
+      parentId: parentIdName,
+      currentId: currentIdName,
+      type: addressItemType,
+      filteredListName: filteredListName,
+      formControllerName: formControllerName
     };
     this.callerEmmiter.next(test);
   }
 
+  /**
+   * Метод по загрузке списка регионов, согласно запрашиваемому названию
+   * @param event название региона, или модель региона
+   */
+  public loadRegion(event: any) {
+    this.fillAddressContentByEvent(event);
+    event = event && event.name || event;
+    this.regionId = '';
+    this.fillAddressEmitterAndCallEmmit(
+      event,
+      '',
+      'regionId',
+      AddressItemType.region,
+      'filteredRegionList',
+      'regionCtrl'
+    );
+  }
+
+  /**
+   * Метод по загрузке списка городов, согласно запрашиваемому названию
+   * @param event название города, или модель города
+   */
   public loadCity(event: any) {
-    if (event && event.name) {
-      if (!this.address) {
-        this.address = new Address();
-      }
-      const typeAddress: string = event.contentType.toString();
-      switch (typeAddress) {
-        case 'region': {
-          this.address.$region = new AddressItem(event);
-          break;
-        }
-        case 'district': {
-          break;
-        }
-        case 'city': {
-          this.address.$city = new AddressItem(event);
-          break;
-        }
-        case 'street': {
-          this.address.$street = new AddressItem(event);
-          break;
-        }
-        case 'building': {
-          this.address.$building = new AddressItem(event);
-          break;
-        }
-      }
-      console.log('building addres res = ', this.address);
-    }
+    this.fillAddressContentByEvent(event);
     event = event && event.name || event;
     this.cityId = '';
-
-    const emitter: AddressEmmiter = {
-      query: event,
-      parentId: 'regionId',
-      currentId: 'cityId',
-      type: AddressItemType.city,
-      filteredListName: 'filteredCityList',
-      formControllerName: 'cityCtrl'
-    };
-    this.callerEmmiter.next(emitter);
+    this.fillAddressEmitterAndCallEmmit(
+      event,
+      'regionId',
+      'cityId',
+      AddressItemType.city,
+      'filteredCityList',
+      'cityCtrl'
+    );
   }
 
+  /**
+   * Метод по загрузке списка улиц, согласно запрашиваемому названию
+   * @param event название улицы, или модель улицы
+   */
   public loadStreet(event: any) {
-    if (event && event.name) {
-      if (!this.address) {
-        this.address = new Address();
-      }
-      const typeAddress: string = event.contentType.toString();
-      switch (typeAddress) {
-        case 'region': {
-          this.address.$region = new AddressItem(event);
-          break;
-        }
-        case 'district': {
-          break;
-        }
-        case 'city': {
-          this.address.$city = new AddressItem(event);
-          break;
-        }
-        case 'street': {
-          this.address.$street = new AddressItem(event);
-          break;
-        }
-        case 'building': {
-          this.address.$building = new AddressItem(event);
-          break;
-        }
-      }
-      console.log('building addres res = ', this.address);
-    }
+    this.fillAddressContentByEvent(event);
     event = event && event.name || event;
     this.streetId = '';
-    const emitter: AddressEmmiter = {
-      query: event,
-      parentId: 'cityId',
-      currentId: 'streetId',
-      type: AddressItemType.street,
-      filteredListName: 'filteredStreetList',
-      formControllerName: 'streetCtrl'
-    };
-    this.callerEmmiter.next(emitter);
+    this.fillAddressEmitterAndCallEmmit(
+      event,
+      'cityId',
+      'streetId',
+      AddressItemType.street,
+      'filteredStreetList',
+      'streetCtrl'
+    );
   }
 
+
+  /**
+   * Метод по загрузке списка домов, согласно запрашиваемому названию (номеру)
+   * @param event номер дома, или модель дома
+   */
   public loadBuilding(event: any) {
-    if (event && event.name) {
-      if (!this.address) {
-        this.address = new Address();
-      }
-      const typeAddress: string = event.contentType.toString();
-      switch (typeAddress) {
-        case 'region': {
-          this.address.$region = new AddressItem(event);
-          break;
-        }
-        case 'district': {
-          break;
-        }
-        case 'city': {
-          this.address.$city = new AddressItem(event);
-          break;
-        }
-        case 'street': {
-          this.address.$street = new AddressItem(event);
-          break;
-        }
-        case 'building': {
-          this.address.$building = new AddressItem(event);
-          break;
-        }
-      }
-      console.log('building addres res = ', this.address);
-    }
+    this.fillAddressContentByEvent(event);
     event = event && event.name || event;
-    const emitter: AddressEmmiter = {
-      query: event,
-      parentId: 'streetId',
-      currentId: '',
-      type: AddressItemType.building,
-      filteredListName: 'filteredBuildingList',
-      formControllerName: 'buildingCtrl'
-    };
-    this.callerEmmiter.next(emitter);
+    this.fillAddressEmitterAndCallEmmit(
+      event,
+      'streetId',
+      'buildingId',
+      AddressItemType.building,
+      'filteredBuildingList',
+      'buildingCtrl'
+    );
   }
 
   /**
    * Внутри этой функции у нас область видимости АВТОКОМПЛИТА
-   * @param address 
+   * @param address
    */
   public displayAddressItem(address?: AddressModel) {
     return address ? address.name : undefined;
