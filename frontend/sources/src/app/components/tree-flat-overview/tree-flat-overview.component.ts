@@ -6,6 +6,7 @@ import { MatTreeFlattener, MatTreeFlatDataSource } from '@angular/material';
 import { Observable, of as observableOf } from 'rxjs';
 import { MenuFlatNode } from 'src/app/classes/menu-flat-node';
 import { MenuNode } from 'src/app/classes/menu-node';
+import { MainSideNavService } from 'src/app/services/main-side-nav-service/main-side-nav.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class TreeFlatOverviewComponent {
   treeFlattener: MatTreeFlattener<MenuNode, MenuFlatNode>;
   dataSource: MatTreeFlatDataSource<MenuNode, MenuFlatNode>;
 
-  constructor(private database: MenuService, private appRouterService: AppRouteService, private menuService: MenuService) {
+  constructor(private database: MenuService, private appRouterService: AppRouteService, private menuService: MenuService, private sideNavService: MainSideNavService) {
     this.treeFlattener = new MatTreeFlattener(this.transformer, this._getLevel,
       this._isExpandable, this._getChildren);
     this.treeControl = new FlatTreeControl<MenuFlatNode>(this._getLevel, this._isExpandable);
@@ -49,6 +50,7 @@ export class TreeFlatOverviewComponent {
    */
   nodeClick(node: MenuFlatNode) {
     if (node && node.pathOfDash) {
+      this.sideNavService.close();
       this.appRouterService.goTo(`/dashbord/${node.pathOfDash}`, { skipLocationChange: true });
     }
   }

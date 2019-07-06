@@ -1,7 +1,57 @@
-.journal {
-  max-height: 500px;
-  max-width: 500px;
+.journal,
+.journal-top-btn,
+.journal-right-btn {
   width: 100%;
   height: 100%;
-  display: grid;
+}
+
+.journal {
+  max-height: 90%;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px 0px 0px;
+}
+
+.journal-grid {
+  width: 100%;
+  height: 100%;
+  margin: 0px 10px 0px 0px;
+}
+
+.journal-top-btn-block {
+  display: flex;
+  height: 30px;
+  flex-direction: row;
+}
+
+.journal-right-btn-block {
+  display: flex;
+  width: 30px;
+  flex-direction: column;
+}
+
+.journal-btn,
+.filter-btn,
+.refresh-btn {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.journal-pagginator {
+  margin: auto;
+  width: fit-content;
+}
+
+.filter-btn {
+  background: url("../../../assets/i/png/filter-btn.png");
+  background-size: contain;
+}
+
+.refresh-btn {
+  background: url("../../../assets/i/png/refresh-btn.png");
+  background-size: contain;
 }

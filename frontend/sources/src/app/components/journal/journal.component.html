@@ -1,5 +1,14 @@
-<ag-grid-angular 
-  class="journal ag-theme-balham"
-  [rowData]="rowData | async" 
-  [columnDefs]="columnDefs">
-</ag-grid-angular>
+<div class="journal-top-btn-block">
+  <div [ngClass]="topButton.cssImageName" *ngFor="let topButton of topButtonList"></div>
+</div>
+<div class="journal">
+  <ag-grid-angular class="journal-grid ag-theme-balham" [rowData]="rowData" [columnDefs]="columnDefs">
+  </ag-grid-angular>
+  <div class="journal-right-btn-block">
+    <div [ngClass]="rightButton.cssImageName" *ngFor="let rightButton of rightButtonList"></div>
+  </div>
+</div>
+<div class="journal-pagginator">
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>

@@ -1,3 +1,4 @@
+import { MatPaginatorModule, MatProgressSpinner, MatProgressSpinnerModule } from '@angular/material';
 import { JournalComponent } from './../../../components/journal/journal.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -43,6 +44,9 @@ import { AgGridModule } from 'ag-grid-angular';
     CommonModule,
     MenuRoutingModule,
     RouterModule,
+    // Material
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
 
     // Angular Ag-grid
     AgGridModule.withComponents([])
