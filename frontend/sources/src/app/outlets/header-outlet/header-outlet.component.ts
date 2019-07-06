@@ -42,6 +42,7 @@ export class HeaderOutletComponent implements OnInit {
    * Exit application
    */
   public signOut() {
+    this.sideNavService.close();
     this.appAccountContextService.logOut();
   }
 

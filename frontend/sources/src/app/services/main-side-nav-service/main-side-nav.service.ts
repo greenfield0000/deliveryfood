@@ -21,4 +21,19 @@ export class MainSideNavService {
   public drawerToggle() {
     this.drawer.toggle();
   }
+
+  public open() {
+    const isOpened: boolean = this.drawer && this.drawer.opened || true;
+    if (isOpened) {
+      this.drawer.toggle();
+    }
+  }
+
+  public close() {
+    const isOpened: boolean = this.drawer && this.drawer.opened || false;
+    if (isOpened) {
+      this.drawer.toggle();
+    }
+  }
+
 }
