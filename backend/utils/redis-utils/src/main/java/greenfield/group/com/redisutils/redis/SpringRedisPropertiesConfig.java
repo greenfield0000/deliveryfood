@@ -1,11 +1,11 @@
-package greenfield.group.com.gatewayutils.configuration.redis;
+package greenfield.group.com.redisutils.redis;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
-@PropertySource("gateway.properties")
+@PropertySource("redis.properties")
 @ConfigurationProperties("spring.redis")
 public class SpringRedisPropertiesConfig {
     private String host;

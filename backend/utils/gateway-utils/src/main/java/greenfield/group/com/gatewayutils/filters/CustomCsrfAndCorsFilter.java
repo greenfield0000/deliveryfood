@@ -40,7 +40,7 @@ public class CustomCsrfAndCorsFilter extends OncePerRequestFilter {
         response.setHeader("Access-Control-Allow-Origin", origin);
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "authorization, content-type, xsrf-token, x-csrftoken");
+        response.setHeader("Access-Control-Allow-Headers", "*");
         response.addHeader("Access-Control-Expose-Headers", "xsrf-token");
         if ("OPTIONS".equals(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);

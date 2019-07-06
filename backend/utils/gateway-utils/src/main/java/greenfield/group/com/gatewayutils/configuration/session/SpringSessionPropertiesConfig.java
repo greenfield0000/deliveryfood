@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @PropertySource("gateway.properties")
-@ConfigurationProperties("spring.greenfield.group.com.gatewayutils.session")
+@ConfigurationProperties("spring.greenfield.group.com.redisutils.redis.session")
 public class SpringSessionPropertiesConfig {
 
     private String storeType;

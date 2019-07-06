@@ -1,4 +1,4 @@
-package greenfield.group.com.gatewayutils.session;
+package greenfield.group.com.redisutils.redis.session;
 
 
 import java.util.concurrent.TimeUnit;
@@ -35,7 +35,7 @@ public interface RedisSessionManager<T> {
     /**
      * Установить время действия сессии
      *
-     * @param duration - время действия сессии согласно параметру timeUnit
+     * @param durationByTimeUnit - время действия сессии согласно параметру timeUnit
      */
     void sessionDuration(long durationByTimeUnit);
 

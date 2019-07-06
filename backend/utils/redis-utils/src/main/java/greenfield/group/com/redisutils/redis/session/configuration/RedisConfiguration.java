@@ -1,27 +1,31 @@
-package greenfield.group.com.authservice.session.configuration;
+package greenfield.group.com.redisutils.redis.session.configuration;
 
-import org.springframework.beans.factory.annotation.Value;
+import greenfield.group.com.redisutils.redis.SpringRedisPropertiesConfig;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 
 @Configuration
+@EnableRedisHttpSession
+@EnableConfigurationProperties
 class RedisConfiguration {
 
-    @Value("${spring.redis.host}") // 127.0.0.1
-    private String hostName;
+    private final SpringRedisPropertiesConfig redisPropertiesConfig;
 
-    @Value("${spring.redis.port}") // 6379
-    private int port;
+    public RedisConfiguration(SpringRedisPropertiesConfig redisPropertiesConfig) {
+        this.redisPropertiesConfig = redisPropertiesConfig;
+    }
 
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
         LettuceConnectionFactory redisConnectionFactory = new LettuceConnectionFactory();
-        redisConnectionFactory.getStandaloneConfiguration().setHostName(hostName);
-        redisConnectionFactory.getStandaloneConfiguration().setPort(port);
+        redisConnectionFactory.getStandaloneConfiguration().setHostName(redisPropertiesConfig.getHost());
+        redisConnectionFactory.getStandaloneConfiguration().setPort(redisPropertiesConfig.getPort());
         return redisConnectionFactory;
     }
 

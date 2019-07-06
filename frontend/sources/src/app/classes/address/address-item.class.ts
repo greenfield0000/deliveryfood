@@ -1,9 +1,10 @@
+import { AddressItemType } from 'src/app/components/address-kladr/model/address-emiter.model';
 import { AddressModel } from '../../components/address-kladr/model/address.model';
 import { AddressEmmiter } from '../../components/address-kladr/model/address-emiter.model';
 
 export class AddressItem {
     private cadnum: string;
-    private contentType: AddressEmmiter;
+    private contentType: AddressItemType;
     private guid: string;
     private id: string;
     private ifnsfl: string;
@@ -32,6 +33,8 @@ export class AddressItem {
             this.zip = data.zip;
         }
     }
+
+
     /**
      * Getter $cadnum
      * @return {string}
@@ -39,13 +42,15 @@ export class AddressItem {
     public get $cadnum(): string {
         return this.cadnum;
     }
+
     /**
      * Getter $contentType
-     * @return {AddressEmmiter}
+     * @return {AddressItemType}
      */
-    public get $contentType(): AddressEmmiter {
+    public get $contentType(): AddressItemType {
         return this.contentType;
     }
+
     /**
      * Getter $guid
      * @return {string}
@@ -53,6 +58,7 @@ export class AddressItem {
     public get $guid(): string {
         return this.guid;
     }
+
     /**
      * Getter $id
      * @return {string}
@@ -60,6 +66,7 @@ export class AddressItem {
     public get $id(): string {
         return this.id;
     }
+
     /**
      * Getter $ifnsfl
      * @return {string}
@@ -67,6 +74,7 @@ export class AddressItem {
     public get $ifnsfl(): string {
         return this.ifnsfl;
     }
+
     /**
      * Getter $ifnsul
      * @return {string}
@@ -74,6 +82,7 @@ export class AddressItem {
     public get $ifnsul(): string {
         return this.ifnsul;
     }
+
     /**
      * Getter $name
      * @return {string}
@@ -81,6 +90,7 @@ export class AddressItem {
     public get $name(): string {
         return this.name;
     }
+
     /**
      * Getter $okato
      * @return {string}
@@ -88,6 +98,7 @@ export class AddressItem {
     public get $okato(): string {
         return this.okato;
     }
+
     /**
      * Getter $oktmo
      * @return {string}
@@ -95,6 +106,7 @@ export class AddressItem {
     public get $oktmo(): string {
         return this.oktmo;
     }
+
     /**
      * Getter $parentGuid
      * @return {string}
@@ -102,6 +114,7 @@ export class AddressItem {
     public get $parentGuid(): string {
         return this.parentGuid;
     }
+
     /**
      * Getter $type
      * @return {string}
@@ -109,6 +122,7 @@ export class AddressItem {
     public get $type(): string {
         return this.type;
     }
+
     /**
      * Getter $typeShort
      * @return {string}
@@ -116,6 +130,7 @@ export class AddressItem {
     public get $typeShort(): string {
         return this.typeShort;
     }
+
     /**
      * Getter $zip
      * @return {number}
@@ -123,6 +138,7 @@ export class AddressItem {
     public get $zip(): number {
         return this.zip;
     }
+
     /**
      * Setter $cadnum
      * @param {string} value
@@ -130,13 +146,15 @@ export class AddressItem {
     public set $cadnum(value: string) {
         this.cadnum = value;
     }
+
     /**
      * Setter $contentType
-     * @param {AddressEmmiter} value
+     * @param {AddressItemType} value
      */
-    public set $contentType(value: AddressEmmiter) {
+    public set $contentType(value: AddressItemType) {
         this.contentType = value;
     }
+
     /**
      * Setter $guid
      * @param {string} value
@@ -144,6 +162,7 @@ export class AddressItem {
     public set $guid(value: string) {
         this.guid = value;
     }
+
     /**
      * Setter $id
      * @param {string} value
@@ -151,6 +170,7 @@ export class AddressItem {
     public set $id(value: string) {
         this.id = value;
     }
+
     /**
      * Setter $ifnsfl
      * @param {string} value
@@ -158,6 +178,7 @@ export class AddressItem {
     public set $ifnsfl(value: string) {
         this.ifnsfl = value;
     }
+
     /**
      * Setter $ifnsul
      * @param {string} value
@@ -165,6 +186,7 @@ export class AddressItem {
     public set $ifnsul(value: string) {
         this.ifnsul = value;
     }
+
     /**
      * Setter $name
      * @param {string} value
@@ -172,6 +194,7 @@ export class AddressItem {
     public set $name(value: string) {
         this.name = value;
     }
+
     /**
      * Setter $okato
      * @param {string} value
@@ -179,6 +202,7 @@ export class AddressItem {
     public set $okato(value: string) {
         this.okato = value;
     }
+
     /**
      * Setter $oktmo
      * @param {string} value
@@ -186,6 +210,7 @@ export class AddressItem {
     public set $oktmo(value: string) {
         this.oktmo = value;
     }
+
     /**
      * Setter $parentGuid
      * @param {string} value
@@ -193,6 +218,7 @@ export class AddressItem {
     public set $parentGuid(value: string) {
         this.parentGuid = value;
     }
+
     /**
      * Setter $type
      * @param {string} value
@@ -200,6 +226,7 @@ export class AddressItem {
     public set $type(value: string) {
         this.type = value;
     }
+
     /**
      * Setter $typeShort
      * @param {string} value
@@ -207,6 +234,7 @@ export class AddressItem {
     public set $typeShort(value: string) {
         this.typeShort = value;
     }
+
     /**
      * Setter $zip
      * @param {number} value
@@ -214,4 +242,5 @@ export class AddressItem {
     public set $zip(value: number) {
         this.zip = value;
     }
+
 }
