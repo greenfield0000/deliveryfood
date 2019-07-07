@@ -5,8 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderOutletComponent } from 'src/app/outlets/header-outlet/header-outlet.component';
 import { FooterOutletComponent } from 'src/app/outlets/footer-outlet/footer-outlet.component';
-import { MatToolbarModule, MatSidenavModule, MatButtonModule, MatIconModule, MatStepperModule, MatPaginatorModule } from '@angular/material';
-import { AgGridModule } from 'ag-grid-angular';
+import { MatToolbarModule, MatSidenavModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatTooltipModule, MatMenuModule } from '@angular/material';
 
 @NgModule({
   declarations: [MainOutletComponent, HeaderOutletComponent, FooterOutletComponent],
@@ -19,8 +18,10 @@ import { AgGridModule } from 'ag-grid-angular';
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
-    MatPaginatorModule
-
+    MatPaginatorModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatMenuModule
   ],
   exports: [
     MainOutletComponent, HeaderOutletComponent, FooterOutletComponent

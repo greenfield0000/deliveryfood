@@ -10,7 +10,7 @@
       <router-outlet></router-outlet>
     </div>
     <mat-sidenav-container class="main-full-page" [hidden]="!appAccountContextService.getAccount().$authtorised">
-      <mat-sidenav #sidenav [mode]="'push'" class="example-sidenav">
+      <mat-sidenav #menuNavigator [mode]="'push'" class="example-sidenav">
         <app-tree-flat-overview></app-tree-flat-overview>
       </mat-sidenav>
       <mat-sidenav-content>
@@ -22,7 +22,8 @@
 
   </div>
   <!-- Footer -->
-  <footer [hidden]="!appAccountContextService.getAccount().$authtorised" class="page-footer font-small special-color-dark pt-4">
+  <footer [hidden]="!appAccountContextService.getAccount().$authtorised"
+    class="page-footer font-small special-color-dark pt-4">
     <!-- Footer Elements -->
     <div class="container">
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { MainSideNavService } from './services/main-side-nav-service/main-side-nav.service';
 import { AccountEntity } from './classes/accountEntity';
@@ -13,8 +13,8 @@ export class AppComponent implements OnInit {
 
   private account: AccountEntity = new AccountEntity();
 
-  @ViewChild(MatSidenav)
-  private drawer: MatSidenav;
+  @ViewChild('menuNavigator')
+  private menuNavigator: MatSidenav;
 
   constructor(private sideNavService: MainSideNavService,
     private appAccountContextService: AppAccountContextService) {
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.account = this.appAccountContextService.getAccount();
     console.log('account initialized', this.account);
-    this.sideNavService.setDriwer(this.drawer);
+    this.sideNavService.$menuNavigatorDrawer = <MatSidenav>(this.menuNavigator);
   }
 
   isAuthtorised(): boolean {

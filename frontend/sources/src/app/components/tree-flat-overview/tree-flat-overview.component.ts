@@ -50,7 +50,7 @@ export class TreeFlatOverviewComponent {
    */
   nodeClick(node: MenuFlatNode) {
     if (node && node.pathOfDash) {
-      this.sideNavService.close();
+      this.sideNavService.$menuNavigatorDrawer.close();
       this.appRouterService.goTo(`/dashbord/${node.pathOfDash}`, { skipLocationChange: true });
     }
   }

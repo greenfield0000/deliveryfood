@@ -109,14 +109,15 @@ body {
 }
 
 .mat-drawer-content {
+  padding: 0px;
   background-color: white;
   transition-duration: 0.4s;
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
   transition-property: transform, margin-left, margin-right;
 }
 
-.mat-sidenav-content {
-  padding: 15px 25px 15px 25px;
+.mat-sidenav {
+  min-width: 400px;
 }
 
 // ag-grid setting

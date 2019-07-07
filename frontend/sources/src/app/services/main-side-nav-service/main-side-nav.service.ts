@@ -6,33 +6,72 @@ import { MatSidenav } from '@angular/material';
 })
 export class MainSideNavService {
 
-  private drawer: MatSidenav;
+  private menuNavigatorDrawer: MatSidenav;
+  private journalFilterDrawer: MatSidenav;
 
   constructor() { }
 
-  public getDriwer(): MatSidenav {
-    return this.drawer;
+  /**
+   * Getter $menuNavigatorDrawer
+   * @return {MatSidenav}
+   */
+  public get $menuNavigatorDrawer(): MatSidenav {
+    return this.menuNavigatorDrawer;
   }
 
-  public setDriwer(drawer: MatSidenav) {
-    this.drawer = drawer;
+  /**
+   * Getter $journalFilterDrawer
+   * @return {MatSidenav}
+   */
+  public get $journalFilterDrawer(): MatSidenav {
+    return this.journalFilterDrawer;
   }
 
-  public drawerToggle() {
-    this.drawer.toggle();
+  /**
+   * Setter $menuNavigatorDrawer
+   * @param {MatSidenav} value
+   */
+  public set $menuNavigatorDrawer(value: MatSidenav) {
+    this.menuNavigatorDrawer = value;
   }
 
-  public open() {
-    const isOpened: boolean = this.drawer && this.drawer.opened || true;
+  /**
+   * Setter $journalFilterDrawer
+   * @param {MatSidenav} value
+   */
+  public set $journalFilterDrawer(value: MatSidenav) {
+    this.journalFilterDrawer = value;
+  }
+
+  public drawerToggle(drawer: MatSidenav) {
+    drawer.toggle();
+  }
+
+  public menuNavigatorDrawerOpen() {
+    const isOpened: boolean = this.menuNavigatorDrawer && this.menuNavigatorDrawer.opened || true;
     if (isOpened) {
-      this.drawer.toggle();
+      this.menuNavigatorDrawer.toggle();
     }
   }
 
-  public close() {
-    const isOpened: boolean = this.drawer && this.drawer.opened || false;
+  public menuNavigatorDrawerClose() {
+    const isOpened: boolean = this.menuNavigatorDrawer && this.menuNavigatorDrawer.opened || false;
     if (isOpened) {
-      this.drawer.toggle();
+      this.menuNavigatorDrawer.toggle();
+    }
+  }
+
+  public journalFilterDrawerOpen() {
+    const isOpened: boolean = this.journalFilterDrawer && this.journalFilterDrawer.opened || true;
+    if (isOpened) {
+      this.journalFilterDrawer.toggle();
+    }
+  }
+
+  public journalFilterDrawerClose() {
+    const isOpened: boolean = this.journalFilterDrawer && this.journalFilterDrawer.opened || false;
+    if (isOpened) {
+      this.journalFilterDrawer.toggle();
     }
   }
 

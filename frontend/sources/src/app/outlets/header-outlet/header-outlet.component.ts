@@ -26,8 +26,8 @@ export class HeaderOutletComponent implements OnInit {
    * switch menu toggle
    */
   public sideNavToggle() {
-    if (this.sideNavService.getDriwer()) {
-      this.sideNavService.getDriwer().toggle();
+    if (this.sideNavService.$menuNavigatorDrawer) {
+      this.sideNavService.drawerToggle(this.sideNavService.$menuNavigatorDrawer);
     }
   }
 
@@ -42,7 +42,8 @@ export class HeaderOutletComponent implements OnInit {
    * Exit application
    */
   public signOut() {
-    this.sideNavService.close();
+    this.sideNavService.journalFilterDrawerClose();
+    this.sideNavService.menuNavigatorDrawerClose();
     this.appAccountContextService.logOut();
   }
 
