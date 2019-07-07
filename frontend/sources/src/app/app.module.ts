@@ -16,6 +16,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { MatStepperModule } from '@angular/material/stepper';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AddressKladrComponent } from './components/address-kladr/address-kladr.component';
+import { FilterPanelComponent } from './components/journal/filter-panel/filter-panel.component';
 
 const modules = [
   BrowserModule,

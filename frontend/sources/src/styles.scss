@@ -128,7 +128,6 @@ body {
 .step-form,
 .step-form-1-2 {
   height: 450px;
-  padding-top: 50px;
 }
 
 .step-form {
@@ -136,7 +135,7 @@ body {
 }
 
 .step-form-1-2 {
-  width: 80%;
+  width: 70%;
   margin: auto;
 }
 
@@ -147,13 +146,6 @@ body {
 
 .form-content h2 {
   text-align: center;
-}
-
-.mat-form-field {
-  display: inline-block;
-  position: relative;
-  text-align: left;
-  margin: 0px 50px 0px 50px;
 }
 
 .form-button {
@@ -172,12 +164,16 @@ app-login {
 }
 
 .form-field {
-  margin: 0 5% 0 5%;
-  display: inline-block;
+  flex-wrap: wrap;
+  /* margin: 0 5% 0 5%; */
+  display: flex;
   position: relative;
   text-align: left;
   flex: 1;
   justify-content: center;
-  min-width: 35%;
-  max-width: 35%;
+  /* min-width: 35%; */
+  /* max-width: 35%; */
+  width: 250px;
+  height: 60px;
+  margin: auto;
 }
