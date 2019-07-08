@@ -1,5 +1,5 @@
 import { FilterPanelComponent } from './../../../components/journal/filter-panel/filter-panel.component';
-import { MatPaginatorModule, MatProgressSpinner, MatProgressSpinnerModule, MatMenuModule, MatSidenavModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatPaginatorModule, MatProgressSpinner, MatProgressSpinnerModule, MatMenuModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatButton, MatButtonModule } from '@angular/material';
 import { JournalComponent } from './../../../components/journal/journal.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -53,6 +53,7 @@ import { AgGridModule } from 'ag-grid-angular';
     MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonModule,
 
     // Angular Ag-grid
     AgGridModule.withComponents([])

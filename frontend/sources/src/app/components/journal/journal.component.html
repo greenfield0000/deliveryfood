@@ -1,5 +1,6 @@
 <mat-sidenav-container class="journal-sidenav-container" [hidden]="!appAccountContextService.getAccount().$authtorised">
-  <mat-sidenav #journalFilterNavigator [mode]="'over'" class="example-sidenav">
+  
+  <mat-sidenav #journalFilterNavigator [mode]="'over'" class="journal-sidenav">
     <app-filter-panel></app-filter-panel>
   </mat-sidenav>
   <mat-sidenav-content class="journal-sidenav-content-wrapper">
