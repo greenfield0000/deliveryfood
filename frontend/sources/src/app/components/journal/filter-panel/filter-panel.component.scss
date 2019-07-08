@@ -30,6 +30,16 @@
   flex-wrap: wrap;
 }
 
+.filter-panel-preset-item {
+  display: flex;
+  max-width: 220px;
+  height: auto;
+  background: white;
+  border-radius: 4px;
+  margin: 0px 0px 10px 0px;
+  padding: 0px 10px;
+}
+
 .filter-panel-button-item {
   width: 80%;
   height: auto;
@@ -74,6 +84,7 @@
   width: 400px;
   padding: 2px;
   justify-content: space-between;
+  border-bottom: 1px ridge;
 }
 
 .filter-name,
@@ -94,4 +105,17 @@
 .filter-field {
   border-radius: 15px;
   border: 0.5px inset;
+}
+
+// images
+.preset_add_collection {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.preset_add_collection {
+  background: url("../../../../assets/i/png/preset-add-collection.png");
+  background-size: contain;
 }
