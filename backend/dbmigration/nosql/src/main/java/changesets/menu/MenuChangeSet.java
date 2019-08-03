@@ -18,10 +18,9 @@ public class MenuChangeSet {
 
     @ChangeSet(order = "1", id = "registry_menu_on_start", author = "Ivanov Roman")
     public void registryMenuOnStart(Jongo database) throws IOException {
-        final String scriptPath = "scripts/menu.json";
+        final String scriptPath = "scripts/menu/menu.json";
         final MongoCollection menuCollection = database.getCollection("menu");
         menuCollection.insert(scriptLoader.getDocumentFromResourceByPath(scriptPath));
-
     }
 
 

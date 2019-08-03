@@ -20,14 +20,9 @@ public class ChangeLog {
 
     public static void main(String[] args) {
         // Мигрант для пунктов меню
-        Mongobee menuRunner = new Mongobee("mongodb://localhost:27017/menu");
+        Mongobee menuRunner = new Mongobee("mongodb://localhost:27017/metadata-db");
         menuRunner.setChangeLogsScanPackage("changesets"); // package to scan for changesets
 
-//        // Мигрант для журналов
-//        Mongobee journalRunner = new Mongobee("mongodb://journal-db:27018/journal");
-//        journalRunner.setChangeLogsScanPackage("com.example.yourapp.changelogs"); // package to scan for changesets
-
-//        List<Mongobee> mongobeeList = Arrays.asList(menuRunner, journalRunner);
         List<Mongobee> mongobeeList = Collections.singletonList(menuRunner);
         MongoConfiguration configuration = new MongoConfiguration(mongobeeList);
         try {

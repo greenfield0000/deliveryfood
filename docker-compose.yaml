@@ -47,46 +47,34 @@ services:
       - "8082:8082"
       - "9082:9082"
     depends_on:
-      - menu-db
+      - metadata-db
     links:
-      - menu-db:menu-db
+      - metadata-db:metadata-db
       - auth-service:auth-service
 
-  # menu-db
-  menu-db:
-    container_name: menu-db
-    hostname: menu-db
+  # metadata-db
+  metadata-db:
+    container_name: metadata-db
+    hostname: metadata-db
     image: mongo:latest
     volumes:
-      - "~/backup_database/mongodb/volume/menu-db:/data/db"
-      - "~/backup_database/mongodb/volume/menu-db/log:/var/log/mongodb"
+      - "~/backup_database/mongodb/volume/metadata-db:/data/db"
+      - "~/backup_database/mongodb/volume/metadata-db/log:/var/log/mongodb"
     ports:
       - "27017:27017"
 
   #journal-service
-  # journal-service:
-  #   container_name: journal-service
-  #   restart: always
-  #   build: ./backend/microservices/journal-service
-  #   ports:
-  #    - "8083:8083"
-  #    - "9083:9083"
-  #   depends_on:
-  #     - journal-db
-  #   links:
-  #     - journal-db:journal-db
-
-  # journal-db
-  #  journal-db:
-  #   container_name: journal-db
-  #  hostname: journal-db
-  #  image: mongo:latest
-  #  volumes:
-  #    - "/home/aleksey/backup_database/mongodb/volume/journal-db:/data/db"
-  #  ports:
-  #    - "27018:27017"
-  # networks:
-  #  - backend
+  journal-service:
+    container_name: journal-service
+    restart: always
+    build: ./backend/microservices/journal-service
+    ports:
+      - "8083:8083"
+      - "9083:9083"
+    depends_on:
+      - metadata-db
+    links:
+      - metadata-db:metadata-db
 
   # fias-kladr-service
   kladr-service:

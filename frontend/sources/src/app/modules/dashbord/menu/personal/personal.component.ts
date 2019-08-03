@@ -1,5 +1,9 @@
+import { AppAccountContextService } from 'src/app/services/app-account-context-service/app-account-context.service';
+import { JournalService } from './../../../../services/journal-service/journal.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { JournalMetadata } from 'src/app/classes/journal/journal-metadata.class';
+import { JornalColumn } from 'src/app/classes/journal/jornal-column.class';
 
 @Component({
   selector: 'app-personal',
@@ -8,19 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalComponent implements OnInit {
 
-  // тестовые поля для сетки данных
-  public columnDefs = [
-    { headerName: 'Make', field: 'make', sortable: true, filter: true, checkboxSelection: true },
-    { headerName: 'Model', field: 'model', sortable: true, filter: true },
-    { headerName: 'Price', field: 'price', sortable: true, filter: true }
-  ];
 
   public rowData: any;
+  public columnList: JornalColumn[];
+  private journalSysName: string = 'Personals-jrnl';
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private journalService: JournalService, private account: AppAccountContextService) { }
 
   ngOnInit() {
-    this.rowData = this.http.get('https://api.myjson.com/bins/15psn9');
+    debugger;
+    const UUID: string = this.account.getAccount().$uuid;
+    this.journalService.loadJournalMetadata(this.journalSysName, UUID)
+      .subscribe((journalMetadata: JournalMetadata) => {
+          this.columnList = journalMetadata.$columnList;
+      });
   }
 
 }

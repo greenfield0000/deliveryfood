@@ -3,16 +3,11 @@ import { MatSidenav } from '@angular/material';
 import { MainSideNavService } from 'src/app/services/main-side-nav-service/main-side-nav.service';
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { AgGridNg2 } from 'ag-grid-angular';
+import { JournalButton } from 'src/app/classes/journal/journal-button.class';
 
 /**
  * Описание кнопки журнала
  */
-export interface JournalButton {
-  name: string;
-  hint: string;
-  cssImageName: string;
-  handler: (params?: any) => any;
-}
 
 @Component({
   selector: 'app-journal',
@@ -26,11 +21,10 @@ export class JournalComponent implements OnInit {
   private journalFilterNavigator: MatSidenav;
   // описание колонок сетки данных
   @Input()
-  public columnDefs: any;
+  public columnList: any;
   // данные для сетки данных
   @Input()
   public rowData: any;
-
 
   public topButtonList: JournalButton[] = [{
     name: 'Фильтр'
@@ -60,19 +54,20 @@ export class JournalComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.columnDefs = [
-      { headerName: 'Athlete', field: 'athlete', width: 150 },
-      { headerName: 'Age', field: 'age', width: 90 },
-      { headerName: 'Country', field: 'country', width: 120 },
-      { headerName: 'Year', field: 'year', width: 90 },
-      { headerName: 'Date', field: 'date', width: 110 },
-      { headerName: 'Sport', field: 'sport', width: 110 },
-      { headerName: 'Gold', field: 'gold', width: 100 },
-      { headerName: 'Silver', field: 'silver', width: 100 },
-      { headerName: 'Bronze', field: 'bronze', width: 100 },
-      { headerName: 'Total', field: 'total', width: 100 }
-    ];
+    if (!this.columnList) {
+      this.columnList = [
+        { headerName: 'Athlete', field: 'athlete', width: 150 },
+        { headerName: 'Age', field: 'age', width: 90 },
+        { headerName: 'Country', field: 'country', width: 120 },
+        { headerName: 'Year', field: 'year', width: 90 },
+        { headerName: 'Date', field: 'date', width: 110 },
+        { headerName: 'Sport', field: 'sport', width: 110 },
+        { headerName: 'Gold', field: 'gold', width: 100 },
+        { headerName: 'Silver', field: 'silver', width: 100 },
+        { headerName: 'Bronze', field: 'bronze', width: 100 },
+        { headerName: 'Total', field: 'total', width: 100 }
+      ];
+    }
   }
 
 }
