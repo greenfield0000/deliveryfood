@@ -1,6 +1,5 @@
 import { AppAccountContextService } from 'src/app/services/app-account-context-service/app-account-context.service';
 import { JournalService } from './../../../../services/journal-service/journal.service';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { JournalMetadata } from 'src/app/classes/journal/journal-metadata.class';
 import { JornalColumn } from 'src/app/classes/journal/jornal-column.class';

@@ -1,5 +1,6 @@
 package greenfield.group.com.authservice.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.authservice.Account;
 import entities.authservice.Role;
 import enums.AccountRole;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -24,8 +27,10 @@ import static pattern.PatternConstant.GUID_PATTERN;
 public class AccountService {
 
     private static final boolean AUTHTORIZE = true;
-    private static final boolean NON_AUTHTORIZE = false;
+    private static final boolean NON_AUTHORIZED = false;
 
+    @Autowired
+    private ObjectMapper objectMapper;
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
@@ -93,7 +98,7 @@ public class AccountService {
         }
 
         account = finderAccount.get();
-        setAuthtorized(account, NON_AUTHTORIZE);
+        setAuthtorized(account, NON_AUTHORIZED);
         accountRepository.save(account);
         accountRedisSessionImpl.sessionDelete(account);
         return new SimpleResult<>(Status.OK, account);
@@ -118,7 +123,7 @@ public class AccountService {
         // если не нашли, то значит это не повторная регистрация
         if (!finderAccount.isPresent()) {
             // тогда регистрируем и выходим
-            setAuthtorized(account, NON_AUTHTORIZE);
+            setAuthtorized(account, NON_AUTHORIZED);
             account.setUuid(UUID.randomUUID().toString());
             AccountRole accountRole = AccountRole.WAITER;
             Role role = account.getAccountRole();
@@ -142,7 +147,18 @@ public class AccountService {
      * @param
      * @return
      */
-    public Role getAccountRoleSysNameByUUID(String uuid) {
+    public Role getAccountRoleSysNameByUUID(String jsonUuid) {
+        String uuid = "";
+        try {
+            Map<String, Object> mappedvalues = objectMapper.readValue(
+                    jsonUuid, objectMapper.constructType(Map.class)
+            );
+            if ((mappedvalues != null) && (mappedvalues.get("uuid") != null)) {
+                uuid = mappedvalues.get("uuid").toString();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         final Role emptyRole = new Role();
         if ((uuid == null) || (uuid.isEmpty()) || !uuidMachesPattern(uuid)) {
             return emptyRole;

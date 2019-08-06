@@ -11,6 +11,7 @@ import java.util.Arrays;
 
 @Component
 public class SessionFilter implements Filter {
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -18,9 +19,8 @@ public class SessionFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         Cookie[] allCookies = req.getCookies();
         if (allCookies != null) {
-            Arrays.stream(allCookies).forEach(System.out::println);
             Cookie session =
-                    Arrays.stream(allCookies).filter(x -> x.getName().equals("SESSION"))
+                    Arrays.stream(allCookies).filter(x -> x.getName().equals("XSRF-TOKEN"))
                             .findFirst().orElse(null);
 
             if (session != null) {
@@ -29,11 +29,6 @@ public class SessionFilter implements Filter {
                 res.addCookie(session);
             }
         }
-        Cookie session = new Cookie("SESSION123","T");
-        session.setHttpOnly(true);
-        session.setSecure(true);
-        res.addCookie(session);
-
 
         chain.doFilter(req, res);
     }

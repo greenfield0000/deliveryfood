@@ -2,7 +2,16 @@ package greenfield.group.com.journalservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
+
+@EnableMongoRepositories
+@ComponentScan(basePackages = {
+		"greenfield.group.com.gatewayutils",
+		"greenfield.group.com.journalservice",
+		"greenfield.group.com.redisutils.redis"
+})
 @SpringBootApplication
 public class JournalServiceApplication {
 

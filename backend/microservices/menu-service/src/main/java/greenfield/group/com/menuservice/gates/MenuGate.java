@@ -18,7 +18,6 @@ public class MenuGate {
     @Autowired
     private MenuService menuService;
 
-
     @RequestMapping(path = "/getMenu", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<String> getMenu(@RequestBody String uuid) {
         Role findedRole = restTemplate
