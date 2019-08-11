@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { SimpleResult } from 'src/app/utils/simple-result.class';
 import { RouteConstant } from 'src/app/constants/route-constant';
 import { JournalMetadata } from 'src/app/classes/journal/journal-metadata.class';
@@ -27,15 +27,10 @@ export class JournalService {
    * @param journalSysName системное имя  журнала
    * @param uuid уникальный идентифкатор пользователя
    */
-  public loadJournalMetadata(journalSysName: string, uuid: string): BehaviorSubject<JournalMetadata> {
-    this.http
+  public loadJournalMetadata(journalSysName: string, uuid: string): Observable<SimpleResult<JournalMetadata>> {
+    return this.http
       .post<SimpleResult<JournalMetadata>>(
         RouteConstant.journal_location + '/load', { sysName: journalSysName, uuid: uuid }
-      ).subscribe((res: SimpleResult<JournalMetadata>) => {
-        if (res && res.result) {
-          this.journalMetadata.next(res.result);
-        }
-      });
-    return this.journalMetadata;
+      );
   }
 }

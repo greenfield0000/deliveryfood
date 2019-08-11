@@ -1,9 +1,14 @@
+import { SimpleResult } from './../../utils/simple-result.class';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { JournalService } from './../../services/journal-service/journal.service';
 import { AppAccountContextService } from './../../services/app-account-context-service/app-account-context.service';
 import { MatSidenav } from '@angular/material';
 import { MainSideNavService } from 'src/app/services/main-side-nav-service/main-side-nav.service';
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { AgGridNg2 } from 'ag-grid-angular';
 import { JournalButton } from 'src/app/classes/journal/journal-button.class';
+import { JournalMetadata } from 'src/app/classes/journal/journal-metadata.class';
+import { JornalColumn } from 'src/app/classes/journal/jornal-column.class';
 
 /**
  * Описание кнопки журнала
@@ -19,14 +24,13 @@ export class JournalComponent implements OnInit {
   @ViewChild('agGrid') agGrid: AgGridNg2;
   @ViewChild('journalFilterNavigator')
   private journalFilterNavigator: MatSidenav;
+  private columnListSubject: Subject<JornalColumn[]> = new BehaviorSubject<JornalColumn[]>([]);
   // описание колонок сетки данных
-  @Input()
-  public columnList: any;
+  private columnList: any;
   // данные для сетки данных
-  @Input()
-  public rowData: any;
+  private rowData: any;
 
-  public topButtonList: JournalButton[] = [{
+  private topButtonList: JournalButton[] = [{
     name: 'Фильтр'
     , hint: 'Применить фильтр'
     , cssImageName: 'journal-btn filter-btn'
@@ -39,9 +43,11 @@ export class JournalComponent implements OnInit {
     , handler: () => this.refresh()
   }];
 
-  public rightButtonList: JournalButton;
+  private rightButtonList: JournalButton;
 
-  constructor(private sideNavService: MainSideNavService, private appAccountContextService: AppAccountContextService) { }
+  constructor(private sideNavService: MainSideNavService
+    , private account: AppAccountContextService
+    , private journalService: JournalService) { }
 
   private openFilterPanel() {
     this.sideNavService.$journalFilterDrawer = this.journalFilterNavigator;
@@ -54,19 +60,20 @@ export class JournalComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.columnList) {
-      this.columnList = [
-        { headerName: 'Athlete', field: 'athlete', width: 150 },
-        { headerName: 'Age', field: 'age', width: 90 },
-        { headerName: 'Country', field: 'country', width: 120 },
-        { headerName: 'Year', field: 'year', width: 90 },
-        { headerName: 'Date', field: 'date', width: 110 },
-        { headerName: 'Sport', field: 'sport', width: 110 },
-        { headerName: 'Gold', field: 'gold', width: 100 },
-        { headerName: 'Silver', field: 'silver', width: 100 },
-        { headerName: 'Bronze', field: 'bronze', width: 100 },
-        { headerName: 'Total', field: 'total', width: 100 }
-      ];
+    this.columnListSubject.subscribe((columnList: JornalColumn[]) => this.columnList = columnList);
+  }
+
+  public load(journalSysName: string) {
+    debugger;
+    if (this.account) {
+      const UUID: string = this.account.getAccount().$uuid;
+      this.journalService.loadJournalMetadata(journalSysName, UUID)
+        .subscribe((result: SimpleResult<JournalMetadata>) => {
+          const journalMetadata: JournalMetadata = new JournalMetadata(result.result);
+          const columnList: JornalColumn[] = journalMetadata.$columnList;
+          console.log('before journal next ', columnList);
+          this.columnListSubject.next(columnList);
+        });
     }
   }
 
