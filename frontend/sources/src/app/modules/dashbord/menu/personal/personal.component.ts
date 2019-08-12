@@ -14,7 +14,6 @@ export class PersonalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    debugger;
     this.journal.load(this.journalSysName);
   }
 

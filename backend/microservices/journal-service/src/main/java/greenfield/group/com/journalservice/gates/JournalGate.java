@@ -24,7 +24,7 @@ public class JournalGate {
     public SimpleResult<JournalMetadata> load(@RequestBody LoadJournalRequest loadJournalRequest) {
         final JournalMetadata journalMetadata = new JournalMetadata();
         final JournalButton journalButton = new JournalButton();
-        journalButton.setCssImageName("TestCssImage");
+        journalButton.setCssImageName("filter-btn");
         journalButton.setHandlerFnName("TestHandlerFnName");
         journalButton.setHint("TestHint");
         journalButton.setName("TestName");
@@ -34,7 +34,7 @@ public class JournalGate {
         journalColumn.setField("TestField");
         journalColumn.setCheckboxSelection(false);
         journalColumn.setHeaderName("TestHeaderName");
-        journalColumn.setFilter(true);
+        journalColumn.setFilter(false);
         journalMetadata.setColumnList(Collections.singletonList(journalColumn));
         return new SimpleResult<>(Status.OK, journalMetadata);
     }

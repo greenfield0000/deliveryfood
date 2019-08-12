@@ -25,23 +25,24 @@ export class JournalComponent implements OnInit {
   @ViewChild('journalFilterNavigator')
   private journalFilterNavigator: MatSidenav;
   private columnListSubject: Subject<JornalColumn[]> = new BehaviorSubject<JornalColumn[]>([]);
+  private topButtonListSubject: Subject<JournalButton[]> = new BehaviorSubject<JournalButton[]>([]);
   // описание колонок сетки данных
   private columnList: any;
   // данные для сетки данных
   private rowData: any;
 
-  private topButtonList: JournalButton[] = [{
+  private topButtonList: JournalButton[] = [new JournalButton({
     name: 'Фильтр'
     , hint: 'Применить фильтр'
-    , cssImageName: 'journal-btn filter-btn'
+    , cssImageName: 'filter-btn'
     , handler: () => this.openFilterPanel()
-  },
-  {
+  }),
+  new JournalButton({
     name: 'Обновить'
     , hint: 'Обновить данные'
-    , cssImageName: 'journal-btn refresh-btn'
+    , cssImageName: 'refresh-btn'
     , handler: () => this.refresh()
-  }];
+  })];
 
   private rightButtonList: JournalButton;
 
@@ -61,18 +62,29 @@ export class JournalComponent implements OnInit {
 
   ngOnInit() {
     this.columnListSubject.subscribe((columnList: JornalColumn[]) => this.columnList = columnList);
+    this.topButtonListSubject.subscribe((buttonList: JournalButton[]) => {
+      if (buttonList) {
+        buttonList.forEach((button: any) => {
+          const newButton: JournalButton = new JournalButton(button);
+          if (!this.topButtonList.includes(newButton)) {
+            this.topButtonList.push(newButton);
+          }
+        });
+      }
+    });
   }
 
   public load(journalSysName: string) {
-    debugger;
     if (this.account) {
       const UUID: string = this.account.getAccount().$uuid;
       this.journalService.loadJournalMetadata(journalSysName, UUID)
         .subscribe((result: SimpleResult<JournalMetadata>) => {
           const journalMetadata: JournalMetadata = new JournalMetadata(result.result);
           const columnList: JornalColumn[] = journalMetadata.$columnList;
+          const buttonList: JournalButton[] = journalMetadata.$buttonList;
           console.log('before journal next ', columnList);
           this.columnListSubject.next(columnList);
+          this.topButtonListSubject.next(buttonList);
         });
     }
   }
