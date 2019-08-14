@@ -1,0 +1,6 @@
+{
+  "name": "deletePerson",
+  "hint": "Удаление сотрудника",
+  "cssImageName": "delete-btn",
+  "handlerFnName": "deletePerson"
+}

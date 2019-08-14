@@ -1,8 +1,8 @@
 {
   "name": "Журнал для работы с сущностью \"Персонал\"",
   "sysname": "Personals-jrnl",
-  "button_id": null,
-  "column_id": null,
+  "button_id": [],
+  "column_id": [],
   "filter_id": null,
   "ownerRole": [
     "TEST",

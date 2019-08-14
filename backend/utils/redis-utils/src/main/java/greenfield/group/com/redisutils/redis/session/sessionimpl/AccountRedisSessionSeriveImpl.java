@@ -33,17 +33,17 @@ public class AccountRedisSessionSeriveImpl implements RedisSessionManager<Accoun
     }
 
     @Override
-    public void setSessionTimeUnit(TimeUnit sessionTimeUnit) {
-        this.sessionTimeUnit = sessionTimeUnit;
-    }
-
-    @Override
     public void sessionDuration(long durationByTimeUnit) {
         this.durationByTimeUnit = durationByTimeUnit;
     }
 
     public TimeUnit getSessionTimeUnit() {
         return sessionTimeUnit;
+    }
+
+    @Override
+    public void setSessionTimeUnit(TimeUnit sessionTimeUnit) {
+        this.sessionTimeUnit = sessionTimeUnit;
     }
 
     public long getDurationByTimeUnit() {

@@ -3,7 +3,6 @@ package entities.authservice;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -25,9 +24,9 @@ public class User {
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinTable(
-            name="USER_ADDRES",
-            joinColumns=@JoinColumn(name="USER_ID", referencedColumnName="id"),
-            inverseJoinColumns=@JoinColumn(name="ADDRESS_ID", referencedColumnName="id"))
+            name = "USER_ADDRES",
+            joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "id"))
     private Set<Address> addressList;
 
     public User() {

@@ -1,0 +1,44 @@
+{
+  "note": "Набор колонок для журнала \"Персонал\"",
+  "ownerRole": [
+    "TEST",
+    "WAITER"
+  ],
+  "list": [
+    {
+      "headerName": "Имя",
+      "field": "firstName",
+      "sortable": true,
+      "filter": false,
+      "checkboxSelection": false
+    },
+    {
+      "headerName": "Фамилия",
+      "field": "secondName",
+      "sortable": true,
+      "filter": false,
+      "checkboxSelection": false
+    },
+    {
+      "headerName": "Отчество",
+      "field": "lastName",
+      "sortable": true,
+      "filter": false,
+      "checkboxSelection": false
+    },
+    {
+      "headerName": "Дата рождения",
+      "field": "birthDay",
+      "sortable": true,
+      "filter": false,
+      "checkboxSelection": false
+    },
+    {
+      "headerName": "Должность",
+      "field": "employeePosition",
+      "sortable": true,
+      "filter": false,
+      "checkboxSelection": false
+    }
+  ]
+}

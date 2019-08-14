@@ -3,16 +3,52 @@ package changesets.journal;
 import changesets.ChangeSetScriptLoader;
 import com.github.mongobee.changeset.ChangeLog;
 import com.github.mongobee.changeset.ChangeSet;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
+import org.jongo.MongoCursor;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Ченджсеты мета-информации журнала
  */
-@ChangeLog
+@ChangeLog(order = "3")
 public class JournalStructureChangeSet {
+
+    // TODO Вынести в отдельную джарку
+
+    private class JournalMetadata {
+        private List<String> buttonIdList;
+        private List<JournalColumn> columnList;
+        private JournalFilter filter;
+    }
+
+    private class JournalColumn {
+        private String id;
+        private String headerName;
+        private String field;
+        private boolean sortable;
+        private boolean filter;
+        private boolean checkboxSelection;
+    }
+
+    private class JournalButton {
+        private String id;
+        private String name;
+        private String hint;
+        private String cssImageName;
+        private String handlerFnName;
+    }
+
+    private class JournalFilter {
+        private String id;
+    }
+
 
     private ChangeSetScriptLoader scriptLoader = new ChangeSetScriptLoader();
 
@@ -21,6 +57,36 @@ public class JournalStructureChangeSet {
         final String scriptPath = "scripts/journal/personal-journal-structure.json";
         final MongoCollection menuCollection = database.getCollection("journal");
         menuCollection.insert(scriptLoader.getDocumentFromResourceByPath(scriptPath));
+    }
+
+    @ChangeSet(order = "2", id = "upgradeJournalPersonalByButtonsAndColumns", author = "Ivanov Roman")
+    public void upgradeJournalPersonalByButtonsAndColumns(Jongo database) throws IOException {
+        final MongoCollection journalButtonCollection = database.getCollection("journal-button");
+        final MongoCursor<Map> journalButtonList = journalButtonCollection.find(
+                "{\"name\": {\"$in\": [\"createNewPerson\", \"editPerson\"," +
+                        " \"deletePerson\"]}},{\"_id\": 1}")
+                .as(Map.class);
+
+        List<String> buttonIdList = new ArrayList<>();
+        if (journalButtonList != null) {
+            if (journalButtonList.hasNext()) {
+                final Map next = journalButtonList.next();
+                final String id = "\"" + next.get("_id").toString() + "\"";
+                buttonIdList.add(id);
+            }
+        }
+
+        if (!buttonIdList.isEmpty()) {
+            final DBCollection journal = database.getCollection("journal").getDBCollection();
+            final BasicDBObject query = new BasicDBObject();
+            query.append("sysname", "Personals-jrnl");
+
+            BasicDBObject basicDBObject = new BasicDBObject();
+            basicDBObject.append("button_id", buttonIdList);
+            final BasicDBObject bsonList = new BasicDBObject();
+            bsonList.put("$set", basicDBObject);
+            journal.update(query, bsonList, true, false);
+        }
     }
 
 }

@@ -22,7 +22,6 @@ public class ChangeLog {
         // Мигрант для пунктов меню
         Mongobee menuRunner = new Mongobee("mongodb://localhost:27017/metadata-db");
         menuRunner.setChangeLogsScanPackage("changesets"); // package to scan for changesets
-
         List<Mongobee> mongobeeList = Collections.singletonList(menuRunner);
         MongoConfiguration configuration = new MongoConfiguration(mongobeeList);
         try {

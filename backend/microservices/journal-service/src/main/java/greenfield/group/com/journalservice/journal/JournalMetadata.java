@@ -1,39 +1,26 @@
 package greenfield.group.com.journalservice.journal;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
 /**
  * Метаданные журнала
  */
+@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@Document(collection = "journal")
 public class JournalMetadata {
+    @Id
+    private String id;
     private List<JournalButton> buttonList;
     private List<JournalColumn> columnList;
     private JournalFilter filter;
-
-    public JournalMetadata() {
-    }
-
-    public List<JournalButton> getButtonList() {
-        return buttonList;
-    }
-
-    public void setButtonList(List<JournalButton> buttonList) {
-        this.buttonList = buttonList;
-    }
-
-    public List<JournalColumn> getColumnList() {
-        return columnList;
-    }
-
-    public void setColumnList(List<JournalColumn> columnList) {
-        this.columnList = columnList;
-    }
-
-    public JournalFilter getFilter() {
-        return filter;
-    }
-
-    public void setFilter(JournalFilter filter) {
-        this.filter = filter;
-    }
 }

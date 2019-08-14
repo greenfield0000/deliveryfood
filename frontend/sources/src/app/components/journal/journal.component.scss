@@ -56,10 +56,12 @@
 
 .journal-btn,
 .filter-btn,
-.refresh-btn {
+.refresh-btn,
+.add-btn,
+.edit-btn,
+.delete-btn {
   width: 30px;
   height: 30px;
-  background-color: red;
   margin: 5px;
   cursor: pointer;
 }
@@ -70,11 +72,26 @@
 }
 
 .filter-btn {
-  background: url("../../../assets/i/png/filter-btn.png");
+  background: url("../../../assets/i/png/grid-crud/filter-btn.png");
   background-size: contain;
 }
 
 .refresh-btn {
-  background: url("../../../assets/i/png/refresh-btn.png");
+  background: url("../../../assets/i/png/grid-crud/refresh-btn.png");
+  background-size: contain;
+}
+
+.add-btn {
+  background: url("../../../assets/i/png/grid-crud/add.png");
+  background-size: contain;
+}
+
+.delete-btn {
+  background: url("../../../assets/i/png/grid-crud/delete.png");
+  background-size: contain;
+}
+
+.edit-btn {
+  background: url("../../../assets/i/png/grid-crud/edit.png");
   background-size: contain;
 }
