@@ -2,7 +2,7 @@
   "name": "Журнал для работы с сущностью \"Персонал\"",
   "sysname": "Personals-jrnl",
   "button_id": [],
-  "column_id": [],
+  "column_id": null,
   "filter_id": null,
   "ownerRole": [
     "TEST",

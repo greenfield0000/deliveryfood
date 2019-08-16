@@ -5,6 +5,7 @@ import com.github.mongobee.changeset.ChangeLog;
 import com.github.mongobee.changeset.ChangeSet;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
+import exceptions.DataBaseDataException;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
@@ -69,7 +70,7 @@ public class JournalStructureChangeSet {
 
         List<String> buttonIdList = new ArrayList<>();
         if (journalButtonList != null) {
-            if (journalButtonList.hasNext()) {
+            while (journalButtonList.hasNext()) {
                 final Map next = journalButtonList.next();
                 final String id = "\"" + next.get("_id").toString() + "\"";
                 buttonIdList.add(id);
@@ -80,13 +81,44 @@ public class JournalStructureChangeSet {
             final DBCollection journal = database.getCollection("journal").getDBCollection();
             final BasicDBObject query = new BasicDBObject();
             query.append("sysname", "Personals-jrnl");
-
             BasicDBObject basicDBObject = new BasicDBObject();
-            basicDBObject.append("button_id", buttonIdList);
+            basicDBObject.append("button_id", buttonIdList.toArray());
             final BasicDBObject bsonList = new BasicDBObject();
             bsonList.put("$set", basicDBObject);
             journal.update(query, bsonList, true, false);
         }
     }
+
+    @ChangeSet(order = "3", id = "createLinkBetweenPersonJournalAndColumnOnFirstStart", author = "Ivanov Roman")
+    public void createLinkBetweenPersonJournalAndColumnOnFirstStart(Jongo database) throws IOException, DataBaseDataException {
+        final MongoCollection journalColumnCollection = database.getCollection("journal-column");
+        final MongoCursor<Map> journalColumnList = journalColumnCollection.find(
+                "{\"sysName\": \"setColumnForPersonalJournal\"},{\"_id\": \"1\"}")
+                .as(Map.class);
+
+        String columnId = "";
+        if (journalColumnList != null) {
+            if (journalColumnList.count() != 1) {
+                throw new DataBaseDataException("Wrong count column. Must be only 1");
+            }
+            while (journalColumnList.hasNext()) {
+                final Map next = journalColumnList.next();
+                final String id = "\"" + next.get("_id").toString() + "\"";
+                columnId = id;
+            }
+        }
+
+        if (!columnId.isEmpty()) {
+            final DBCollection journal = database.getCollection("journal").getDBCollection();
+            final BasicDBObject query = new BasicDBObject();
+            query.append("sysname", "Personals-jrnl");
+            BasicDBObject basicDBObject = new BasicDBObject();
+            basicDBObject.append("column_id", columnId);
+            final BasicDBObject bsonList = new BasicDBObject();
+            bsonList.put("$set", basicDBObject);
+            journal.update(query, bsonList, true, false);
+        }
+    }
+
 
 }

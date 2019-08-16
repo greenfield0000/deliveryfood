@@ -1,5 +1,6 @@
 {
   "note": "Набор колонок для журнала \"Персонал\"",
+  "sysName": "setColumnForPersonalJournal",
   "ownerRole": [
     "TEST",
     "WAITER"
