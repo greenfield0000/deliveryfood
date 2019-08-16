@@ -1,13 +1,19 @@
 version: "3.4"
 services:
-  # frontend
-  suppbery-admin:
-    container_name: suppbery-admin
-    build: ./frontend
+ 
+  # interface-environment
+  interface-environment:
+    container_name: interface-environment
+    build: ./frontend/environment
+
+  #frontend
+  interface-admin:
+    container_name: interface-admin
+    build: ./frontend/admin
     ports:
       - "4200:4200"
     volumes:
-      - "~/repository/frontend/sources:/angular/suppbery-admin"
+      - "~/repository/deliveryfood/frontend/admin/sources:/angular/interface-admin"
     network_mode: host
 
   #auth-service
@@ -95,3 +101,4 @@ services:
       - "~/rediss-storage/redis/data:/data"
     ports:
       - "6379:6379"
+
