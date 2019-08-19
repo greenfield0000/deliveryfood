@@ -1,0 +1,6 @@
+{
+  "name": "createNewPerson",
+  "hint": "Добавление нового сотрудника",
+  "cssImageName": "add-btn",
+  "handlerFnName": "createNewPerson"
+}

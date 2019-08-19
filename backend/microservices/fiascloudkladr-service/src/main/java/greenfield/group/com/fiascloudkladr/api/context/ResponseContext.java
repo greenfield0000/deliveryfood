@@ -1,7 +1,9 @@
 package greenfield.group.com.fiascloudkladr.api.context;
 
 import greenfield.group.com.fiascloudkladr.api.types.ContentType;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 

@@ -12,9 +12,9 @@ public interface RedisSessionManager<T> {
     /**
      * Метод создания сессии
      *
-     * @param session  - объект сессии
+     * @param session            - объект сессии
      * @param durationByTimeUnit - время действия сессии согласно параметру timeUnit
-     * @param timeUnit - единица измерения времени сессии (секунды, минуты, часы ...)
+     * @param timeUnit           - единица измерения времени сессии (секунды, минуты, часы ...)
      */
     void sessionSave(T session, long durationByTimeUnit, TimeUnit timeUnit);
 

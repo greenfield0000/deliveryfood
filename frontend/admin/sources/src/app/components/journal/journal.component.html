@@ -1,4 +1,4 @@
-<mat-sidenav-container class="journal-sidenav-container" [hidden]="!appAccountContextService.getAccount().$authtorised">
+<mat-sidenav-container class="journal-sidenav-container" [hidden]="!account.getAccount().$authtorised">
   
   <mat-sidenav #journalFilterNavigator [mode]="'over'" class="journal-sidenav">
     <app-filter-panel></app-filter-panel>
@@ -8,9 +8,9 @@
       <div class="journal-top-btn-block">
         <div mat-button matTooltip="Info about the action 1" matTooltipPosition="below"
           aria-tooltip="Button that displays and hides a tooltip triggered by other buttons 1"
-          [ngClass]="topButton.cssImageName" *ngFor="let topButton of topButtonList" (click)="topButton.handler()">
+          [ngClass]="['journal-btn', topButton.cssImageName]" *ngFor="let topButton of topButtonList" (click)="topButton.handler()">
         </div>
-      </div>
+      </div>  
       <div class="journal">
         <ag-grid-angular class="journal-grid ag-theme-balham" [rowData]="rowData" [columnDefs]="columnList">
         </ag-grid-angular>

@@ -1,8 +1,5 @@
-import { AppAccountContextService } from 'src/app/services/app-account-context-service/app-account-context.service';
-import { JournalService } from './../../../../services/journal-service/journal.service';
-import { Component, OnInit } from '@angular/core';
-import { JournalMetadata } from 'src/app/classes/journal/journal-metadata.class';
-import { JornalColumn } from 'src/app/classes/journal/jornal-column.class';
+import { JournalComponent } from './../../../../components/journal/journal.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-personal',
@@ -11,21 +8,13 @@ import { JornalColumn } from 'src/app/classes/journal/jornal-column.class';
 })
 export class PersonalComponent implements OnInit {
 
-
-  public rowData: any;
-  public columnList: JornalColumn[];
+  @ViewChild('journal') journal: JournalComponent;
   private journalSysName: string = 'Personals-jrnl';
 
-
-  constructor(private journalService: JournalService, private account: AppAccountContextService) { }
+  constructor() { }
 
   ngOnInit() {
-    debugger;
-    const UUID: string = this.account.getAccount().$uuid;
-    this.journalService.loadJournalMetadata(this.journalSysName, UUID)
-      .subscribe((journalMetadata: JournalMetadata) => {
-          this.columnList = journalMetadata.$columnList;
-      });
+    this.journal.load(this.journalSysName);
   }
 
 }

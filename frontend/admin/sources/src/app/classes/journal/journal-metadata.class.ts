@@ -37,4 +37,22 @@ export class JournalMetadata {
         this.columnList = columnList;
     }
 
+
+    /**
+     * Getter $buttonList
+     * @return {JournalButton[]}
+     */
+    public get $buttonList(): JournalButton[] {
+        return this.buttonList;
+    }
+
+    /**
+     * Setter $buttonList
+     * @param {JournalButton[]} value
+     */
+    public set $buttonList(value: JournalButton[]) {
+        this.buttonList = value;
+    }
+
+
 }
