@@ -12,10 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "journal-column")
 public class JournalColumn {
-    @Id
-    private String id;
     private String headerName;
     private String field;
     private boolean sortable;

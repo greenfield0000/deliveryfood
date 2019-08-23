@@ -21,6 +21,6 @@ public class JournalMetadata {
     @Id
     private String id;
     private List<JournalButton> buttonList;
-    private List<JournalColumn> columnList;
+    private JournalColumnMetaData columnMetaData;
     private JournalFilter filter;
 }
