@@ -1,6 +1,6 @@
 {
   "name": "editPerson",
   "hint": "Редактирование сотрудника",
-  "cssImageName": "add-btn",
+  "cssImageName": "edit-btn",
   "handlerFnName": "editPerson"
 }

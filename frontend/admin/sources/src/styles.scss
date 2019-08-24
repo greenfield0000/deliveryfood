@@ -102,7 +102,6 @@ body {
   display: none;
 }
 
-
 .mat-drawer-container {
   /*position: relative;
   z-index: 1;
@@ -130,20 +129,6 @@ body {
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 
-// stepper settings
-.step-form {
-  height: 450px;
-}
-
-.step-form {
-  max-width: 100%;
-}
-
-.step-form-1-2 {
-  width: 70%;
-  margin: auto;
-}
-
 // components main form
 .form-content {
   display: contents;
@@ -169,15 +154,8 @@ body {
 
 .form-field {
   flex-wrap: wrap;
-  /* margin: 0 5% 0 5%; */
   display: flex;
-  position: relative;
-  text-align: left;
-  flex: 1;
-  justify-content: center;
-  /* min-width: 35%; */
-  /* max-width: 35%; */
+  justify-content: flex-start;  
   width: 250px;
   height: 60px;
-  margin: auto;
 }

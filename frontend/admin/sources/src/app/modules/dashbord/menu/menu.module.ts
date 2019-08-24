@@ -1,3 +1,4 @@
+import { ClickApply } from '../../../components/journal/filter-panel/(click)="apply()"/(click)="apply()"';
 import { FilterPanelComponent } from './../../../components/journal/filter-panel/filter-panel.component';
 import { MatPaginatorModule, MatProgressSpinner, MatProgressSpinnerModule, MatMenuModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatButton, MatButtonModule, MatSelectModule, MatOptionModule } from '@angular/material';
 import { JournalComponent } from './../../../components/journal/journal.component';
@@ -40,8 +41,7 @@ import { AgGridModule } from 'ag-grid-angular';
     FestivalsComponent,
     PurchasesComponent,
     VacationScheduleComponent,
-    ProfessionalStaffTrainingComponent
-  ],
+    ProfessionalStaffTrainingComponent, ClickApply ],
   imports: [
     CommonModule,
     MenuRoutingModule,

@@ -1,11 +1,11 @@
 <div class="main-page">
 
-  <header [hidden]="!appAccountContextService.getAccount().$authtorised" class="header">
-    <router-outlet name="headerOutlet"></router-outlet>
-  </header>
-
   <!-- Main conten -->
   <div class="main">
+    <header [hidden]="!appAccountContextService.getAccount().$authtorised" class="header">
+      <router-outlet name="headerOutlet"></router-outlet>
+    </header>
+
     <div [hidden]="appAccountContextService.getAccount().$authtorised">
       <router-outlet></router-outlet>
     </div>

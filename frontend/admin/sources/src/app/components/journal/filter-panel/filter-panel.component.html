@@ -12,8 +12,8 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <button mat-raised-button class="filter-panel-button-item">Применить фильтр</button>
-        <button mat-raised-button class="filter-panel-button-item">Отмена</button>
+        <button mat-raised-button class="filter-panel-button-item" (click)="apply()">Применить фильтр</button>
+        <button mat-raised-button class="filter-panel-button-item" (click)="cancel()">Отмена</button>
       </div>
     </div>
   </div>

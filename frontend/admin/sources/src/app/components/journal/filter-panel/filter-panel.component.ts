@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainSideNavService } from 'src/app/services/main-side-nav-service/main-side-nav.service';
 
 @Component({
   selector: 'app-filter-panel',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sideNavService: MainSideNavService) { }
 
   ngOnInit() {
   }
+
+  /**
+   * Метод применения фильтра
+   */
+  public apply() {
+    this.sideNavService.journalFilterDrawerClose();
+  }
+
+  /**
+   * Метод отмены фильтрации
+   */
+  public cancel() {
+    this.sideNavService.journalFilterDrawerClose();
+  }
+
 
 }
