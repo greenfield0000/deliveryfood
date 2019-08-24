@@ -28,10 +28,11 @@ public class JournalRepositoryIml implements JournalRepository {
     public JournalMetadata  load(String journalSysName) throws JournalRepositoryException {
         Aggregation aggregation = Aggregation.newAggregation(
                 Aggregation.project("id"),
+                // Выбираем кнопки
+                Aggregation.lookup("journal-button", "button_id", "id", "buttonList"),
                 // Выбираем колонки
                 Aggregation.lookup("journal-column", "column_id", "id", "columnMetaData"),
-                // Выбираем кнопки
-                Aggregation.lookup("journal-button", "button_id", "id", "buttonList")
+                Aggregation.unwind("columnMetaData")
         );
         List<JournalMetadata> journalList = mongoTemplate.aggregate(aggregation, JOURNAL, JournalMetadata.class)
                 .getMappedResults();

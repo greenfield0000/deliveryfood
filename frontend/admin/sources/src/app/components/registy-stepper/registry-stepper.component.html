@@ -24,9 +24,9 @@
             type="password" required>
         </mat-form-field>
       </div>
-      <div class="form-button">
-        <button mat-raised-button color="primary" (click)="goBackFn(router)" matStepperPrevious>Вернуться</button>
-        <button mat-raised-button color="primary" matStepperNext>Далее</button>
+      <div class="form-button-block">
+        <button class="form-button-block" mat-raised-button color="primary" (click)="goBackFn(router)" matStepperPrevious>Вернуться</button>
+        <button class="form-button-block" mat-raised-button color="primary" matStepperNext>Далее</button>
       </div>
     </form>
   </mat-step>
@@ -55,9 +55,9 @@
           <input type="email" matInput formControlName="email" placeholder="E-mail" name="email" type="email" required>
         </mat-form-field>
       </div>
-      <div class="form-button">
-        <button mat-raised-button color="primary" matStepperPrevious>Назад</button>
-        <button mat-raised-button color="primary" matStepperNext>Далее</button>
+      <div class="form-button-block">
+        <button class="form-button-block" mat-raised-button color="primary" matStepperPrevious>Назад</button>
+        <button class="form-button-block" mat-raised-button color="primary" matStepperNext>Далее</button>
       </div>
     </form>
   </mat-step>
@@ -67,9 +67,9 @@
       <div class="step-form-1-2">
         <app-address-kladr [(address)]="address"></app-address-kladr>
       </div>
-      <div class="form-button">
-        <button mat-raised-button color="primary" matStepperPrevious>Назад</button>
-        <button mat-raised-button color="primary" matStepperNext>Далее</button>
+      <div class="form-button-block">
+        <button class="form-button-block" mat-raised-button color="primary" matStepperPrevious>Назад</button>
+        <button class="form-button-block" mat-raised-button color="primary" matStepperNext>Далее</button>
       </div>
     </form>
   </mat-step>
@@ -83,9 +83,9 @@
           пунктами настоящего
           Соглашения и безусловно принимаю их.</mat-checkbox>
       </div>
-      <div class="form-button">
-        <button mat-raised-button color="primary" matStepperPrevious>Назад</button>
-        <button mat-raised-button color="primary" [disabled]="!isAgree" (click)="onSubmit()">Принять</button>
+      <div class="form-button-block">
+        <button class="form-button-block" mat-raised-button color="primary" matStepperPrevious>Назад</button>
+        <button class="form-button-block" mat-raised-button color="primary" [disabled]="!isAgree" (click)="onSubmit()">Принять</button>
       </div>
     </form>
   </mat-step>

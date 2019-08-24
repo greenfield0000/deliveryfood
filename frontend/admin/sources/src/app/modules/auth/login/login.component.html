@@ -1,18 +1,27 @@
 <form class="form-login">
-  <a class="form-login-main-logo" href="../../../../assets/i/png/supberry-main-logo.jpg"></a>
-  <div class="form-login-content">
-    <h2>Вход</h2>
-    <mat-form-field class="form-field">
-      <input matInput placeholder="Логин" [(ngModel)]="login" name="login" required>
-    </mat-form-field>
+  <div class="form-frame">
 
-    <mat-form-field class="form-field">
-      <input matInput placeholder="Пароль" [(ngModel)]="password" type="password" name="password" required>
-    </mat-form-field>
+    <div class="form-frame-wrapper">
+      <div class="form-login-main-logo-wrapper">
+        <div class="form-login-main-logo"></div>
+      </div>
 
-    <div class="form-button">
-      <button mat-raised-button (click)="signIn()" color="primary">Войти</button>
-      <button mat-raised-button (click)="registry()" color="primary">Перейти на страницу регистрации</button>
+      <div class="form-login-content">
+        <h2>Вход</h2>
+        <mat-form-field class="form-field">
+          <input matInput placeholder="Логин" [(ngModel)]="login" name="login" required>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <input matInput placeholder="Пароль" [(ngModel)]="password" type="password" name="password" required>
+        </mat-form-field>
+
+        <div class="form-button-block">
+          <button class="form-button" mat-raised-button (click)="signIn()" color="primary">Войти</button>
+          <button class="form-button" mat-raised-button (click)="registry()" color="primary">Перейти на страницу регистрации</button>
+        </div>
+      </div>
     </div>
+
   </div>
 </form>

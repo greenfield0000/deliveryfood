@@ -10,33 +10,58 @@
   }
 
   .form-login-content {
-    width: 70%;
-    height: 100%;
+    margin: inherit;
+    width: auto;
+    height: max-content;
+    flex-direction: column;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+  }
+
+  .form-login-main-logo-wrapper {
+    width: 50%;
+    height: 50%;
+    margin: auto;
   }
 
   .form-login-main-logo {
-    width: 40%;
-    height: 40%;
+    width: 100%;
+    height: 100%;
     background: url("../../../../assets/i/png/supberry-main-logo.jpg") no-repeat;
-    background-size: cover;
-    padding: 0px 0px 0px 0px;
+    padding: 0px;
     pointer-events: none;
+    background-size: contain;
   }
 
   .form-login {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
-    width: 40%;
-    height: 40%;
-    margin: 100px auto auto auto;
-    position: initial;
+    height: 100%;
     justify-content: center;
   }
 
   .form-login-content h2 {
     text-align: center;
+  }
+
+  .form-frame {
+    padding: 5%;
+    width: inherit;
+  }
+
+  .form-frame-wrapper {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .form-frame-logo {
+    width: 50%;
+    height: 50%;
+    margin: auto;
   }
 }
