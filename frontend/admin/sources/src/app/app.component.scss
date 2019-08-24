@@ -1,14 +1,17 @@
-.main {
+.main,
+.content {
+  position: fixed;
   width: 100%;
   height: 90%;
 }
 
 .header {
+  position: fixed;
   height: 7%;
   display: contents;
 }
 
-footer {
+.footer {
   display: table-row;
   height: 3%;
   text-align: center;
@@ -16,9 +19,7 @@ footer {
 }
 
 .form,
-.content,
-.experimental,
-app-login {
+.experimental {
   width: 100%;
   height: 100%;
 }
@@ -30,8 +31,7 @@ app-login {
   justify-content: center;
 }
 
-.form,
-app-login {
+.form {
   display: flex;
 }
 
