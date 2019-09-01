@@ -1,3 +1,4 @@
+import { DashbordComponent } from './dashbord.component';
 import { MainOutletComponent } from 'src/app/outlets/main-outlet/main-outlet.component';
 import { RouterModule } from '@angular/router';
 import { DashbordRoutingModule } from './dashbord-routing.module';

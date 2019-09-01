@@ -1,6 +1,5 @@
 import '../polyfills';
 
-import { JournalComponent } from './components/journal/journal.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,8 +14,8 @@ import { TreeFlatOverviewComponent } from './components/tree-flat-overview/tree-
 import { AgGridModule } from 'ag-grid-angular';
 import { MatStepperModule } from '@angular/material/stepper';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AddressKladrComponent } from './components/address-kladr/address-kladr.component';
-import { FilterPanelComponent } from './components/journal/filter-panel/filter-panel.component';
+import { DialogComponent } from './components/modal-window/common/dialog/dialog.component';
+
 
 const modules = [
   BrowserModule,
@@ -73,12 +72,14 @@ const modules = [
 @NgModule({
   declarations: [
     AppComponent,
-    TreeFlatOverviewComponent
+    TreeFlatOverviewComponent,
+    DialogComponent
   ],
   imports: modules,
   exports: [modules],
   providers: [AgGridModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }
 
