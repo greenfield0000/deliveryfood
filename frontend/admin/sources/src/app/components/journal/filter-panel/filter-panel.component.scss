@@ -54,7 +54,10 @@
 
 .filter-panel-rows {
   flex-direction: column;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: inherit;
+  display: flex;
 }
 
 .filter-panel-buttons {

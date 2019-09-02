@@ -1,5 +1,11 @@
 <div class='dialog'>
-  <div class="dialog-name">
-    {{description}}
+  <div class="dialog-conteiner">
+    <div class="dialog-cross" (click)="close()"></div>
+    <div class="dialog-name">
+      {{description}}
+    </div>
+    <div class="dialog-message">
+      {{message}}
+    </div>
   </div>
 </div>
