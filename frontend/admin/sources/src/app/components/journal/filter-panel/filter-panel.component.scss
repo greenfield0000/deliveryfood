@@ -77,14 +77,12 @@
 }
 
 .filter-row {
-  display: inline-flex;
   height: fit-content;
   flex-wrap: wrap;
   flex-direction: row;
   width: 400px;
   padding: 2px;
   justify-content: space-between;
-  border-bottom: 1px ridge;
 }
 
 .filter-name,
@@ -103,8 +101,10 @@
 }
 
 .filter-field {
+  width: 90%;
   border-radius: 15px;
   border: 0.5px inset;
+  margin: auto;
 }
 
 // images
