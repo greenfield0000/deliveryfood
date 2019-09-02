@@ -5,10 +5,13 @@ export class SimpleResult<T> {
     private _message: string;
     private _result: T;
 
-    constructor(status: Status, message: string, result: T) {
-        this._status = status;
-        this._message = message;
-        this._result = result;
+    constructor(data?: any) {
+        if (data) {
+            this._status = data.status;
+            this._message = data.message;
+            debugger
+            this._result = data.result;
+        }
     }
 
     /**

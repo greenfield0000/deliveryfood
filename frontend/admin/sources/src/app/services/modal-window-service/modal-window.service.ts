@@ -2,7 +2,7 @@ import { IDialog } from 'src/app/services/modal-window-service/idialog';
 import { Injectable, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ComponentType } from '@angular/cdk/overlay/index';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { IDialogType } from './idialog.type';
 
 @Injectable({
@@ -15,15 +15,20 @@ export class ModalWindowService implements OnDestroy {
 
   constructor(public dialog: MatDialog) { }
 
-  openDialog(type: IDialogType, dialogComponent: ComponentType<IDialog>, data?: any): void {
-    data = data ? data : {};
+  openDialog(type: IDialogType, dialogComponent: ComponentType<IDialog>, dataContext?: any): Observable<any> {
+    dataContext = dataContext ? dataContext : {};
     this.dialogComponent = dialogComponent.prototype;
     this.dialogComponent.type = type;
-    const dialogRef = this.dialog.open(dialogComponent, data);
+    const dialogRef = this.dialog.open(dialogComponent, {
+      data: dataContext
+    });
 
-    this.subscriptions.push(dialogRef.afterClosed().subscribe(result => {
+    const closed: Observable<any> = dialogRef.afterClosed();
+    this.subscriptions.push(closed.subscribe(result => {
       console.log('The dialog was closed');
     }));
+
+    return closed;
   }
 
   ngOnDestroy(): void {

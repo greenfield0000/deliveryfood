@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { SimpleResult } from 'src/app/utils/simple-result.class';
 import { RouteConstant } from 'src/app/constants/route-constant';
 import { JournalMetadata } from 'src/app/classes/journal/journal-metadata.class';
+import { HttpService } from '../http-service/http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class JournalService {
     new JournalMetadata({ isLoading: true })
   );
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpService) {
   }
 
   /**

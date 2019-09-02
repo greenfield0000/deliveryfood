@@ -12,13 +12,14 @@ import { IDialogType } from 'src/app/services/modal-window-service/idialog.type'
 export class DialogComponent implements OnInit, IDialog {
 
   public description: string = 'Описание';
-  public message: string = `
-  Название горы берёт начало из языка суахили и предположительно означает «гора, которая сверкает».
-  Однако точное происхождение названия Килиманджаро неизвестно. На этот счёт существует несколько теорий[3].
-  `;
   public type: IDialogType;
+  public data: any = { message: '' };
 
-  constructor(private dialogRef: MatDialogRef<IDialog>, @Inject(MAT_DIALOG_DATA) data) { }
+  constructor(private dialogRef: MatDialogRef<IDialog>, @Inject(MAT_DIALOG_DATA) data: any) {
+    if (data) {
+      this.data = data;
+    }
+  }
 
   ngOnInit() {
     const componentInfo: IDialog = this.dialogRef.componentInstance;

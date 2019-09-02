@@ -7,6 +7,7 @@ import { Auth } from 'src/app/interfaces/auth';
 import { RouteConstant } from 'src/app/constants/route-constant';
 import { Router } from '@angular/router';
 import { SimpleResult } from 'src/app/utils/simple-result.class';
+import { HttpService } from '../http-service/http.service';
 
 /**
  * Сервис авторизации и регистрации пользователей в системе
@@ -16,7 +17,7 @@ import { SimpleResult } from 'src/app/utils/simple-result.class';
 })
 export class AuthServiceImpl implements Auth {
 
-  constructor(private _httpService: HttpClient) { }
+  constructor(private _httpService: HttpService) { }
 
   /**
    * Выйти из системы

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { SimpleResult } from 'src/app/utils/simple-result.class';
 import { RouteConstant } from 'src/app/constants/route-constant';
 import { AddressItemType } from 'src/app/components/address-kladr/model/address-emiter.model';
+import { HttpService } from '../http-service/http.service';
 
 /**
  * Сервис для работы с кладром
@@ -12,7 +13,7 @@ import { AddressItemType } from 'src/app/components/address-kladr/model/address-
   providedIn: 'root'
 })
 export class KladrService {
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpService) {}
 
   public load(type: AddressItemType, params: any = {}) {
     const query: string = (params && params.query) || 'Мос';
@@ -48,10 +49,9 @@ export class KladrService {
    */
   public loadRegion(findQuery: String) {
     const params = { query: findQuery };
-    return this._http.post<SimpleResult<any>>(
+    return this._http.post<any>(
       RouteConstant.kladr_location + '/getRegion',
-      params,
-      HttpConstant.HTTP_OPTIONS
+      params
     );
   }
 
@@ -62,10 +62,9 @@ export class KladrService {
    */
   public loadDistrict(findQuery: String, findRegionId: number) {
     const params = { query: findQuery, regionId: findRegionId };
-    return this._http.post<SimpleResult<any>>(
+    return this._http.post<any>(
       RouteConstant.kladr_location + '/getDistrict',
-      params,
-      HttpConstant.HTTP_OPTIONS
+      params
     );
   }
 
@@ -76,10 +75,9 @@ export class KladrService {
    */
   public loadCity(findQuery: String, findDistrict: number) {
     const params = { query: findQuery, districtId: findDistrict };
-    return this._http.post<SimpleResult<any>>(
+    return this._http.post<any>(
       RouteConstant.kladr_location + '/getCity',
-      params,
-      HttpConstant.HTTP_OPTIONS
+      params
     );
   }
 
@@ -90,10 +88,9 @@ export class KladrService {
    */
   public loadStreet(findQuery: String, findCityId: number) {
     const params = { query: findQuery, cityId: findCityId };
-    return this._http.post<SimpleResult<any>>(
+    return this._http.post<any>(
       RouteConstant.kladr_location + '/getStreet',
-      params,
-      HttpConstant.HTTP_OPTIONS
+      params
     );
   }
 
@@ -104,10 +101,9 @@ export class KladrService {
    */
   public loadBuilding(findQuery: String, findStreetId: number) {
     const params = { query: findQuery, streetId: findStreetId };
-    return this._http.post<SimpleResult<any>>(
+    return this._http.post<any>(
       RouteConstant.kladr_location + '/getBuilding',
-      params,
-      HttpConstant.HTTP_OPTIONS
+      params
     );
   }
 }
