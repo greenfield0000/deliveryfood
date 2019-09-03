@@ -9,8 +9,7 @@ const routes: Routes = [
   { path: 'auth', loadChildren: () => AuthModule },
   {
     path: 'dashbord',
-    loadChildren: () => DashbordModule,
-    canActivate: [PermissionGuard]
+    loadChildren: () => DashbordModule
   }
 ];
 
