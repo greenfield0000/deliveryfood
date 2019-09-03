@@ -9,7 +9,6 @@ export class SimpleResult<T> {
         if (data) {
             this._status = data.status;
             this._message = data.message;
-            debugger
             this._result = data.result;
         }
     }

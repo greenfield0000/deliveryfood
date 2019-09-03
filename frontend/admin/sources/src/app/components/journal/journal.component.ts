@@ -10,6 +10,7 @@ import { AgGridNg2 } from 'ag-grid-angular';
 import { JournalButton } from 'src/app/classes/journal/journal-button.class';
 import { JournalMetadata } from 'src/app/classes/journal/journal-metadata.class';
 import { ColumnMetaData } from 'src/app/classes/journal/journal-column-metadata.class';
+import { IJournal } from './journal.interface';
 
 /**
  * Описание кнопки журнала
@@ -21,6 +22,8 @@ import { ColumnMetaData } from 'src/app/classes/journal/journal-column-metadata.
   styleUrls: ['./journal.component.scss']
 })
 export class JournalComponent implements OnInit {
+  @Input()
+  public context: IJournal;
   @ViewChild('agGrid') agGrid: AgGridNg2;
   @ViewChild('journalFilterNavigator')
   private journalFilterNavigator: MatSidenav;
@@ -28,11 +31,11 @@ export class JournalComponent implements OnInit {
   private columnListSubject: Subject<JornalColumn[]> = new BehaviorSubject<JornalColumn[]>([]);
   private topButtonListSubject: Subject<JournalButton[]> = new BehaviorSubject<JournalButton[]>([]);
   // описание колонок сетки данных
-  private columnList: any;
+  public columnList: any;
   // данные для сетки данных
-  private rowData: any;
+  public rowData: any;
 
-  private topButtonList: JournalButton[] = [
+  public topButtonList: JournalButton[] = [
     new JournalButton({
       name: 'Фильтр',
       hint: 'Применить фильтр',
@@ -47,7 +50,7 @@ export class JournalComponent implements OnInit {
     })
   ];
 
-  private rightButtonList: JournalButton;
+  public rightButtonList: JournalButton;
 
   constructor(
     private sideNavService: MainSideNavService,
@@ -66,6 +69,11 @@ export class JournalComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.context) {
+      throw new Error('Не установлен контекст журнала');
+    }
+
+    this.journalService.context = this.context;
     this.columnListSubject.subscribe(
       (columnList: JornalColumn[]) => (this.columnList = columnList)
     );
@@ -79,6 +87,10 @@ export class JournalComponent implements OnInit {
         buttonList.forEach((button: any) => {
           const newButton: JournalButton = new JournalButton(button);
           if (!this.topButtonList.includes(newButton)) {
+            const journalContext = this.journalService.context;
+            if (button.handlerFnName) {
+              newButton.handler = journalContext[button.handlerFnName];
+            }
             this.topButtonList.push(newButton);
           }
         });

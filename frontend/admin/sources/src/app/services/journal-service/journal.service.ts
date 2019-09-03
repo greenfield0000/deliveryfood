@@ -5,11 +5,14 @@ import { SimpleResult } from 'src/app/utils/simple-result.class';
 import { RouteConstant } from 'src/app/constants/route-constant';
 import { JournalMetadata } from 'src/app/classes/journal/journal-metadata.class';
 import { HttpService } from '../http-service/http.service';
+import { IJournal } from 'src/app/components/journal/journal.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JournalService {
+
+  private _context: IJournal;
 
   // по умолчанию, считаем, что что-то грузим, т.к. это сервис никаких манипуляций, кроме как
   // загрузка метаданных журнала, ничего не делает
@@ -34,4 +37,21 @@ export class JournalService {
         RouteConstant.journal_location + '/load', { sysName: journalSysName, uuid: uuid }
       );
   }
+
+  /**
+   * Getter context
+   * @return {IJournal}
+   */
+  public get context(): IJournal {
+    return this._context;
+  }
+
+  /**
+   * Setter context
+   * @param {IJournal} value
+   */
+  public set context(value: IJournal) {
+    this._context = value;
+  }
+
 }
