@@ -199,7 +199,7 @@ public class AccountService {
                 .orElse(account))
                 .get();
 
-        finderAccount.setAuthtorised(isAuth);
+        finderAccount.setIsAuthtorised(isAuth);
 
         return finderAccount;
     }

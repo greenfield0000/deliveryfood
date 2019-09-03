@@ -23,7 +23,7 @@ export class HttpService {
 
   public handleResponse<T>(result: T): Observable<any> {
     const simpleResult: any = Object.assign({}, result);
-    if ((!simpleResult) || ((simpleResult) && (simpleResult.status.toString() === 'ERROR'))) {
+    if ((!simpleResult) || ((simpleResult) && (simpleResult.status) && (simpleResult.status.toString() === 'ERROR'))) {
       const messageInfo: string = simpleResult && simpleResult.message || this.defaultErrorMessage;
       return this.modalWindow.openDialog(IDialogType.INFO, DialogComponent, {
         message: messageInfo
