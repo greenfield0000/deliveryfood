@@ -1,7 +1,7 @@
 package greenfield.group.com.authservice.gates;
 
-import entities.authservice.Account;
-import entities.authservice.Role;
+import api.Account;
+import api.Role;
 import greenfield.group.com.authservice.services.AccountService;
 import greenfield.group.com.gatewayutils.results.SimpleResult;
 import org.springframework.beans.factory.annotation.Autowired;

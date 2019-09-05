@@ -18,7 +18,6 @@
 
     <modules>
         <module>gateway-utils</module>
-        <module>privilegies-utils</module>
         <module>pattern-utils</module>
         <module>redis-utils</module>
     </modules>

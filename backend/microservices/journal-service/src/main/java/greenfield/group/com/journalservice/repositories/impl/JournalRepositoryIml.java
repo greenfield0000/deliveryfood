@@ -1,13 +1,12 @@
 package greenfield.group.com.journalservice.repositories.impl;
 
 
-import greenfield.group.com.journalservice.exceptions.JournalRepositoryException;
-import greenfield.group.com.journalservice.journal.JournalMetadata;
+import api.exceptions.JournalRepositoryException;
+import api.journal.JournalMetadata;
 import greenfield.group.com.journalservice.repositories.JournalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
-import org.springframework.data.mongodb.core.aggregation.Fields;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,7 +24,7 @@ public class JournalRepositoryIml implements JournalRepository {
     private MongoTemplate mongoTemplate;
 
     @Override
-    public JournalMetadata  load(String journalSysName) throws JournalRepositoryException {
+    public JournalMetadata load(String journalSysName) throws JournalRepositoryException {
         Aggregation aggregation = Aggregation.newAggregation(
                 Aggregation.project("id"),
                 // Выбираем кнопки

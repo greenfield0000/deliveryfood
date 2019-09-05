@@ -1,6 +1,6 @@
 package greenfield.group.com.redisutils.redis.session.sessionimpl;
 
-import entities.authservice.Account;
+import api.Account;
 import greenfield.group.com.redisutils.redis.session.RedisSessionManager;
 import greenfield.group.com.redisutils.redis.session.utils.RedisUtilComponent;
 import org.springframework.beans.factory.annotation.Autowired;

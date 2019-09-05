@@ -22,10 +22,20 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>core-bussines</module>
         <module>microservices</module>
         <module>utils</module>
         <module>dbmigration</module>
+        <module>common-services</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.16.4</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

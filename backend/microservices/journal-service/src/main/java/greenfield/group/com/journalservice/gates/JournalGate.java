@@ -1,11 +1,11 @@
 package greenfield.group.com.journalservice.gates;
 
+import api.journal.JournalButton;
+import api.journal.JournalColumn;
+import api.journal.JournalMetadata;
+import api.requests.LoadJournalRequest;
 import greenfield.group.com.gatewayutils.enums.Status;
 import greenfield.group.com.gatewayutils.results.SimpleResult;
-import greenfield.group.com.journalservice.gates.request.LoadJournalRequest.LoadJournalRequest;
-import greenfield.group.com.journalservice.journal.JournalButton;
-import greenfield.group.com.journalservice.journal.JournalColumn;
-import greenfield.group.com.journalservice.journal.JournalMetadata;
 import greenfield.group.com.journalservice.services.JournalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

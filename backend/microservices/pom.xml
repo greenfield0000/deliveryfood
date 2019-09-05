@@ -32,7 +32,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.4</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -50,6 +49,7 @@
         <module>menu-service</module>
         <module>journal-service</module>
         <module>fiascloudkladr-service</module>
+        <module>gateway-service</module>
     </modules>
 
 </project>

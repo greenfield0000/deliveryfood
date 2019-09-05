@@ -1,9 +1,9 @@
 package greenfield.group.com.authservice.services;
 
+import api.Account;
+import api.AccountRole;
+import api.Role;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entities.authservice.Account;
-import entities.authservice.Role;
-import enums.AccountRole;
 import greenfield.group.com.authservice.repositories.AccountRepository;
 import greenfield.group.com.gatewayutils.enums.Status;
 import greenfield.group.com.gatewayutils.results.SimpleResult;

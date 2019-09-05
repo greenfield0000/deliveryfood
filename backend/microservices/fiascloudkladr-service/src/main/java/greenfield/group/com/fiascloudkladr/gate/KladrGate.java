@@ -1,10 +1,10 @@
 package greenfield.group.com.fiascloudkladr.gate;
 
 import greenfield.group.com.fiascloudkladr.api.KladrApiService;
-import greenfield.group.com.fiascloudkladr.api.context.RequestContext;
-import greenfield.group.com.fiascloudkladr.api.context.ResultContext;
-import greenfield.group.com.fiascloudkladr.api.exception.KladrApiServiceException;
-import greenfield.group.com.fiascloudkladr.api.types.ContentType;
+import api.context.RequestContext;
+import api.context.ResultContext;
+import api.exception.KladrApiServiceException;
+import api.types.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

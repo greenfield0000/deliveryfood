@@ -8,9 +8,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @EnableMongoRepositories
 @ComponentScan(basePackages = {
-        "greenfield.group.com.gatewayutils",
-        "greenfield.group.com.journalservice",
-        "greenfield.group.com.redisutils.redis"
+        "greenfield.group.com.gatewayutils"
 })
 @SpringBootApplication
 public class JournalServiceApplication {

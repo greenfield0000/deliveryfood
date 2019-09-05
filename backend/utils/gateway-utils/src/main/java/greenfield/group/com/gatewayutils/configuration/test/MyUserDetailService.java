@@ -1,6 +1,6 @@
 package greenfield.group.com.gatewayutils.configuration.test;
 
-import enums.AccountRole;
+import api.AccountRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

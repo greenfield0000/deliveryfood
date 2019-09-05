@@ -1,6 +1,6 @@
 package greenfield.group.com.menuservice.gates;
 
-import entities.authservice.Role;
+import api.Role;
 import greenfield.group.com.gatewayutils.enums.Status;
 import greenfield.group.com.gatewayutils.results.SimpleResult;
 import greenfield.group.com.menuservice.services.MenuService;

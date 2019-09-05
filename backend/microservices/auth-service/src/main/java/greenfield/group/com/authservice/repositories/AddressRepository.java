@@ -1,6 +1,6 @@
 package greenfield.group.com.authservice.repositories;
 
-import entities.authservice.Address;
+import api.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

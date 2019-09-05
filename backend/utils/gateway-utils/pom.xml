@@ -35,18 +35,6 @@
         </dependency>
         <dependency>
             <groupId>greenfield.group.com</groupId>
-            <artifactId>privilegies-utils</artifactId>
-            <version>0.0.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>greenfield.group.com</groupId>
-            <artifactId>core-auth</artifactId>
-            <version>0.0.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>greenfield.group.com</groupId>
             <artifactId>redis-utils</artifactId>
             <version>0.0.1</version>
             <scope>compile</scope>

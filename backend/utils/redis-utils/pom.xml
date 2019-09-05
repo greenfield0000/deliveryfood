@@ -18,9 +18,8 @@
         </dependency>
         <dependency>
             <groupId>greenfield.group.com</groupId>
-            <artifactId>core-auth</artifactId>
+            <artifactId>personal</artifactId>
             <version>0.0.1</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
