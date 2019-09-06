@@ -6,9 +6,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:4200/**")
-@RestController(value = "/menu-gate")
+@RestController
 public class MenuGate {
-    @RequestMapping(path = "/getMenu", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/menu-gate/getMenu", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<String> getMenu(@RequestBody String uuid) {
         return new SimpleResult<>(Status.OK,"");
     }

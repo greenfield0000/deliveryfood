@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:4200/**")
-@RestController(value = "/journal-gate")
+@RestController
 public class JournalGate {
 
     /**
@@ -16,7 +16,7 @@ public class JournalGate {
      * @param loadJournalRequest запрос с интерфейса при загрузке журнала
      * @return
      */
-    @RequestMapping(path = "/load", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/journal-gate/load", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<JournalMetadata> load(@RequestBody LoadJournalRequest loadJournalRequest) {
         return new SimpleResult<>();
     }
