@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @SpringBootApplication
 @ComponentScan(basePackages = {
         "greenfield.group.com.gatewayutils",
-        "greenfield.group.com.menuservice",
-        "greenfield.group.com.redisutils.redis"
+        "greenfield.group.com.redisutils",
+        "greenfield.group.com.menuservice"
 })
 public class MenuServiceApplication {
 

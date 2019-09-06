@@ -6,7 +6,9 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EntityScan("api")
 @ComponentScan(basePackages = {
-		"greenfield.group.com.gatewayutils"
+		"greenfield.group.com.gatewayutils",
+		"greenfield.group.com.redisutils",
+		"greenfield.group.com.gateway"
 })
 public class GatewayApplication {
 

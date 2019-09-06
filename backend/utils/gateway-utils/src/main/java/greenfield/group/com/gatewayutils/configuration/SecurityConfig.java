@@ -1,6 +1,5 @@
 package greenfield.group.com.gatewayutils.configuration;
 
-import greenfield.group.com.gatewayutils.configuration.test.MyUserDetailService;
 import greenfield.group.com.gatewayutils.filters.CustomCsrfAndCorsFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -75,11 +74,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder getBCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public UserDetailsService getUserDetailsService() {
-        return new MyUserDetailService();
     }
 
 }

@@ -24,12 +24,12 @@ public class AccountRedisSessionSeriveImpl implements RedisSessionManager<Accoun
 
     @Override
     public void sessionSave(Account accountSession, long durationByTimeUnit, TimeUnit timeUnit) {
-        sessionType.putValueWithTTL(accountSession.getUuid(), accountSession.toString(), durationByTimeUnit, timeUnit);
+//        sessionType.putValueWithTTL(accountSession.getUuid(), accountSession.toString(), durationByTimeUnit, timeUnit);
     }
 
     @Override
     public void sessionDelete(Account accountSession) {
-        sessionType.putValueWithTTL(accountSession.getUuid(), accountSession.toString(), 1L, TimeUnit.MILLISECONDS);
+//        sessionType.putValueWithTTL(accountSession.getUuid(), accountSession.toString(), 1L, TimeUnit.MILLISECONDS);
     }
 
     @Override

@@ -31,7 +31,6 @@ public class BeanConfiguration {
         return new Account();
     }
 
-
     @Bean
     public Address address() {
         return new Address();
@@ -41,7 +40,6 @@ public class BeanConfiguration {
     public Role role() {
         return new Role();
     }
-
 
     @Bean
     public User user() {

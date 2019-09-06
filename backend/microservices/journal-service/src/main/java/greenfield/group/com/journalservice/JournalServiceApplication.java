@@ -5,12 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-
+@SpringBootApplication
 @EnableMongoRepositories
 @ComponentScan(basePackages = {
-        "greenfield.group.com.gatewayutils"
+        "greenfield.group.com.gatewayutils",
+        "greenfield.group.com.redisutils",
+        "greenfield.group.com.journalservice"
 })
-@SpringBootApplication
 public class JournalServiceApplication {
 
     public static void main(String[] args) {
