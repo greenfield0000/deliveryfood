@@ -29,11 +29,11 @@ public final class JwtAccountFactory {
                 account.getId(),
                 account.getNickName(),
                 account.getPassword(),
-                mapToGrantedAuthorities(Collections.singletonList(role)),
                 true,
-                new Date()
-//                account.getStatus().equals(Status.ACTIVE),
-//                account.getUpdated()
+                new Date(),
+                mapToGrantedAuthorities(Collections.singletonList(role))
+                //                account.getStatus().equals(Status.ACTIVE),
+                //                account.getUpdated()
         );
     }
 

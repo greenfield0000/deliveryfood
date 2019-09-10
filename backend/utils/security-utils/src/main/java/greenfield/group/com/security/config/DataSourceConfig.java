@@ -8,11 +8,12 @@ import javax.sql.DataSource;
 
 @Configuration
 public class DataSourceConfig {
+
     @Bean
     public DataSource getDataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("com.mysql.jdbc.Driver");
-        dataSourceBuilder.url("jdbc:mysql://localhost:3306/auth-db");
+        dataSourceBuilder.url("jdbc:mysql://auth-db:3306/auth-db");
         dataSourceBuilder.username("root");
         dataSourceBuilder.password("123");
         return dataSourceBuilder.build();

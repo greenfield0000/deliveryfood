@@ -2,6 +2,7 @@ package greenfield.group.com.security.service.impl;
 
 import api.Account;
 import api.Role;
+import api.Status;
 import greenfield.group.com.security.repository.AccountRepository;
 import greenfield.group.com.security.repository.RoleRepository;
 import greenfield.group.com.security.service.AccountService;
@@ -25,21 +26,25 @@ import java.util.List;
 @Slf4j
 public class AccountServiceImpl implements AccountService {
 
-    @Autowired
-    private  AccountRepository accountRepository;
-    @Autowired
+    private AccountRepository accountRepository;
     private RoleRepository roleRepository;
-    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    public AccountServiceImpl(AccountRepository accountRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
+        this.accountRepository = accountRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public Account register(Account Account) {
-        Role roleAccount = roleRepository.findByName("ROLE_Account");
+        Role roleAccount = roleRepository.findByName("ROLE_USER");
         List<Role> AccountRoles = new ArrayList<>();
         AccountRoles.add(roleAccount);
 
         Account.setPassword(passwordEncoder.encode(Account.getPassword()));
-//        Account.setStatus(Status.ACTIVE);
+        Account.setStatus(Status.ACTIVE);
 
         Account registeredAccount = accountRepository.save(Account);
 

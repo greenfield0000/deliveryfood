@@ -21,5 +21,10 @@ public class BeanConfiguration {
     public ObjectMapper objectMapper() {
         return new ObjectMapper();
     }
+//
+//    @Bean
+//    public JwtTokenProvider jwtTokenProvider() {
+//        return new JwtTokenProvider();
+//    };
 
 }

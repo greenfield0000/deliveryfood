@@ -1,11 +1,11 @@
 package greenfield.group.com.security.security.jwt;
 
+import api.Role;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -27,10 +27,8 @@ import java.util.List;
 @Component
 public class JwtTokenProvider {
 
-//    @Value("${jwt.token.secret}")
+    private static final String TOKEN_PREFIX = "Bearer_";
     private final String secret = "mySecretTempKey";
-
-//    @Value("${jwt.token.expired}")
     private final long validityInMilliseconds = 3600000;
 
     @Autowired
@@ -41,10 +39,17 @@ public class JwtTokenProvider {
         return new BCryptPasswordEncoder();
     }
 
-    public String createToken(String login, Collection<? extends GrantedAuthority> roles) {
+    /**
+     * Метод формирования токена
+     *
+     * @param login           логин
+     * @param accountRoleList пароль
+     * @return
+     */
+    public String createToken(String login, List<Role> accountRoleList) {
 
         Claims claims = Jwts.claims().setSubject(login);
-        claims.put("roles", getRoleNames(roles));
+        claims.put("roles", getRoleNames(accountRoleList));
 
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
@@ -58,18 +63,22 @@ public class JwtTokenProvider {
     }
 
     public Authentication getAuthentication(String token) {
-        UserDetails AccountDetails = this.userDetailsService.loadUserByUsername(getAccountname(token));
+        UserDetails AccountDetails = this.userDetailsService.loadUserByUsername(getLogin(token));
         return new UsernamePasswordAuthenticationToken(AccountDetails, "", AccountDetails.getAuthorities());
     }
 
-    public String getAccountname(String token) {
-        return Jwts.parser().setSigningKey(secret.getBytes()).parseClaimsJws(token).getBody().getSubject();
+    private String getLogin(String token) {
+        return Jwts.parser()
+                .setSigningKey(secret.getBytes())
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
     }
 
     public String resolveToken(HttpServletRequest req) {
         String bearerToken = req.getHeader("Authorization");
-        if (bearerToken != null && bearerToken.startsWith("Bearer_")) {
-            return bearerToken.substring(7, bearerToken.length());
+        if (bearerToken != null && bearerToken.startsWith(TOKEN_PREFIX)) {
+            return bearerToken.substring(TOKEN_PREFIX.length());
         }
         return null;
     }
@@ -77,24 +86,24 @@ public class JwtTokenProvider {
     public boolean validateToken(String token) {
         try {
             Jws<Claims> claims = Jwts.parser().setSigningKey(secret.getBytes()).parseClaimsJws(token);
-
             if (claims.getBody().getExpiration().before(new Date())) {
                 return false;
             }
-
             return true;
         } catch (JwtException | IllegalArgumentException e) {
             throw new JwtAuthenticationException("JWT token is expired or invalid");
         }
     }
 
-    private List<String> getRoleNames(Collection<? extends GrantedAuthority> accountRoles) {
+    private List<String> getRoleNames(List<Role> accountRoleList) {
+        if (accountRoleList == null) {
+            return Collections.emptyList();
+        }
+
         List<String> result = new ArrayList<>();
-
-        accountRoles.forEach(role -> {
-            result.add(role.getAuthority());
+        accountRoleList.forEach(role -> {
+            result.add(role.getSysname());
         });
-
         return result;
     }
 }

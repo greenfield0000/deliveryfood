@@ -4,14 +4,17 @@ import api.Account;
 import api.AccountRole;
 import api.Role;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import greenfield.group.com.authservice.dto.response.LoginAccountResponseDTO;
 import greenfield.group.com.security.common.SimpleResult;
 import greenfield.group.com.security.common.Status;
 import greenfield.group.com.security.repository.AccountRepository;
+import greenfield.group.com.security.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -23,15 +26,23 @@ import static pattern.PatternConstant.GUID_PATTERN;
  * Сервис по работе с аккаунтом
  */
 @Service
-public class AccountService {
+public class AuthService {
 
     private static final boolean AUTHTORIZE = true;
     private static final boolean NON_AUTHORIZED = false;
 
+    private final ObjectMapper objectMapper;
+    private final AccountRepository accountRepository;
+    private final JwtTokenProvider jwtTokenProvider;
+
     @Autowired
-    private ObjectMapper objectMapper;
-    @Autowired
-    private AccountRepository accountRepository;
+    public AuthService(ObjectMapper objectMapper,
+                       AccountRepository accountRepository,
+                       JwtTokenProvider jwtTokenProvider) {
+        this.objectMapper = objectMapper;
+        this.accountRepository = accountRepository;
+        this.jwtTokenProvider = jwtTokenProvider;
+    }
 
     /**
      * Залогиниться
@@ -39,7 +50,7 @@ public class AccountService {
      * @param account
      * @return
      */
-    public SimpleResult<Account> signIn(Account account) {
+    public SimpleResult<LoginAccountResponseDTO> signIn(Account account) {
         // Должен быть известен логин и пароль
         if ((account == null) || ((account.getLogin() == null) || (account.getLogin().isEmpty()))
                 || ((account.getPassword() == null) || (account.getPassword().isEmpty()))) {
@@ -57,7 +68,12 @@ public class AccountService {
         account = finderAccount.get();
         setAuthtorized(account, AUTHTORIZE);
         accountRepository.save(account);
-        return new SimpleResult<>(Status.OK, account);
+        LoginAccountResponseDTO loginAccountResponseDTO = LoginAccountResponseDTO.accountToDTO(account);
+        loginAccountResponseDTO.setToken(jwtTokenProvider.createToken(
+                loginAccountResponseDTO.getLogin(),
+                Arrays.asList(loginAccountResponseDTO.getAccountRole())
+        ));
+        return new SimpleResult<>(Status.OK, loginAccountResponseDTO);
     }
 
     /**

@@ -20,7 +20,7 @@ import java.util.Set;
 public class Organization extends BaseEntity {
     private String name;
     @OneToOne
-    @JoinColumn(name="ACCOUNT_ID")
+    @JoinColumn(name = "ACCOUNT_ID")
     private Address address;
     private String phone;
     @ManyToMany(mappedBy = "organizations")

@@ -1,6 +1,6 @@
 package api;
 
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -17,11 +17,11 @@ import java.util.Set;
 @Data
 @PrimaryKeyJoinColumn(name = "EMPLOYEE_ID")
 public class Employee extends User {
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "ORGANIZATION_EMPLOYEE",
-            joinColumns = { @JoinColumn(name = "EMPLOYEE_ID") },
-            inverseJoinColumns = { @JoinColumn(name = "ORGANIZATION_ID") }
+            joinColumns = {@JoinColumn(name = "EMPLOYEE_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "ORGANIZATION_ID")}
     )
     private Set<Organization> organizations = new HashSet<>();
     private String tabNum;

@@ -26,7 +26,7 @@ public class JournalService {
     public JournalMetadata loadJournal(String sysName, String uuid) {
         JournalMetadata journalMetadata = new JournalMetadata();
         try {
-             journalMetadata = journalRepositoryIml.load(sysName);
+            journalMetadata = journalRepositoryIml.load(sysName);
         } catch (JournalRepositoryException e) {
             e.printStackTrace();
         }
