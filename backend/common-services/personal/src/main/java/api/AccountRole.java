@@ -3,6 +3,7 @@ package api;
 /**
  * Роли аккаунта
  */
+
 public enum AccountRole {
 
     // Супер пользователь

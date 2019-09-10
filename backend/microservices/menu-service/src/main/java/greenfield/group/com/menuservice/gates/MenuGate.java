@@ -1,9 +1,9 @@
 package greenfield.group.com.menuservice.gates;
 
 import api.Role;
-import greenfield.group.com.gatewayutils.enums.Status;
-import greenfield.group.com.gatewayutils.results.SimpleResult;
 import greenfield.group.com.menuservice.services.MenuService;
+import greenfield.group.com.security.common.SimpleResult;
+import greenfield.group.com.security.common.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

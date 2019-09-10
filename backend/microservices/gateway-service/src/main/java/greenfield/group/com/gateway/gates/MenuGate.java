@@ -1,6 +1,6 @@
 package greenfield.group.com.gateway.gates;
 
-import greenfield.group.com.gatewayutils.results.SimpleResult;
+import greenfield.group.com.security.common.SimpleResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ public class MenuGate extends Gate {
     private RestTemplate restTemplate;
 
     @RequestMapping(path = "/menu-gate/getMenu", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public SimpleResult<String> getMenu(@RequestBody String uuid) {
+    public SimpleResult getMenu(@RequestBody String uuid) {
         return this.restTemplate
                 .postForEntity(serviceRegistry.get(MENU_SERVICE) + "/getMenu", uuid, SimpleResult.class)
                 .getBody();

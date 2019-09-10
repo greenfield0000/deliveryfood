@@ -1,8 +1,11 @@
 package api;
 
-import lombok.*;
+import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import java.util.Set;
 
 /**
@@ -12,15 +15,9 @@ import java.util.Set;
  * @date 03.09.2019
  * @since 8
  **/
-@Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-public class Organization {
-    @Id
-    private Long id;
+@Entity
+public class Organization extends BaseEntity {
     private String name;
     @OneToOne
     @JoinColumn(name="ACCOUNT_ID")

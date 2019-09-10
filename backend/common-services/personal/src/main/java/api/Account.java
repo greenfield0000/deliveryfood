@@ -1,6 +1,5 @@
 package api;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,18 +8,9 @@ import javax.persistence.*;
  * Описание аккаунта
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "Account")
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Account {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+public class Account extends BaseEntity {
     @Column(name = "login")
     private String login;
     @Column(name = "password")

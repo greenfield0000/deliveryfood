@@ -4,10 +4,9 @@ import api.Account;
 import api.AccountRole;
 import api.Role;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import greenfield.group.com.authservice.repositories.AccountRepository;
-import greenfield.group.com.gatewayutils.enums.Status;
-import greenfield.group.com.gatewayutils.results.SimpleResult;
-import greenfield.group.com.redisutils.redis.session.sessionimpl.AccountRedisSessionSeriveImpl;
+import greenfield.group.com.security.common.SimpleResult;
+import greenfield.group.com.security.common.Status;
+import greenfield.group.com.security.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,8 +32,6 @@ public class AccountService {
     private ObjectMapper objectMapper;
     @Autowired
     private AccountRepository accountRepository;
-    @Autowired
-    private AccountRedisSessionSeriveImpl accountRedisSessionImpl;
 
     /**
      * Залогиниться
@@ -60,21 +57,7 @@ public class AccountService {
         account = finderAccount.get();
         setAuthtorized(account, AUTHTORIZE);
         accountRepository.save(account);
-        saveAccountSession(account);
         return new SimpleResult<>(Status.OK, account);
-    }
-
-    /**
-     * Метод сохранения сессии
-     *
-     * @param account - аккаунт для которого сохраняем сессию
-     */
-    private void saveAccountSession(Account account) {
-        accountRedisSessionImpl.sessionSave(
-                account,
-                accountRedisSessionImpl.getDurationByTimeUnit(),
-                accountRedisSessionImpl.getSessionTimeUnit()
-        );
     }
 
     /**
@@ -100,7 +83,6 @@ public class AccountService {
         account = finderAccount.get();
         setAuthtorized(account, NON_AUTHORIZED);
         accountRepository.save(account);
-        accountRedisSessionImpl.sessionDelete(account);
         return new SimpleResult<>(Status.OK, account);
     }
 
@@ -134,7 +116,6 @@ public class AccountService {
             role.setSysname(accountRole.getSysname());
             account.setAccountRole(role);
             final Account savedAccount = accountRepository.saveAndFlush(account);
-            saveAccountSession(account);
             return new SimpleResult<>(Status.OK, savedAccount);
         }
 

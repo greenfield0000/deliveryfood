@@ -39,12 +39,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>greenfield.group.com</groupId>
-            <artifactId>gateway-utils</artifactId>
-            <version>0.0.1</version>
-        </dependency>
         <dependency>
             <groupId>greenfield.group.com</groupId>
             <artifactId>pattern-utils</artifactId>
@@ -52,7 +46,7 @@
         </dependency>
         <dependency>
             <groupId>greenfield.group.com</groupId>
-            <artifactId>redis-utils</artifactId>
+            <artifactId>security-utils</artifactId>
             <version>0.0.1</version>
             <scope>compile</scope>
         </dependency>

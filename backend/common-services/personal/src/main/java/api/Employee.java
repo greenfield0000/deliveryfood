@@ -15,11 +15,6 @@ import java.util.Set;
  **/
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@ToString
 @PrimaryKeyJoinColumn(name = "EMPLOYEE_ID")
 public class Employee extends User {
     @ManyToMany(cascade = { CascadeType.ALL })

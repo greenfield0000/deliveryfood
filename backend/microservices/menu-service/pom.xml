@@ -31,12 +31,13 @@
         </dependency>
         <dependency>
             <groupId>greenfield.group.com</groupId>
-            <artifactId>gateway-utils</artifactId>
+            <artifactId>menu</artifactId>
             <version>0.0.1</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>greenfield.group.com</groupId>
-            <artifactId>menu</artifactId>
+            <artifactId>security-utils</artifactId>
             <version>0.0.1</version>
             <scope>compile</scope>
         </dependency>

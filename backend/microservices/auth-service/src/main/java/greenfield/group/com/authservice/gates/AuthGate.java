@@ -3,7 +3,7 @@ package greenfield.group.com.authservice.gates;
 import api.Account;
 import api.Role;
 import greenfield.group.com.authservice.services.AccountService;
-import greenfield.group.com.gatewayutils.results.SimpleResult;
+import greenfield.group.com.security.common.SimpleResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

@@ -10,8 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EntityScan("api")
 @ComponentScan(basePackages = {
-        "greenfield.group.com.gatewayutils",
-        "greenfield.group.com.redisutils",
+        "greenfield.group.com.security",
         "greenfield.group.com.authservice"
 })
 public class AuthServiceApplication {

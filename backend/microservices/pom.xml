@@ -39,6 +39,11 @@
             <version>2.9.8</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>greenfield.group.com</groupId>
+            <artifactId>security-utils</artifactId>
+            <version>0.0.1</version>
+        </dependency>
     </dependencies>
 
     <modelVersion>4.0.0</modelVersion>

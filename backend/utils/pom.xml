@@ -17,23 +17,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>gateway-utils</module>
+        <module>security-utils</module>
         <module>pattern-utils</module>
-        <module>redis-utils</module>
     </modules>
-
-    <dependencies>
-        <!-- greenfield.group.com.redisutils.redis.session-->
-        <dependency>
-            <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session-data-redis</artifactId>
-            <version>2.1.4.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.lettuce</groupId>
-            <artifactId>lettuce-core</artifactId>
-        </dependency>
-    </dependencies>
 
 </project>
