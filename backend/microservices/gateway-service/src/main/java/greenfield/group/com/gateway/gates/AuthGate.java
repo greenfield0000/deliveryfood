@@ -2,13 +2,15 @@ package greenfield.group.com.gateway.gates;
 
 import api.Account;
 import api.Role;
-import greenfield.group.com.security.common.SimpleResult;
+import greenfield.group.com.gatecommon.SimpleResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-@CrossOrigin(origins = "http://localhost:4200/**")
 @RestController
 public class AuthGate extends Gate {
 

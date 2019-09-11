@@ -4,7 +4,7 @@ import api.Account;
 import api.Role;
 import greenfield.group.com.authservice.dto.response.LoginAccountResponseDTO;
 import greenfield.group.com.authservice.services.AuthService;
-import greenfield.group.com.security.common.SimpleResult;
+import greenfield.group.com.gatecommon.SimpleResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

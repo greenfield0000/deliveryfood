@@ -1,4 +1,4 @@
-package greenfield.group.com.security.common;
+package greenfield.group.com.gatecommon;
 
 /**
  * Статусы ответа сервера
