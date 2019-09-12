@@ -15,19 +15,19 @@ public class AuthGate {
     @Autowired
     private AuthService authService;
 
-    @CrossOrigin(origins = "http://localhost:4200/**")
+//    @CrossOrigin(origins = "http://localhost:4200/**")
     @RequestMapping(path = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<LoginAccountResponseDTO> login(@RequestBody Account account) {
         return authService.signIn(account);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/**")
+//    @CrossOrigin(origins = "http://localhost:4200/**")
     @RequestMapping(path = "/logout", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<Account> logout(@RequestBody Account account) {
         return authService.signOut(account);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/**")
+//    @CrossOrigin(origins = "http://localhost:4200/**")
     @RequestMapping(path = "/registry", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<Account> registry(@RequestBody Account account) {
         return authService.registry(account);

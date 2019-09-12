@@ -69,9 +69,16 @@ public class AuthService {
         setAuthtorized(account, AUTHTORIZE);
         accountRepository.save(account);
         LoginAccountResponseDTO loginAccountResponseDTO = LoginAccountResponseDTO.accountToDTO(account);
+        Role accountRole = loginAccountResponseDTO.getAccountRole();
+        if (accountRole == null) {
+            accountRole = new Role();
+            accountRole.setId(1L);
+            accountRole.setName("Пользователь");
+            accountRole.setSysname("USER");
+        }
         loginAccountResponseDTO.setToken(jwtTokenProvider.createToken(
                 loginAccountResponseDTO.getLogin(),
-                Arrays.asList(loginAccountResponseDTO.getAccountRole())
+                Arrays.asList(accountRole)
         ));
         return new SimpleResult<>(Status.OK, loginAccountResponseDTO);
     }
