@@ -39,7 +39,6 @@
 ### Описание основных БД:
 1. Auth-db. Mysql 8.0.17-1debian9.
 2. Metadata-db. 4.2.0.
-3. Redis-session-db. Redis 5.0.5.
 ### Сборка и деплой:
 1. Docker 19.03.1.
 2. Docker-compose 1.17.1.
