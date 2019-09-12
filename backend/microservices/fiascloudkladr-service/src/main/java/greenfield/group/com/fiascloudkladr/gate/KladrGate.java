@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
  * @date 27.06.19
  * @since 8
  **/
-@CrossOrigin
 @RestController(value = "/kladr")
 public class KladrGate {
 

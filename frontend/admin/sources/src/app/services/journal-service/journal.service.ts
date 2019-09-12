@@ -1,8 +1,7 @@
+import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SimpleResult } from 'src/app/utils/simple-result.class';
-import { RouteConstant } from 'src/app/constants/route-constant';
 import { JournalMetadata } from 'src/app/classes/journal/journal-metadata.class';
 import { HttpService } from '../http-service/http.service';
 import { IJournal } from 'src/app/components/journal/journal.interface';
@@ -14,11 +13,6 @@ export class JournalService {
 
   private _context: IJournal;
 
-  // по умолчанию, считаем, что что-то грузим, т.к. это сервис никаких манипуляций, кроме как
-  // загрузка метаданных журнала, ничего не делает
-  private journalMetadata: BehaviorSubject<JournalMetadata> = new BehaviorSubject<JournalMetadata>(
-    new JournalMetadata({ isLoading: true })
-  );
 
   constructor(private http: HttpService) {
   }
@@ -34,7 +28,7 @@ export class JournalService {
   public loadJournalMetadata(journalSysName: string, uuid: string): Observable<SimpleResult<JournalMetadata>> {
     return this.http
       .post<SimpleResult<JournalMetadata>>(
-        RouteConstant.journal_location + '/load', { sysName: journalSysName, uuid: uuid }
+        environment.gatePath.journal_location + '/load', { sysName: journalSysName, uuid: uuid }
       );
   }
 

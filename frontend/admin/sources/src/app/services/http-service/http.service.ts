@@ -1,4 +1,4 @@
-import { HttpConstant } from 'src/app/constants/http-constant';
+import { environment } from './../../../environments/environment';
 import { SimpleResult } from './../../utils/simple-result.class';
 import { DialogComponent } from './../../components/modal-window/common/dialog/dialog.component';
 import { ModalWindowService } from 'src/app/services/modal-window-service/modal-window.service';
@@ -32,7 +32,7 @@ export class HttpService {
     return of(result);
   }
 
-  public post<T>(url: string, params: any = {}, options: any = HttpConstant.HTTP_OPTIONS): Observable<T> {
+  public post<T>(url: string, params: any = {}, options: any =  environment.headers): Observable<T> {
     return this.http.post<T>(url, params, options).pipe(
       switchMap((res) => this.handleResponse(res)),
       catchError(err => {

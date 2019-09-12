@@ -1,8 +1,5 @@
-import { HttpConstant } from 'src/app/constants/http-constant';
-import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
-import { SimpleResult } from 'src/app/utils/simple-result.class';
-import { RouteConstant } from 'src/app/constants/route-constant';
 import { AddressItemType } from 'src/app/components/address-kladr/model/address-emiter.model';
 import { HttpService } from '../http-service/http.service';
 
@@ -50,7 +47,7 @@ export class KladrService {
   public loadRegion(findQuery: String) {
     const params = { query: findQuery };
     return this._http.post<any>(
-      RouteConstant.kladr_location + '/getRegion',
+      environment.gatePath.kladr_location + '/getRegion',
       params
     );
   }
@@ -63,7 +60,7 @@ export class KladrService {
   public loadDistrict(findQuery: String, findRegionId: number) {
     const params = { query: findQuery, regionId: findRegionId };
     return this._http.post<any>(
-      RouteConstant.kladr_location + '/getDistrict',
+      environment.gatePath.kladr_location + '/getDistrict',
       params
     );
   }
@@ -76,7 +73,7 @@ export class KladrService {
   public loadCity(findQuery: String, findDistrict: number) {
     const params = { query: findQuery, districtId: findDistrict };
     return this._http.post<any>(
-      RouteConstant.kladr_location + '/getCity',
+      environment.gatePath.kladr_location + '/getCity',
       params
     );
   }
@@ -89,7 +86,7 @@ export class KladrService {
   public loadStreet(findQuery: String, findCityId: number) {
     const params = { query: findQuery, cityId: findCityId };
     return this._http.post<any>(
-      RouteConstant.kladr_location + '/getStreet',
+      environment.gatePath.kladr_location + '/getStreet',
       params
     );
   }
@@ -102,7 +99,7 @@ export class KladrService {
   public loadBuilding(findQuery: String, findStreetId: number) {
     const params = { query: findQuery, streetId: findStreetId };
     return this._http.post<any>(
-      RouteConstant.kladr_location + '/getBuilding',
+      environment.gatePath.kladr_location + '/getBuilding',
       params
     );
   }

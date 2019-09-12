@@ -1,10 +1,10 @@
+import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { AppAccountContextService } from './../app-account-context-service/app-account-context.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MenuNode } from 'src/app/classes/menu-node';
 import { SimpleResult } from 'src/app/utils/simple-result.class';
-import { RouteConstant } from 'src/app/constants/route-constant';
 
 /**
  * File database, it can build a tree structured Json object from string.
@@ -27,7 +27,7 @@ export class MenuService {
 
   loadMenuByAccountUUID(uuid: string): Observable<SimpleResult<string>> {
     return this.http
-      .post<SimpleResult<string>>(RouteConstant.menu_location + '/getMenu', { uuid: uuid });
+      .post<SimpleResult<string>>(environment.gatePath.menu_location + '/getMenu', { uuid: uuid });
   }
 
   initialize() {
