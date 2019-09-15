@@ -6,13 +6,18 @@ import greenfield.group.com.security.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -71,20 +76,46 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         String[] antPatterns = NO_AUTH_ENDPOINT_LIST.toArray(new String[NO_AUTH_ENDPOINT_LIST.size()]);
-
         http
                 .authorizeRequests()
-                .antMatchers(antPatterns)
-                .permitAll()
-                .anyRequest().authenticated()
+//                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers(antPatterns).permitAll()
+                .anyRequest()
+                .authenticated()
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider))
                 .and()
                 .httpBasic().disable()
-                .cors().disable()
                 .csrf().disable()
+                .cors().disable()
                 .formLogin().disable()
                 .logout().disable();
     }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        String[] antPatterns = NO_AUTH_ENDPOINT_LIST.toArray(new String[NO_AUTH_ENDPOINT_LIST.size()]);
+        web.ignoring()
+                .antMatchers(antPatterns);
+    }
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        CorsConfiguration defaultCorsConfigurations = corsConfiguration.applyPermitDefaultValues();
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.setAllowedMethods(Arrays.asList(
+                HttpMethod.GET.name(),
+                HttpMethod.HEAD.name(),
+                HttpMethod.POST.name(),
+                HttpMethod.PUT.name(),
+                HttpMethod.DELETE.name()));
+        corsConfiguration.setMaxAge(3600L);
+        defaultCorsConfigurations.combine(corsConfiguration);
+        source.registerCorsConfiguration("/**", corsConfiguration); // you restrict your path here
+        return source;
+    }
+
 }
 

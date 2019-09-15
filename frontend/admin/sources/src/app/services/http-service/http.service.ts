@@ -4,7 +4,7 @@ import { DialogComponent } from './../../components/modal-window/common/dialog/d
 import { ModalWindowService } from 'src/app/services/modal-window-service/modal-window.service';
 import { IDialogType } from './../modal-window-service/idialog.type';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { switchMap, catchError } from 'rxjs/operators';
 
@@ -32,7 +32,10 @@ export class HttpService {
     return of(result);
   }
 
-  public post<T>(url: string, params: any = {}, options: any =  environment.headers): Observable<T> {
+  public post<T>(url: string, params: any = {}, headers: HttpHeaders = environment.headers): Observable<T> {
+    const options = {
+      headers: headers
+    };
     return this.http.post<T>(url, params, options).pipe(
       switchMap((res) => this.handleResponse(res)),
       catchError(err => {
