@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 
-@CrossOrigin
 @RestController(value = "/journal")
 public class JournalGate {
 

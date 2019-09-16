@@ -19,7 +19,7 @@ export class AccountEntity {
             this.id = obj && obj.id;
             this.login = obj && obj.login;
             this.password = obj && obj.password;
-            this.authtorised = obj && obj.isAuthtorised;
+            this.authtorised = obj && obj.authtorised;
             this.nickName = obj && obj.nickName;
             this.uuid = obj && obj.uuid;
             this.user = obj && obj.user;
@@ -56,7 +56,7 @@ export class AccountEntity {
      */
     public get $password(): string {
         return this.password;
-    }
+    }   
 
     /**
      * Getter $authtorised

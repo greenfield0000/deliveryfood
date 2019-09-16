@@ -2,7 +2,7 @@ import '../polyfills';
 
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,6 +15,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { MatStepperModule } from '@angular/material/stepper';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DialogComponent } from './components/modal-window/common/dialog/dialog.component';
+import { TokenInterceptor } from './interceptors/jwt.token-interceptor';
 
 
 const modules = [
@@ -77,7 +78,14 @@ const modules = [
   ],
   imports: modules,
   exports: [modules],
-  providers: [AgGridModule],
+  providers: [
+    AgGridModule,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]
 })

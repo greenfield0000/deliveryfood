@@ -1,5 +1,4 @@
 import { environment } from './../../../environments/environment';
-import { SimpleResult } from './../../utils/simple-result.class';
 import { DialogComponent } from './../../components/modal-window/common/dialog/dialog.component';
 import { ModalWindowService } from 'src/app/services/modal-window-service/modal-window.service';
 import { IDialogType } from './../modal-window-service/idialog.type';
@@ -32,7 +31,7 @@ export class HttpService {
     return of(result);
   }
 
-  public post<T>(url: string, params: any = {}, headers: HttpHeaders = environment.headers): Observable<T> {
+  public post<T>(url: string, params: any = {}, headers: HttpHeaders = environment.headers): Observable<T> { 
     const options = {
       headers: headers
     };
