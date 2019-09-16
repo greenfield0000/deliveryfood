@@ -22,20 +22,16 @@ import java.util.List;
  * @version 1.0
  */
 
-@Service
 @Slf4j
+@Service
 public class AccountServiceImpl implements AccountService {
 
-    private AccountRepository accountRepository;
-    private RoleRepository roleRepository;
-    private BCryptPasswordEncoder passwordEncoder;
-
     @Autowired
-    public AccountServiceImpl(AccountRepository accountRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
-        this.accountRepository = accountRepository;
-        this.roleRepository = roleRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private RoleRepository roleRepository;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    private AccountRepository accountRepository;
 
     @Override
     public Account register(Account Account) {
