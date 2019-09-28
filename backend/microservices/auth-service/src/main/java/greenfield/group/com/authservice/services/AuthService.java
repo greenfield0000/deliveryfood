@@ -1,8 +1,8 @@
 package greenfield.group.com.authservice.services;
 
-import api.Account;
-import api.AccountRole;
-import api.Role;
+import greenfield.group.com.model.Account;
+import greenfield.group.com.model.AccountRole;
+import greenfield.group.com.model.Role;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import greenfield.group.com.authservice.dto.response.LoginAccountResponseDTO;
 import greenfield.group.com.gatecommon.SimpleResult;

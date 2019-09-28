@@ -1,6 +1,6 @@
 package greenfield.group.com.security.security.jwt;
 
-import api.Role;
+import greenfield.group.com.model.Role;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

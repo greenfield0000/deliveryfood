@@ -1,7 +1,7 @@
 package greenfield.group.com.gateway.gates;
 
-import api.Account;
-import api.Role;
+import greenfield.group.com.model.Account;
+import greenfield.group.com.model.Role;
 import greenfield.group.com.gatecommon.SimpleResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

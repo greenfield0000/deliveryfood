@@ -1,7 +1,7 @@
 package greenfield.group.com.authservice.dto.response;
 
-import api.Account;
-import api.Role;
+import greenfield.group.com.model.Account;
+import greenfield.group.com.model.Role;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 

@@ -1,8 +1,8 @@
 package greenfield.group.com.security.service.impl;
 
-import api.Account;
-import api.Role;
-import api.Status;
+import greenfield.group.com.model.Account;
+import greenfield.group.com.model.Role;
+import greenfield.group.com.model.Status;
 import greenfield.group.com.security.repository.AccountRepository;
 import greenfield.group.com.security.repository.RoleRepository;
 import greenfield.group.com.security.service.AccountService;

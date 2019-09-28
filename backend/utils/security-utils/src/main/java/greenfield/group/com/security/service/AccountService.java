@@ -1,6 +1,6 @@
 package greenfield.group.com.security.service;
 
-import api.Account;
+import greenfield.group.com.model.Account;
 
 import java.util.List;
 

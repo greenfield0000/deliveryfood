@@ -1,6 +1,6 @@
 package greenfield.group.com.menuservice.gates;
 
-import api.Role;
+import greenfield.group.com.model.Role;
 import greenfield.group.com.gatecommon.SimpleResult;
 import greenfield.group.com.gatecommon.Status;
 import greenfield.group.com.menuservice.services.MenuService;

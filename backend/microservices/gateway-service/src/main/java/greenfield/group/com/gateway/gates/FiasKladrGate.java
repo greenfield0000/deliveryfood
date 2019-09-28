@@ -1,7 +1,7 @@
 package greenfield.group.com.gateway.gates;
 
-import api.context.RequestContext;
-import api.context.ResultContext;
+import greenfield.group.com.model.context.RequestContext;
+import greenfield.group.com.model.context.ResultContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

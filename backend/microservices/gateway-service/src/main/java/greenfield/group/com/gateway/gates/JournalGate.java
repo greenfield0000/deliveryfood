@@ -1,7 +1,7 @@
 package greenfield.group.com.gateway.gates;
 
-import api.journal.JournalMetadata;
-import api.requests.LoadJournalRequest;
+import greenfield.group.com.model.journal.JournalMetadata;
+import greenfield.group.com.model.requests.LoadJournalRequest;
 import greenfield.group.com.gatecommon.SimpleResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

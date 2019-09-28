@@ -1,9 +1,9 @@
 package greenfield.group.com.journalservice.gates;
 
-import api.journal.JournalButton;
-import api.journal.JournalColumn;
-import api.journal.JournalMetadata;
-import api.requests.LoadJournalRequest;
+import greenfield.group.com.model.journal.JournalButton;
+import greenfield.group.com.model.journal.JournalColumn;
+import greenfield.group.com.model.journal.JournalMetadata;
+import greenfield.group.com.model.requests.LoadJournalRequest;
 import greenfield.group.com.gatecommon.SimpleResult;
 import greenfield.group.com.gatecommon.Status;
 import greenfield.group.com.journalservice.services.JournalService;

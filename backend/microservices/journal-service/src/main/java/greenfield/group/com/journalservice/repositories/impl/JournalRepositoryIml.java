@@ -1,8 +1,8 @@
 package greenfield.group.com.journalservice.repositories.impl;
 
 
-import api.exceptions.JournalRepositoryException;
-import api.journal.JournalMetadata;
+import greenfield.group.com.model.exceptions.JournalRepositoryException;
+import greenfield.group.com.model.journal.JournalMetadata;
 import greenfield.group.com.journalservice.repositories.JournalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;

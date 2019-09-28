@@ -1,6 +1,6 @@
 package greenfield.group.com.security.repository;
 
-import api.Role;
+import greenfield.group.com.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
