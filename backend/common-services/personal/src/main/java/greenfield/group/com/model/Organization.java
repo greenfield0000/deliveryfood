@@ -2,10 +2,7 @@ package greenfield.group.com.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Set;
 
 /**
@@ -17,6 +14,7 @@ import java.util.Set;
  **/
 @Data
 @Entity
+@Table(name = "ORGANIZATION")
 public class Organization extends BaseEntity {
     private String name;
     @OneToOne

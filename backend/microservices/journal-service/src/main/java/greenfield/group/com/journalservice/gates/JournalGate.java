@@ -1,17 +1,16 @@
 package greenfield.group.com.journalservice.gates;
 
-import greenfield.group.com.model.journal.JournalButton;
-import greenfield.group.com.model.journal.JournalColumn;
-import greenfield.group.com.model.journal.JournalMetadata;
-import greenfield.group.com.model.requests.LoadJournalRequest;
 import greenfield.group.com.gatecommon.SimpleResult;
 import greenfield.group.com.gatecommon.Status;
 import greenfield.group.com.journalservice.services.JournalService;
+import greenfield.group.com.model.journal.JournalMetadata;
+import greenfield.group.com.model.requests.LoadJournalRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Collections;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController(value = "/journal")
 public class JournalGate {
@@ -27,32 +26,8 @@ public class JournalGate {
      */
     @RequestMapping(path = "/load", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<JournalMetadata> load(@RequestBody LoadJournalRequest loadJournalRequest) {
-        final JournalMetadata journalMetadata = getJournalMetadataTest();
         return new SimpleResult<>(
-                Status.OK, journalService.loadJournal(loadJournalRequest.getSysName(), loadJournalRequest.getUuid())
+                Status.OK, journalService.loadJournal(loadJournalRequest.getSysName())
         );
     }
-
-    /**
-     * Для теста
-     *
-     * @return
-     */
-    private JournalMetadata getJournalMetadataTest() {
-        final JournalMetadata journalMetadata = new JournalMetadata();
-        final JournalButton journalButton = new JournalButton();
-        journalButton.setCssImageName("filter-btn");
-        journalButton.setHandlerFnName("TestHandlerFnName");
-        journalButton.setHint("TestHint");
-        journalButton.setName("TestName");
-        journalMetadata.setButtonList(Collections.singletonList(journalButton));
-        final JournalColumn journalColumn = new JournalColumn();
-        journalColumn.setSortable(false);
-        journalColumn.setField("TestField");
-        journalColumn.setCheckboxSelection(false);
-        journalColumn.setHeaderName("TestHeaderName");
-        journalColumn.setFilter(false);
-        return journalMetadata;
-    }
-
 }

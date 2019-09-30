@@ -4,7 +4,6 @@ import greenfield.group.com.model.Account;
 import greenfield.group.com.model.Role;
 import greenfield.group.com.model.Status;
 import greenfield.group.com.security.repository.AccountRepository;
-import greenfield.group.com.security.repository.RoleRepository;
 import greenfield.group.com.security.service.AccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,22 +26,23 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
-    private RoleRepository roleRepository;
+    private  BCryptPasswordEncoder passwordEncoder;
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
-    @Autowired
-    private AccountRepository accountRepository;
+    private  AccountRepository accountRepository;
+
 
     @Override
-    public Account register(Account Account) {
-        Role roleAccount = roleRepository.findByName("ROLE_USER");
-        List<Role> AccountRoles = new ArrayList<>();
-        AccountRoles.add(roleAccount);
+    public Account register(Account account) {
+        Role roleAccount = new Role();
+        roleAccount.setName("Пользователь");
+        roleAccount.setSysname("ROLE_USER");
+        List<Role> accountRoles = new ArrayList<>();
+        accountRoles.add(roleAccount);
 
-        Account.setPassword(passwordEncoder.encode(Account.getPassword()));
-        Account.setStatus(Status.ACTIVE);
+        account.setPassword(passwordEncoder.encode(account.getPassword()));
+        account.setStatus(Status.ACTIVE);
 
-        Account registeredAccount = accountRepository.save(Account);
+        Account registeredAccount = accountRepository.save(account);
 
         log.info("IN register - Account: {} successfully registered", registeredAccount);
 

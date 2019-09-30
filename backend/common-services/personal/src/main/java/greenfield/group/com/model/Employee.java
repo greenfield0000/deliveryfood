@@ -16,6 +16,7 @@ import java.util.Set;
 @Entity
 @Data
 @PrimaryKeyJoinColumn(name = "EMPLOYEE_ID")
+@Table(name = "EMPLOYEE")
 public class Employee extends User {
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(

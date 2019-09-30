@@ -1,12 +1,12 @@
 package greenfield.group.com.authservice.services;
 
-import greenfield.group.com.model.Account;
-import greenfield.group.com.model.AccountRole;
-import greenfield.group.com.model.Role;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import greenfield.group.com.authservice.dto.response.LoginAccountResponseDTO;
 import greenfield.group.com.gatecommon.SimpleResult;
 import greenfield.group.com.gatecommon.Status;
+import greenfield.group.com.model.Account;
+import greenfield.group.com.model.AccountRole;
+import greenfield.group.com.model.Role;
 import greenfield.group.com.security.repository.AccountRepository;
 import greenfield.group.com.security.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,18 +31,12 @@ public class AuthService {
     private static final boolean AUTHTORIZE = true;
     private static final boolean NON_AUTHORIZED = false;
 
-    private final ObjectMapper objectMapper;
-    private final AccountRepository accountRepository;
-    private final JwtTokenProvider jwtTokenProvider;
-
     @Autowired
-    public AuthService(ObjectMapper objectMapper,
-                       AccountRepository accountRepository,
-                       JwtTokenProvider jwtTokenProvider) {
-        this.objectMapper = objectMapper;
-        this.accountRepository = accountRepository;
-        this.jwtTokenProvider = jwtTokenProvider;
-    }
+    private  ObjectMapper objectMapper;
+    @Autowired
+    private  AccountRepository accountRepository;
+    @Autowired
+    private  JwtTokenProvider jwtTokenProvider;
 
     /**
      * Залогиниться

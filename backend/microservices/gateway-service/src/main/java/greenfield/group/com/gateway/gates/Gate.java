@@ -8,7 +8,7 @@ import java.util.Map;
  * @date 09.09.2019
  * @since 8
  **/
-public class Gate {
+public abstract class Gate {
 
     /**
      * Временное решение хранения реестра сервисов

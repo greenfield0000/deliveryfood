@@ -1,6 +1,5 @@
 package greenfield.group.com.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -12,8 +11,7 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@Table(name = "AccountRole")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Table(name = "ACCOUNTROLE")
 public class Role extends BaseEntity {
     @Column(name = "name")
     private String name;

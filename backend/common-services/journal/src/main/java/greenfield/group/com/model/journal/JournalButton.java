@@ -7,10 +7,6 @@ import lombok.*;
  */
 
 @Data
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class JournalButton {
     private String id;
     private String name;

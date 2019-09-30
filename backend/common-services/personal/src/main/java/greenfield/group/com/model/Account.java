@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 @Data
 @Entity
-@Table(name = "Account")
+@Table(name = "ACCOUNT")
 public class Account extends BaseEntity {
     @Column(name = "login")
     private String login;

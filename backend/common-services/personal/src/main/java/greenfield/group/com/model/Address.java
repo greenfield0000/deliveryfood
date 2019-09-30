@@ -11,7 +11,7 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@Table(name = "Address")
+@Table(name = "ADDRESS")
 public class Address extends BaseEntity {
     private String token;
     private String regionId;

@@ -16,7 +16,7 @@ import java.util.List;
  * Основной репозиторий для загрузки метаданных журнала
  */
 @Repository
-public class JournalRepositoryIml implements JournalRepository {
+public class JournalRepositoryImpl implements JournalRepository {
 
     private static final String JOURNAL = "journal";
 

@@ -10,7 +10,7 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "User")
+@Table(name = "USER")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User extends BaseEntity {
     private String name;

@@ -1,6 +1,7 @@
 package greenfield.group.com.security.service;
 
 import greenfield.group.com.model.Account;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * @author Ivanov Roman
  * @version 1.0
  */
-
+@Service
 public interface AccountService {
 
     Account register(Account account);

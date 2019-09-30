@@ -3,7 +3,7 @@ package greenfield.group.com.security.security;
 import greenfield.group.com.model.Account;
 import greenfield.group.com.security.security.jwt.JwtAccount;
 import greenfield.group.com.security.security.jwt.JwtAccountFactory;
-import greenfield.group.com.security.service.AccountService;
+import greenfield.group.com.security.service.impl.AccountServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,12 +20,8 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class JwtAccountDetailsService implements UserDetailsService {
 
-    private final AccountService accountService;
-
     @Autowired
-    public JwtAccountDetailsService(AccountService accountService) {
-        this.accountService = accountService;
-    }
+    private AccountServiceImpl accountService;
 
     @Override
     public UserDetails loadUserByUsername(String nickName) throws UsernameNotFoundException {

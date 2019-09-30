@@ -2,8 +2,8 @@ package greenfield.group.com.security.repository;
 
 import greenfield.group.com.model.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
+// Пока отключил, т.к. с этим работать рановато
+//@Repository
 public interface AddressRepository extends JpaRepository<Address, Long> {
 }

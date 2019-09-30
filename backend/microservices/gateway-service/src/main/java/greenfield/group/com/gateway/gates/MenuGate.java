@@ -19,7 +19,6 @@ public class MenuGate extends Gate {
     public SimpleResult getMenu(@RequestHeader(value = "Authorization", defaultValue = "") String authorization, @RequestBody String uuid) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", authorization);
-        headers.add("uuid", uuid);
         HttpEntity<String> httpEntity = new HttpEntity<>(uuid, headers);
         return this.restTemplate
                 .postForEntity(serviceRegistry.get(MENU_SERVICE) + "/getMenu", httpEntity, SimpleResult.class)

@@ -8,10 +8,6 @@ import java.util.List;
  * Описание стукрутуры колонок
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 public class JournalColumnMetaData {
     private String id;
     private String note;
