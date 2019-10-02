@@ -6,7 +6,33 @@
       "sysname": "Personals",
       "name": "Персонал",
       "pathOfDash": "personal",
-      "image": "personal"
+      "image": "personal",
+      "children": [
+        {
+          "node-1-1": {
+            "sysname": "WorkSchedule",
+            "name": "Рабочий график",
+            "pathOfDash": "work-schedule",
+            "image": "work-schedule"
+          }
+        },
+        {
+          "node-1-2": {
+            "sysname": "VacationSchedule",
+            "name": "График отпусков",
+            "pathOfDash": "vacation-schedule",
+            "image": "vacation-schedule"
+          }
+        },
+        {
+          "node-1-3": {
+            "sysname": "ProfessionalStaffTraining",
+            "name": "Проф подготовка",
+            "pathOfDash": "professional-staff-training",
+            "image": "professional-staff-training"
+          }
+        }
+      ]
     },
     "node-2": {
       "sysname": "Reservations",
@@ -15,70 +41,56 @@
       "image": "reservations"
     },
     "node-3": {
-      "sysname": "WorkSchedule",
-      "name": "Рабочий график",
-      "pathOfDash": "work-schedule",
-      "image": "work-schedule"
-    },
-    "node-4": {
       "sysname": "Orders",
       "name": "Заказы (beta)",
       "pathOfDash": "orders",
       "image": "orders"
     },
-    "node-5": {
+    "node-4": {
       "sysname": "SuggestNews",
       "name": "Предложить новость",
       "pathOfDash": "suggest-news",
       "image": "suggest-news"
     },
-    "node-6": {
-      "sysname": "StopSheet",
-      "name": "Стоп лист",
-      "pathOfDash": "stop-sheet",
-      "image": "stop-sheet"
-    },
-    "node-7": {
+    "node-5": {
       "sysname": "Menu",
       "name": "Меню",
       "pathOfDash": "menu",
-      "image": "menu"
+      "image": "menu",
+      "children": [
+        {
+          "node-5-1": {
+            "sysname": "StopSheet",
+            "name": "Стоп лист",
+            "pathOfDash": "stop-sheet",
+            "image": "stop-sheet"
+          }
+        }
+      ]
     },
-    "node-8": {
+    "node-6": {
       "sysname": "Delivery",
       "name": "Доставка",
       "pathOfDash": "delivery",
       "image": "delivery"
     },
-    "node-9": {
+    "node-7": {
       "sysname": "MasterClasses",
       "name": "Мастерклассы",
       "pathOfDash": "master-classes",
       "image": "master-classes"
     },
-    "node-10": {
+    "node-8": {
       "sysname": "Festivals",
       "name": "Фестивали",
       "pathOfDash": "festivals",
       "image": "festivals"
     },
-    "node-11": {
+    "node-9": {
       "sysname": "Purchases",
       "name": "Закупки",
       "pathOfDash": "purchases",
       "image": "purchases"
-    },
-    "node-12": {
-      "sysname": "VacationSchedule",
-      "name": "График отпусков",
-      "pathOfDash": "vacation-schedule",
-      "image": "vacation-schedule"
-    },
-    "node-13": {
-      "sysname": "ProfessionalStaffTraining",
-      "name": "Проф подготовка персонала",
-      "pathOfDash": "professional-staff-training",
-      "image": "professional-staff-training"
     }
   },
   "ownerRole": [
