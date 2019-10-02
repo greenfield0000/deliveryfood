@@ -19,7 +19,7 @@ public class User extends BaseEntity {
     private String phone;
     private String email;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "USER_ADDRES",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "id"),
