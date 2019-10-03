@@ -1,12 +1,17 @@
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
   <mat-tree-node (click)="nodeClick(node)" *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
     <div [ngClass]="node.image"></div>
-    {{node.name}}
+    <span class="node-name">{{node.name}}</span>
   </mat-tree-node>
 
-  <mat-tree-node (click)="nodeClick(node)" matTreeNodeToggle [attr.aria-label]="'toggle ' + node.sysName"
+  <mat-tree-node matTreeNodeToggle [attr.aria-label]="'toggle ' + node.sysName"
     *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
-    <div [ngClass]="node.image"></div>
-    {{node.name}}
+    <mat-icon *ngIf="node.expandable"  class="mat-icon-rtl-mirror">
+      {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+    </mat-icon>
+    <div class="node-clicked" (click)="nodeClick(node)">
+      <div [ngClass]="node.image"></div>
+      <span class="node-name">{{node.name}}</span>
+    </div>
   </mat-tree-node>
 </mat-tree>

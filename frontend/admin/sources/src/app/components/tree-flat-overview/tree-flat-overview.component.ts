@@ -47,13 +47,13 @@ export class TreeFlatOverviewComponent {
 
   transformer = (node: MenuNode, level: number) => {
     return new MenuFlatNode(
-      !!node.$children,
+      node.$children && node.$children.length > 0,
       node.$name,
       level,
       node.$pathOfDash,
       node.$image
     );
-  };
+  }
 
   private _getLevel = (node: MenuFlatNode) => node.level;
 
