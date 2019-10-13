@@ -22,10 +22,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>microservices</module>
+        <module>microservices-spring</module>
+        <module>microservices-quarkus</module>
         <module>utils</module>
         <module>dbmigration</module>
         <module>common-services</module>
+        <module>microservices-quarkus</module>
     </modules>
 
     <dependencyManagement>

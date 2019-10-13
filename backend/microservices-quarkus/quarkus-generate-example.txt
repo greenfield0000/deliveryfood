@@ -1,0 +1,5 @@
+mvn io.quarkus:quarkus-maven-plugin:0.24.0:create \
+    -DprojectGroupId=greenfield.group.com \
+    -DprojectArtifactId=personal-service \
+    -DclassName="greenfield.group.com.Gate" \
+    -Dpath="/personal"
