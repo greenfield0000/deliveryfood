@@ -1,6 +1,6 @@
 package greenfield.group.com.menuservice.services;
 
-import greenfield.group.com.model.Menu;
+import greenfield.group.com.personal.model.Menu;
 import greenfield.group.com.menuservice.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

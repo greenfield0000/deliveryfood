@@ -1,6 +1,6 @@
 package greenfield.group.com.gateway.gates;
 
-import greenfield.group.com.model.requests.LoadJournalRequest;
+import greenfield.group.com.personal.model.requests.LoadJournalRequest;
 import greenfield.group.com.gatecommon.SimpleResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;

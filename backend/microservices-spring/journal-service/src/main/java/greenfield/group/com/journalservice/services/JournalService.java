@@ -2,8 +2,8 @@ package greenfield.group.com.journalservice.services;
 
 
 import greenfield.group.com.journalservice.repositories.JournalRepository;
-import greenfield.group.com.model.exceptions.JournalRepositoryException;
-import greenfield.group.com.model.journal.JournalMetadata;
+import greenfield.group.com.personal.model.exceptions.JournalRepositoryException;
+import greenfield.group.com.personal.model.journal.JournalMetadata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

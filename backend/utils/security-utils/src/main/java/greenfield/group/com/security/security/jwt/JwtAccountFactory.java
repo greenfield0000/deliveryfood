@@ -1,7 +1,7 @@
 package greenfield.group.com.security.security.jwt;
 
-import greenfield.group.com.model.Account;
-import greenfield.group.com.model.Role;
+import greenfield.group.com.personal.model.Account;
+import greenfield.group.com.personal.model.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

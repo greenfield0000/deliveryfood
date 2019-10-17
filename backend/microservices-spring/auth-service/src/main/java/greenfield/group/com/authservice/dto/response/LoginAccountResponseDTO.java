@@ -1,7 +1,7 @@
 package greenfield.group.com.authservice.dto.response;
 
-import greenfield.group.com.model.Account;
-import greenfield.group.com.model.Role;
+import greenfield.group.com.personal.model.Account;
+import greenfield.group.com.personal.model.Role;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
@@ -21,7 +21,7 @@ public class LoginAccountResponseDTO {
                 account.getLogin(),
                 account.getPassword(),
                 account.getIsAuthtorised(),
-                account.getAccountRole()
+                account.getRole()
         );
     }
 }

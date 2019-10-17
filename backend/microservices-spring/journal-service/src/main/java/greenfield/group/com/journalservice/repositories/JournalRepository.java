@@ -1,8 +1,8 @@
 package greenfield.group.com.journalservice.repositories;
 
 
-import greenfield.group.com.model.exceptions.JournalRepositoryException;
-import greenfield.group.com.model.journal.JournalMetadata;
+import greenfield.group.com.personal.model.exceptions.JournalRepositoryException;
+import greenfield.group.com.personal.model.journal.JournalMetadata;
 
 /**
  * Описание crud операций для работы с журналом

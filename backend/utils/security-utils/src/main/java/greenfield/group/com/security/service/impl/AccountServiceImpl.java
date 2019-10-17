@@ -1,8 +1,8 @@
 package greenfield.group.com.security.service.impl;
 
-import greenfield.group.com.model.Account;
-import greenfield.group.com.model.Role;
-import greenfield.group.com.model.Status;
+import greenfield.group.com.personal.model.Account;
+import greenfield.group.com.personal.model.Role;
+import greenfield.group.com.personal.model.Status;
 import greenfield.group.com.security.repository.AccountRepository;
 import greenfield.group.com.security.service.AccountService;
 import lombok.extern.slf4j.Slf4j;

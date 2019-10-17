@@ -1,6 +1,6 @@
 package greenfield.group.com.menuservice.repository;
 
-import greenfield.group.com.model.Menu;
+import greenfield.group.com.personal.model.Menu;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

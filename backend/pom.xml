@@ -23,7 +23,6 @@
 
     <modules>
         <module>microservices-spring</module>
-        <module>microservices-quarkus</module>
         <module>utils</module>
         <module>dbmigration</module>
         <module>common-services</module>

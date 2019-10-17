@@ -1,6 +1,6 @@
 package greenfield.group.com.security.service;
 
-import greenfield.group.com.model.Account;
+import greenfield.group.com.personal.model.Account;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

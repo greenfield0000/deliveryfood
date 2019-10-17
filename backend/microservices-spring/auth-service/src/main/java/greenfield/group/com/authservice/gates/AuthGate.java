@@ -1,7 +1,7 @@
 package greenfield.group.com.authservice.gates;
 
-import greenfield.group.com.model.Account;
-import greenfield.group.com.model.Role;
+import greenfield.group.com.personal.model.Account;
+import greenfield.group.com.personal.model.Role;
 import greenfield.group.com.authservice.dto.response.LoginAccountResponseDTO;
 import greenfield.group.com.authservice.services.AuthService;
 import greenfield.group.com.gatecommon.SimpleResult;

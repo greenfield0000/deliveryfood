@@ -1,6 +1,6 @@
 package greenfield.group.com.security.dto;
 
-import greenfield.group.com.model.Account;
+import greenfield.group.com.personal.model.Account;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 

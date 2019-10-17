@@ -1,0 +1,21 @@
+version: "3.4"
+services:
+  personal-postgres:
+    container_name: personal-postgres
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=root
+      - POSTGRES_DB=personal-db
+      - PGDATA=/var/lib/postgresql/data/pgdata
+  personal-service:
+    container_name: personal-service
+    build: 
+      context: .
+      dockerfile: ./src/main/docker/Dockerfile.jvm
+    ports:
+      - "8080:8080"
+    depends_on:
+      - personal-postgres

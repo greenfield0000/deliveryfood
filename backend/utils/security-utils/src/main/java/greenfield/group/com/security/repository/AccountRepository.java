@@ -1,6 +1,6 @@
 package greenfield.group.com.security.repository;
 
-import greenfield.group.com.model.Account;
+import greenfield.group.com.personal.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

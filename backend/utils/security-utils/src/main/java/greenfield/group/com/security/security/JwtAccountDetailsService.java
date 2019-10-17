@@ -1,6 +1,6 @@
 package greenfield.group.com.security.security;
 
-import greenfield.group.com.model.Account;
+import greenfield.group.com.personal.model.Account;
 import greenfield.group.com.security.security.jwt.JwtAccount;
 import greenfield.group.com.security.security.jwt.JwtAccountFactory;
 import greenfield.group.com.security.service.impl.AccountServiceImpl;

@@ -1,15 +1,12 @@
 package greenfield.group.com;
 
-import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.Test;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
-@QuarkusTest
+//@QuarkusTest
 public class GateTest {
 
-    @Test
+//    @Test
     public void testHelloEndpoint() {
         given()
           .when().get("/personal")

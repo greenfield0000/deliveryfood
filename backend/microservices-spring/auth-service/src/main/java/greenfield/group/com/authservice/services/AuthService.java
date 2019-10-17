@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import greenfield.group.com.authservice.dto.response.LoginAccountResponseDTO;
 import greenfield.group.com.gatecommon.SimpleResult;
 import greenfield.group.com.gatecommon.Status;
-import greenfield.group.com.model.Account;
-import greenfield.group.com.model.AccountRole;
-import greenfield.group.com.model.Role;
+import greenfield.group.com.personal.model.Account;
+import greenfield.group.com.personal.model.AccountRole;
+import greenfield.group.com.personal.model.Role;
 import greenfield.group.com.security.repository.AccountRepository;
 import greenfield.group.com.security.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,13 +125,13 @@ public class AuthService {
             setAuthtorized(account, NON_AUTHORIZED);
             account.setUuid(UUID.randomUUID().toString());
             AccountRole accountRole = AccountRole.WAITER;
-            Role role = account.getAccountRole();
+            Role role = account.getRole();
             if (role == null) {
                 role = new Role();
             }
             role.setName(accountRole.getName());
             role.setSysname(accountRole.getSysname());
-            account.setAccountRole(role);
+            account.setRole(role);
             final Account savedAccount = accountRepository.saveAndFlush(account);
             return new SimpleResult<>(Status.OK, savedAccount);
         }
@@ -166,7 +166,7 @@ public class AuthService {
                 .findByUuid(uuid);
         // Если null или не нашли
         return byUUIDAccount
-                .map(Account::getAccountRole)
+                .map(Account::getRole)
                 .orElse(emptyRole);
     }
 
