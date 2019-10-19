@@ -1,7 +1,7 @@
 package greenfield.group.com;
 
 import greenfield.group.com.model.User;
-import greenfield.group.com.services.UserRepository;
+import greenfield.group.com.services.CommonRepository;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -14,7 +14,7 @@ import java.util.List;
 public class Gate {
 
     @Inject
-    UserRepository userRepository;
+    CommonRepository<User> userRepository;
 
     @GET
     @Path("/findAll")

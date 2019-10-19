@@ -1,7 +1,5 @@
 package greenfield.group.com.services;
 
-import greenfield.group.com.model.User;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -11,30 +9,30 @@ import java.util.List;
 
 @ApplicationScoped
 @Transactional
-public class UserRepository implements Repository<User> {
+public class CommonRepository<T> implements Repository<T> {
 
     @Inject
     EntityManager entityManager;
 
     @Override
-    public void create(User model) {
+    public void create(T model) {
         entityManager.persist(model);
     }
 
     @Override
-    public boolean delete(User model) {
+    public boolean delete(T model) {
         entityManager.detach(model);
         return true;
     }
 
     @Override
-    public User update(User model) {
+    public T update(T model) {
         return entityManager.merge(model);
     }
 
     @Override
-    public List<User> findAll() {
-        Query query = entityManager.createQuery("select u from User u", User.class);
+    public List<T> findAll() {
+        Query query = entityManager.createQuery("select u from CommonRepository u");
         return query.getResultList();
     }
 }

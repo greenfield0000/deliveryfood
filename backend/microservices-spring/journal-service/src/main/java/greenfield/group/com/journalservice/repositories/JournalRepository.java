@@ -15,6 +15,6 @@ public interface JournalRepository {
      * @param journalSysName системное имя журнала
      * @return объект журнала
      */
-    JournalMetadata load(String journalSysName) throws JournalRepositoryException, JournalRepositoryException;
+    JournalMetadata metaDataLoad(String journalSysName) throws JournalRepositoryException;
 
 }
