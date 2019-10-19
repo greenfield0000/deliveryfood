@@ -1,13 +1,15 @@
 package greenfield.group.com.authservice.gates;
 
-import greenfield.group.com.personal.model.Account;
-import greenfield.group.com.personal.model.Role;
 import greenfield.group.com.authservice.dto.response.LoginAccountResponseDTO;
+import greenfield.group.com.authservice.model.Account;
 import greenfield.group.com.authservice.services.AuthService;
 import greenfield.group.com.gatecommon.SimpleResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController(value = "/auth")
 public class AuthGate {
@@ -33,14 +35,4 @@ public class AuthGate {
         return authService.registry(account);
     }
 
-    /**
-     * Метод получает список ролей у аккаунта
-     *
-     * @param uuid уникальный идентификатор аккаунта
-     * @return
-     */
-    @RequestMapping(path = "/getAccountRoleSysNameByUUID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Role getAccountRoleSysNameByUUID(@RequestBody String uuid) {
-        return authService.getAccountRoleSysNameByUUID(uuid);
-    }
 }

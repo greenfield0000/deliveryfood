@@ -1,8 +1,7 @@
 package greenfield.group.com.gateway.gates;
 
-import greenfield.group.com.personal.model.Account;
-import greenfield.group.com.personal.model.Role;
 import greenfield.group.com.gatecommon.SimpleResult;
+import greenfield.group.com.gateway.gates.modeldto.auth.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -36,16 +35,4 @@ public class AuthGate extends Gate {
                 .getBody());
     }
 
-    /**
-     * Метод получает список ролей у аккаунта
-     *
-     * @param uuid уникальный идентификатор аккаунта
-     * @return
-     */
-    @RequestMapping(path = "/auth-gate/getAccountRoleSysNameByUUID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Role getAccountRoleSysNameByUUID(@RequestBody String uuid) {
-        return this.restTemplate
-                .postForEntity(serviceRegistry.get(AUTH_SERVICE) + "/getAccountRoleSysNameByUUID", uuid, Role.class)
-                .getBody();
-    }
 }

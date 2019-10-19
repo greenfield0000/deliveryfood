@@ -1,7 +1,7 @@
 package greenfield.group.com.gateway.gates;
 
-import greenfield.group.com.personal.model.requests.LoadJournalRequest;
 import greenfield.group.com.gatecommon.SimpleResult;
+import greenfield.group.com.gateway.gates.modeldto.journal.LoadJournalRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

@@ -1,6 +1,5 @@
 package greenfield.group.com.menuservice.gates;
 
-import greenfield.group.com.personal.model.Role;
 import greenfield.group.com.gatecommon.SimpleResult;
 import greenfield.group.com.gatecommon.Status;
 import greenfield.group.com.menuservice.services.MenuService;
@@ -25,14 +24,7 @@ public class MenuGate {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", authorization);
         HttpEntity<String> httpEntity = new HttpEntity<>(uuid, headers);
-        Role findedRole = restTemplate
-                .postForObject("http://auth-service:8081/auth/getAccountRoleSysNameByUUID",
-                        httpEntity, Role.class);
-        String jsonMenu = "";
-        if (findedRole != null) {
-            jsonMenu = menuService.getMenuByOwnerSysName(findedRole.getSysname());
-        }
-        return new SimpleResult<>(Status.OK, jsonMenu);
+        return new SimpleResult<>(Status.OK, menuService.getMenu());
     }
 
 }

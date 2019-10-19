@@ -5,10 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @EnableMongoRepositories
-@SpringBootApplication(scanBasePackages = {
-        "greenfield.group.com.security",
-        "greenfield.group.com.menuservice"
-})
+@SpringBootApplication
 public class MenuServiceApplication {
 
     public static void main(String[] args) {

@@ -17,7 +17,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>security-utils</module>
         <module>pattern-utils</module>
         <module>gateway-common-utils</module>
     </modules>

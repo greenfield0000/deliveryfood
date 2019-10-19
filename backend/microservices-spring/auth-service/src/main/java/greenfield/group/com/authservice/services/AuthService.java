@@ -2,20 +2,17 @@ package greenfield.group.com.authservice.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import greenfield.group.com.authservice.dto.response.LoginAccountResponseDTO;
+import greenfield.group.com.authservice.model.Account;
+import greenfield.group.com.authservice.model.Role;
+import greenfield.group.com.authservice.security.repository.AccountRepository;
+import greenfield.group.com.authservice.security.security.jwt.JwtTokenProvider;
 import greenfield.group.com.gatecommon.SimpleResult;
 import greenfield.group.com.gatecommon.Status;
-import greenfield.group.com.personal.model.Account;
-import greenfield.group.com.personal.model.AccountRole;
-import greenfield.group.com.personal.model.Role;
-import greenfield.group.com.security.repository.AccountRepository;
-import greenfield.group.com.security.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 import java.util.Arrays;
-import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -32,11 +29,11 @@ public class AuthService {
     private static final boolean NON_AUTHORIZED = false;
 
     @Autowired
-    private  ObjectMapper objectMapper;
+    private ObjectMapper objectMapper;
     @Autowired
-    private  AccountRepository accountRepository;
+    private AccountRepository accountRepository;
     @Autowired
-    private  JwtTokenProvider jwtTokenProvider;
+    private JwtTokenProvider jwtTokenProvider;
 
     /**
      * Залогиниться
@@ -63,13 +60,10 @@ public class AuthService {
         setAuthtorized(account, AUTHTORIZE);
         accountRepository.save(account);
         LoginAccountResponseDTO loginAccountResponseDTO = LoginAccountResponseDTO.accountToDTO(account);
-        Role accountRole = loginAccountResponseDTO.getAccountRole();
-        if (accountRole == null) {
-            accountRole = new Role();
-            accountRole.setId(1L);
-            accountRole.setName("Пользователь");
-            accountRole.setSysname("USER");
-        }
+        Role accountRole = new Role();
+        accountRole.setId(1L);
+        accountRole.setName("Пользователь");
+        accountRole.setSysname("USER");
         loginAccountResponseDTO.setToken(jwtTokenProvider.createToken(
                 loginAccountResponseDTO.getLogin(),
                 Arrays.asList(accountRole)
@@ -124,50 +118,11 @@ public class AuthService {
             // тогда регистрируем и выходим
             setAuthtorized(account, NON_AUTHORIZED);
             account.setUuid(UUID.randomUUID().toString());
-            AccountRole accountRole = AccountRole.WAITER;
-            Role role = account.getRole();
-            if (role == null) {
-                role = new Role();
-            }
-            role.setName(accountRole.getName());
-            role.setSysname(accountRole.getSysname());
-            account.setRole(role);
             final Account savedAccount = accountRepository.saveAndFlush(account);
             return new SimpleResult<>(Status.OK, savedAccount);
         }
 
         return new SimpleResult<>(Status.OK, account);
-    }
-
-    /**
-     * Получить роль аккаунта по UUID
-     *
-     * @param
-     * @return
-     */
-    public Role getAccountRoleSysNameByUUID(String jsonUuid) {
-        String uuid = "";
-        try {
-            Map<String, Object> mappedvalues = objectMapper.readValue(
-                    jsonUuid, objectMapper.constructType(Map.class)
-            );
-            if ((mappedvalues != null) && (mappedvalues.get("uuid") != null)) {
-                uuid = mappedvalues.get("uuid").toString();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        final Role emptyRole = new Role();
-        if ((uuid == null) || (uuid.isEmpty()) || !uuidMachesPattern(uuid)) {
-            return emptyRole;
-        }
-        // Грузим пользователя с таким uuid
-        final Optional<Account> byUUIDAccount = accountRepository
-                .findByUuid(uuid);
-        // Если null или не нашли
-        return byUUIDAccount
-                .map(Account::getRole)
-                .orElse(emptyRole);
     }
 
     /**

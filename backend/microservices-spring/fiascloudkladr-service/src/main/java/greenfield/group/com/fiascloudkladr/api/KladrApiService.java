@@ -1,9 +1,9 @@
 package greenfield.group.com.fiascloudkladr.api;
 
-import greenfield.group.com.personal.model.context.RequestContext;
-import greenfield.group.com.personal.model.context.ResponseContext;
-import greenfield.group.com.personal.model.context.ResultContext;
-import greenfield.group.com.personal.model.exception.KladrApiServiceException;
+import greenfield.group.com.fiascloudkladr.context.RequestContext;
+import greenfield.group.com.fiascloudkladr.context.ResponseContext;
+import greenfield.group.com.fiascloudkladr.context.ResultContext;
+import greenfield.group.com.fiascloudkladr.exception.KladrApiServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
