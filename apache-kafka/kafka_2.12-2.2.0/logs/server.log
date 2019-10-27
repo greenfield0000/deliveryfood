@@ -1,2 +1,3 @@
-[2019-07-28 23:21:29,740] INFO Processed session termination for sessionid: 0x1000039d9280000 (org.apache.zookeeper.server.PrepRequestProcessor)
-[2019-07-28 23:21:29,759] INFO Closed socket connection for client /127.0.0.1:55780 which had sessionid 0x1000039d9280000 (org.apache.zookeeper.server.NIOServerCnxn)
+[2019-10-23 00:04:21,046] INFO Processed session termination for sessionid: 0x100009423840001 (org.apache.zookeeper.server.PrepRequestProcessor)
+[2019-10-23 00:04:21,067] INFO Closed socket connection for client /127.0.0.1:39514 which had sessionid 0x100009423840001 (org.apache.zookeeper.server.NIOServerCnxn)
+[2019-10-23 00:09:16,380] INFO Registered kafka:type=kafka.Log4jController MBean (kafka.utils.Log4jControllerRegistration$)

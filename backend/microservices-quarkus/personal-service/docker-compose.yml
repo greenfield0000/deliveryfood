@@ -16,6 +16,11 @@ services:
       context: .
       dockerfile: ./src/main/docker/Dockerfile.jvm
     ports:
-      - "8080:8080"
+      - "8079:8080"
     depends_on:
       - personal-postgres
+
+networks:
+  default:
+    external:
+      name: deliveryfood_default
