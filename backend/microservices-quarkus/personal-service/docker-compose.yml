@@ -10,6 +10,9 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_DB=personal-db
       - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - "~/backup_database/postgres/personal-postgres:/var/lib/postgresql/"
+
   personal-service:
     container_name: personal-service
     build: 
@@ -17,6 +20,7 @@ services:
       dockerfile: ./src/main/docker/Dockerfile.jvm
     ports:
       - "8079:8080"
+      - "9079:8787"  
     depends_on:
       - personal-postgres
 

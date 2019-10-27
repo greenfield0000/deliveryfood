@@ -16,8 +16,6 @@ public class Account extends BaseEntity {
     private String login;
     @Column(name = "password")
     private String password;
-    @Column(name = "is_authtorised")
-    private Boolean isAuthtorised;
     @Column(name = "nick_name")
     private String nickName;
     @Column(name = "uuid")

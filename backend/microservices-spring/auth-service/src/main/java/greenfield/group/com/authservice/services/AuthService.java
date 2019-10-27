@@ -16,18 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.regex.Pattern;
-
-import static pattern.PatternConstant.GUID_PATTERN;
 
 /**
  * Сервис по работе с аккаунтом
  */
 @Service
 public class AuthService {
-
-    private static final boolean AUTHTORIZE = true;
-    private static final boolean NON_AUTHORIZED = false;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -60,9 +54,7 @@ public class AuthService {
         }
 
         account = finderAccount.get();
-        setAuthtorized(account, AUTHTORIZE);
         accountRepository.save(account);
-        kafkaSenderService.send(account.getUser());
         LoginAccountResponseDTO loginAccountResponseDTO = LoginAccountResponseDTO.accountToDTO(account);
         Role accountRole = new Role();
         accountRole.setId(1L);
@@ -96,7 +88,6 @@ public class AuthService {
         }
 
         account = finderAccount.get();
-        setAuthtorized(account, NON_AUTHORIZED);
         accountRepository.save(account);
         return new SimpleResult<>(Status.OK, account);
     }
@@ -120,44 +111,14 @@ public class AuthService {
         // если не нашли, то значит это не повторная регистрация
         if (!finderAccount.isPresent()) {
             // тогда регистрируем и выходим
-            setAuthtorized(account, NON_AUTHORIZED);
             account.setUuid(UUID.randomUUID().toString());
             final Account savedAccount = accountRepository.saveAndFlush(account);
+            // Отправляем информацию о новом пользователе в другие сервисы
+            kafkaSenderService.send(account.getUser());
             return new SimpleResult<>(Status.OK, savedAccount);
         }
 
         return new SimpleResult<>(Status.OK, account);
     }
 
-    /**
-     * Метод, проверяющий маску uuid
-     *
-     * @param uuid
-     * @return
-     */
-    private boolean uuidMachesPattern(String uuid) {
-        return Pattern
-                .compile(GUID_PATTERN)
-                .matcher(uuid)
-                .matches();
-    }
-
-    /**
-     * Установка признака авторизации у пользователя
-     *
-     * @param account
-     * @param isAuth
-     * @return
-     */
-    private Account setAuthtorized(Account account, boolean isAuth) {
-        // берем либо существующего, либо того, которого запрашиваем
-        Account finderAccount = Optional.of(accountRepository
-                .findByLoginAndPassword(account.getLogin(), account.getPassword())
-                .orElse(account))
-                .get();
-
-        finderAccount.setIsAuthtorised(isAuth);
-
-        return finderAccount;
-    }
 }

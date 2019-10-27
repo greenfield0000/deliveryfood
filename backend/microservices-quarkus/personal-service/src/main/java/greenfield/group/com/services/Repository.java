@@ -12,4 +12,6 @@ public interface Repository<T> {
 
     List<T> findAll();
 
+    boolean isFindByUUID(String UUID);
+
 }
