@@ -18,8 +18,6 @@ public class Account extends BaseEntity {
     private String password;
     @Column(name = "nick_name")
     private String nickName;
-    @Column(name = "uuid")
-    private String uuid;
     @OneToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private User user;

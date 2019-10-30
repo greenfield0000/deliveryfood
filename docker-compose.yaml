@@ -21,7 +21,7 @@ services:
     container_name: auth-service
     build: ./backend/microservices-spring/auth-service
     ports:
-            #   - "8081:8081"
+      - "8081:8081"
       - "9081:9081"
     depends_on:
       - auth-db

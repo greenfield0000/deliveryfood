@@ -5,6 +5,7 @@ import greenfield.group.com.authservice.dto.response.LoginAccountResponseDTO;
 import greenfield.group.com.authservice.kafka.KafkaSenderService;
 import greenfield.group.com.authservice.model.Account;
 import greenfield.group.com.authservice.model.Role;
+import greenfield.group.com.authservice.model.User;
 import greenfield.group.com.authservice.security.repository.AccountRepository;
 import greenfield.group.com.authservice.security.security.jwt.JwtTokenProvider;
 import greenfield.group.com.gatecommon.SimpleResult;
@@ -111,10 +112,13 @@ public class AuthService {
         // если не нашли, то значит это не повторная регистрация
         if (!finderAccount.isPresent()) {
             // тогда регистрируем и выходим
-            account.setUuid(UUID.randomUUID().toString());
+            UUID uuid = UUID.randomUUID();
+            account.setUuid(uuid);
             final Account savedAccount = accountRepository.saveAndFlush(account);
             // Отправляем информацию о новом пользователе в другие сервисы
-            kafkaSenderService.send(account.getUser());
+            User user = account.getUser();
+            user.setUuid(uuid);
+            kafkaSenderService.send(user);
             return new SimpleResult<>(Status.OK, savedAccount);
         }
 

@@ -7,11 +7,11 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=123
-      - POSTGRES_USER=root
+      - POSTGRES_USER=rootuser
       - POSTGRES_DB=personal-db
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - "~/backup_database/postgres/personal-postgres:/var/lib/postgresql/"
+      - "~/backup_database/postgres/personal-postgres:/var/lib/postgresql/data/pgdata"
 
   personal-service:
     container_name: personal-service

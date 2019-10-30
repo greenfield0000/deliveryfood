@@ -14,4 +14,6 @@ public interface Repository<T> {
 
     boolean isFindByUUID(String UUID);
 
+    void initEntityManager();
+
 }

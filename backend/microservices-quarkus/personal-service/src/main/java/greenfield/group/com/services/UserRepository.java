@@ -2,20 +2,35 @@ package greenfield.group.com.services;
 
 import greenfield.group.com.model.User;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 
-@ApplicationScoped
-@Transactional
-public class  UserRepository implements Repository<User> {
 
-    @Inject
+@Transactional
+@ApplicationScoped
+public class UserRepository implements Repository<User> {
+
+    @PersistenceUnit(unitName = "my-persistence-unit")
+    EntityManagerFactory entityManagerFactory;
     EntityManager entityManager;
+
+    @PostConstruct
+    public void init() {
+        System.out.println("Post construct with entity managerFactory " + entityManagerFactory.toString());
+        initEntityManager();
+    }
+
+    @Override
+    public void initEntityManager() {
+        this.entityManager = entityManagerFactory.createEntityManager();
+    }
 
     @Override
     public void create(User model) {
