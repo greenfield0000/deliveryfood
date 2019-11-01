@@ -24,7 +24,7 @@ public class JournalRepositoryImpl implements JournalRepository {
     private MongoTemplate mongoTemplate;
 
     @Override
-    public JournalMetadata load(String journalSysName) throws JournalRepositoryException {
+    public JournalMetadata metaDataLoad(String journalSysName) throws JournalRepositoryException {
         Aggregation aggregation = Aggregation.newAggregation(
                 Aggregation.project("id"),
                 // Выбираем кнопки

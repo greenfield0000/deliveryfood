@@ -4,10 +4,7 @@ import greenfield.group.com.model.User;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
-import javax.persistence.Query;
+import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
@@ -19,6 +16,7 @@ public class UserRepository implements Repository<User> {
 
     @PersistenceUnit(unitName = "my-persistence-unit")
     EntityManagerFactory entityManagerFactory;
+
     EntityManager entityManager;
 
     @PostConstruct
@@ -34,7 +32,10 @@ public class UserRepository implements Repository<User> {
 
     @Override
     public void create(User model) {
-        entityManager.persist(model);
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        entityManager.merge(model);
+        transaction.commit();
     }
 
     @Override
@@ -50,7 +51,7 @@ public class UserRepository implements Repository<User> {
 
     @Override
     public List<User> findAll() {
-        Query query = entityManager.createQuery("select u from User u");
+        Query query = entityManager.createQuery("from User u");
         return query.getResultList();
     }
 
@@ -61,7 +62,7 @@ public class UserRepository implements Repository<User> {
         }
 
         UUID proxyUUID = UUID.fromString(originalUUID);
-        Query query = entityManager.createQuery("select u from User u where :uuid");
+        Query query = entityManager.createQuery("from User u where uuid = :uuid");
         query.setParameter("uuid", proxyUUID);
         return query.getResultList().size() != 0;
     }
