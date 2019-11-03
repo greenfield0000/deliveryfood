@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: b2b-front 
+  labels:
+    app: b2b-front
+spec:
+  selector:
+    matchLabels:
+      app: b2b-front
+  template:
+    metadata:
+      labels:
+        app: b2b-front
+    spec:
+      containers:
+      - name: b2b-front
+        image: greenfield0000/b2b-front:v1
+        ports:
+        - containerPort: 30200

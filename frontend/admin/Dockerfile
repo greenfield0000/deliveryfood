@@ -1,4 +1,4 @@
-FROM deliveryfood_interface-environment:latest
+FROM greenfield0000/b2b-front-environment:v1
 MAINTAINER greenfield <greenfield0000@mail.ru>
 
 USER root

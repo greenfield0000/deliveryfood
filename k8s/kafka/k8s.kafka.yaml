@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-deployment
+  labels:
+    app: b2bkafka
+spec:
+  selector:
+    matchLabels:
+      app: b2bkafka
+  template:
+    metadata:
+      labels:
+        app: b2bkafka
+    spec:
+      volumes:
+      - name: base-shared-data
+        emptyDir: {}
+      containers:
+      - name: kafka
+        image: wurstmeister/kafka
+        ports:
+        - containerPort: 9092
+        volumeMounts:
+        - name: base-shared-data
+          mountPath: /var/run/docker.sock
+        env:
+        - name: KAFKA_CREATE_TOPICS
+          value: "create-user:1:1"
+        - name: KAFKA_ADVERTISED_HOST_NAME
+          value: "kafka"
+        - name: KAFKA_ZOOKEEPER_CONNECT
+          value: "zookeeper:2181"
+        - name: KAFKA_ADVERTISED_PORT
+          value: "9092"

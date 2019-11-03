@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zookeeper-deployment
+  labels:
+    app: b2bkafka
+spec:
+  selector:
+    matchLabels:
+      app: b2bkafka
+  template:
+    metadata:
+      labels:
+        app: b2bkafka
+    spec:
+      volumes:
+      - name: base-shared-data
+        emptyDir: {}
+      containers:
+      - name: zookeeper-b2b-delivery
+        image: wurstmeister/zookeeper
+        ports:
+        - containerPort: 2181
