@@ -61,9 +61,8 @@ public class UserRepository implements Repository<User> {
             return true;
         }
 
-        UUID proxyUUID = UUID.fromString(originalUUID);
         Query query = entityManager.createQuery("from User u where uuid = :uuid");
-        query.setParameter("uuid", proxyUUID);
+        query.setParameter("uuid", originalUUID);
         return query.getResultList().size() != 0;
     }
 }

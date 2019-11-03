@@ -9,12 +9,12 @@ import java.util.UUID;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LoginAccountResponseDTO {
-    private UUID uuid;
+    private String uuid;
     private String login;
     private String password;
     private String token;
 
-    public LoginAccountResponseDTO(UUID uuid, String login, String password) {
+    public LoginAccountResponseDTO(String uuid, String login, String password) {
         this.uuid = uuid;
         this.login = login;
         this.password = password;

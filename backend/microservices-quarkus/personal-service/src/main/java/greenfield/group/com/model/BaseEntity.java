@@ -26,7 +26,7 @@ public class BaseEntity {
     private Status status;
 
     @Column(name = "uuid")
-    private UUID uuid;
+    private String uuid;
 
     public BaseEntity() {
     }

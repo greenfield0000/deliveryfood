@@ -36,7 +36,7 @@ public class KladrApiService {
         }
 
         final ResultContext resultContext = restTemplate
-                .getForObject(context.toString(), ResultContext.class);
+                .getForObject(context.requestBuild(), ResultContext.class);
 
         // т.к. это бесплатная версия, то стоит отфильтровать первый item
         if (resultContext != null) {

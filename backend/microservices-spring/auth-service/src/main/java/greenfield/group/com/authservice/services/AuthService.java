@@ -112,7 +112,7 @@ public class AuthService {
         // если не нашли, то значит это не повторная регистрация
         if (!finderAccount.isPresent()) {
             // тогда регистрируем и выходим
-            UUID uuid = UUID.randomUUID();
+            String uuid = UUID.randomUUID().toString();
             account.setUuid(uuid);
             final Account savedAccount = accountRepository.saveAndFlush(account);
             // Отправляем информацию о новом пользователе в другие сервисы

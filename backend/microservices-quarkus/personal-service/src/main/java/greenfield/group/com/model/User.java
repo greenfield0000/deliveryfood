@@ -18,7 +18,7 @@ public class User extends BaseEntity {
     private String surName;
     private String phone;
     private String email;
-    private UUID uuid;
+    private String uuid;
 //
 //    @OneToMany(cascade = CascadeType.PERSIST)
 //    @JoinTable(
@@ -79,11 +79,11 @@ public class User extends BaseEntity {
 //    }
 
 
-    public UUID getUuid() {
+    public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 

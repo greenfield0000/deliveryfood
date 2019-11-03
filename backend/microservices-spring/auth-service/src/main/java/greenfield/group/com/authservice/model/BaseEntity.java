@@ -2,6 +2,7 @@ package greenfield.group.com.authservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -14,19 +15,19 @@ public class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    protected Long id;
 
     @Column(name = "created")
-    private Date created;
+    protected Date created;
 
     @Column(name = "updated")
-    private Date updated;
+    protected Date updated;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private Status status;
+    protected Status status;
 
     @Column(name = "uuid")
-    private UUID uuid;
+    protected String uuid;
 }
 

@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RequestContext {
 
-    private final String url = "https://kladr-greenfield.group.com.model.ru/greenfield.group.com.model.php?";
+    private final String url = "https://kladr-api.ru/api.php?";
 
     // Тип возвращаемых объектов (region, district, city, street, building)
     private ContentType contentType;
@@ -96,13 +96,30 @@ public class RequestContext {
         this.cityId = cityId;
     }
 
-    @Override
-    public String toString() {
+    /**
+     * Метод возвращающий урл запроса со всеми параметрами
+     *
+     * @return урл с параметрами
+     */
+    public String requestBuild() {
         return url + (!query.isEmpty() ? "&query=" + query : "")
                 + (contentType != null ? "&contentType=" + contentType : "")
                 + (cityId != null ? "&cityId=" + cityId : "")
                 + (streetId != null ? "&streetId=" + streetId : "")
                 + "&limit=" + limit
                 + "&withParent=" + withParent;
+    }
+
+    @Override
+    public String toString() {
+        return "RequestContext{" +
+                "url='" + url + '\'' +
+                ", contentType=" + contentType +
+                ", limit=" + limit +
+                ", query='" + query + '\'' +
+                ", withParent='" + withParent + '\'' +
+                ", cityId='" + cityId + '\'' +
+                ", streetId='" + streetId + '\'' +
+                '}';
     }
 }

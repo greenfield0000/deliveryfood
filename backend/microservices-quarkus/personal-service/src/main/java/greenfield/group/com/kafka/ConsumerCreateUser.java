@@ -24,9 +24,9 @@ public class ConsumerCreateUser {
     public void listenCreateUser(JsonObject jsonObject) {
         User user = jsonObject.mapTo(User.class);
         // проверяем, есть ли такой пользователь
-        UUID userUUID = user.getUuid();
+        String userUUID = user.getUuid();
         // добавляем, если такого нет
-        if (!repository.isFindByUUID(userUUID.toString())) {
+        if (!repository.isFindByUUID(userUUID)) {
             repository.create(user);
             System.out.println("User not found. Created " + user.toString());
             return;
