@@ -1,4 +1,4 @@
-package greenfield.group.com.journalservice.journal;
+package greenfield.group.com.journalservice.model.journal;
 
 import lombok.*;
 

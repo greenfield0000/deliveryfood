@@ -8,4 +8,6 @@ public class LoadJournalRequest {
     private String uuid;
     // системное имя журнала
     private String sysName;
+    // страница журнала
+    private int pageNumber;
 }
