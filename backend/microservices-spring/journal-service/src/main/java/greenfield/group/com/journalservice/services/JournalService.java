@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -74,16 +75,16 @@ public class JournalService implements Journal {
 
     @Override
     public JournalData doFilter(String journalSysName, List<JournalFilterItem> journalFilterItemList) {
-        return null;
+        return new JournalData();
     }
 
     @Override
     public List<Preset> savePreset(Preset preset) {
-        return null;
+        return new ArrayList<>();
     }
 
     @Override
     public JournalData doButtonHandler(String journalSysName, String buttonAction, int pageNumber) {
-        return null;
+        return new JournalData();
     }
 }

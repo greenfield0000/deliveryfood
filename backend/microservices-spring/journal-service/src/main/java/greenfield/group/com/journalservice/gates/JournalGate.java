@@ -4,8 +4,11 @@ import greenfield.group.com.gatecommon.SimpleResult;
 import greenfield.group.com.gatecommon.Status;
 import greenfield.group.com.journalservice.model.journal.JournalData;
 import greenfield.group.com.journalservice.model.journal.JournalMetadataCommon;
+import greenfield.group.com.journalservice.model.journal.Preset;
 import greenfield.group.com.journalservice.model.requests.FilterRequest;
+import greenfield.group.com.journalservice.requests.ButtonHandlerRequest;
 import greenfield.group.com.journalservice.requests.LoadJournalRequest;
+import greenfield.group.com.journalservice.requests.SavePresetRequest;
 import greenfield.group.com.journalservice.services.JournalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -13,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController(value = "/journal")
 public class JournalGate {
@@ -53,12 +59,43 @@ public class JournalGate {
      * @param filterRequest запрос с интерфейса при загрузке журнала
      * @return
      */
-    @RequestMapping(path = "/doFilter", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/doFilter", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<JournalData> doFilter(@RequestBody FilterRequest filterRequest) {
         return new SimpleResult<>(
                 Status.OK
                 , journalService.doFilter(filterRequest.getSysName(), filterRequest.getItemList())
         );
     }
+
+    /**
+     * Метод сохранения пресета для фильтра
+     *
+     * @param savePresetRequest запрос с интерфейса на сохранение пресета
+     * @return
+     */
+    @RequestMapping(path = "/savePreset", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public SimpleResult savePreset(@RequestBody SavePresetRequest savePresetRequest) {
+        return new SimpleResult<>(
+                Status.OK
+                , journalService.savePreset(savePresetRequest.getPreset())
+        );
+    }
+
+    /**
+     * Метод вызова обработчика кнопки
+     *
+     * @param buttonHandlerRequest
+     * @return
+     */
+    @RequestMapping(path = "/doButtonHandler", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public SimpleResult doButtonHandler(@RequestBody ButtonHandlerRequest buttonHandlerRequest) {
+        return new SimpleResult<>(
+                Status.OK
+                , journalService.doButtonHandler(buttonHandlerRequest.getJournalSysName()
+                , buttonHandlerRequest.getButtonAction()
+                , buttonHandlerRequest.getPageNumber())
+        );
+    }
+
 
 }

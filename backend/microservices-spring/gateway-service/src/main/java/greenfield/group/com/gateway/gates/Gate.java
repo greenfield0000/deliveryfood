@@ -15,17 +15,17 @@ public abstract class Gate {
      */
     protected static final Map<String, String> serviceRegistry = new HashMap<>();
 
-    protected static final String AUTH_SERVICE = "auth-service";
-    private static final String AUTH_SERVICE_URL = "http://auth-service:8081/auth";
+    protected static final String AUTH_SERVICE = "auth-gate";
+    private static final String AUTH_SERVICE_URL = "http://auth-gate:8081/auth";
 
-    protected static final String MENU_SERVICE = "menu-service";
-    private static final String MENU_SERVICE_URL = "http://menu-service:8082/menu";
+    protected static final String MENU_SERVICE = "menu-gate";
+    private static final String MENU_SERVICE_URL = "http://menu-gate:8082/menu";
 
-    protected static final String JOURNAL_SERVICE = "journal-service";
-    private static final String JOURNAL_SERVICE_URL = "http://journal-service:8083/journal";
+    protected static final String JOURNAL_SERVICE = "journal-gate";
+    private static final String JOURNAL_SERVICE_URL = "http://journal-gate:8083/journal";
 
-    protected static final String KLADR_SERVICE = "kladr-service";
-    private static final String KLADR_SERVICE_URL = "http://kladr-service:8084/kladr";
+    protected static final String KLADR_SERVICE = "kladr-gate";
+    private static final String KLADR_SERVICE_URL = "http://kladr-gate:8084/kladr";
 
     static {
         serviceRegistry.put(AUTH_SERVICE, AUTH_SERVICE_URL);
