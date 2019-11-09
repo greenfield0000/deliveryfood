@@ -1,4 +1,4 @@
-package greenfield.group.com.journalservice.model.requests;
+package greenfield.group.com.journalservice.requests;
 
 import lombok.Data;
 

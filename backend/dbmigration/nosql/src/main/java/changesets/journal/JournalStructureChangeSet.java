@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Ченджсеты мета-информации журнала
+ * Ченджсеты мета-информации журнала. Выполняются в самую последнюю очередь
  */
-@ChangeLog(order = "3")
+@ChangeLog(order = "99999")
 public class JournalStructureChangeSet {
 
     // TODO Вынести в отдельную джарку
@@ -103,8 +103,7 @@ public class JournalStructureChangeSet {
             }
             while (journalColumnList.hasNext()) {
                 final Map next = journalColumnList.next();
-                final String id = "\"" + next.get("_id").toString() + "\"";
-                columnId = id;
+                columnId = "\"" + next.get("_id").toString() + "\"";
             }
         }
 
@@ -114,6 +113,34 @@ public class JournalStructureChangeSet {
             query.append("sysname", "Personals-jrnl");
             BasicDBObject basicDBObject = new BasicDBObject();
             basicDBObject.append("column_id", columnId);
+            final BasicDBObject bsonList = new BasicDBObject();
+            bsonList.put("$set", basicDBObject);
+            journal.update(query, bsonList, true, false);
+        }
+    }
+
+    @ChangeSet(order = "4", id = "createLinkBetweenPersonJournalAndPreset", author = "Ivanov Roman")
+    public void createLinkBetweenPersonJournalAndPreset(Jongo database) throws IOException, DataBaseDataException {
+        final MongoCollection journalPresetCollection = database.getCollection("journal-preset");
+        final MongoCursor<Map> journalPresetList = journalPresetCollection.find(
+                "{\"sysName\": \"PersonalJournal\"},{\"_id\": \"1\"}")
+                .as(Map.class);
+
+        List<String> presetIdList = new ArrayList<>();
+        if (journalPresetList != null) {
+            while (journalPresetList.hasNext()) {
+                final Map next = journalPresetList.next();
+                final String id = "\"" + next.get("_id").toString() + "\"";
+                presetIdList.add(id);
+            }
+        }
+
+        if (!presetIdList.isEmpty()) {
+            final DBCollection journal = database.getCollection("journal").getDBCollection();
+            final BasicDBObject query = new BasicDBObject();
+            query.append("sysname", "Personals-jrnl");
+            BasicDBObject basicDBObject = new BasicDBObject();
+            basicDBObject.append("preset_id", presetIdList.toArray());
             final BasicDBObject bsonList = new BasicDBObject();
             bsonList.put("$set", basicDBObject);
             journal.update(query, bsonList, true, false);

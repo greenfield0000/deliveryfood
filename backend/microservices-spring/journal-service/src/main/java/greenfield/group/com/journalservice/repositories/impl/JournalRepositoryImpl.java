@@ -31,6 +31,7 @@ public class JournalRepositoryImpl implements JournalRepository {
                 Aggregation.lookup("journal-button", "button_id", "id", "buttonList"),
                 // Выбираем колонки
                 Aggregation.lookup("journal-column", "column_id", "id", "columnMetaData"),
+                Aggregation.lookup("journal-preset", "preset_id", "id", "presetList"),
                 Aggregation.unwind("columnMetaData")
         );
         List<JournalMetadataCommon> journalList = mongoTemplate.aggregate(aggregation, JOURNAL, JournalMetadataCommon.class)

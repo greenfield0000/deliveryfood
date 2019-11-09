@@ -1,0 +1,19 @@
+[
+  {
+    "sysName": "PersonalJournal",
+    "name": "Последний",
+    "isElected": true,
+    "itemList": [
+      {
+        "name": "Тестовое имя1",
+        "type": "STRING",
+        "value": "Тестовое значение1"
+      },
+      {
+        "name": "Тестовое имя2",
+        "type": "STRING",
+        "value": "Тестовое значение2"
+      }
+    ]
+  }
+]

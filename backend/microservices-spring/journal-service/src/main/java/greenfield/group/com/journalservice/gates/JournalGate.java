@@ -4,11 +4,11 @@ import greenfield.group.com.gatecommon.SimpleResult;
 import greenfield.group.com.gatecommon.Status;
 import greenfield.group.com.journalservice.model.journal.JournalData;
 import greenfield.group.com.journalservice.model.journal.JournalMetadataCommon;
-import greenfield.group.com.journalservice.model.journal.Preset;
-import greenfield.group.com.journalservice.model.requests.FilterRequest;
+import greenfield.group.com.journalservice.requests.FilterRequest;
 import greenfield.group.com.journalservice.requests.ButtonHandlerRequest;
 import greenfield.group.com.journalservice.requests.LoadJournalRequest;
 import greenfield.group.com.journalservice.requests.SavePresetRequest;
+import greenfield.group.com.journalservice.response.JournalDataResponse;
 import greenfield.group.com.journalservice.services.JournalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController(value = "/journal")
 public class JournalGate {
@@ -46,10 +43,15 @@ public class JournalGate {
      * @return
      */
     @RequestMapping(path = "/loadData", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public SimpleResult<JournalData> loadData(@RequestBody LoadJournalRequest loadJournalRequest) {
+    public SimpleResult<JournalDataResponse> loadData(@RequestBody LoadJournalRequest loadJournalRequest) {
+        JournalData journalData = journalService.loadJournalData(
+                loadJournalRequest.getSysName(),
+                loadJournalRequest.getPageNumber()
+        );
+        JournalDataResponse journalDataResponse = new JournalDataResponse(journalData);
         return new SimpleResult<>(
                 Status.OK
-                , journalService.loadJournalData(loadJournalRequest.getSysName(), loadJournalRequest.getPageNumber())
+                , journalDataResponse
         );
     }
 
@@ -60,10 +62,12 @@ public class JournalGate {
      * @return
      */
     @RequestMapping(path = "/doFilter", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public SimpleResult<JournalData> doFilter(@RequestBody FilterRequest filterRequest) {
+    public SimpleResult<JournalDataResponse> doFilter(@RequestBody FilterRequest filterRequest) {
+        JournalData journalData = journalService.doFilter(filterRequest.getSysName(), filterRequest.getItemList());
+        JournalDataResponse journalDataResponse = new JournalDataResponse(journalData);
         return new SimpleResult<>(
                 Status.OK
-                , journalService.doFilter(filterRequest.getSysName(), filterRequest.getItemList())
+                , journalDataResponse
         );
     }
 
@@ -89,13 +93,15 @@ public class JournalGate {
      */
     @RequestMapping(path = "/doButtonHandler", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult doButtonHandler(@RequestBody ButtonHandlerRequest buttonHandlerRequest) {
+        JournalData journalData = journalService.doButtonHandler(buttonHandlerRequest.getJournalSysName()
+                , buttonHandlerRequest.getButtonAction()
+                , buttonHandlerRequest.getPageNumber());
+        JournalDataResponse journalDataResponse = new JournalDataResponse(journalData);
+
         return new SimpleResult<>(
                 Status.OK
-                , journalService.doButtonHandler(buttonHandlerRequest.getJournalSysName()
-                , buttonHandlerRequest.getButtonAction()
-                , buttonHandlerRequest.getPageNumber())
+                , journalDataResponse
         );
     }
-
 
 }

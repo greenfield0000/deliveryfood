@@ -14,6 +14,5 @@ public class JournalMetadataCommon {
     private String methodDataName = "";
     private List<JournalButton> buttonList;
     private JournalColumnMetaData columnMetaData;
-    private List<JournalFilterItem> filter;
     private List<Preset> presetList;
 }

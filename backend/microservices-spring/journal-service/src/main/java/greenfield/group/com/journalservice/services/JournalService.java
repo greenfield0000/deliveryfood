@@ -3,7 +3,7 @@ package greenfield.group.com.journalservice.services;
 
 import greenfield.group.com.journalservice.exceptions.JournalRepositoryException;
 import greenfield.group.com.journalservice.model.journal.*;
-import greenfield.group.com.journalservice.model.requests.LoadJournalDataRequest;
+import greenfield.group.com.journalservice.requests.LoadJournalDataRequest;
 import greenfield.group.com.journalservice.repositories.JournalRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

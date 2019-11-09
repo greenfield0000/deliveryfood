@@ -1,4 +1,4 @@
-package greenfield.group.com.journalservice.model.requests;
+package greenfield.group.com.journalservice.requests;
 
 import greenfield.group.com.journalservice.model.journal.JournalFilterItem;
 import lombok.Data;
