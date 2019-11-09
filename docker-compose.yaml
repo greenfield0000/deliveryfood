@@ -74,7 +74,7 @@ services:
     restart: always
     build: ./backend/microservices-spring/journal-service
     ports:
-            # - "8083:8083"
+      - "8083:8083"
       - "9083:9083"
     depends_on:
       - metadata-db

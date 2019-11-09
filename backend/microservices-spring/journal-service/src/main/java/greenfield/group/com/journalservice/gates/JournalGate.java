@@ -39,7 +39,7 @@ public class JournalGate {
      * @param loadJournalRequest запрос с интерфейса при загрузке журнала
      * @return
      */
-    @RequestMapping(path = "/loadData", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/loadData", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<JournalData> loadData(@RequestBody LoadJournalRequest loadJournalRequest) {
         return new SimpleResult<>(
                 Status.OK
