@@ -11,6 +11,7 @@ import { JournalButton } from 'src/app/classes/journal/journal-button.class';
 import { JournalMetadata } from 'src/app/classes/journal/journal-metadata.class';
 import { ColumnMetaData } from 'src/app/classes/journal/journal-column-metadata.class';
 import { IJournal } from './journal.interface';
+import { Preset } from 'src/app/classes/journal/journal-preset.class';
 
 /**
  * Описание кнопки журнала
@@ -30,6 +31,8 @@ export class JournalComponent implements OnInit {
   private columnMetaDataSubject: Subject<ColumnMetaData> = new BehaviorSubject<ColumnMetaData>(new ColumnMetaData());
   private columnListSubject: Subject<JornalColumn[]> = new BehaviorSubject<JornalColumn[]>([]);
   private topButtonListSubject: Subject<JournalButton[]> = new BehaviorSubject<JournalButton[]>([]);
+  public presetListSubject: Subject<Preset[]> = new BehaviorSubject<Preset[]>([]);
+
   // описание колонок сетки данных
   public columnList: any;
   // данные для сетки данных
@@ -109,9 +112,12 @@ export class JournalComponent implements OnInit {
           );
           const columnMetaData: ColumnMetaData = new ColumnMetaData(journalMetadata.$columnMetaData);
           const buttonList: JournalButton[] = journalMetadata.$buttonList;
+          const presetList: Preset[] = journalMetadata.$presetList;
           console.log('before journal next ', columnMetaData);
+
           this.columnMetaDataSubject.next(columnMetaData);
           this.topButtonListSubject.next(buttonList);
+          this.presetListSubject.next(presetList);
         });
     }
   }

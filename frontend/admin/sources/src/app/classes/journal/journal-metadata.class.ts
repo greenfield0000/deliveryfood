@@ -1,6 +1,7 @@
 import { JornalFilter } from './jornal-filter.class';
 import { JournalButton } from './journal-button.class';
 import { ColumnMetaData } from './journal-column-metadata.class';
+import { Preset } from './journal-preset.class';
 
 /**
  * Объект сущности "Журнал"
@@ -11,14 +12,14 @@ export class JournalMetadata {
 
   private buttonList: JournalButton[];
   private columnMetaData: ColumnMetaData;
-  private filter: JornalFilter;
+  private presetList: Preset[];
 
   constructor(data?: any) {
     if (data) {
       this.isLoading = data.isLoading || false;
       this.buttonList = data.buttonList || [];
       this.columnMetaData = data.columnMetaData || new ColumnMetaData();
-      this.filter = data.filter || [];
+      this.presetList = data && data.presetList || [];
     }
   }
 
@@ -71,18 +72,18 @@ export class JournalMetadata {
   }
 
   /**
-   * Getter $filter
-   * @return {JornalFilter}
+   * Getter $presetList
+   * @return {Preset[]}
    */
-  public get $filter(): JornalFilter {
-    return this.filter;
+  public get $presetList(): Preset[] {
+    return this.presetList;
   }
 
   /**
-   * Setter $filter
-   * @param {JornalFilter} value
+   * Setter $presetList
+   * @param {Preset[]} presetList
    */
-  public set $filter(value: JornalFilter) {
-    this.filter = value;
+  public set $presetList(presetList: Preset[]) {
+    this.presetList = presetList;
   }
 }

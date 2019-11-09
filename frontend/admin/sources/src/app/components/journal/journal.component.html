@@ -1,7 +1,7 @@
 <mat-sidenav-container class="journal-sidenav-container" [hidden]="!account.getAccount().$authtorised">
   
   <mat-sidenav #journalFilterNavigator [mode]="'over'" class="journal-sidenav">
-    <app-filter-panel></app-filter-panel>
+    <app-filter-panel [presetListSubject]="presetListSubject.asObservable()"></app-filter-panel>
   </mat-sidenav>
   <mat-sidenav-content class="journal-sidenav-content-wrapper">
     <div class="journal-sidenav-content">

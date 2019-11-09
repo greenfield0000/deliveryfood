@@ -5,10 +5,9 @@
       <div class="filter-panel-buttons-content">
         <div mat-raised-button class="filter-panel-preset-item">
           <mat-form-field>
-            <mat-label>Ограничения</mat-label>
+            <mat-label>Выбрать фильтр</mat-label>
             <mat-select>
-              <mat-option>последние</mat-option>
-              <mat-option *ngFor="let state of ['test1', 'test2']" [value]="state">{{state}}</mat-option>
+              <mat-option *ngFor="let name of presetNameList; let i = index" (onSelectionChange)="selectionChange(i)" [value]="i">{{name}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -20,11 +19,11 @@
   <div class="filter-content">
     <div class="filter-panel-rows">
       <div class="filter-row"
-        *ngFor="let row of [1,2,3,4,5,6,7,8,9,10, 1,2,3,4,5,6,7,8,9,10, 1,2,3,4,5,6,7,8,9,10 , 1,2,3,4,5,6,7,8,9,10]; index as i;">
+        *ngFor="let filterItem of presetItemList">
         <div class="form-field filter-field-name">
-          <div class="filter-name"><span class="filter-name-infix"></span>Имя {{i + 1}}</div>
+          <div class="filter-name"><span class="filter-name-infix"></span>{{filterItem.name}}</div>
         </div>
-        <input class="form-field filter-field" matInput type="tel" value="{{i + 1}}">
+        <input class="form-field filter-field" matInput type="tel" value="{{filterItem.value}}">
       </div>
     </div>
   </div>
