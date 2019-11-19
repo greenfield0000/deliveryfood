@@ -1,6 +1,8 @@
 {
   "name": "Журнал для работы с сущностью \"Персонал\"",
   "sysname": "Personals-jrnl",
+  "serviceName": "http://personal-service:8080",
+  "gateName": "personal",
   "button_id": [],
   "preset_id": [],
   "column_id": null,

@@ -11,7 +11,7 @@ import java.util.List;
 public class JournalMetadataCommon {
     protected String id;
     private String serviceName = "";
-    private String methodDataName = "";
+    private String gateName = "";
     private List<JournalButton> buttonList;
     private JournalColumnMetaData columnMetaData;
     private List<Preset> presetList;

@@ -7,7 +7,7 @@ public class LoadJournalRequest {
     // уникальный идентификатор аккаунта (фиктивный ключ, который дается при регистрации)
     private String uuid;
     // системное имя журнала
-    private String sysName;
+    private String journalSysName;
     // страница журнала
     private int pageNumber;
 }

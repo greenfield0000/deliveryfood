@@ -57,15 +57,15 @@ public class JournalService implements Journal {
             JournalColumnMetaData columnMetaData = journalMetadata.getColumnMetaData();
             if (columnMetaData != null) {
                 String serviceName = journalMetadata.getServiceName();
-                String methodDataName = journalMetadata.getMethodDataName();
-                if (serviceName != null && methodDataName != null && !serviceName.isEmpty() && !methodDataName.isEmpty()) {
+                String gateName = journalMetadata.getGateName();
+                if (serviceName != null && gateName != null && !serviceName.isEmpty() && !gateName.isEmpty()) {
                     LoadJournalDataRequest loadJournalDataRequest = new LoadJournalDataRequest();
                     loadJournalDataRequest.setPageNumber(Math.max(pageNumber, 0));
-                    JournalData journalData = restTemplate
-                            .getForEntity(serviceName + "/" + methodDataName,  JournalData.class, loadJournalDataRequest)
+                    List loadData = restTemplate
+                            .getForEntity(serviceName + "/" + gateName + "/loadJournal", List.class, loadJournalDataRequest)
                             .getBody();
-                    if (journalData != null) {
-                        return journalData;
+                    if (loadData != null) {
+                        return new JournalData(loadData, pageNumber);
                     }
                 }
             }

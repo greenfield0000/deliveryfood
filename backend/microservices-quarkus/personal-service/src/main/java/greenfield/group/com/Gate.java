@@ -4,6 +4,7 @@ import greenfield.group.com.model.User;
 import greenfield.group.com.services.UserRepository;
 
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -14,12 +15,13 @@ import java.util.List;
 public class Gate {
 
     @Inject
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @GET
-    @Path("/findAll")
+    @Path("/loadJournal")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> findAllUser() {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public List<User> loadJournal( ) {
         User user = new User();
         user.setName("ТестовыйПервый");
         user.setSurName("ТестовыйПервыйФ");

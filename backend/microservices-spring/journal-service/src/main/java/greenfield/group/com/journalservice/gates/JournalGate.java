@@ -32,7 +32,7 @@ public class JournalGate {
     @RequestMapping(path = "/load", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<JournalMetadataCommon> load(@RequestBody LoadJournalRequest loadJournalRequest) {
         return new SimpleResult<>(
-                Status.OK, journalService.metaDataLoadJournal(loadJournalRequest.getSysName())
+                Status.OK, journalService.metaDataLoadJournal(loadJournalRequest.getJournalSysName())
         );
     }
 
@@ -45,7 +45,7 @@ public class JournalGate {
     @RequestMapping(path = "/loadData", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<JournalDataResponse> loadData(@RequestBody LoadJournalRequest loadJournalRequest) {
         JournalData journalData = journalService.loadJournalData(
-                loadJournalRequest.getSysName(),
+                loadJournalRequest.getJournalSysName(),
                 loadJournalRequest.getPageNumber()
         );
         JournalDataResponse journalDataResponse = new JournalDataResponse(journalData);

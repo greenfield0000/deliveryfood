@@ -26,7 +26,7 @@ public class JournalRepositoryImpl implements JournalRepository {
     @Override
     public JournalMetadataCommon metaDataLoad(String journalSysName) throws JournalRepositoryException {
         Aggregation aggregation = Aggregation.newAggregation(
-                Aggregation.project("id"),
+                Aggregation.project("id", "serviceName", "gateName"),
                 // Выбираем кнопки
                 Aggregation.lookup("journal-button", "button_id", "id", "buttonList"),
                 // Выбираем колонки
