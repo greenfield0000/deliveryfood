@@ -18,6 +18,21 @@ export class JournalService {
   }
 
   /**
+   * Общий метод для вызова сервисных функций журнала 
+   * @param methodName имя метода, который вызывается
+   * @param postParams параметры вызова (у каждого метода могут быть свои)
+   */
+  private post<T>(methodName, postParams?: any): Observable<SimpleResult<T>> {
+    if (!postParams) {
+      postParams = {};
+    }
+    return this.http
+      .post<SimpleResult<T>>(
+        environment.gatePath.journal_location + '/' + methodName, postParams
+      );
+  }
+
+  /**
    * Метод загрузки метаданных для построения журнала.
    * В него входит загрузка журнала, кнопок-обработчиков, параметров фильтрации,
    * пресеты (уникальные для каждого пользователя, именно поэтому передается uuid)
@@ -26,10 +41,23 @@ export class JournalService {
    * @param uuid уникальный идентифкатор пользователя
    */
   public loadJournalMetadata(journalSysName: string, uuid: string): Observable<SimpleResult<JournalMetadata>> {
-    return this.http
-      .post<SimpleResult<JournalMetadata>>(
-        environment.gatePath.journal_location + '/load', { sysName: journalSysName, uuid: uuid }
-      );
+    const callParams = {
+      journalSysName: journalSysName, uuid: uuid
+    };
+    return this.post<JournalMetadata>('load', callParams);
+  }
+
+  /**
+   * Метод загрузки данных журнала
+   * 
+   * @param journalSysName системное имя  журнала
+   * @param uuid уникальный идентифкатор пользователя
+   */
+  public loadJournalData(journalSysName: string, pageNumber: number = 0): Observable<SimpleResult<any>> {
+    const callParams = {
+      journalSysName: journalSysName, pageNumber: pageNumber
+    };
+    return this.post('loadData', callParams);
   }
 
   /**

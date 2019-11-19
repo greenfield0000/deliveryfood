@@ -101,6 +101,11 @@ export class JournalComponent implements OnInit {
     });
   }
 
+  /**
+   * Основная функция загрузки журнала. Входит первоначальная загрузка метаданных журнала, 
+   * а также (при успехе) загружает данные по этому журналу
+   * @param journalSysName системное имя журнала
+   */
   public load(journalSysName: string) {
     if (this.account) {
       const UUID: string = this.account.getAccount().$uuid;
@@ -118,7 +123,26 @@ export class JournalComponent implements OnInit {
           this.columnMetaDataSubject.next(columnMetaData);
           this.topButtonListSubject.next(buttonList);
           this.presetListSubject.next(presetList);
+          // загружаем данные
+          this.loadData(journalSysName);
         });
     }
+  }
+
+
+  /**
+   * Загрузка данных по журналу.
+   * 
+   * @param journalSysName системное имя журнала
+   * 
+   */
+  private loadData(journalSysName: string) {
+    if (journalSysName) {
+      this.journalService.loadJournalData(journalSysName).subscribe(res => {
+        console.log('loaded journal data = ', res);
+      });
+      return;
+    }
+    console.log('Unavaiable load data for jornal, because journal sysname is empty or null');
   }
 }
