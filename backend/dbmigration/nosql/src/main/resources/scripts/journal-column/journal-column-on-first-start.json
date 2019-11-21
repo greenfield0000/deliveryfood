@@ -8,14 +8,14 @@
   "list": [
     {
       "headerName": "Имя",
-      "field": "firstName",
+      "field": "name",
       "sortable": true,
       "filter": false,
       "checkboxSelection": false
     },
     {
       "headerName": "Фамилия",
-      "field": "secondName",
+      "field": "surName",
       "sortable": true,
       "filter": false,
       "checkboxSelection": false
@@ -37,6 +37,20 @@
     {
       "headerName": "Должность",
       "field": "employeePosition",
+      "sortable": true,
+      "filter": false,
+      "checkboxSelection": false
+    },
+    {
+      "headerName": "Телефон",
+      "field": "phone",
+      "sortable": true,
+      "filter": false,
+      "checkboxSelection": false
+    },
+    {
+      "headerName": "Почта",
+      "field": "email",
       "sortable": true,
       "filter": false,
       "checkboxSelection": false

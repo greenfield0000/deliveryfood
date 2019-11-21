@@ -140,6 +140,9 @@ export class JournalComponent implements OnInit {
     if (journalSysName) {
       this.journalService.loadJournalData(journalSysName).subscribe(res => {
         console.log('loaded journal data = ', res);
+        if (res && res.result && res.result.rows) {
+          this.rowData = res.result.rows;
+        }
       });
       return;
     }
