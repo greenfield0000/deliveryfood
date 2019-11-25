@@ -12,6 +12,7 @@ import { JournalMetadata } from 'src/app/classes/journal/journal-metadata.class'
 import { ColumnMetaData } from 'src/app/classes/journal/journal-column-metadata.class';
 import { IJournal } from './journal.interface';
 import { Preset } from 'src/app/classes/journal/journal-preset.class';
+import { RowNumberRenderer } from './cell-renders/rownumber-renderer.component';
 
 /**
  * Описание кнопки журнала
@@ -22,7 +23,9 @@ import { Preset } from 'src/app/classes/journal/journal-preset.class';
   templateUrl: './journal.component.html',
   styleUrls: ['./journal.component.scss']
 })
-export class JournalComponent implements OnInit {
+export class JournalComponent {
+  @Input()
+  public rowSelection: string = 'single';
   @Input()
   public context: IJournal;
   @ViewChild('agGrid') agGrid: AgGridNg2;
@@ -31,7 +34,14 @@ export class JournalComponent implements OnInit {
   private columnMetaDataSubject: Subject<ColumnMetaData> = new BehaviorSubject<ColumnMetaData>(new ColumnMetaData());
   private columnListSubject: Subject<JornalColumn[]> = new BehaviorSubject<JornalColumn[]>([]);
   private topButtonListSubject: Subject<JournalButton[]> = new BehaviorSubject<JournalButton[]>([]);
-  public presetListSubject: Subject<Preset[]> = new BehaviorSubject<Preset[]>([]);
+  private presetListSubject: Subject<Preset[]> = new BehaviorSubject<Preset[]>([]);
+
+  // апи для работы с сеткой данных
+  private gridApi;
+  // апи для работы с колонками
+  private gridColumnApi;
+  // выбранные колонки пользователем
+  private selectedRows;
 
   // описание колонок сетки данных
   public columnList: any;
@@ -55,6 +65,25 @@ export class JournalComponent implements OnInit {
 
   public rightButtonList: JournalButton;
 
+  // Регистрация доп. компонентов для сетки данных
+  private frameworkComponents = {
+    rowNumberCellRenderer: RowNumberRenderer
+  };
+
+  // Общие колонки для всех журналов
+  public commonColumnList: any[] = [
+    {
+      checkboxSelection: false,
+      field: "rownum",
+      filter: false,
+      headerName: "№",
+      sortable: false,
+      pinned: 'left',
+      lockPinned: true,
+      width: 60
+    }
+  ];
+
   constructor(
     private sideNavService: MainSideNavService,
     private account: AppAccountContextService,
@@ -69,36 +98,6 @@ export class JournalComponent implements OnInit {
 
   private refresh(): void {
     this.loadData(this.context.journalSysName);
-  }
-
-  ngOnInit() {
-    if (!this.context) {
-      throw new Error('Не установлен контекст журнала');
-    }
-
-    this.journalService.context = this.context;
-    this.columnListSubject.subscribe(
-      (columnList: JornalColumn[]) => (this.columnList = columnList)
-    );
-    this.columnMetaDataSubject.subscribe((columnMetaData: ColumnMetaData) => {
-        const list: JornalColumn[] = (columnMetaData && columnMetaData.$list ? columnMetaData.$list : []);
-        this.columnListSubject.next(list);
-      }
-    );
-    this.topButtonListSubject.subscribe((buttonList: JournalButton[]) => {
-      if (buttonList) {
-        buttonList.forEach((button: any) => {
-          const newButton: JournalButton = new JournalButton(button);
-          if (!this.topButtonList.includes(newButton)) {
-            const journalContext = this.journalService.context;
-            if (button.handlerFnName) {
-              newButton.handler = journalContext[button.handlerFnName];
-            }
-            this.topButtonList.push(newButton);
-          }
-        });
-      }
-    });
   }
 
   /**
@@ -129,7 +128,6 @@ export class JournalComponent implements OnInit {
     }
   }
 
-
   /**
    * Загрузка данных по журналу.
    * 
@@ -141,11 +139,63 @@ export class JournalComponent implements OnInit {
       this.journalService.loadJournalData(journalSysName).subscribe(res => {
         console.log('loaded journal data = ', res);
         if (res && res.result && res.result.rows) {
-          this.rowData = res.result.rows;
+          let rows: [] = res.result.rows;
+          rows.map((row: any, index: number) => row.rownum = index + 1);
+          this.rowData = rows;
         }
       });
       return;
     }
     console.log('Unavaiable load data for jornal, because journal sysname is empty or null');
+  }
+
+  /**
+   * Функция выбора строки в сетке данных
+   * @param selectionRow объект выбранной записи
+   */
+  public onSelectionChanged() {
+    this.selectedRows = this.gridApi.getSelectedRows();
+    console.log('Selected rows ', this.selectedRows);
+  }
+
+  /**
+   * Функция готовности сетки данных
+   * @param grid 
+   */
+  public onGridReady(grid) {
+    console.log('grid ready ', grid);
+    this.gridApi = grid.api;
+    this.gridColumnApi = grid.columnApi;
+
+    if (!this.context) {
+      throw new Error('Не установлен контекст журнала');
+    }
+
+    this.journalService.context = this.context;
+    this.columnListSubject.subscribe(
+      (columnList: JornalColumn[]) => {
+        columnList.push(... this.commonColumnList);
+        this.columnList = columnList
+      }
+    );
+    this.columnMetaDataSubject.subscribe((columnMetaData: ColumnMetaData) => {
+      const list: JornalColumn[] = (columnMetaData && columnMetaData.$list ? columnMetaData.$list : []);
+      this.columnListSubject.next(list);
+    }
+    );
+    this.topButtonListSubject.subscribe((buttonList: JournalButton[]) => {
+      if (buttonList) {
+        buttonList.forEach((button: any) => {
+          const newButton: JournalButton = new JournalButton(button);
+          if (!this.topButtonList.includes(newButton)) {
+            const journalContext = this.journalService.context;
+            if (button.handlerFnName) {
+              newButton.handler = journalContext[button.handlerFnName];
+            }
+            this.topButtonList.push(newButton);
+          }
+        });
+      }
+    });
   }
 }

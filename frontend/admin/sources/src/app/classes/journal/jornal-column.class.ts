@@ -11,6 +11,13 @@ export class JornalColumn {
     private filter: boolean;
     private checkboxSelection: boolean;
 
+    constructor(data?: any) {
+        this.headerName = data && data.headerName || '';
+        this.field = data && data.field || '';
+        this.sortable = data && data.sortable || false;
+        this.filter = data && data.filter || false;
+        this.checkboxSelection = data && data.checkboxSelection || false;
+    }
 
     /**
      * Getter $headerName

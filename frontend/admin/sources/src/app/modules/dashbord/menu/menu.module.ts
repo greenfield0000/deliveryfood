@@ -20,6 +20,7 @@ import { PurchasesComponent } from './purchases/purchases.component';
 import { VacationScheduleComponent } from './vacation-schedule/vacation-schedule.component';
 import { ProfessionalStaffTrainingComponent } from './professional-staff-training/professional-staff-training.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { RowNumberRenderer } from 'src/app/components/journal/cell-renders/rownumber-renderer.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,10 @@ import { AgGridModule } from 'ag-grid-angular';
     FestivalsComponent,
     PurchasesComponent,
     VacationScheduleComponent,
-    ProfessionalStaffTrainingComponent],
+    ProfessionalStaffTrainingComponent,
+
+    RowNumberRenderer
+  ],
   imports: [
     CommonModule,
     MenuRoutingModule,
@@ -56,7 +60,7 @@ import { AgGridModule } from 'ag-grid-angular';
     MatSelectModule,
     MatOptionModule,
     // Angular Ag-grid
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([RowNumberRenderer])
   ]
 })
 export class MenuModule { }

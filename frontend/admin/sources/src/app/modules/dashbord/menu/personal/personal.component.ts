@@ -26,12 +26,12 @@ export class PersonalComponent implements OnInit, IJournal {
     alert('New realisation createNewPerson');
   }
 
-  public editPerson() {
-    alert('New realisation editPerson');
+  public editPerson(selectedRow: any) {
+    console.log('New realisation editPerson for ', selectedRow);
   }
 
-  public deletePerson() {
-    alert('New realisation deletePerson');
+  public deletePerson(selectedRow: any) {
+    console.log('New realisation deletePerson ', selectedRow);
   }
 
 }
