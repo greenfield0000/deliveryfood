@@ -1,7 +1,7 @@
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { AppAccountContextService } from './../app-account-context-service/app-account-context.service';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MenuNode } from 'src/app/classes/menu-node';
 import { SimpleResult } from 'src/app/utils/simple-result.class';
@@ -17,6 +17,7 @@ import { SimpleResult } from 'src/app/utils/simple-result.class';
   providedIn: 'root'
 })
 export class MenuService {
+
   dataChange = new BehaviorSubject<MenuNode[]>([]);
 
   get data(): MenuNode[] { return this.dataChange.value; }
@@ -46,6 +47,8 @@ export class MenuService {
           });
 
       }
+    } else {
+      alert('User is unauthorised !!! ');
     }
 
   }
@@ -82,6 +85,8 @@ export class MenuService {
       return accumulator.concat(node);
     }, []);
   }
+
+
 }
 
 

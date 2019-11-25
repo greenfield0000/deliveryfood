@@ -18,7 +18,7 @@
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  width: 95%;
   height: 90%;
 }
 
@@ -95,4 +95,15 @@
 .edit-btn {
   background: url("../../../assets/i/png/grid-crud/edit.png");
   background-size: contain;
+}
+
+*.ag-paging-panel {
+  align-items: center;
+  border-top: 1px solid #BDC3C7;
+  color: rgba(0, 0, 0, 0.54);
+  display: flex;
+  height: 32px;
+  justify-content: flex-end;
+  padding: 0 12px;
+  margin: auto;
 }

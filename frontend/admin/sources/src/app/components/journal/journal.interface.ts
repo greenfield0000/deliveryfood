@@ -4,6 +4,9 @@
  * работа с сервисом журнала
  */
 export interface IJournal {
+
+  readonly journalSysName?: string;
+
   /**
    * Метод получения контекста вызова
    */

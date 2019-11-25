@@ -1,6 +1,6 @@
 import { AppRouteService } from "./../../services/app-route-service/app-route.service";
 import { MenuService } from "./../../services/menu-service/menu.service";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FlatTreeControl } from "@angular/cdk/tree";
 import { MatTreeFlattener, MatTreeFlatDataSource } from "@angular/material";
 import { Observable, of as observableOf } from "rxjs";
@@ -13,17 +13,9 @@ import { MainSideNavService } from "src/app/services/main-side-nav-service/main-
   templateUrl: "./tree-flat-overview.component.html",
   styleUrls: ["./tree-flat-overview.component.scss"]
 })
-export class TreeFlatOverviewComponent {
-  treeControl: FlatTreeControl<MenuFlatNode>;
-  treeFlattener: MatTreeFlattener<MenuNode, MenuFlatNode>;
-  dataSource: MatTreeFlatDataSource<MenuNode, MenuFlatNode>;
-
-  constructor(
-    private database: MenuService,
-    private appRouterService: AppRouteService,
-    private menuService: MenuService,
-    private sideNavService: MainSideNavService
-  ) {
+export class TreeFlatOverviewComponent implements OnInit {
+  ngOnInit(): void {
+    console.log('init menu');
     this.treeFlattener = new MatTreeFlattener(
       this.transformer,
       this._getLevel,
@@ -39,10 +31,23 @@ export class TreeFlatOverviewComponent {
       this.treeFlattener
     );
 
+    this.database.initialize();
     this.database.dataChange.subscribe(data => {
       this.dataSource.data = data;
       console.log("database = ", data);
     });
+
+  }
+
+  private treeControl: FlatTreeControl<MenuFlatNode>;
+  private treeFlattener: MatTreeFlattener<MenuNode, MenuFlatNode>;
+  private dataSource: MatTreeFlatDataSource<MenuNode, MenuFlatNode>;
+
+  constructor(
+    private database: MenuService,
+    private appRouterService: AppRouteService,
+    private sideNavService: MainSideNavService
+  ) {
   }
 
   transformer = (node: MenuNode, level: number) => {

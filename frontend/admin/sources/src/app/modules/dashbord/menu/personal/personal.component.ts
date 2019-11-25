@@ -8,8 +8,9 @@ import { IJournal } from 'src/app/components/journal/journal.interface';
   styleUrls: ['./personal.component.scss']
 })
 export class PersonalComponent implements OnInit, IJournal {
+  
   @ViewChild('journal') journal: JournalComponent;
-  private journalSysName: string = 'Personals-jrnl';
+  readonly journalSysName: string = 'Personals-jrnl';
 
   constructor() {}
 

@@ -68,7 +68,7 @@ export class JournalComponent implements OnInit {
   }
 
   private refresh(): void {
-    alert('refresh');
+    this.loadData(this.context.journalSysName);
   }
 
   ngOnInit() {
