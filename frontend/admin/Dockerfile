@@ -8,5 +8,7 @@ WORKDIR /angular/interface-admin
 ## add source code to workdir
 ADD /sources  /angular/interface-admin
 
+EXPOSE 4200
+
 ENTRYPOINT ["npm", "run", "start"]
 
