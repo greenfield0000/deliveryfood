@@ -6,13 +6,9 @@ metadata:
   name: frontend
   namespace: default
 spec:
-  externalTrafficPolicy: Cluster
   ports:
-  - nodePort: 30200
-    port: 4200
-    protocol: TCP
-    targetPort: 4200
+    - port: 8081
+      targetPort: 4200
   selector:
     app: frontend
-  sessionAffinity: None
   type: LoadBalancer

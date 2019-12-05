@@ -1,0 +1,12 @@
+secretGenerator:
+- name: mysql-password
+  literals:
+  - password=root123
+- name: mysql-database
+  literals:
+  - database=auth-db
+- name: mysql-port
+  literals:
+  - port=3306
+resources:
+  - auth-db.yaml
