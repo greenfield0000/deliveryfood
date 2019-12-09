@@ -3,6 +3,8 @@ backend/utils/privilegies-utils/target/maven-status/maven-compiler-plugin/compil
 
 backend/\.idea/
 
+.idea/
+
 backend/utils/pattern-utils/target/
 
 backend/utils/privilegies-utils/target/
