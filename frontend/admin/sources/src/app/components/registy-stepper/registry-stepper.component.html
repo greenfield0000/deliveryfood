@@ -113,10 +113,13 @@
       <ng-template matStepLabel>Пользовательское соглашение</ng-template>
       <div class="step-form">
         <div class="client-agreement" [innerHTML]="agreementHTML"></div>
-        <mat-checkbox formControlName="isAgree" class="client-agreement-checkbox">Я подтверждаю, что
-          ознакомлен со всеми
-          пунктами настоящего
-          Соглашения и безусловно принимаю их.</mat-checkbox>
+        <div class="client-agreement-checkbox-content">
+          <mat-checkbox formControlName="isAgree"></mat-checkbox>
+          <span class="client-agreement-checkbox-text"> Я подтверждаю, что
+            ознакомлен со всеми
+            пунктами настоящего
+            Соглашения и безусловно принимаю их.</span>
+        </div>
       </div>
       <div class="form-button-block">
         <button class="form-button" mat-raised-button color="primary" matStepperPrevious>Назад</button>
