@@ -1,7 +1,4 @@
-/**
-  ПК версия
-**/
-@media screen and (min-width: 1024px) {
+@media screen {
   .login-row {
     display: flex;
     justify-content: space-between;
@@ -53,7 +50,7 @@
   }
 
   .form-frame-wrapper {
-    width: 50%;
+    min-width: 320px;
     height: 100%;
     display: flex;
     flex-direction: column;
