@@ -1,7 +1,7 @@
 package greenfield.group.com.utils.querybuilder.part.impl.sorting;
 
-import greenfield.group.com.utils.querybuilder.part.Sorting;
-import greenfield.group.com.utils.querybuilder.types.DatabaseType;
+import greenfield.group.com.utils.querybuilder.part.builder.Sorting;
+import greenfield.group.com.utils.querybuilder.part.types.DatabaseType;
 
 import java.util.List;
 

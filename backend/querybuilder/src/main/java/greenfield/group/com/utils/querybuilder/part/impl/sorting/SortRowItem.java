@@ -1,6 +1,6 @@
 package greenfield.group.com.utils.querybuilder.part.impl.sorting;
 
-import greenfield.group.com.utils.querybuilder.types.SortType;
+import greenfield.group.com.utils.querybuilder.part.types.SortType;
 import lombok.Data;
 
 /**

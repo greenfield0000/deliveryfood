@@ -1,5 +1,4 @@
-<mat-sidenav-container class="journal-sidenav-container" [hidden]="!account.getAccount().$authtorised">
-
+<mat-sidenav-container class="journal-sidenav-container" [hidden]="!isAuthtorised()">
   <mat-sidenav #journalFilterNavigator [mode]="'over'" class="journal-sidenav">
     <app-filter-panel [presetListSubject]="presetListSubject.asObservable()"></app-filter-panel>
   </mat-sidenav>

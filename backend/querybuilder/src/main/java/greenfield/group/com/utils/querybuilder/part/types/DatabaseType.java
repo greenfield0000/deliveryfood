@@ -1,4 +1,4 @@
-package greenfield.group.com.utils.querybuilder.types;
+package greenfield.group.com.utils.querybuilder.part.types;
 
 /**
  * Основные поддержанные базы данных

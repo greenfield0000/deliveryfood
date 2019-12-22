@@ -1,7 +1,7 @@
 package greenfield.group.com.utils.querybuilder.part.impl.pagination;
 
-import greenfield.group.com.utils.querybuilder.part.Pagination;
-import greenfield.group.com.utils.querybuilder.types.DatabaseType;
+import greenfield.group.com.utils.querybuilder.part.builder.Pagination;
+import greenfield.group.com.utils.querybuilder.part.types.DatabaseType;
 import lombok.Data;
 
 /**
@@ -13,10 +13,4 @@ public abstract class AbstractPaginationImpl<E extends DatabaseType> implements 
     protected int currentRow;
     // Строк всего
     protected int totalRows;
-
-    private E dataBaseType;
-
-    public E getDataBaseType() {
-        return this.dataBaseType;
-    }
 }

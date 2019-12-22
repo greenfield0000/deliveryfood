@@ -1,5 +1,4 @@
 import { User } from './user';
-import { Account } from './../interfaces/account';
 
 /**
  * Класс - описывающий данные учетной записи
@@ -10,7 +9,6 @@ export class AccountEntity {
     private uuid: string = null;
     private login: string = '';
     private password: string = '';
-    private authtorised: boolean = false;
     private nickName: string = '';
     private user: User = new User();
 
@@ -19,7 +17,6 @@ export class AccountEntity {
             this.id = obj && obj.id;
             this.login = obj && obj.login;
             this.password = obj && obj.password;
-            this.authtorised = obj && obj.authtorised;
             this.nickName = obj && obj.nickName;
             this.uuid = obj && obj.uuid;
             this.user = obj && obj.user;
@@ -57,14 +54,6 @@ export class AccountEntity {
     public get $password(): string {
         return this.password;
     }   
-
-    /**
-     * Getter $authtorised
-     * @return {boolean }
-     */
-    public get $authtorised(): boolean {
-        return this.authtorised;
-    }
 
     /**
      * Getter $nickName
@@ -112,14 +101,6 @@ export class AccountEntity {
      */
     public set $password(value: string) {
         this.password = value;
-    }
-
-    /**
-     * Setter $authtorised
-     * @param {boolean } value
-     */
-    public set $authtorised(value: boolean) {
-        this.authtorised = value;
     }
 
     /**

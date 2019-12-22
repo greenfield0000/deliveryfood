@@ -1,15 +1,15 @@
-package greenfield.group.com.utils.querybuilder.part;
+package greenfield.group.com.utils.querybuilder.part.builder;
 
 
 import greenfield.group.com.utils.querybuilder.part.impl.filter.FilterRowItem;
-import greenfield.group.com.utils.querybuilder.types.DatabaseType;
+import greenfield.group.com.utils.querybuilder.part.types.DatabaseType;
 
 import java.util.List;
 
 /**
  * Интерфейс фильтрации
  */
-public interface Filter<E extends DatabaseType> extends SqlBuild<E> {
+public interface Filter<E extends DatabaseType> {
     /**
      * Сеттер возвращающий список аттрибутов, по которым требуется фильтраци
      *

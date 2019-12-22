@@ -2,14 +2,14 @@
 
   <!-- Main conten -->
   <div class="main">
-    <header [hidden]="!appAccountContextService.getAccount().$authtorised" class="header">
+    <header [hidden]="!isAuthtorised()" class="header">
       <router-outlet name="headerOutlet"></router-outlet>
     </header>
 
-    <div [hidden]="appAccountContextService.getAccount().$authtorised">
+    <div [hidden]="isAuthtorised()">
       <router-outlet></router-outlet>
     </div>
-    <mat-sidenav-container class="main-full-page" [hidden]="!appAccountContextService.getAccount().$authtorised">
+    <mat-sidenav-container class="main-full-page" [hidden]="!isAuthtorised()">
       <mat-sidenav #menuNavigator [mode]="'push'" class="example-sidenav">
         <app-tree-flat-overview></app-tree-flat-overview>
       </mat-sidenav>

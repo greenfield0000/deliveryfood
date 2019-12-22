@@ -1,7 +1,7 @@
 package greenfield.group.com.utils.querybuilder.part.impl.filter;
 
-import greenfield.group.com.utils.querybuilder.part.Filter;
-import greenfield.group.com.utils.querybuilder.types.DatabaseType;
+import greenfield.group.com.utils.querybuilder.part.builder.Filter;
+import greenfield.group.com.utils.querybuilder.part.types.DatabaseType;
 import lombok.Data;
 
 import java.util.List;

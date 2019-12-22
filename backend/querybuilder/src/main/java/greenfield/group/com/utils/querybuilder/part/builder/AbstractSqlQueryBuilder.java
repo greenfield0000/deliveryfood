@@ -1,26 +1,33 @@
-package greenfield.group.com.utils.querybuilder.part;
+package greenfield.group.com.utils.querybuilder.part.builder;
+
+import lombok.Data;
 
 /**
  * Абстрактный билдер запросов
- *
- * @param <E> тип базы данных
  */
-public abstract class AbstractSqlBuildImpl<E> implements SqlBuild<E> {
+@Data
+public abstract class AbstractSqlQueryBuilder {
 
     private String tableName;
-    private E dataBaseType;
 
     /**
      * Функция построения запроса
+     *
      * @return готовый запрос в виде sql
      */
-    public String build() {
+    protected String build(String tableName) {
+        this.tableName = tableName;
         return createSql();
     }
 
+    /**
+     * Скрипт для построения запроса
+     *
+     * @return подготовленный скрипт
+     */
     private String createSql() {
         return selectSql() +
-                fromSql(getTableName()) +
+                fromSql(this.tableName) +
                 whereSql() +
                 groupBySql() +
                 orderBySql() +
@@ -38,15 +45,6 @@ public abstract class AbstractSqlBuildImpl<E> implements SqlBuild<E> {
     abstract String orderBySql();
 
     abstract String limitSql();
-
-    private String getTableName() {
-        return tableName;
-    }
-
-    protected void setTableName(String tableName) {
-        this.tableName = tableName;
-    }
-
 
 //    private String selectSql() {
 //        List<String> selectCols;
