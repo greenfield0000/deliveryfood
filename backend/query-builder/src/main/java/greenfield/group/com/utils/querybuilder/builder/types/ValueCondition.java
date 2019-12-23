@@ -1,9 +1,9 @@
-package greenfield.group.com.utils.querybuilder.part.types;
+package greenfield.group.com.utils.querybuilder.builder.types;
 
 /**
  * Основные сравнения значений, которые поддерживает фильтрация
  */
-public enum ConditionType {
+public enum ValueCondition {
     // Равно
     EQUALS("="),
     // Не равно
@@ -20,7 +20,7 @@ public enum ConditionType {
     // Основной оператор
     private final String operator;
 
-    ConditionType(String operator) {
+    ValueCondition(String operator) {
         this.operator = operator;
     }
 

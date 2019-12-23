@@ -23,34 +23,6 @@ public class JournalStructureChangeSet {
 
     // TODO Вынести в отдельную джарку
 
-    private class JournalMetadata {
-        private List<String> buttonIdList;
-        private List<JournalColumn> columnList;
-        private JournalFilter filter;
-    }
-
-    private class JournalColumn {
-        private String id;
-        private String headerName;
-        private String field;
-        private boolean sortable;
-        private boolean filter;
-        private boolean checkboxSelection;
-    }
-
-    private class JournalButton {
-        private String id;
-        private String name;
-        private String hint;
-        private String cssImageName;
-        private String handlerFnName;
-    }
-
-    private class JournalFilter {
-        private String id;
-    }
-
-
     private ChangeSetScriptLoader scriptLoader = new ChangeSetScriptLoader();
 
     @ChangeSet(order = "1", id = "registry_journal_structure_personal", author = "Ivanov Roman")
@@ -145,6 +117,33 @@ public class JournalStructureChangeSet {
             bsonList.put("$set", basicDBObject);
             journal.update(query, bsonList, true, false);
         }
+    }
+
+    private class JournalMetadata {
+        private List<String> buttonIdList;
+        private List<JournalColumn> columnList;
+        private JournalFilter filter;
+    }
+
+    private class JournalColumn {
+        private String id;
+        private String headerName;
+        private String field;
+        private boolean sortable;
+        private boolean filter;
+        private boolean checkboxSelection;
+    }
+
+    private class JournalButton {
+        private String id;
+        private String name;
+        private String hint;
+        private String cssImageName;
+        private String handlerFnName;
+    }
+
+    private class JournalFilter {
+        private String id;
     }
 
 

@@ -1,8 +1,8 @@
 package greenfield.group.com.utils.querybuilder;
 
-import greenfield.group.com.utils.querybuilder.part.builder.Filter;
-import greenfield.group.com.utils.querybuilder.part.builder.Pagination;
-import greenfield.group.com.utils.querybuilder.part.builder.Sorting;
+import greenfield.group.com.utils.querybuilder.builder.Filter;
+import greenfield.group.com.utils.querybuilder.builder.Pagination;
+import greenfield.group.com.utils.querybuilder.builder.Sorting;
 import lombok.Data;
 
 /**

@@ -1,9 +1,9 @@
-package greenfield.group.com.utils.querybuilder.part.types;
+package greenfield.group.com.utils.querybuilder.builder.types;
 
 /**
  * Основные поддержанные базы данных
  */
-public enum DatabaseType {
+public enum DataBase {
     ORACLE,
     MYSQL,
     POSTGRES

@@ -23,7 +23,7 @@ public class Role extends BaseEntity {
 //    // Бармен
 //    BARMEN(6L, "BARMEN", "Бармен");
 
-    private  String sysname;
-    private  String name;
+    private String sysname;
+    private String name;
     private Set<Account> accounts;
 }

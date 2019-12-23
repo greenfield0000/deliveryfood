@@ -1,7 +1,7 @@
-package greenfield.group.com.utils.querybuilder.part.impl.filter;
+package greenfield.group.com.utils.querybuilder.impl.filter;
 
 
-import greenfield.group.com.utils.querybuilder.types.Condition;
+import greenfield.group.com.utils.querybuilder.builder.types.ValueCondition;
 import lombok.Data;
 
 /**
@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class FilterRowItem {
     // Условие
-    protected Condition condition;
+    protected ValueCondition condition;
     // Поле для отображения на интерфейсе
     protected String headerName;
     // Поле для внутреннего маппинга

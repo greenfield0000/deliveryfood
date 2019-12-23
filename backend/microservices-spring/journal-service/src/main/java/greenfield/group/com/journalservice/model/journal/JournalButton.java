@@ -1,6 +1,6 @@
 package greenfield.group.com.journalservice.model.journal;
 
-import lombok.*;
+import lombok.Data;
 
 /**
  * Класс-описатель журнальной кнопки

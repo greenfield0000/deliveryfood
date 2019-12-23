@@ -1,6 +1,8 @@
 package greenfield.group.com.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.util.Set;
 
 /**
@@ -14,7 +16,7 @@ import java.util.Set;
 @Table(name = "B_ORGANIZATION")
 public class Organization extends BaseEntity {
     private String name;
-//    private Address address;
+    //    private Address address;
     private String phone;
     @ManyToMany(mappedBy = "organizations")
     private Set<Employee> employeeSet;

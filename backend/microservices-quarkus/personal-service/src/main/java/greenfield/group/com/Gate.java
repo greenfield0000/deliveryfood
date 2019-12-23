@@ -21,7 +21,7 @@ public class Gate {
     @Path("/loadJournal")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public List<User> loadJournal( ) {
+    public List<User> loadJournal() {
         User user = new User();
         user.setName("ТестовыйПервый");
         user.setSurName("ТестовыйПервыйФ");

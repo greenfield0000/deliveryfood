@@ -20,16 +20,16 @@ public class AccountDto {
     private String lastName;
     private String email;
 
-    public Account toAccount(){
-        Account Account = new Account();
-        Account.setId(id);
-
-        return Account;
-    }
-
     public static AccountDto fromAccount(Account Account) {
         AccountDto AccountDto = new AccountDto();
         AccountDto.setId(Account.getId());
         return AccountDto;
+    }
+
+    public Account toAccount() {
+        Account Account = new Account();
+        Account.setId(id);
+
+        return Account;
     }
 }

@@ -25,9 +25,9 @@ public class KafkaSenderService {
             ProducerRecord record = new ProducerRecord(topic, user);
             kafkaTemplate.send(record)
                     .addCallback(
-                    s -> System.out.println("succses"),
-                    ex -> System.out.println("exceptionsssss " + ex)
-            );
+                            s -> System.out.println("succses"),
+                            ex -> System.out.println("exceptionsssss " + ex)
+                    );
         }
     }
 }

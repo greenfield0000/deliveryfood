@@ -15,12 +15,12 @@ services:
 
   personal-service:
     container_name: personal-service
-    build: 
+    build:
       context: .
       dockerfile: ./src/main/docker/Dockerfile.jvm
     ports:
       - "8079:8080"
-      - "9079:8787"  
+      - "9079:8787"
     depends_on:
       - personal-db
 

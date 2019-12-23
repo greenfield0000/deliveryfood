@@ -1,6 +1,6 @@
 package greenfield.group.com.menuservice;
 
-import lombok.*;
+import lombok.Data;
 
 import java.util.List;
 

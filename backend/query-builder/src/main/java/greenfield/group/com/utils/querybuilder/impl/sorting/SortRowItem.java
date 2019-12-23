@@ -1,6 +1,6 @@
-package greenfield.group.com.utils.querybuilder.part.impl.sorting;
+package greenfield.group.com.utils.querybuilder.impl.sorting;
 
-import greenfield.group.com.utils.querybuilder.part.types.SortType;
+import greenfield.group.com.utils.querybuilder.builder.types.Sort;
 import lombok.Data;
 
 /**
@@ -8,6 +8,6 @@ import lombok.Data;
  */
 @Data
 public class SortRowItem {
-    private SortType sortType;
+    private Sort sortType;
     private String fieldName;
 }

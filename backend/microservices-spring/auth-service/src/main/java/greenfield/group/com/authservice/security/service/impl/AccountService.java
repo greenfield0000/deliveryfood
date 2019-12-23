@@ -22,10 +22,10 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class AccountService { 
+public class AccountService {
 
     @Autowired
-    private  BCryptPasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder passwordEncoder;
     @Autowired
     private AccountRepository accountRepository;
 

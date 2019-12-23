@@ -1,4 +1,4 @@
-package greenfield.group.com.utils.querybuilder.part.factory.exception;
+package greenfield.group.com.utils.querybuilder.factory.exception;
 
 /**
  * Исключения фабрики sql билдеров

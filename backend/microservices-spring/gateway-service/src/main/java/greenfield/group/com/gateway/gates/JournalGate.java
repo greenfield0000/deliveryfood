@@ -10,8 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import javax.websocket.server.PathParam;
-
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class JournalGate extends Gate {

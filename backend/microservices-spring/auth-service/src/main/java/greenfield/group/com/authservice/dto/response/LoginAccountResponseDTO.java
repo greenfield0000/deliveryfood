@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import greenfield.group.com.authservice.model.Account;
 import lombok.Data;
 
-import java.util.UUID;
-
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LoginAccountResponseDTO {

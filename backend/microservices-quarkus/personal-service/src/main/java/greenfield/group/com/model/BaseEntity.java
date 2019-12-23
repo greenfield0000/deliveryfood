@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.UUID;
 
 @MappedSuperclass
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -12,7 +11,7 @@ public class BaseEntity {
 
     @Id
     @SequenceGenerator(name = "hibernateSeq", sequenceName = "HIBERNATE_SEQUENCE", allocationSize = 1)
-    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "hibernateSeq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernateSeq")
     private Long id;
 
     @Column(name = "created")

@@ -2,11 +2,9 @@ package greenfield.group.com.authservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.UUID;
 
 @Data
 @MappedSuperclass

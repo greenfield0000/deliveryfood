@@ -36,17 +36,15 @@ import java.util.Set;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final JwtTokenProvider jwtTokenProvider;
-    private final JwtAccountDetailsService jwtAccountDetailsService;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
     // Пути доступные без авторизации пользователя
     private static final List<String> LOGIN_ENDPOINT_LIST = Arrays.asList("/login", "/registry", "/logout");
     private static final List<String> KLADR_ENDPOINT_LIST = Arrays.asList(
             "/getRegion", "/getDistrict", "/getCity", "/getStreet", "/getBuilding"
     );
-
     private static Set<String> NO_AUTH_ENDPOINT_LIST = new HashSet<>();
+    private final JwtTokenProvider jwtTokenProvider;
+    private final JwtAccountDetailsService jwtAccountDetailsService;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public SecurityConfig(JwtTokenProvider jwtTokenProvider, JwtAccountDetailsService jwtAccountDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {

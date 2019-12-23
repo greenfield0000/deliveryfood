@@ -7,7 +7,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.UUID;
 
 
 @Transactional
