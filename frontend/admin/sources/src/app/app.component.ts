@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   @ViewChild('menuNavigator')
   private menuNavigator: MatSidenav;
 
-  constructor(private sideNavService: MainSideNavService) {
+  constructor(private sideNavService: MainSideNavService, private appContextService: AppAccountContextService) {
   }
 
   ngOnInit() {
@@ -25,6 +25,6 @@ export class AppComponent implements OnInit {
   }
 
   isAuthtorised(): boolean {
-    return localStorage.getItem('token') != undefined && localStorage.getItem('token') != '';
+    return this.appContextService.isAuthtorised();
   }
 }

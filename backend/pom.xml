@@ -26,6 +26,7 @@
         <module>utils</module>
         <module>dbmigration</module>
         <module>microservices-quarkus</module>
+<!--        <module>querybuilder</module>-->
     </modules>
 
     <dependencyManagement>

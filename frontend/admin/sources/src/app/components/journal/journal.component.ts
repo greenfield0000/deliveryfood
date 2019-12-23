@@ -86,7 +86,7 @@ export class JournalComponent {
 
   constructor(
     private sideNavService: MainSideNavService,
-    private account: AppAccountContextService,
+    private appContextService: AppAccountContextService,
     private journalService: JournalService
   ) { }
 
@@ -106,8 +106,8 @@ export class JournalComponent {
    * @param journalSysName системное имя журнала
    */
   public load(journalSysName: string) {
-    if (this.account) {
-      const UUID: string = this.account.getAccount().$uuid;
+    if (this.appContextService) {
+      const UUID: string = this.appContextService.getAccount().$uuid;
       this.journalService
         .loadJournalMetadata(journalSysName, UUID)
         .subscribe((result: SimpleResult<JournalMetadata>) => {
@@ -197,5 +197,9 @@ export class JournalComponent {
         });
       }
     });
+  }
+
+  isAuthtorised(): boolean {
+    return this.appContextService.isAuthtorised();
   }
 }

@@ -6,7 +6,7 @@
         <properties>
             <!-- database connection -->
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://personal-postgres:5432/personal-db" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://personal-db:5432/personal-db" />
             <property name="javax.persistence.jdbc.user" value="rootuser" />
             <property name="javax.persistence.jdbc.password" value="123" />
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />

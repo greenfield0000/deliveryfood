@@ -34,17 +34,17 @@ public abstract class AbstractSqlQueryBuilder {
                 limitSql();
     }
 
-    abstract String selectSql();
+    protected abstract String selectSql();
 
-    abstract String fromSql(String tableName);
+    protected abstract String fromSql(String tableName);
 
-    abstract String whereSql();
+    protected abstract String whereSql();
 
-    abstract String groupBySql();
+    protected abstract String groupBySql();
 
-    abstract String orderBySql();
+    protected abstract String orderBySql();
 
-    abstract String limitSql();
+    protected abstract String limitSql();
 
 //    private String selectSql() {
 //        List<String> selectCols;

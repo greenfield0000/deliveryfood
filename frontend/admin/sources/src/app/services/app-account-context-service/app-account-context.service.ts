@@ -48,4 +48,11 @@ export class AppAccountContextService {
   setAccount(account: AccountEntity) {
     this._account = account;
   }
+
+  /**
+   * Метод проверяет авторизован ли пользователь или нет
+   */
+  isAuthtorised(): boolean {
+    return localStorage.getItem('token') != undefined && localStorage.getItem('token') != '';
+  }
 }
