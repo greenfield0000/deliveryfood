@@ -39,10 +39,10 @@
         </div>
 
       </div>
-      <div class="form-button-block">
-        <button class="form-button" mat-raised-button color="primary" (click)="goBackFn(router)"
+      <div class="form-button-block-column">
+        <button class="form-button-column" mat-raised-button color="primary" (click)="goBackFn(router)"
           matStepperPrevious>Вернуться</button>
-        <button class="form-button" mat-raised-button color="primary" matStepperNext>Далее</button>
+        <button class="form-button-column" mat-raised-button color="primary" matStepperNext>Далее</button>
       </div>
     </form>
   </mat-step>
@@ -90,7 +90,7 @@
         </div>
 
       </div>
-      <div class="form-button-block">
+      <div class="form-button-block-column">
         <button class="form-button" mat-raised-button color="primary" matStepperPrevious>Назад</button>
         <button class="form-button" mat-raised-button color="primary" matStepperNext>Далее</button>
       </div>
@@ -102,7 +102,7 @@
       <div class="step-form-1-2">
         <app-address-kladr [(address)]="address"></app-address-kladr>
       </div>
-      <div class="form-button-block">
+      <div class="form-button-block-column">
         <button class="form-button" mat-raised-button color="primary" matStepperPrevious>Назад</button>
         <button class="form-button" mat-raised-button color="primary" matStepperNext>Далее</button>
       </div>
@@ -121,7 +121,7 @@
             Соглашения и безусловно принимаю их.</span>
         </div>
       </div>
-      <div class="form-button-block">
+      <div class="form-button-block-column-column">
         <button class="form-button" mat-raised-button color="primary" matStepperPrevious>Назад</button>
         <button class="form-button" mat-raised-button color="primary" [disabled]="!isAgree"
           (click)="onSubmit()">Принять</button>

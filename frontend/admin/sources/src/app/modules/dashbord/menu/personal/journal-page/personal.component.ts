@@ -13,6 +13,8 @@ export class PersonalComponent implements OnInit, IJournal {
   @ViewChild('journal') journal: JournalComponent;
   readonly journalSysName: string = 'Personals-jrnl';
 
+  public readonly journalHeader: string = 'Журнал "Персонал"';
+
   constructor() { }
 
   ngOnInit() {

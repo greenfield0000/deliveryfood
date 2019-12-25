@@ -44,8 +44,9 @@
 
 .journal-top-btn-block {
   display: flex;
-  height: 30px;
+  height: fit-content;
   flex-direction: row;
+  margin: 15px 0px;
 }
 
 .journal-right-btn-block {
@@ -98,11 +99,17 @@
 
 *.ag-paging-panel {
   align-items: center;
-  border-top: 1px solid #BDC3C7;
+  border-top: 1px solid #bdc3c7;
   color: rgba(0, 0, 0, 0.54);
   display: flex;
   height: 32px;
   justify-content: flex-end;
   padding: 0 12px;
   margin: auto;
+}
+
+.journal-header {
+  color: #3f51b5;
+  font-size: xx-large;
+  font-weight: 500;
 }

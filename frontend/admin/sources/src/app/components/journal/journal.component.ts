@@ -29,6 +29,9 @@ export class JournalComponent {
   public rowSelection: string = 'single';
   @Input()
   public context: IJournal;
+  @Input()
+  public journalHeader: string; 
+
   @ViewChild('agGrid') agGrid: AgGridNg2;
   @ViewChild('journalFilterNavigator')
   private journalFilterNavigator: MatSidenav;
