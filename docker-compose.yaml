@@ -2,9 +2,9 @@ version: "3.4"
 services:
  
   # interface-environment
-  interface-environment:
-    container_name: interface-environment
-    build: ./frontend/environment
+  #interface-environment:
+  #  container_name: interface-environment
+  #  build: ./frontend/environment
 
   #frontend
   interface-admin:
@@ -48,7 +48,7 @@ services:
     container_name: menu-service
     build: ./backend/microservices-spring/menu-service
     ports:
-            # - "8082:8082"
+      - "8082:8082"
       - "9082:9082"
     depends_on:
       - metadata-db
@@ -87,8 +87,6 @@ services:
     container_name: kladr-service
     restart: always
     build: ./backend/microservices-spring/fiascloudkladr-service
-    #ports:
-            #- "8084:8084"
 
   #gateway-service
   gateway-service:
@@ -98,4 +96,26 @@ services:
     ports:
       - "8080:8080"
       - "9080:9080"
+  
+  personal-db:
+    container_name: personal-db
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=rootuser
+      - POSTGRES_DB=personal-db
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - "~/backup_database/postgres/personal-db:/var/lib/postgresql/data/pgdata"
+
+  personal-service:
+    container_name: personal-service
+    build: ./backend/microservices-quarkus/personal-service
+    ports:
+      - "8079:8080"
+      - "9079:8787"
+    depends_on:
+      - personal-db
 
