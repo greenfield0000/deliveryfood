@@ -36,8 +36,7 @@ public class JwtTokenFilter extends GenericFilterBean {
         String token = jwtTokenProvider.resolveToken((HttpServletRequest) req);
         try {
             if (token != null && jwtTokenProvider.validateToken(token)) {
-                jwtTokenProvider.setRefreshedToken((HttpServletRequest) req, jwtTokenProvider.refreshToken(token)
-                );
+                jwtTokenProvider.setRefreshedToken((HttpServletRequest) req, jwtTokenProvider.refreshToken(token));
             }
         } catch (JwtAuthenticationException e) {
             logger.error("JwtTokenFilter decrypt error " + e);

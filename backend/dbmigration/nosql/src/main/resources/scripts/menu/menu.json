@@ -94,7 +94,6 @@
     }
   },
   "ownerRole": [
-    "TEST",
-    "WAITER"
+    "USER"
   ]
 }

@@ -55,14 +55,13 @@ public class AuthService {
         }
 
         account = finderAccount.get();
-        accountRepository.save(account);
         LoginAccountResponseDTO loginAccountResponseDTO = LoginAccountResponseDTO.accountToDTO(account);
         Role accountRole = new Role();
         accountRole.setId(1L);
         accountRole.setName("Пользователь");
         accountRole.setSysname("USER");
         loginAccountResponseDTO.setToken(jwtTokenProvider.createToken(
-                loginAccountResponseDTO.getLogin(),
+                loginAccountResponseDTO.getUuid(),
                 Arrays.asList(accountRole)
         ));
         return new SimpleResult<>(Status.OK, loginAccountResponseDTO);

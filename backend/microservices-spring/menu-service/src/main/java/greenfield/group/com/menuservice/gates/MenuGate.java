@@ -4,10 +4,11 @@ import greenfield.group.com.gatecommon.SimpleResult;
 import greenfield.group.com.gatecommon.Status;
 import greenfield.group.com.menuservice.services.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController(value = "/menu")
@@ -18,13 +19,15 @@ public class MenuGate {
     @Autowired
     private MenuService menuService;
 
-    @RequestMapping(path = "/getMenu", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public SimpleResult<String> getMenu(@RequestHeader(value = "Authorization", defaultValue = "") String authorization,
-                                        @RequestBody String uuid) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", authorization);
-        HttpEntity<String> httpEntity = new HttpEntity<>(uuid, headers);
-        return new SimpleResult<>(Status.OK, menuService.getMenu());
+    /**
+     * Метод получения списка меню для пользователя
+     *
+     * @param authorizationToken хэш пользователя
+     * @return
+     */
+    @RequestMapping(path = "/getMenu", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public SimpleResult<String> getMenu(@RequestHeader(value = "Authorization", defaultValue = "") String authorizationToken) {
+        return new SimpleResult<>(Status.OK, menuService.getMenu(authorizationToken));
     }
 
 }

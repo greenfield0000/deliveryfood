@@ -26,27 +26,23 @@ export class MenuService {
     this.initialize();
   }
 
-  loadMenuByAccountUUID(uuid: string): Observable<SimpleResult<string>> {
+  loadMenu(): Observable<SimpleResult<string>> {
     return this.http
-      .post<SimpleResult<string>>(environment.gatePath.menu_location + '/getMenu', { uuid: uuid });
+      .get<SimpleResult<string>>(environment.gatePath.menu_location + '/getMenu');
   }
 
   initialize() {
-    const account = this.accountService.getAccount() || null;
-    if (account) {
-      const uuid: string = account && account.$uuid || '';
-      if (uuid.length !== 0) {
-        this.loadMenuByAccountUUID(uuid)
-          .subscribe((simpleResult: SimpleResult<string>) => {
-            const menu = simpleResult && simpleResult.result || null;
-            if (menu) {
-              const parsedMenu = JSON.parse(menu);
-              // Notify the change.
-              this.dataChange.next(this.buildNodeTree(parsedMenu, 0));
-            }
-          });
-
-      }
+    const isAuthtorised: boolean = this.accountService.isAuthtorised() || false;
+    if (isAuthtorised) {
+      this.loadMenu()
+        .subscribe((simpleResult: SimpleResult<string>) => {
+          const menu = simpleResult && simpleResult.result || null;
+          if (menu) {
+            const parsedMenu = JSON.parse(menu);
+            // Notify the change.
+            this.dataChange.next(this.buildNodeTree(parsedMenu, 0));
+          }
+        });
     } else {
       alert('User is unauthorised !!! ');
     }

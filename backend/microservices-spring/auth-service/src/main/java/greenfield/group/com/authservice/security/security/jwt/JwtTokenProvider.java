@@ -39,13 +39,13 @@ public class JwtTokenProvider {
     /**
      * Метод формирования токена
      *
-     * @param login           логин
+     * @param uuid            уникальный идентификатор учетной записи
      * @param accountRoleList пароль
      * @return
      */
-    public String createToken(String login, List<Role> accountRoleList) {
+    public String createToken(String uuid, List<Role> accountRoleList) {
 
-        Claims claims = Jwts.claims().setSubject(login);
+        Claims claims = Jwts.claims().setSubject(uuid);
         claims.put("roles", getRoleNames(accountRoleList));
 
         Date now = new Date();
