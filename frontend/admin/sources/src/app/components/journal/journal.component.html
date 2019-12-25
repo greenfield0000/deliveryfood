@@ -8,7 +8,7 @@
         <div mat-button matTooltip="Info about the action 1" matTooltipPosition="below"
           aria-tooltip="Button that displays and hides a tooltip triggered by other buttons 1"
           [ngClass]="['journal-btn', topButton.cssImageName]" *ngFor="let topButton of topButtonList"
-          (click)="topButton.handler(selectedRows)">
+          (click)="topButton.handler(selectedRows,appRouterService)">
         </div>
       </div>
       <div class="journal">
@@ -22,7 +22,7 @@
           <div mat-button matTooltip="Info about the action 1" matTooltipPosition="left"
             aria-tooltip="Button that displays and hides a tooltip triggered by other buttons 2"
             [ngClass]="rightButton.cssImageName" *ngFor="let rightButton of rightButtonList"
-            (click)="rightButton.handler(selectedRows)">
+            (click)="rightButton.handler(selectedRows, appRouterService)">
           </div>
         </div>
       </div>

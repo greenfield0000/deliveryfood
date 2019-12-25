@@ -5,7 +5,7 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { FestivalsComponent } from './festivals/festivals.component';
 import { MasterClassesComponent } from './master-classes/master-classes.component';
 import { OrdersComponent } from './orders/orders.component';
-import { PersonalComponent } from './personal/personal.component';
+import { PersonalComponent } from './personal/journal-page/personal.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProfessionalStaffTrainingComponent } from './professional-staff-training/professional-staff-training.component';
 import { PurchasesComponent } from './purchases/purchases.component';
@@ -14,17 +14,18 @@ import { StopSheetComponent } from './stop-sheet/stop-sheet.component';
 import { SuggestNewsComponent } from './suggest-news/suggest-news.component';
 import { VacationScheduleComponent } from './vacation-schedule/vacation-schedule.component';
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
+import { PersonalModule } from './personal/personal.module';
 
 const routes: Routes = [
 
   {
-    path: '', component: DashbordComponent, pathMatch: 'full'
+    path: '', component: DashbordComponent
   },
   { path: 'delivery', component: DeliveryComponent },
   { path: 'festivals', component: FestivalsComponent },
   { path: 'master-classes', component: MasterClassesComponent },
   { path: 'orders', component: OrdersComponent },
-  { path: 'personal', component: PersonalComponent },
+  { path: 'personal', loadChildren: () => PersonalModule },
   { path: 'menu', component: MenuComponent },
   { path: 'professional-staff-training', component: ProfessionalStaffTrainingComponent },
   { path: 'purchases', component: PurchasesComponent },

@@ -16,7 +16,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      enableTracing: false,
+      enableTracing: true,
       onSameUrlNavigation: 'reload',
       preloadingStrategy: PreloadAllModules
     })

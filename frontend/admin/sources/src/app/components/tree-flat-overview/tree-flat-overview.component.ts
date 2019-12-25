@@ -78,9 +78,12 @@ export class TreeFlatOverviewComponent implements OnInit {
   nodeClick(node: MenuFlatNode) {
     if (node && node.pathOfDash) {
       this.sideNavService.$menuNavigatorDrawer.close();
-      this.appRouterService.goTo(`/dashbord/${node.pathOfDash}`, {
-        skipLocationChange: true
-      });
+      this.appRouterService.goTo(`/dashbord/${node.pathOfDash}`
+      //, 
+      //{
+        //skipLocationChange: true
+      //}
+      );
     }
   }
 }

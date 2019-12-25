@@ -13,6 +13,7 @@ import { ColumnMetaData } from 'src/app/classes/journal/journal-column-metadata.
 import { IJournal } from './journal.interface';
 import { Preset } from 'src/app/classes/journal/journal-preset.class';
 import { RowNumberRenderer } from './cell-renders/rownumber-renderer.component';
+import { AppRouteService } from 'src/app/services/app-route-service/app-route.service';
 
 /**
  * Описание кнопки журнала
@@ -87,7 +88,8 @@ export class JournalComponent {
   constructor(
     private sideNavService: MainSideNavService,
     private appContextService: AppAccountContextService,
-    private journalService: JournalService
+    private journalService: JournalService,
+    private appRouterService: AppRouteService
   ) { }
 
   private openFilterPanel() {

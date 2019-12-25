@@ -7,8 +7,8 @@ services:
   #  build: ./frontend/environment
 
   #frontend
-  interface-admin:
-    container_name: interface-admin
+  b2b:
+    container_name: b2b
     build: ./frontend/admin
     ports:
       - "4200:4200"
