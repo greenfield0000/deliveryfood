@@ -42,7 +42,7 @@ import { RegistryStepperComponent } from 'src/app/components/registy-stepper/reg
     MatDatepickerModule,
     MatAutocompleteModule
   ],
-  exports: [LoginComponent, RegistryComponent],
+  exports: [LoginComponent, RegistryComponent, AddressKladrComponent],
   providers: []
 })
 export class AuthModule {

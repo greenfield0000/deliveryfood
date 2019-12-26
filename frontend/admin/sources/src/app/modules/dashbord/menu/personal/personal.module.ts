@@ -8,17 +8,22 @@ import { JournalComponent } from 'src/app/components/journal/journal.component';
 import { FilterPanelComponent } from 'src/app/components/journal/filter-panel/filter-panel.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { RowNumberRenderer } from 'src/app/components/journal/cell-renders/rownumber-renderer.component';
-import { MatPaginatorModule, MatProgressSpinnerModule, MatMenuModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule, MatOptionModule } from '@angular/material';
+import { MatPaginatorModule, MatProgressSpinnerModule, MatMenuModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule, MatOptionModule, MatDatepickerModule } from '@angular/material';
+import { PersonInfoEditorComponent } from 'src/app/components/person-info-editor/person-info-editor.component';
+import { AddressKladrComponent } from 'src/app/components/address-kladr/address-kladr.component';
+import { AuthModule } from 'src/app/modules/auth/auth.module';
 
 @NgModule({
   declarations: [
     PersonalComponent,
     PersonalAddComponent,
     PersonalEditComponent,
-    // common components
+    // common components for journals
     JournalComponent,
     FilterPanelComponent,
-    RowNumberRenderer
+    RowNumberRenderer,
+    // person components
+    PersonInfoEditorComponent,
   ],
   imports: [
     CommonModule,
@@ -34,8 +39,21 @@ import { MatPaginatorModule, MatProgressSpinnerModule, MatMenuModule, MatSidenav
     MatButtonModule,
     MatSelectModule,
     MatOptionModule,
+
+    // Material
+
+    MatSidenavModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatSelectModule,
+
     // Angular Ag-grid
     AgGridModule.withComponents([RowNumberRenderer]),
+
+    AuthModule
   ],
   exports: [
     // common components

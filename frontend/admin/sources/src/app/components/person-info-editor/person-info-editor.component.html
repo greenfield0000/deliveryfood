@@ -1,0 +1,71 @@
+<div class="main-form">
+  <div class="block">
+    <span class="dashbord-header-large">Должность</span>
+    <div class="field-block">
+      <mat-form-field>
+        <mat-select placeholder="Тип учетной записи" formControlName="accountRole" name="accountRole">
+          <mat-option *ngFor="let role of accountRoles" [value]="role.id">
+            {{role.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="dashbord-header-large">Персональные данные</span>
+    <div class="field-block">
+
+      <div class="form-field">
+        <mat-form-field>
+          <input matInput formControlName="name" placeholder="Имя" name="name" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field>
+          <input matInput formControlName="surName" placeholder="Фамилия" name="surName" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field>
+          <input matInput formControlName="lastName" placeholder="Отчество" name="lastName" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field>
+          <input matInput [matDatepicker]="birthDayPicker" placeholder="Дата рождения" formControlName="birthDay">
+          <mat-datepicker-toggle matSuffix [for]="birthDayPicker"></mat-datepicker-toggle>
+          <mat-datepicker #birthDayPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="dashbord-header-large">Контактные данные</span>
+    <div class="field-block">
+      <div class="form-field">
+        <mat-form-field>
+          <input type="number" matInput formControlName="phone" placeholder="Номер телефона" name="phone" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field>
+          <input type="email" matInput formControlName="email" placeholder="E-mail" name="email" type="email" required>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="dashbord-header-large">Адрес</span>
+    <div class="field-block">
+      <app-address-kladr [(address)]="address"></app-address-kladr>
+    </div>
+  </div>
+
+</div>

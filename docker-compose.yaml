@@ -6,6 +6,28 @@ services:
   #  container_name: interface-environment
   #  build: ./frontend/environment
 
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+    container_name: zookeeper
+
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      - KAFKA_CREATE_TOPICS="create-user:1:1" # topic:partition:replicas
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_PORT=9092
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - zookeeper
+
+        
   #frontend
   b2b:
     container_name: b2b
@@ -28,6 +50,7 @@ services:
       - gateway-service
     links:
       - auth-db:auth-db
+      - kafka:kafka  
 
   # auth-db
   auth-db:
@@ -42,6 +65,8 @@ services:
       - "MYSQL_ROOT_PASSWORD=123"
       - "MYSQL_DATABASE=auth-db"
       - "MYSQL_TCP_PORT=3306"
+    depends_on:
+      - kafka
 
   #menu-service
   menu-service:
@@ -109,6 +134,8 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - "~/backup_database/postgres/personal-db:/var/lib/postgresql/data/pgdata"
+    depends_on:
+      - kafka
 
   personal-service:
     container_name: personal-service

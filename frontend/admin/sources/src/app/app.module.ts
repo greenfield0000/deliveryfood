@@ -16,6 +16,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DialogComponent } from './components/modal-window/common/dialog/dialog.component';
 import { TokenInterceptor } from './interceptors/jwt.token-interceptor';
+import { AddressKladrComponent } from './components/address-kladr/address-kladr.component';
+import { AuthModule } from './modules/auth/auth.module';
 
 
 const modules = [
@@ -77,7 +79,10 @@ const modules = [
     DialogComponent
   ],
   imports: modules,
-  exports: [modules],
+  exports: [
+    modules,
+    AuthModule
+  ],
   providers: [
     AgGridModule,
     {
