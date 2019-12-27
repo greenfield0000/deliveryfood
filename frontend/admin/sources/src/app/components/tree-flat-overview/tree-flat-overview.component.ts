@@ -1,19 +1,30 @@
-import { AppRouteService } from "./../../services/app-route-service/app-route.service";
-import { MenuService } from "./../../services/menu-service/menu.service";
-import { Component, OnInit } from "@angular/core";
-import { FlatTreeControl } from "@angular/cdk/tree";
-import { MatTreeFlattener, MatTreeFlatDataSource } from "@angular/material";
-import { Observable, of as observableOf } from "rxjs";
-import { MenuFlatNode } from "src/app/classes/menu-flat-node";
-import { MenuNode } from "src/app/classes/menu-node";
-import { MainSideNavService } from "src/app/services/main-side-nav-service/main-side-nav.service";
+import { AppRouteService } from './../../services/app-route-service/app-route.service';
+import { MenuService } from './../../services/menu-service/menu.service';
+import { Component, OnInit } from '@angular/core';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { MatTreeFlattener, MatTreeFlatDataSource } from '@angular/material';
+import { Observable, of as observableOf } from 'rxjs';
+import { MenuFlatNode } from 'src/app/classes/menu-flat-node';
+import { MenuNode } from 'src/app/classes/menu-node';
+import { MainSideNavService } from 'src/app/services/main-side-nav-service/main-side-nav.service';
 
 @Component({
-  selector: "app-tree-flat-overview",
-  templateUrl: "./tree-flat-overview.component.html",
-  styleUrls: ["./tree-flat-overview.component.scss"]
+  selector: 'app-tree-flat-overview',
+  templateUrl: './tree-flat-overview.component.html',
+  styleUrls: ['./tree-flat-overview.component.scss']
 })
 export class TreeFlatOverviewComponent implements OnInit {
+
+  constructor(
+    private database: MenuService,
+    private appRouterService: AppRouteService,
+    private sideNavService: MainSideNavService
+  ) {
+  }
+
+  private treeControl: FlatTreeControl<MenuFlatNode>;
+  private treeFlattener: MatTreeFlattener<MenuNode, MenuFlatNode>;
+  private dataSource: MatTreeFlatDataSource<MenuNode, MenuFlatNode>;
   ngOnInit(): void {
     console.log('init menu');
     this.treeFlattener = new MatTreeFlattener(
@@ -34,20 +45,9 @@ export class TreeFlatOverviewComponent implements OnInit {
     this.database.initialize();
     this.database.dataChange.subscribe(data => {
       this.dataSource.data = data;
-      console.log("database = ", data);
+      console.log('database = ', data);
     });
 
-  }
-
-  private treeControl: FlatTreeControl<MenuFlatNode>;
-  private treeFlattener: MatTreeFlattener<MenuNode, MenuFlatNode>;
-  private dataSource: MatTreeFlatDataSource<MenuNode, MenuFlatNode>;
-
-  constructor(
-    private database: MenuService,
-    private appRouterService: AppRouteService,
-    private sideNavService: MainSideNavService
-  ) {
   }
 
   transformer = (node: MenuNode, level: number) => {
@@ -64,8 +64,7 @@ export class TreeFlatOverviewComponent implements OnInit {
 
   private _isExpandable = (node: MenuFlatNode) => node.expandable;
 
-  private _getChildren = (node: MenuNode): Observable<MenuNode[]> =>
-    observableOf(node.$children);
+  private _getChildren = (node: MenuNode): Observable<MenuNode[]> => observableOf(node.$children);
 
   hasChild = (_: number, _nodeData: MenuFlatNode) => _nodeData.expandable;
 
@@ -79,10 +78,10 @@ export class TreeFlatOverviewComponent implements OnInit {
     if (node && node.pathOfDash) {
       this.sideNavService.$menuNavigatorDrawer.close();
       this.appRouterService.goTo(`/dashbord/${node.pathOfDash}`
-      //, 
-      //{
+        //, 
+        //{
         //skipLocationChange: true
-      //}
+        //}
       );
     }
   }

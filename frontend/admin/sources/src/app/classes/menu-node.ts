@@ -12,6 +12,8 @@ export class MenuNode {
     private image: string;
     private type: any;
     private que: string;
+    private level: string;
+    private offset: string = '0px';
 
     /**
      * Getter $children
@@ -124,5 +126,39 @@ export class MenuNode {
     public set $image(value: string) {
         this.image = value;
     }
+
+
+    /**
+     * Getter $level
+     * @return {string}
+     */
+    public get $level(): string {
+        return this.level;
+    }
+
+    /**
+     * Getter $offset
+     * @return {string }
+     */
+    public get $offset(): string {
+        return this.offset;
+    }
+
+    /**
+     * Setter $level
+     * @param {string} value
+     */
+    public set $level(value: string) {
+        this.level = value;
+    }
+
+    /**
+     * Setter $offset
+     * @param {string } value
+     */
+    public set $offset(value: string) {
+        this.offset = value;
+    }
+
 
 }

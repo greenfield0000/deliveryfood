@@ -69,6 +69,8 @@ export class MenuService {
         node.$pathOfDash = templateNode.pathOfDash || '';
         // картинка пункта меню
         node.$image = templateNode.image || '';
+        // смещение относительно родительского элемента
+        node.$offset =  String(level * 50) + 'px' || '0px';
         // маппим дочерние элементы
         if (templateNode.children && (templateNode.children instanceof Array)) {
           const upLevel = level + 1;
