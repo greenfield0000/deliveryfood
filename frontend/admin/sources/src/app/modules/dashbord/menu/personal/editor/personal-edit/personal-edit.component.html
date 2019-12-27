@@ -1,8 +1,12 @@
 <div class="dashbord-form">
   <span class="dashbord-header-xxlarge">Редактирование сотрудника</span>
-  <person-info-editor></person-info-editor>
-  <div class="form-button-block-row">
-    <button class="form-button" mat-raised-button (click)="back()" color="primary">Вернуться</button>
-    <button class="form-button" mat-raised-button (click)="save()" color="primary">Сохранить изменения</button>
+  <div class="container">
+    <person-info-editor></person-info-editor>
+    <div class="static-button-block">
+      <div class="form-button-block-column personal-edit-button-block">
+        <button class="form-button" mat-raised-button (click)="back()" color="primary">Вернуться</button>
+        <button class="form-button" mat-raised-button (click)="save()" color="primary">Сохранить изменения</button>
+      </div>
+    </div>
   </div>
 </div>

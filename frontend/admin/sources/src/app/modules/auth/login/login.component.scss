@@ -12,7 +12,6 @@
     height: max-content;
     flex-direction: column;
     display: flex;
-    flex-wrap: wrap;
   }
 
   .form-login-main-logo-wrapper {
@@ -46,7 +45,9 @@
 
   .form-frame {
     padding: 5%;
-    width: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
   }
 
   .form-frame-wrapper {

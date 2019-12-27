@@ -1,1 +1,19 @@
-@import '../../../../dashbord.component.scss';
+@import "../../../../dashbord.component.scss";
+
+.container {
+  display: flex;
+}
+
+.personal-edit-button-block {
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  margin: 40px 0px;
+  align-items: flex-start;
+}
+
+.static-button-block {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}

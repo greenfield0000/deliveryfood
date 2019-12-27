@@ -142,17 +142,17 @@ body {
 .form-button-block,
 .form-button-block-column,
 .form-button-block-row {
-  width: fit-content;
   display: flex;
   justify-content: space-between;
 }
 
 .form-button-block-column {
   flex-direction: column;
-  max-height: 174px;
   width: 250px;
+  height: 100%;
   margin: auto;
   align-items: center;
+  justify-content: space-between;
 }
 
 .form-button-block-row {
@@ -165,7 +165,8 @@ body {
 
 .form-button {
   width: 250px;
-  height: 100%;
+  min-height: 35px;
+  margin-top: 10px !important;
 }
 
 .form-field {
