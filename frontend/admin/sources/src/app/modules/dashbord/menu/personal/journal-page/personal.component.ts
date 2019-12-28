@@ -1,15 +1,18 @@
 import { JournalComponent } from '../../../../../components/journal/journal.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostBinding } from '@angular/core';
 import { IJournal } from 'src/app/components/journal/journal.interface';
 import { AppRouteService } from 'src/app/services/app-route-service/app-route.service';
 
 @Component({
   selector: 'app-personal',
   templateUrl: './personal.component.html',
-  styleUrls: ['./personal.component.scss']
+  styleUrls: ['./personal.component.scss'],
 })
 export class PersonalComponent implements OnInit, IJournal {
-
+  @HostBinding('class')
+  private get className(): string {
+    return 'form';
+  }
   @ViewChild('journal') journal: JournalComponent;
   readonly journalSysName: string = 'Personals-jrnl';
 
@@ -33,7 +36,7 @@ export class PersonalComponent implements OnInit, IJournal {
   public createNewPerson(selectedRow: any, appRouteService: AppRouteService) {
     appRouteService.goTo('dashbord/personal/add');
   }
-  
+
   /**
    * Редактирование текущего пользователя
    * @param selectedRow выбранная запись в сетке данных
@@ -52,4 +55,8 @@ export class PersonalComponent implements OnInit, IJournal {
     console.log('New realisation deletePerson ', selectedRow);
   }
 
+
+
 }
+
+

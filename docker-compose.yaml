@@ -5,9 +5,9 @@ services:
   #interface-environment:
   #  container_name: interface-environment
   #  build: ./frontend/environment
-
+  
   zookeeper:
-    image: wurstmeister/zookeeper
+    image: wurstmeister/zookeeper:3.4.6
     ports:
       - "2181:2181"
     container_name: zookeeper
@@ -26,7 +26,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - zookeeper
-
         
   #frontend
   b2b:

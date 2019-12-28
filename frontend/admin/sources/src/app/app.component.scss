@@ -13,20 +13,9 @@
   display: contents;
 }
 
-.form,
-.experimental {
+.form {
   width: 100%;
   height: 100%;
-}
-
-.experimental,
-.form {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
-
-.form {
-  display: flex;
-}
-

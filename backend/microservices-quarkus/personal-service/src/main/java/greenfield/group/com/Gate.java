@@ -22,13 +22,6 @@ public class Gate {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public List<User> loadJournal() {
-        User user = new User();
-        user.setName("ТестовыйПервый");
-        user.setSurName("ТестовыйПервыйФ");
-        user.setEmail("Тестовый емейл");
-        user.setPhone("89206527200");
-        user.setUuid("фейковый юд");
-        userRepository.create(user);
         return userRepository.findAll();
     }
 }
