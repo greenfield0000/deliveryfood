@@ -12,6 +12,7 @@ import { MatPaginatorModule, MatProgressSpinnerModule, MatMenuModule, MatSidenav
 import { PersonInfoEditorComponent } from 'src/app/components/person-info-editor/person-info-editor.component';
 import { AddressKladrComponent } from 'src/app/components/address-kladr/address-kladr.component';
 import { AuthModule } from 'src/app/modules/auth/auth.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { AuthModule } from 'src/app/modules/auth/auth.module';
     // Angular Ag-grid
     AgGridModule.withComponents([RowNumberRenderer]),
 
-    AuthModule
+    AuthModule,
+    ReactiveFormsModule
   ],
   exports: [
     // common components

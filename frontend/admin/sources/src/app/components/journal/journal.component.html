@@ -3,13 +3,13 @@
     <app-filter-panel [presetListSubject]="presetListSubject.asObservable()"></app-filter-panel>
   </mat-sidenav>
   <mat-sidenav-content class="journal-sidenav-content-wrapper">
-    <form class="journal-sidenav-content">
+    <div class="journal-sidenav-content">
       <span class="journal-header">{{journalHeader}}</span>
       <div class="journal-top-btn-block">
         <div mat-button matTooltip="Info about the action 1" matTooltipPosition="below"
           aria-tooltip="Button that displays and hides a tooltip triggered by other buttons 1"
           [ngClass]="['journal-btn', topButton.cssImageName]" *ngFor="let topButton of topButtonList"
-          (click)="topButton.handler(selectedRows, appRouterService, modalWindowService)">
+          (click)="topButton.handler(selectedRows[0], context)">
         </div>
       </div>
       <div class="journal">
@@ -23,7 +23,7 @@
           <div mat-button matTooltip="Info about the action 1" matTooltipPosition="left"
             aria-tooltip="Button that displays and hides a tooltip triggered by other buttons 2"
             [ngClass]="rightButton.cssImageName" *ngFor="let rightButton of rightButtonList"
-            (click)="rightButton.handler(selectedRows, appRouterService, modalWindowService)">
+            (click)="rightButton.handler(selectedRows[0], context)">
           </div>
         </div>
       </div>
@@ -31,6 +31,6 @@
         <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
         </mat-paginator>
       </div-->
-    </form>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

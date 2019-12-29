@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountEntity } from 'src/app/classes/accountEntity';
 import { User } from 'src/app/classes/user';
 import { AccountRole } from '../registy-stepper/registry-stepper.component';
+import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 
 /**
  * Компонент для редактирования персональной информации пользователя системы
@@ -16,26 +17,25 @@ import { AccountRole } from '../registy-stepper/registry-stepper.component';
 })
 export class PersonInfoEditorComponent extends ReactiveForm implements OnInit {
 
-
-  
   @Input()
-  protected account: AccountEntity = new AccountEntity();
+  protected user: User = new User();
   private personInfoFormGroup: FormGroup;
 
   private address: Address = new Address();
-  private user = this.account && this.account.$user || new User();
-
   private accountRoles: any[] = [
     { viewValue: 'Бармен', id: AccountRole.BARMEN },
     { viewValue: 'Официант', id: AccountRole.WAITER }
   ];
 
   protected registrySubscription(): void {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
 
   constructor(private _formBuilder: FormBuilder) {
     super();
+  }
+
+  ngOnInit() {
     this.personInfoFormGroup = this._formBuilder.group({
       accountRole: this.accountRoles,
       name: [this.user.$name, Validators.required],
@@ -45,9 +45,6 @@ export class PersonInfoEditorComponent extends ReactiveForm implements OnInit {
       phone: [this.user.$phone, Validators.required],
       email: [this.user.$email, Validators.required]
     });
-  }
-
-  ngOnInit() {
   }
 
 }

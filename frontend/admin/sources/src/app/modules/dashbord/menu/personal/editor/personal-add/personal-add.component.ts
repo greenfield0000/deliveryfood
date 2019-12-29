@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppRouteService } from 'src/app/services/app-route-service/app-route.service';
+import { PersonalService } from '../../personal.service';
+import { AccountEntity } from 'src/app/classes/accountEntity';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'personal-add',
@@ -8,9 +11,13 @@ import { AppRouteService } from 'src/app/services/app-route-service/app-route.se
 })
 export class PersonalAddComponent implements OnInit {
 
-  constructor(private _appRouterService: AppRouteService) { }
+  private user: User;
+
+  constructor(private _appRouterService: AppRouteService,
+    private _personalService: PersonalService) { }
 
   ngOnInit() {
+    this.user = this._personalService.$user;
   }
 
   /**

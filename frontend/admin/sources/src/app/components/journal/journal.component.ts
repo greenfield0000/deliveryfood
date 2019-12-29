@@ -31,7 +31,7 @@ export class JournalComponent {
   @Input()
   public context: IJournal;
   @Input()
-  public journalHeader: string; 
+  public journalHeader: string;
 
   @ViewChild('agGrid') agGrid: AgGridNg2;
   @ViewChild('journalFilterNavigator')
@@ -92,9 +92,7 @@ export class JournalComponent {
   constructor(
     private sideNavService: MainSideNavService,
     private appContextService: AppAccountContextService,
-    private journalService: JournalService,
-    private appRouterService: AppRouteService,
-    private modalWindowService: ModalWindowService
+    private journalService: JournalService
   ) { }
 
   private openFilterPanel() {
@@ -146,7 +144,7 @@ export class JournalComponent {
       this.journalService.loadJournalData(journalSysName).subscribe(res => {
         console.log('loaded journal data = ', res);
         if (res && res.result && res.result.rows) {
-          let rows: [] = res.result.rows;
+          const rows: [] = res.result.rows;
           rows.map((row: any, index: number) => row.rownum = index + 1);
           this.rowData = rows;
         }
@@ -182,7 +180,7 @@ export class JournalComponent {
     this.columnListSubject.subscribe(
       (columnList: JornalColumn[]) => {
         columnList.push(... this.commonColumnList);
-        this.columnList = columnList
+        this.columnList = columnList;
       }
     );
     this.columnMetaDataSubject.subscribe((columnMetaData: ColumnMetaData) => {

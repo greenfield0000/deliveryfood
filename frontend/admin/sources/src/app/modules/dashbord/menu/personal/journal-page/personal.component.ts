@@ -5,6 +5,9 @@ import { AppRouteService } from 'src/app/services/app-route-service/app-route.se
 import { ModalWindowService } from 'src/app/services/modal-window-service/modal-window.service';
 import { IDialogType } from 'src/app/services/modal-window-service/idialog.type';
 import { DialogComponent } from 'src/app/components/modal-window/common/dialog/dialog.component';
+import { PersonalService } from '../personal.service';
+import { AccountEntity } from 'src/app/classes/accountEntity';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-personal',
@@ -13,15 +16,16 @@ import { DialogComponent } from 'src/app/components/modal-window/common/dialog/d
 })
 export class PersonalComponent implements OnInit, IJournal {
   @HostBinding('class')
-  private get className(): string {
-    return 'form';
-  }
+  private className = 'form';
+
   @ViewChild('journal') journal: JournalComponent;
   readonly journalSysName: string = 'Personals-jrnl';
 
   public readonly journalHeader: string = 'Журнал "Персонал"';
 
-  constructor() { }
+  constructor(private _personalService: PersonalService,
+    private _appRouteService: AppRouteService,
+    private _modalWindowService: ModalWindowService) { }
 
   ngOnInit() {
     this.journal.load(this.journalSysName);
@@ -36,8 +40,10 @@ export class PersonalComponent implements OnInit, IJournal {
    * @param selectedRow выбранная запись в сетке данных
    * @param appRouteService роутер для перехода на другие страницы
    */
-  public createNewPerson(selectedRow: any, appRouteService: AppRouteService) {
-    appRouteService.goTo('dashbord/personal/add');
+  public createNewPerson(selectedRow: any, context: IJournal) {
+    const localContext: PersonalComponent = <PersonalComponent>context;
+    localContext._personalService.$user = new User();
+    localContext._appRouteService.goTo('dashbord/personal/add');
   }
 
   /**
@@ -45,14 +51,16 @@ export class PersonalComponent implements OnInit, IJournal {
    * @param selectedRow выбранная запись в сетке данных
    * @param appRouteService роутер для перехода на другие страницы
    */
-  public editPerson(selectedRow: any, appRouteService: AppRouteService, modalWindowService: ModalWindowService) {
+  public editPerson(selectedRow: any, context: IJournal) {
+    const localContext: PersonalComponent = <PersonalComponent>context;
     if (!selectedRow) {
-      modalWindowService.openDialog(IDialogType.WARN, DialogComponent, {
+      localContext._modalWindowService.openDialog(IDialogType.WARN, DialogComponent, {
         message: 'Не выбрана строка журнала'
       });
       return;
     }
-    appRouteService.goTo('dashbord/personal/edit');
+    localContext._personalService.$user = new User(selectedRow);
+    localContext._appRouteService.goTo('dashbord/personal/edit');
   }
 
   /**
@@ -60,9 +68,10 @@ export class PersonalComponent implements OnInit, IJournal {
    * @param selectedRow выбранная запись в сетке данных
    * @param appRouteService роутер для перехода на другие страницы
    */
-  public deletePerson(selectedRow: any, appRouteService: AppRouteService, modalWindowService: ModalWindowService) {
+  public deletePerson(selectedRow: any, context: IJournal) {
+    const localContext: PersonalComponent = <PersonalComponent>context;
     if (!selectedRow) {
-      modalWindowService.openDialog(IDialogType.WARN, DialogComponent, {
+      localContext._modalWindowService.openDialog(IDialogType.WARN, DialogComponent, {
         message: 'Не выбрана строка журнала'
       });
       return;
