@@ -14,6 +14,7 @@ import { IJournal } from './journal.interface';
 import { Preset } from 'src/app/classes/journal/journal-preset.class';
 import { RowNumberRenderer } from './cell-renders/rownumber-renderer.component';
 import { AppRouteService } from 'src/app/services/app-route-service/app-route.service';
+import { ModalWindowService } from 'src/app/services/modal-window-service/modal-window.service';
 
 /**
  * Описание кнопки журнала
@@ -78,9 +79,9 @@ export class JournalComponent {
   public commonColumnList: any[] = [
     {
       checkboxSelection: false,
-      field: "rownum",
+      field: 'rownum',
       filter: false,
-      headerName: "№",
+      headerName: '№',
       sortable: false,
       pinned: 'left',
       lockPinned: true,
@@ -92,7 +93,8 @@ export class JournalComponent {
     private sideNavService: MainSideNavService,
     private appContextService: AppAccountContextService,
     private journalService: JournalService,
-    private appRouterService: AppRouteService
+    private appRouterService: AppRouteService,
+    private modalWindowService: ModalWindowService
   ) { }
 
   private openFilterPanel() {

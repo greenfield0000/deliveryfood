@@ -38,6 +38,10 @@ export class DialogComponent implements OnInit, IDialog {
           this.description = 'Ошибка !';
           break;
         }
+        case IDialogType.WARN: {
+          this.description = 'Предупреждение !';
+          break;
+        }
       }
     }
   }

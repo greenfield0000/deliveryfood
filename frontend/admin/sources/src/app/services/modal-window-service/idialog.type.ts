@@ -2,5 +2,6 @@
 export enum IDialogType {
     INFO,
     ERROR,
-    CONFIRM
+    CONFIRM,
+    WARN
 }

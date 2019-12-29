@@ -39,9 +39,6 @@ import { AuthModule } from 'src/app/modules/auth/auth.module';
     MatButtonModule,
     MatSelectModule,
     MatOptionModule,
-
-    // Material
-
     MatSidenavModule,
     MatButtonModule,
     MatDatepickerModule,
