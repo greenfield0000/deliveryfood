@@ -52,6 +52,7 @@ export class PersonalComponent implements OnInit, IJournal {
    * @param appRouteService роутер для перехода на другие страницы
    */
   public editPerson(selectedRow: any, context: IJournal) {
+    selectedRow = selectedRow && selectedRow[0] || selectedRow;
     const localContext: PersonalComponent = <PersonalComponent>context;
     if (!selectedRow) {
       localContext._modalWindowService.openDialog(IDialogType.WARN, DialogComponent, {
@@ -69,6 +70,7 @@ export class PersonalComponent implements OnInit, IJournal {
    * @param appRouteService роутер для перехода на другие страницы
    */
   public deletePerson(selectedRow: any, context: IJournal) {
+    selectedRow = selectedRow && selectedRow[0] || selectedRow;
     const localContext: PersonalComponent = <PersonalComponent>context;
     if (!selectedRow) {
       localContext._modalWindowService.openDialog(IDialogType.WARN, DialogComponent, {
