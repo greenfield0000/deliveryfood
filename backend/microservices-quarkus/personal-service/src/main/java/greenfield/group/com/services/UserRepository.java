@@ -30,22 +30,25 @@ public class UserRepository implements Repository<User> {
     }
 
     @Override
-    public void create(User model) {
+    public List<User> create(User model) {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         entityManager.merge(model);
         transaction.commit();
+        return findAll();
     }
 
     @Override
-    public boolean delete(User model) {
+    public List<User> delete(User model) {
         entityManager.detach(model);
-        return true;
+        return findAll();
     }
 
+
     @Override
-    public User update(User model) {
-        return entityManager.merge(model);
+    public List<User> update(User model) {
+        entityManager.merge(model);
+        return findAll();
     }
 
     @Override

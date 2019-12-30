@@ -1,6 +1,7 @@
+import { switchMap } from 'rxjs/operators';
 import { JornalColumn } from 'src/app/classes/journal/jornal-column.class';
 import { SimpleResult } from './../../utils/simple-result.class';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, Observable, of, observable } from 'rxjs';
 import { JournalService } from './../../services/journal-service/journal.service';
 import { AppAccountContextService } from './../../services/app-account-context-service/app-account-context.service';
 import { MatSidenav } from '@angular/material';
@@ -25,7 +26,8 @@ import { ModalWindowService } from 'src/app/services/modal-window-service/modal-
   templateUrl: './journal.component.html',
   styleUrls: ['./journal.component.scss']
 })
-export class JournalComponent {
+export class JournalComponent implements OnInit {
+
   @Input()
   public rowSelection: string = 'single';
   @Input()
@@ -93,7 +95,20 @@ export class JournalComponent {
     private sideNavService: MainSideNavService,
     private appContextService: AppAccountContextService,
     private journalService: JournalService
-  ) { }
+  ) {
+    // Регистрируем подписчика на изменение данных журнала
+    this.journalService.journalLoadData.subscribe(simpleResult => {
+      let rows = [];
+      if (simpleResult.result && simpleResult.result['rows']) {
+        rows = simpleResult.result['rows'];
+      }
+      this.rowData = rows;
+    });
+  }
+
+  ngOnInit(): void {
+    this.loadData(this.context.journalSysName);
+  }
 
   private openFilterPanel() {
     this.sideNavService.$journalFilterDrawer = this.journalFilterNavigator;
@@ -142,12 +157,7 @@ export class JournalComponent {
   private loadData(journalSysName: string) {
     if (journalSysName) {
       this.journalService.loadJournalData(journalSysName).subscribe(res => {
-        console.log('loaded journal data = ', res);
-        if (res && res.result && res.result.rows) {
-          const rows: [] = res.result.rows;
-          rows.map((row: any, index: number) => row.rownum = index + 1);
-          this.rowData = rows;
-        }
+        this.journalService.refreshLoadData(res);
       });
       return;
     }
@@ -207,4 +217,5 @@ export class JournalComponent {
   isAuthtorised(): boolean {
     return this.appContextService.isAuthtorised();
   }
+
 }

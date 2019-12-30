@@ -1,10 +1,11 @@
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, of, Subscription, Subject, BehaviorSubject } from 'rxjs';
 import { SimpleResult } from 'src/app/utils/simple-result.class';
 import { JournalMetadata } from 'src/app/classes/journal/journal-metadata.class';
 import { HttpService } from '../http-service/http.service';
 import { IJournal } from 'src/app/components/journal/journal.interface';
+import { map, tap, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import { IJournal } from 'src/app/components/journal/journal.interface';
 export class JournalService {
 
   private _context: IJournal;
-
+  private _journalLoadData: Subject<SimpleResult<any>> = new Subject<SimpleResult<any>>();
 
   constructor(private http: HttpService) {
   }
@@ -58,6 +59,26 @@ export class JournalService {
       journalSysName: journalSysName, pageNumber: pageNumber
     };
     return this.post('loadData', callParams);
+  }
+
+  /**
+   * Метод по публикации события изменения данных журнала
+   * @param data изененные данные
+   */
+  public refreshLoadData<T>(data?: SimpleResult<T>) {
+    console.log('loaded journal data = ', data);
+    if (data && data.result && data.result['rows']) {
+      data.result['rows'].map((row: any, index: number) => row.rownum = index + 1);
+    }
+    this._journalLoadData.next(data);
+  }
+
+  /**
+   * Getter journalLoadData
+   * @return {Subject<SimpleResult<any>> }
+   */
+  public get journalLoadData(): Subject<SimpleResult<any>> {
+    return this._journalLoadData;
   }
 
   /**

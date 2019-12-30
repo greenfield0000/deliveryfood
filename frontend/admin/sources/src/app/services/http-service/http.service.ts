@@ -31,7 +31,7 @@ export class HttpService {
     return of(result);
   }
 
-  public post<T>(url: string, params: any = {}, headers: HttpHeaders = environment.headers): Observable<T> { 
+  public post<T>(url: string, params: any = {}, headers: HttpHeaders = environment.headers): Observable<T> {
     const options = {
       headers: headers
     };

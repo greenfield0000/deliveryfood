@@ -1,16 +1,18 @@
 package greenfield.group.com.services;
 
+import greenfield.group.com.model.User;
+
 import java.util.List;
 
 public interface Repository<T> {
 
-    void create(T model);
+    List<User> create(T model);
 
-    boolean delete(T model);
+    List<User> delete(T model);
 
-    T update(T model);
+    List<User> update(T model);
 
-    List<T> findAll();
+    List<User> findAll();
 
     boolean isFindByUUID(String UUID);
 

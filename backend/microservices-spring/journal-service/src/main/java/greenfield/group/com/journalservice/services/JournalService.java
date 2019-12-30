@@ -85,6 +85,26 @@ public class JournalService implements Journal {
 
     @Override
     public JournalData doButtonHandler(String journalSysName, String buttonAction, int pageNumber) {
+        // Загружаем метадату журнала
+        JournalMetadataCommon journalMetadata = metaDataLoadJournal(journalSysName);
+        if (journalMetadata != null) {
+            JournalColumnMetaData columnMetaData = journalMetadata.getColumnMetaData();
+            if (columnMetaData != null) {
+                String serviceName = journalMetadata.getServiceName();
+                String gateName = journalMetadata.getGateName();
+                if (serviceName != null && gateName != null && !serviceName.isEmpty() && !gateName.isEmpty()) {
+                    LoadJournalDataRequest loadJournalDataRequest = new LoadJournalDataRequest();
+                    loadJournalDataRequest.setPageNumber(Math.max(pageNumber, 0));
+                    // TODO Реализовать соответствующий вызов согласно типу запроса
+                    List loadData = restTemplate
+                            .getForEntity(serviceName + "/" + gateName + "/" + buttonAction, List.class, loadJournalDataRequest)
+                            .getBody();
+                    if (loadData != null) {
+                        return new JournalData(loadData, pageNumber);
+                    }
+                }
+            }
+        }
         return new JournalData();
     }
 }
