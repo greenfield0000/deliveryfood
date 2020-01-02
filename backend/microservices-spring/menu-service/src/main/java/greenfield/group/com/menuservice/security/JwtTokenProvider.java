@@ -16,12 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class JwtTokenProvider {
 
-    @Autowired
-    private JwtTokenService tokenService;
-
     private static final String TOKEN_PREFIX = "Bearer_";
     private final String secret = "mySecretTempKey";
     private final long validityInMilliseconds = 3600000;
+    @Autowired
+    private JwtTokenService tokenService;
 
     /**
      * Метод обновления токена

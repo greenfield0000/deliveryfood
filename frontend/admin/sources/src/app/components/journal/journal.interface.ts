@@ -3,12 +3,16 @@
  * должен имплементировать этот интерфейс. В противном случае будет невозможным
  * работа с сервисом журнала
  */
-export interface IJournal {
-
-  readonly journalSysName?: string;
+export interface IJournal<T> {
 
   /**
-   * Метод получения контекста вызова
+   * Получение системного имени журнала
    */
-  getContext(): IJournal;
+  getJournalSysName(): string;
+
+  /**
+   * Возвращает сам компонент, который реализует данный интерфейс
+   */
+  getComponentContext(): T;
+
 }

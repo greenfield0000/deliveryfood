@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import java.util.UUID;
 
 /**
  * Описание сущности пользователь
@@ -17,7 +18,7 @@ public class User extends BaseEntity {
     private String surName;
     private String phone;
     private String email;
-    private String uuid;
+    private String uuid = UUID.randomUUID().toString();
 //
 //    @OneToMany(cascade = CascadeType.PERSIST)
 //    @JoinTable(

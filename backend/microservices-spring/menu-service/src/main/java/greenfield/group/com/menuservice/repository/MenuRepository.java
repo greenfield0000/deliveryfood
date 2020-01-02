@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface MenuRepository extends MongoRepository<Menu, String> {
     List<Menu> findByOwnerRoleIn(String role);
+
     List<Menu> findByOwnerRoleIn(List<String> roleList);
 }

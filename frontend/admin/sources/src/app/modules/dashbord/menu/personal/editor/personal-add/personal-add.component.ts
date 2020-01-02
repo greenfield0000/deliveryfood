@@ -1,6 +1,7 @@
+import { PersonalComponent } from './../../journal-page/personal.component';
 import { JournalService } from './../../../../../../services/journal-service/journal.service';
 import { HttpService } from './../../../../../../services/http-service/http.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { AppRouteService } from 'src/app/services/app-route-service/app-route.service';
 import { PersonalService } from '../../personal.service';
 import { AccountEntity } from 'src/app/classes/accountEntity';
@@ -14,14 +15,13 @@ import { Observable, of } from 'rxjs';
   templateUrl: './personal-add.component.html',
   styleUrls: ['./personal-add.component.scss']
 })
-export class PersonalAddComponent implements OnInit {
+export class PersonalAddComponent extends PersonalComponent implements OnInit {
 
   private user: User;
 
-  constructor(private _appRouterService: AppRouteService,
-    private _personalService: PersonalService,
-    private _http: HttpService,
-    private _journalService: JournalService) { }
+  constructor(protected serviceInjector: Injector) {
+    super(serviceInjector);
+  }
 
   ngOnInit() {
     this.user = this._personalService.$user;
@@ -38,10 +38,13 @@ export class PersonalAddComponent implements OnInit {
    * Обработчик кнопки "Сохранить изменения". Сохраняет изменяемые данные
    */
   public save() {
-    this._http.post<SimpleResult<User[]>>(
-      environment.gatePath.journal_location + '/doButtonHandler', {
-      buttonAction: 'create'
-    })
+    debugger;
+    const queryParams = {
+      buttonAction: 'create',
+      journalSysName: this.journalSysName,
+      entity: this.user
+    };
+    this._http.post<SimpleResult<User[]>>(environment.gatePath.journal_location + '/doButtonHandler', queryParams)
       .subscribe((result: SimpleResult<User[]>) => {
         this._journalService.refreshLoadData(result);
       });

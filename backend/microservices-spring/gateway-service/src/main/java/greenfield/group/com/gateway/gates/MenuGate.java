@@ -22,7 +22,7 @@ public class MenuGate extends Gate {
         headers.add("Authorization", authorization);
         HttpEntity<String> httpEntity = new HttpEntity<>(headers);
         return this.restTemplate
-                .exchange(serviceRegistry.get(MENU_SERVICE) + "/getMenu", HttpMethod.GET,  httpEntity, SimpleResult.class)
+                .exchange(serviceRegistry.get(MENU_SERVICE) + "/getMenu", HttpMethod.GET, httpEntity, SimpleResult.class)
                 .getBody();
     }
 

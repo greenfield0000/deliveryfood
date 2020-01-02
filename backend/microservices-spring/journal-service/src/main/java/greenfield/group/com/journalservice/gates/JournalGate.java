@@ -93,8 +93,11 @@ public class JournalGate {
      */
     @RequestMapping(path = "/doButtonHandler", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult doButtonHandler(@RequestBody ButtonHandlerRequest buttonHandlerRequest) {
-        JournalData journalData = journalService.doButtonHandler(buttonHandlerRequest.getJournalSysName()
+        JournalData journalData = journalService.doButtonHandler(
+                buttonHandlerRequest.getRequestMethod()
+                , buttonHandlerRequest.getJournalSysName()
                 , buttonHandlerRequest.getButtonAction()
+                , buttonHandlerRequest.getEntity()
                 , buttonHandlerRequest.getPageNumber());
         JournalDataResponse journalDataResponse = new JournalDataResponse(journalData);
 

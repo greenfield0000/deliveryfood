@@ -26,12 +26,12 @@ import { ModalWindowService } from 'src/app/services/modal-window-service/modal-
   templateUrl: './journal.component.html',
   styleUrls: ['./journal.component.scss']
 })
-export class JournalComponent implements OnInit {
+export class JournalComponent<T> implements OnInit {
 
   @Input()
   public rowSelection: string = 'single';
   @Input()
-  public context: IJournal;
+  public context: IJournal<T>;
   @Input()
   public journalHeader: string;
 
@@ -107,7 +107,7 @@ export class JournalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadData(this.context.journalSysName);
+    this.loadData(this.context.getJournalSysName());
   }
 
   private openFilterPanel() {
@@ -117,7 +117,7 @@ export class JournalComponent implements OnInit {
   }
 
   private refresh(): void {
-    this.loadData(this.context.journalSysName);
+    this.loadData(this.context.getJournalSysName());
   }
 
   /**
