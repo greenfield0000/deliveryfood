@@ -26,6 +26,7 @@ public class ConsumerCreateUser {
         String userUUID = user.getUuid();
         // добавляем, если такого нет
         if (!repository.isFindByUUID(userUUID)) {
+            user.setId(null);
             repository.create(user);
             System.out.println("User not found. Created " + user.toString());
             return;

@@ -19,21 +19,21 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernateSeq")
     protected Long id;
 
-    @Column(name = "created")
+    @Column(name = "created", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
-    protected Date created = new Date();
+    protected Date created;
 
     @Column(name = "updated")
     @Temporal(TemporalType.TIMESTAMP)
     @UpdateTimestamp
-    protected Date updated = new Date();
+    protected Date updated;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     protected Status status;
 
-    @Column(name = "uuid")
+    @Column(name = "uuid", updatable = false)
     protected String uuid = UUID.randomUUID().toString();
 }
 

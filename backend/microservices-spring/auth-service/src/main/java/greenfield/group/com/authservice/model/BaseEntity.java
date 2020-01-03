@@ -2,9 +2,12 @@ package greenfield.group.com.authservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
+import java.util.UUID;
 
 @Data
 @MappedSuperclass
@@ -15,17 +18,20 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    @Column(name = "created")
-    protected Date created;
+    @Column(name = "created", updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+    protected java.util.Date created = new java.util.Date();
 
     @Column(name = "updated")
-    protected Date updated;
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
+    protected java.util.Date updated = new Date();
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    protected Status status;
+    protected String status;
 
-    @Column(name = "uuid")
-    protected String uuid;
+    @Column(name = "uuid", updatable = false)
+    protected String uuid = UUID.randomUUID().toString();
 }
 

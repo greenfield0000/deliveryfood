@@ -13,7 +13,7 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "ADDRESS")
+@Table(name = "b_address")
 public class Address extends BaseEntity {
     private String token;
     private String regionId;

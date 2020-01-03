@@ -12,9 +12,9 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "B_ACCOUNTROLE")
+@Table(name = "b_role")
 public class Role extends BaseEntity {
-//
+    //
 //    // Супер пользователь
 //    ROOT(1L, "ROOT", "Супер пользователь"),
 //    // Администратор
@@ -23,13 +23,13 @@ public class Role extends BaseEntity {
 //    BARMEN_MANAGER(3L, "BARMEN_MANAGER", "Бармен (менеджер)"),
 //    // Главный официант
 //    MAINWAITER(4L, "MAINWAITER", "Главный официант"),
-//    // Официант
-//    WAITER(5L, "WAITER", "Официант"),
+    // Официант
+//     WAITER(5L, "WAITER", "Официант")
 //    // Бармен
 //    BARMEN(6L, "BARMEN", "Бармен");
-
-    private String sysname;
-    private String name;
+    private Long id = 5L;
+    private String sysname = "WAITER";
+    private String name = "Официант";
     @ManyToMany(mappedBy = "roles")
     private Set<Account> accounts;
 }

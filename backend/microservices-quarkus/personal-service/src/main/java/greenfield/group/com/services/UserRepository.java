@@ -34,7 +34,9 @@ public class UserRepository implements Repository<User> {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            entityManager.merge(model);
+            // id при создании игнорируем принудительно
+            model.setId(null);
+            entityManager.persist(model);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

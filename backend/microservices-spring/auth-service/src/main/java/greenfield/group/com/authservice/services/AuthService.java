@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.Optional;
-import java.util.UUID;
 
 /**
  * Сервис по работе с аккаунтом
@@ -110,13 +109,9 @@ public class AuthService {
         Optional<Account> finderAccount = accountRepository.findByLogin(account.getLogin());
         // если не нашли, то значит это не повторная регистрация
         if (!finderAccount.isPresent()) {
-            // тогда регистрируем и выходим
-            String uuid = UUID.randomUUID().toString();
-            account.setUuid(uuid);
             final Account savedAccount = accountRepository.saveAndFlush(account);
             // Отправляем информацию о новом пользователе в другие сервисы
             User user = account.getUser();
-            user.setUuid(uuid);
             kafkaSenderService.send(user);
             return new SimpleResult<>(Status.OK, savedAccount);
         }

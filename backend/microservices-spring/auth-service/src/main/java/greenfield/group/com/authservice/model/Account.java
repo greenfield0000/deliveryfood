@@ -10,21 +10,21 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "B_ACCOUNT")
+@Table(name = "b_account")
 public class Account extends BaseEntity {
 
     @Column(name = "login")
     private String login;
     @Column(name = "password")
     private String password;
-    @Column(name = "nick_name")
+    @Column(name = "nickName")
     private String nickName;
     @OneToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private User user;
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
-            name = "B_ACCOUNT_ROLES",
+            name = "b_account_role",
             joinColumns = {@JoinColumn(name = "account_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )

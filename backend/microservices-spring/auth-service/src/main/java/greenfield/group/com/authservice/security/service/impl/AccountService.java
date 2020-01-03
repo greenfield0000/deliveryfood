@@ -37,7 +37,7 @@ public class AccountService {
         accountRoles.add(roleAccount);
 
         account.setPassword(passwordEncoder.encode(account.getPassword()));
-        account.setStatus(Status.ACTIVE);
+        account.setStatus(Status.ACTIVE.name());
 
         Account registeredAccount = accountRepository.save(account);
 
