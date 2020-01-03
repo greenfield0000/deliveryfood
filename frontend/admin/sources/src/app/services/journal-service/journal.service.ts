@@ -12,7 +12,7 @@ import { map, tap, switchMap } from 'rxjs/operators';
 })
 export class JournalService {
 
-  private _context: IJournal;
+  private _context: IJournal<any>;
   private _journalLoadData: Subject<SimpleResult<any>> = new Subject<SimpleResult<any>>();
 
   constructor(private http: HttpService) {
@@ -85,7 +85,7 @@ export class JournalService {
    * Getter context
    * @return {IJournal}
    */
-  public get context(): IJournal {
+  public get context(): IJournal<any> {
     return this._context;
   }
 
@@ -93,7 +93,7 @@ export class JournalService {
    * Setter context
    * @param {IJournal} value
    */
-  public set context(value: IJournal) {
+  public set context(value: IJournal<any>) {
     this._context = value;
   }
 

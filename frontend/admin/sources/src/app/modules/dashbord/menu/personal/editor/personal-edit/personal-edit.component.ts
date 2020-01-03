@@ -1,7 +1,4 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { AppRouteService } from 'src/app/services/app-route-service/app-route.service';
-import { AccountEntity } from 'src/app/classes/accountEntity';
-import { PersonalService } from '../../personal.service';
 import { User } from 'src/app/classes/user';
 import { PersonalComponent } from '../../journal-page/personal.component';
 import { SimpleResult } from 'src/app/utils/simple-result.class';
@@ -36,6 +33,7 @@ export class PersonalEditComponent extends PersonalComponent implements OnInit {
    * Обработчик кнопки "Сохранить изменения". ,Обновить изменяемые данные
    */
   public update() {
+    console.log('User for update ', this.user);
     const queryParams = {
       buttonAction: 'update',
       journalSysName: this.journalSysName,
@@ -45,6 +43,14 @@ export class PersonalEditComponent extends PersonalComponent implements OnInit {
       .subscribe((result: SimpleResult<User[]>) => {
         this._journalService.refreshLoadData(result);
       });
+  }
+
+  /**
+   * Обработчик события изменения пользователя
+   * @param changedUser пользователь с измененными данными
+   */
+  public onChangeUser(changedUser: User) {
+    this.user = changedUser;
   }
 
 }

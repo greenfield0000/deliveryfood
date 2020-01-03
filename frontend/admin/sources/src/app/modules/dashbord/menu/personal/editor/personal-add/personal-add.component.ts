@@ -38,6 +38,7 @@ export class PersonalAddComponent extends PersonalComponent implements OnInit {
    * Обработчик кнопки "Сохранить изменения". Сохраняет изменяемые данные
    */
   public save() {
+    console.log('Try save = ', this.user);
     const queryParams = {
       buttonAction: 'create',
       journalSysName: this.journalSysName,
@@ -47,6 +48,14 @@ export class PersonalAddComponent extends PersonalComponent implements OnInit {
       .subscribe((result: SimpleResult<User[]>) => {
         this._journalService.refreshLoadData(result);
       });
+  }
+
+  /**
+   * Обработчик события изменения пользователя
+   * @param changedUser пользователь с измененными данными
+   */
+  public onChangeUser(changedUser: User) {
+    this.user = changedUser;
   }
 
 }

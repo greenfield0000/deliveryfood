@@ -60,6 +60,7 @@ public class UserRepository implements Repository<User> {
     @Override
     public List<User> update(User model) {
         EntityTransaction transaction = entityManager.getTransaction();
+//        User user = entityManager.find(User.class, model.getId());
         transaction.begin();
         entityManager.merge(model);
         transaction.commit();

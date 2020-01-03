@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ReactiveForm } from 'src/app/classes/reactive-form';
 import { Address } from 'src/app/classes/address/address.class';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AccountEntity } from 'src/app/classes/accountEntity';
 import { User } from 'src/app/classes/user';
 import { AccountRole } from '../registy-stepper/registry-stepper.component';
@@ -18,8 +18,9 @@ import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 export class PersonInfoEditorComponent extends ReactiveForm implements OnInit {
 
   @Input()
+  public user: User = new User();
   @Output()
-  protected user: User = new User();
+  public onChangeUser = new EventEmitter<User>();
   public personInfoFormGroup: FormGroup;
 
   private address: Address = new Address();
@@ -39,12 +40,19 @@ export class PersonInfoEditorComponent extends ReactiveForm implements OnInit {
   ngOnInit() {
     this.personInfoFormGroup = this._formBuilder.group({
       accountRole: this.accountRoles,
+      id: [this.user.$id],
       name: [this.user.$name, Validators.required],
       surName: [this.user.$surName, Validators.required],
       lastName: [this.user.$lastName, Validators.required],
       birthDay: [this.user.$birthDay, Validators.required],
       phone: [this.user.$phone, Validators.required],
       email: [this.user.$email, Validators.required]
+    });
+
+    // Публикация любого изменения на форме
+    this.personInfoFormGroup.valueChanges.subscribe((userValueChanges: FormControl) => {
+      this.user = new User(userValueChanges);
+      this.onChangeUser.emit(this.user);
     });
   }
 
