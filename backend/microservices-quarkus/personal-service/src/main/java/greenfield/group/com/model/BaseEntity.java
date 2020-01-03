@@ -1,10 +1,15 @@
 package greenfield.group.com.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
+import java.util.UUID;
 
+@Data
 @MappedSuperclass
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BaseEntity {
@@ -12,54 +17,23 @@ public class BaseEntity {
     @Id
     @SequenceGenerator(name = "hibernateSeq", sequenceName = "HIBERNATE_SEQUENCE", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernateSeq")
-    private Long id;
+    protected Long id;
 
     @Column(name = "created")
-    private Date created;
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+    protected Date created = new Date();
 
     @Column(name = "updated")
-    private Date updated;
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
+    protected Date updated = new Date();
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private Status status;
+    protected Status status;
 
     @Column(name = "uuid")
-    private String uuid;
-
-    public BaseEntity() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
+    protected String uuid = UUID.randomUUID().toString();
 }
 

@@ -20,7 +20,7 @@ export class HttpService {
 
   constructor(private http: HttpClient, private modalWindow: ModalWindowService) { }
 
-  public handleResponse<T>(result: T): Observable<any> {
+  private handleResponse<T>(result: T): Observable<any> {
     const simpleResult: any = Object.assign({}, result);
     if ((!simpleResult) || ((simpleResult) && (simpleResult.status) && (simpleResult.status.toString() === 'ERROR'))) {
       const messageInfo: string = simpleResult && simpleResult.message || this.defaultErrorMessage;
@@ -31,11 +31,61 @@ export class HttpService {
     return of(result);
   }
 
+  /**
+   * POST-запрос с обработкой ответа
+   * @param url адрес запроса
+   * @param params параметры запроса
+   * @param headers заголовок запроса
+   */
   public post<T>(url: string, params: any = {}, headers: HttpHeaders = environment.headers): Observable<T> {
     const options = {
       headers: headers
     };
     return this.http.post<T>(url, params, options).pipe(
+      switchMap((res) => this.handleResponse(res)),
+      catchError(err => {
+        console.log(err);
+        this.modalWindow.openDialog(IDialogType.ERROR, DialogComponent, {
+          message: this.defaultErrorMessage
+        });
+        return of({});
+      })
+    );
+  }
+
+  /**
+   * GET-запрос с обработкой ответа
+   * @param url адрес запроса
+   * @param params параметры запроса
+   * @param headers заголовок запроса
+   */
+  public get<T>(url: string, params: any = {}, headers: HttpHeaders = environment.headers): Observable<T> {
+    const options = {
+      headers: headers
+    };
+    return this.http.get<T>(url, params).pipe(
+      switchMap((res) => this.handleResponse(res)),
+      catchError(err => {
+        console.log(err);
+        this.modalWindow.openDialog(IDialogType.ERROR, DialogComponent, {
+          message: this.defaultErrorMessage
+        });
+        return of({});
+      })
+    );
+  }
+
+  /**
+   * PUT-запрос с обработкой ответа
+   * @param url адрес запроса
+   * @param params параметры запроса
+   * @param headers заголовок запроса
+   */
+  public put<T>(url: string, params: any = {}, headers: HttpHeaders = environment.headers): Observable<T> {
+    const options = {
+      headers: headers
+    };
+    return this.http.put<T>(url, params, options).pipe(
       switchMap((res) => this.handleResponse(res)),
       catchError(err => {
         console.log(err);

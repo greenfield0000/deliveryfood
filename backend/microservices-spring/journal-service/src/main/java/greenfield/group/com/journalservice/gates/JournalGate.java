@@ -91,7 +91,10 @@ public class JournalGate {
      * @param buttonHandlerRequest
      * @return
      */
-    @RequestMapping(path = "/doButtonHandler", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/doButtonHandler"
+            , method = {RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.GET}
+            , produces = MediaType.APPLICATION_JSON_VALUE
+    )
     public SimpleResult doButtonHandler(@RequestBody ButtonHandlerRequest buttonHandlerRequest) {
         JournalData journalData = journalService.doButtonHandler(
                 buttonHandlerRequest.getRequestMethod()

@@ -10,6 +10,8 @@ import { AccountEntity } from 'src/app/classes/accountEntity';
 import { User } from 'src/app/classes/user';
 import { HttpService } from 'src/app/services/http-service/http.service';
 import { JournalService } from 'src/app/services/journal-service/journal.service';
+import { SimpleResult } from 'src/app/utils/simple-result.class';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-personal',
@@ -87,6 +89,16 @@ export class PersonalComponent implements OnInit, IJournal<PersonalComponent> {
       });
       return;
     }
+    const localContext: PersonalComponent = context.getComponentContext();
+    const queryParams = {
+      buttonAction: 'delete',
+      journalSysName: localContext.getJournalSysName(),
+      entity: new User(selectedRow),
+    };
+    localContext._http.post<SimpleResult<User[]>>(environment.gatePath.journal_location + '/doButtonHandler', queryParams)
+      .subscribe((result: SimpleResult<User[]>) => {
+        localContext._journalService.refreshLoadData(result);
+      });
     console.log('New realisation deletePerson ', selectedRow);
   }
 

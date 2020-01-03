@@ -4,6 +4,7 @@ import { Address } from './address/address.class';
  * Сущность - пользователь
  */
 export class User {
+    private id: number;
     private name: string = '';
     private surName: string = '';
     private lastName: string = '';
@@ -14,6 +15,7 @@ export class User {
 
     constructor(data?: any) {
         if (data) {
+            this.id = data && data.id;
             this.name = data && data.name || '';
             this.surName = data && data.surName || '';
             this.lastName = data && data.lastName || '';
@@ -135,5 +137,23 @@ export class User {
     public set $addressList(value: Array<Address>) {
         this.addressList = value;
     }
+
+
+    /**
+     * Getter $id
+     * @return {number}
+     */
+    public get $id(): number {
+        return this.id;
+    }
+
+    /**
+     * Setter $id
+     * @param {number} value
+     */
+    public set $id(value: number) {
+        this.id = value;
+    }
+
 
 }

@@ -38,7 +38,6 @@ export class PersonalAddComponent extends PersonalComponent implements OnInit {
    * Обработчик кнопки "Сохранить изменения". Сохраняет изменяемые данные
    */
   public save() {
-    debugger;
     const queryParams = {
       buttonAction: 'create',
       journalSysName: this.journalSysName,

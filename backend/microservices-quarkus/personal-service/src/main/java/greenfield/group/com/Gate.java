@@ -49,7 +49,7 @@ public class Gate {
      * @param user пользователь, которого стоит удалить
      * @return список пользователей с только что удаленным
      */
-    @DELETE
+    @POST
     @Path("/delete")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -63,7 +63,7 @@ public class Gate {
      * @param user пользователь, которого стоит обновить
      * @return список пользователей с только что обновленым
      */
-    @PUT
+    @POST
     @Path("/update")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)

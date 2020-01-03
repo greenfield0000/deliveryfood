@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { ReactiveForm } from 'src/app/classes/reactive-form';
 import { Address } from 'src/app/classes/address/address.class';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,11 +18,12 @@ import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 export class PersonInfoEditorComponent extends ReactiveForm implements OnInit {
 
   @Input()
+  @Output()
   protected user: User = new User();
-  private personInfoFormGroup: FormGroup;
+  public personInfoFormGroup: FormGroup;
 
   private address: Address = new Address();
-  private accountRoles: any[] = [
+  public accountRoles: any[] = [
     { viewValue: 'Бармен', id: AccountRole.BARMEN },
     { viewValue: 'Официант', id: AccountRole.WAITER }
   ];
