@@ -1,6 +1,5 @@
 import '../polyfills';
 
-import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -16,9 +15,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DialogComponent } from './components/modal-window/common/dialog/dialog.component';
 import { JwtTokenInterceptor } from './interceptors/jwt.token-interceptor';
-import { AddressKladrComponent } from './components/address-kladr/address-kladr.component';
 import { AuthModule } from './modules/auth/auth.module';
-import { MethodInterceptor } from './interceptors/method-interceptor';
 
 
 const modules = [
@@ -31,7 +28,6 @@ const modules = [
   BrowserModule,
   BrowserAnimationsModule,
   FormsModule,
-  HttpModule,
   HttpClientModule,
   MatNativeDateModule,
   ReactiveFormsModule,

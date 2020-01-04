@@ -1,3 +1,4 @@
+import { FullCalendarModule } from '@fullcalendar/angular';
 import { MatPaginatorModule, MatProgressSpinnerModule, MatMenuModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule, MatOptionModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -40,7 +41,8 @@ import { PersonalModule } from './personal/personal.module';
     MenuRoutingModule,
     RouterModule,
     // JournalsModule
-    PersonalModule
+    PersonalModule,
+    FullCalendarModule
   ]
 })
 export class MenuModule { }

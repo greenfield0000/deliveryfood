@@ -27,6 +27,17 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 // that you are using.
 @include angular-material-theme($candy-app-theme);
 
+
+// FULL CALENDAR
+/* Add application styles & imports to this file! */
+
+/* you must include each plugins' css
+// paths prefixed with ~ signify node_modules */
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
+
+
 html,
 body {
   width: 100%;

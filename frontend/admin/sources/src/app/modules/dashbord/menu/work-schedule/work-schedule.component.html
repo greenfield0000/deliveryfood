@@ -1,3 +1,12 @@
-<p>
-  work-schedule works!
-</p>
+<div class="content">
+  <span class='header'>Рабочий график</span>
+  <div class='calendar'>
+    <full-calendar #calendar defaultView="dayGridMonth" [header]="{
+        left: 'prev,next',
+        center: 'title',
+        right: 'today, dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      }" [plugins]="calendarPlugins" [weekends]="calendarWeekends" [locales]='locales' [selectable]='true'
+      [height]=500>
+    </full-calendar>
+  </div>
+</div>
