@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGrigPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import bootstrapPlugin from '@fullcalendar/bootstrap';
 import ruLocale from '@fullcalendar/core/locales/ru';
 
 @Component({
@@ -12,8 +13,9 @@ import ruLocale from '@fullcalendar/core/locales/ru';
 export class WorkScheduleComponent implements OnInit {
 
   public locales = [ruLocale];
-  public calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
+  public calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin, bootstrapPlugin];
   public calendarWeekends = true;
+  public themeSystem = 'bootstrap6';
 
   constructor() { }
 

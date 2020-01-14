@@ -130,9 +130,9 @@ services:
       - POSTGRES_PASSWORD=123
       - POSTGRES_USER=rootuser
       - POSTGRES_DB=personal-db
-      - PGDATA=/var/lib/postgresql/data/pgdata
+      - PGDATA=/var/lib/postgresql/data/pgdata/personal-db
     volumes:
-      - "~/backup_database/postgres/personal-db:/var/lib/postgresql/data/pgdata"
+      - "~/backup_database/postgres/personal-db:/var/lib/postgresql/data/pgdata/personal-db"
     depends_on:
       - kafka
 
@@ -144,4 +144,29 @@ services:
       - "9079:8787"
     depends_on:
       - personal-db
+
+  kitchen-db:
+    container_name: kitchen-db
+    image: postgres:9.6
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=rootuser
+      - POSTGRES_DB=kitchen-db
+      - PGDATA=/var/lib/postgresql/data/pgdata/kitchen-db
+    volumes:
+      - "~/backup_database/postgres/kitchen-db:/var/lib/postgresql/data/pgdata/kitchen-db"
+    depends_on:
+      - kafka
+
+  kitchen-service:
+    container_name: kitchen-service
+    build: ./backend/microservices-spring/kitchen-service
+    ports:
+      - "8084:8084"
+      - "9085:9085"
+    depends_on:
+      - kitchen-db
+
 
