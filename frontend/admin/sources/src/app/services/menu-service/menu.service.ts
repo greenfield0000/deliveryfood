@@ -43,10 +43,7 @@ export class MenuService {
             this.dataChange.next(this.buildNodeTree(parsedMenu, 0));
           }
         });
-    } else {
-      alert('User is unauthorised !!! ');
     }
-
   }
 
   /**
@@ -70,7 +67,7 @@ export class MenuService {
         // картинка пункта меню
         node.$image = templateNode.image || '';
         // смещение относительно родительского элемента
-        node.$offset =  String(level * 50) + 'px' || '0px';
+        node.$offset = String(level * 50) + 'px' || '0px';
         // маппим дочерние элементы
         if (templateNode.children && (templateNode.children instanceof Array)) {
           const upLevel = level + 1;

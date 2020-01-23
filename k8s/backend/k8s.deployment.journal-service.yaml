@@ -1,0 +1,25 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    environment: dev
+    tier: backend
+  name: journal-service
+spec: 
+  selector: 
+    matchLabels: 
+      environment: dev
+      tier: backend
+  template: 
+    metadata: 
+      labels: 
+        environment: dev
+        tier: backend
+    spec: 
+      containers: 
+        - image: "greenfield0000/journal-service:1.0.0"
+          name: journal-service
+          ports: 
+            - containerPort: 8083
+

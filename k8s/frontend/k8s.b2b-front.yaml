@@ -5,14 +5,16 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: frontend
+            #app: frontend
+      app: bus-layer
   template:
     metadata:
       labels:
-        app: frontend
+              #app: frontend
+        app: bus-layer
     spec:
       containers:
       - name: b2b-front
-        image: greenfield0000/b2b-front:v4
+        image: greenfield0000/b2b-front:v5.0.1
         ports:
         - containerPort: 4200

@@ -3,7 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
   labels:
-    app: auth-db
+    environment: dev
+    tier: db
 spec:
   accessModes:
     - ReadWriteOnce

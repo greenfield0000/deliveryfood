@@ -1,0 +1,25 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    environment: dev
+    tier: backend
+  name: kitchen-service
+spec: 
+  selector: 
+    matchLabels: 
+      environment: dev
+      tier: backend
+  template: 
+    metadata: 
+      labels: 
+        environment: dev
+        tier: backend
+    spec: 
+      containers: 
+        - image: "greenfield0000/kitchen-service:1.0.0"
+          name: kitchen-service
+          ports: 
+            - containerPort: 8084
+

@@ -53,6 +53,6 @@ export class AppAccountContextService {
    * Метод проверяет авторизован ли пользователь или нет
    */
   isAuthtorised(): boolean {
-    return localStorage.getItem('token') != undefined && localStorage.getItem('token') != '';
+    return (localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== '') || false ;
   }
 }

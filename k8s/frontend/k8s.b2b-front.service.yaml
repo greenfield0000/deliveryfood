@@ -7,8 +7,9 @@ metadata:
   namespace: default
 spec:
   ports:
-    - port: 8081
+    - port: 4200
       targetPort: 4200
   selector:
     app: frontend
-  type: LoadBalancer
+  type: NodePort
+  # NodePort for local developing (this need LoadBalancer)

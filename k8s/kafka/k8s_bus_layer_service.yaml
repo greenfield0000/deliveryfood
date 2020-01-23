@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-bus
+  namespace: default
+spec:
+  selector:
+    app: bus-layer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376	
+  

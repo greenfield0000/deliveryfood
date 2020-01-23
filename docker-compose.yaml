@@ -1,11 +1,6 @@
 version: "3.4"
 services:
  
-  # interface-environment
-  #interface-environment:
-  #  container_name: interface-environment
-  #  build: ./frontend/environment
-  
   zookeeper:
     image: wurstmeister/zookeeper:3.4.6
     ports:
@@ -30,7 +25,7 @@ services:
   #frontend
   b2b:
     container_name: b2b
-    build: ./frontend/admin
+    image: greenfield0000/b2b-front:5.0.0
     ports:
       - "4200:4200"
     volumes:
@@ -40,7 +35,7 @@ services:
   #auth-service
   auth-service:
     container_name: auth-service
-    build: ./backend/microservices-spring/auth-service
+    image: greenfield0000/auth-service:1.0.0
     ports:
       - "8081:8081"
       - "9081:9081"
@@ -70,7 +65,7 @@ services:
   #menu-service
   menu-service:
     container_name: menu-service
-    build: ./backend/microservices-spring/menu-service
+    image: greenfield0000/menu-service:1.0.0
     ports:
       - "8082:8082"
       - "9082:9082"
@@ -95,8 +90,8 @@ services:
   #journal-service
   journal-service:
     container_name: journal-service
+    image: greenfield0000/journal-service:1.0.0
     restart: always
-    build: ./backend/microservices-spring/journal-service
     ports:
       - "8083:8083"
       - "9083:9083"
@@ -110,13 +105,13 @@ services:
   kladr-service:
     container_name: kladr-service
     restart: always
-    build: ./backend/microservices-spring/fiascloudkladr-service
+    image: greenfield0000/kladr-service:1.0.0
 
   #gateway-service
   gateway-service:
     container_name: gateway-service
     restart: always
-    build: ./backend/microservices-spring/gateway-service
+    image: greenfield0000/gateway-service:1.0.0
     ports:
       - "8080:8080"
       - "9080:9080"
@@ -138,7 +133,7 @@ services:
 
   personal-service:
     container_name: personal-service
-    build: ./backend/microservices-quarkus/personal-service
+    image: greenfield0000/personal-service:1.0.0
     ports:
       - "8079:8080"
       - "9079:8787"
@@ -162,7 +157,7 @@ services:
 
   kitchen-service:
     container_name: kitchen-service
-    build: ./backend/microservices-spring/kitchen-service
+    image: greenfield0000/kitchen-service:1.0.0
     ports:
       - "8084:8084"
       - "9085:9085"

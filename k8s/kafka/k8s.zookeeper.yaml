@@ -2,16 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: zookeeper-deployment
+  namespace: default
   labels:
-    app: b2bkafka
+    app: bus-layer
 spec:
   selector:
     matchLabels:
-      app: b2bkafka
+      app: bus-layer
   template:
     metadata:
       labels:
-        app: b2bkafka
+        app: bus-layer
     spec:
       volumes:
       - name: base-shared-data

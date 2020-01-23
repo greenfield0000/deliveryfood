@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+  labels:
+    environment: dev
+    tier: backend
+spec:
+  ports:
+    - port: 8081
+  selector:
+    environment: dev
+    tier: backend
+
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    environment: dev
+    tier: backend
+  name: auth-service
+spec: 
+  selector: 
+    matchLabels: 
+      environment: dev
+      tier: backend
+  template: 
+    metadata: 
+      labels: 
+        environment: dev
+        tier: backend
+    spec: 
+      containers: 
+        - image: "greenfield0000/auth-service:1.0.0"
+          name: auth-service
+          ports: 
+            - containerPort: 8081
+

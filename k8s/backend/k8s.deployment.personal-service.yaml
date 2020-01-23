@@ -1,0 +1,25 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    environment: dev
+    tier: backend
+  name: personal-service
+spec: 
+  selector: 
+    matchLabels: 
+      environment: dev
+      tier: backend
+  template: 
+    metadata: 
+      labels: 
+        environment: dev
+        tier: backend
+    spec: 
+      containers: 
+        - image: "greenfield0000/personal-service:1.0.0"
+          name: personal-service
+          ports: 
+            - containerPort: 8079
+
