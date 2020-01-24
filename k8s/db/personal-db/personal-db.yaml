@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: personal-db
+  labels:
+    environment: dev
+    tier: personal
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    environment: dev
+    tier: personal
+
+#-----------------------------
+
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: personal-db
+  labels:
+    environment: dev
+    tier: personal
+spec:
+  selector:
+    matchLabels:
+      environment: dev
+      tier: personal
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        environment: dev
+        tier: personal
+    spec:
+      containers:
+      - image: postgres:9.6
+        name: postgres
+        env:
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: personal-db-database
+              key: database
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: personal-db-password
+              key: password
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: personal-db-user
+              key: user
+        - name: PGDATA
+          valueFrom:
+            secretKeyRef:
+              name: personal-db-pgdata
+              key: pgdata
+        ports:
+        - containerPort: 5432
+          name: postgres
+        volumeMounts:
+        - name: postgres-persistent-storage
+          mountPath: /var/lib/postgresql/data/pgdata/personal-db
+      volumes:
+      - name: postgres-persistent-storage
+        persistentVolumeClaim:
+          claimName: postgres-pv-claim
+

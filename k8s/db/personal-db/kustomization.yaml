@@ -1,0 +1,15 @@
+secretGenerator:
+- name: personal-db-password
+  literals:
+  - password=123
+- name: personal-db-database
+  literals:
+  - database=personal-db
+- name: personal-db-pgdata
+  literals:
+  - pgdata=/var/lib/postgresql/data/pgdata/personal-db
+- name: personal-db-user
+  literals:
+  - user=rootuser
+resources:
+  - personal-db.yaml

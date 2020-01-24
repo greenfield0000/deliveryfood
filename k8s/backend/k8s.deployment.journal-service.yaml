@@ -4,18 +4,18 @@ kind: Deployment
 metadata: 
   labels: 
     environment: dev
-    tier: backend
+    tier: metadata
   name: journal-service
 spec: 
   selector: 
     matchLabels: 
       environment: dev
-      tier: backend
+      tier: metadata
   template: 
     metadata: 
       labels: 
         environment: dev
-        tier: backend
+        tier: metadata
     spec: 
       containers: 
         - image: "greenfield0000/journal-service:1.0.0"

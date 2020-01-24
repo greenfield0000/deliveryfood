@@ -1,0 +1,36 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: metadata-db
+  labels:
+    environment: dev
+    tier: metadata
+spec:
+  selector:
+    matchLabels:
+      environment: dev
+      tier: metadata
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        environment: dev
+        tier: metadata
+    spec:
+      containers:
+      - image: mongo:bionic
+        name: metadata-db
+        ports:
+        - containerPort: 27017
+          name: metadata-db
+        volumeMounts:
+        - name: metadata-db-persistent-storage
+          mountPath: /data/db
+        - name: metadata-db-persistent-storage
+          mountPath: /var/log/metadata-db
+      volumes:
+      - name: metadata-db-persistent-storage
+        persistentVolumeClaim:
+          claimName: metadata-db-pv-claim
+

@@ -1,39 +1,22 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: auth-db
-  labels:
-    environment: dev
-    tier: db
-spec:
-  ports:
-    - port: 3306
-      targetPort: 3306
-  selector:
-    environment: dev
-    tier: db
-
-#-----------------------------
-
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: auth-db
   labels:
     environment: dev
-    tier: db
+    tier: auth
 spec:
   selector:
     matchLabels:
       environment: dev
-      tier: db
+      tier: auth
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         environment: dev
-        tier: db
+        tier: auth
     spec:
       containers:
       - image: mysql:5.6

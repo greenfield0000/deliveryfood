@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-db
+  name: metadata-db
   labels:
     environment: dev
-    tier: auth
+    tier: metadata
 spec:
   ports:
-    - port: 3306
-      targetPort: 3306
+    - port: 27017
+      targetPort: 27017
   selector:
     environment: dev
-    tier: auth
+    tier: metadata
   clusterIP: None
