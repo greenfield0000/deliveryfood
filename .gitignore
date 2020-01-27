@@ -8,3 +8,6 @@ backend/\.idea/
 backend/utils/pattern-utils/target/
 
 backend/utils/privilegies-utils/target/
+
+**/node_modules/**
+frontend/admin/sources/node_modules

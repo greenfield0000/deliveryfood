@@ -17,7 +17,7 @@ import { Observable, of } from 'rxjs';
 })
 export class PersonalAddComponent extends PersonalComponent implements OnInit {
 
-  private user: User;
+  public user: User;
 
   constructor(protected serviceInjector: Injector) {
     super(serviceInjector);

@@ -37,18 +37,18 @@ export class JournalComponent<T> implements OnInit {
 
   @ViewChild('agGrid') agGrid: AgGridNg2;
   @ViewChild('journalFilterNavigator')
-  private journalFilterNavigator: MatSidenav;
-  private columnMetaDataSubject: Subject<ColumnMetaData> = new BehaviorSubject<ColumnMetaData>(new ColumnMetaData());
-  private columnListSubject: Subject<JornalColumn[]> = new BehaviorSubject<JornalColumn[]>([]);
-  private topButtonListSubject: Subject<JournalButton[]> = new BehaviorSubject<JournalButton[]>([]);
-  private presetListSubject: Subject<Preset[]> = new BehaviorSubject<Preset[]>([]);
+  public journalFilterNavigator: MatSidenav;
+  public columnMetaDataSubject: Subject<ColumnMetaData> = new BehaviorSubject<ColumnMetaData>(new ColumnMetaData());
+  public columnListSubject: Subject<JornalColumn[]> = new BehaviorSubject<JornalColumn[]>([]);
+  public topButtonListSubject: Subject<JournalButton[]> = new BehaviorSubject<JournalButton[]>([]);
+  public presetListSubject: Subject<Preset[]> = new BehaviorSubject<Preset[]>([]);
 
   // апи для работы с сеткой данных
   private gridApi;
   // апи для работы с колонками
   private gridColumnApi;
   // выбранные колонки пользователем
-  private selectedRows;
+  public selectedRows;
 
   // описание колонок сетки данных
   public columnList: any;
@@ -73,7 +73,7 @@ export class JournalComponent<T> implements OnInit {
   public rightButtonList: JournalButton;
 
   // Регистрация доп. компонентов для сетки данных
-  private frameworkComponents = {
+  public frameworkComponents = {
     rowNumberCellRenderer: RowNumberRenderer
   };
 
@@ -168,7 +168,7 @@ export class JournalComponent<T> implements OnInit {
    * Функция выбора строки в сетке данных
    * @param selectionRow объект выбранной записи
    */
-  public onSelectionChanged() {
+  public onSelectionChanged(e: any) {
     this.selectedRows = this.gridApi.getSelectedRows();
     console.log('Selected rows ', this.selectedRows);
   }

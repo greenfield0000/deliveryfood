@@ -11,7 +11,7 @@ import { MenuService } from 'src/app/services/menu-service/menu.service';
 })
 export class HeaderOutletComponent implements OnInit {
 
-  private account: AccountEntity = new AccountEntity();
+  public account: AccountEntity = new AccountEntity();
 
   constructor(private sideNavService: MainSideNavService,
     private appAccountContextService: AppAccountContextService,

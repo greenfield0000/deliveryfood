@@ -13,8 +13,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  private login: string;
-  private password: string;
+  public login: string;
+  public password: string;
 
   constructor(
     private _appAccount: AppAccountContextService,

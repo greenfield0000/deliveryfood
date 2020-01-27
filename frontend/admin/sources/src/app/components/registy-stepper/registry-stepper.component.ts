@@ -33,24 +33,25 @@ export class RegistryStepperComponent extends ReactiveForm implements OnInit {
 
   // флаг, отвечающий за свойство степпера (true - возможно переходить только
   // из шага в шаг, false - в любом порядке)
-  private isLinear = false;
+  public isLinear = false;
   // Форм группы для валидаций и тд.
-  private accountDataFormGroup: FormGroup;
-  private personalDataFormGroup: FormGroup;
-  private fourFormGroup: FormGroup;
+  public accountDataFormGroup: FormGroup;
+  public personalDataFormGroup: FormGroup;
+  public addressDataFormGroup: FormGroup;
+  public fourFormGroup: FormGroup;
   // вставка пользовательского соглашения
-  private agreementHTML: string;
-  private isAgree: boolean = false;
-  private accountRoles: any[] = [
+  public agreementHTML: string;
+  public isAgree: boolean = false;
+  public accountRoles: any[] = [
     { viewValue: 'Бармен', id: AccountRole.BARMEN },
     { viewValue: 'Официант', id: AccountRole.WAITER }
   ];
 
   @Input()
-  protected account: AccountEntity = new AccountEntity();
+  public account: AccountEntity = new AccountEntity();
   // функция возврата из степпера
   @Input()
-  private goBackFn: Function = (() => {
+  public goBackFn: Function = (() => {
     console.log('function goBack not implemented');
   });
   // функция для продолжения работы
@@ -62,9 +63,9 @@ export class RegistryStepperComponent extends ReactiveForm implements OnInit {
   // основные аттрибуты для групп
   private passwordRepeat: string = '';
   private user = this.account && this.account.$user || new User();
-  private address: Address = new Address();
+  public address: Address = new Address();
 
-  constructor(protected router: AppRouteService, protected _appAccount: AppAccountContextService,
+  constructor(public router: AppRouteService, protected _appAccount: AppAccountContextService,
     protected _formBuilder: FormBuilder) { super(); }
 
   ngOnInit() {

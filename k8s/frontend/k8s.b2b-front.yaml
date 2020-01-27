@@ -5,13 +5,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-            #app: frontend
-      app: bus-layer
+      app: frontend
   template:
     metadata:
       labels:
-              #app: frontend
-        app: bus-layer
+        app: frontend
     spec:
       containers:
       - name: b2b-front

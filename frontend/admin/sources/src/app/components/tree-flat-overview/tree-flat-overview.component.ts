@@ -22,9 +22,9 @@ export class TreeFlatOverviewComponent implements OnInit {
   ) {
   }
 
-  private treeControl: FlatTreeControl<MenuFlatNode>;
+  public treeControl: FlatTreeControl<MenuFlatNode>;
   private treeFlattener: MatTreeFlattener<MenuNode, MenuFlatNode>;
-  private dataSource: MatTreeFlatDataSource<MenuNode, MenuFlatNode>;
+  public dataSource: MatTreeFlatDataSource<MenuNode, MenuFlatNode>;
   ngOnInit(): void {
     console.log('init menu');
     this.treeFlattener = new MatTreeFlattener(

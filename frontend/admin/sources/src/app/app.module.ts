@@ -97,7 +97,3 @@ const modules = [
   entryComponents: [DialogComponent]
 })
 export class AppModule { }
-
-
-// tslint:disable-next-line:eofline
-platformBrowserDynamic().bootstrapModule(AppModule);

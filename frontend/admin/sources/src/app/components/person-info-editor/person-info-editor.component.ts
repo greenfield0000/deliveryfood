@@ -23,7 +23,7 @@ export class PersonInfoEditorComponent extends ReactiveForm implements OnInit {
   public onChangeUser = new EventEmitter<User>();
   public personInfoFormGroup: FormGroup;
 
-  private address: Address = new Address();
+  public address: Address = new Address();
   public accountRoles: any[] = [
     { viewValue: 'Бармен', id: AccountRole.BARMEN },
     { viewValue: 'Официант', id: AccountRole.WAITER }
