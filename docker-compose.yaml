@@ -157,7 +157,7 @@ services:
 
   kitchen-service:
     container_name: kitchen-service
-    image: greenfield0000/kitchen-service:1.0.0
+    image: greenfield0000/kitchen-service:1.1.0
     ports:
       - "8084:8084"
       - "9085:9085"

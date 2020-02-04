@@ -50,7 +50,6 @@ public interface Journal {
     /**
      * Вызов обработчика кнопки
      *
-     *
      * @param requestMethod
      * @param journalSysName системное имя журнала, для которого вызывается кнопка
      * @param buttonAction   системное имя кнопки

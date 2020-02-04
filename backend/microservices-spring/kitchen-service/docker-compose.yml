@@ -1,0 +1,25 @@
+version: "3.4"
+services:
+  kitchen-db:
+    container_name: kitchen-db
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=rootuser
+      - POSTGRES_DB=kitchen-db
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - "~/backup_database/postgres/kitchen-db:/var/lib/postgresql/data/pgdata"
+
+  kitchen-service:
+    container_name: kitchen-service
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8084:8084"
+      - "9085:9085"
+    depends_on:
+      - kitchen-db
