@@ -23,7 +23,7 @@ export class MenuService {
   get data(): MenuNode[] { return this.dataChange.value; }
 
   constructor(private http: HttpClient, private accountService: AppAccountContextService) {
-    this.initialize();
+//    this.initialize();
   }
 
   loadMenu(): Observable<SimpleResult<string>> {

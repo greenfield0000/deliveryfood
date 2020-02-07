@@ -42,7 +42,7 @@ export class TreeFlatOverviewComponent implements OnInit {
       this.treeFlattener
     );
 
-    this.database.initialize();
+    //this.database.initialize();
     this.database.dataChange.subscribe(data => {
       this.dataSource.data = data;
       console.log('database = ', data);

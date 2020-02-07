@@ -1,12 +1,13 @@
-FROM ubuntu
-MAINTAINER greenfield <greenfield0000@mail.ru>
+FROM greenfield0000/b2b-front-environment:v1
 
 USER root
 
 ## install nodejs and npm package manager
 RUN  apt update -y &&  apt upgrade -y \
      &&  apt install nodejs -y &&  apt install npm -y \ 
-     && npm install --save-dev webpack
+     && npm install --save-dev webpack 
 
 ## install angular-cli
 RUN npm install -g @angular/cli
+
+RUN  npm install node-sass -y

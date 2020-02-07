@@ -11,3 +11,4 @@ backend/utils/privilegies-utils/target/
 
 **/node_modules/**
 frontend/admin/sources/node_modules
+frontend/admin/sources/dist/b2b

@@ -155,10 +155,11 @@ body {
 .form-button-block-column {
   flex-direction: column;
   width: 250px;
-  height: 100%;
+  height: 95px;
   margin: auto;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .form-button-block-row {
