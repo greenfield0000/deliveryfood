@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-prod": "ng build --prod --source-map --aot",
-    "build-prod-notoptimize": "ng build --prod --aot=false --buildOptimizer=false --optimization=false"
+    "build-prod-notoptimize": "ng build --prod --aot=false --buildOptimizer=false --optimization=false --extract-css=false"
   },
   "private": true,
   "dependencies": {
