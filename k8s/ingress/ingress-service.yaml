@@ -2,11 +2,11 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: front-gateway-ingress
-  annotations:
-     ingress.kubernetes.io/rewrite-target: /
+  #  annotations:
+  #  ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: testhost.com
+  - host: deliveryfood.com
     http:
       paths:
       - path: /
