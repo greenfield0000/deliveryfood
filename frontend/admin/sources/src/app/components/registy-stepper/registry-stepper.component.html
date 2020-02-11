@@ -37,12 +37,11 @@
               type="password" required>
           </mat-form-field>
         </div>
-
       </div>
       <div class="form-button-block-column">
-        <button class="form-button-column" mat-raised-button color="primary" (click)="goBackFn(router)"
+        <button class="form-button" mat-raised-button color="primary" (click)="goBackFn(router)"
           matStepperPrevious>Вернуться</button>
-        <button class="form-button-column" mat-raised-button color="primary" matStepperNext>Далее</button>
+        <button class="form-button" mat-raised-button color="primary" matStepperNext>Далее</button>
       </div>
     </form>
   </mat-step>
@@ -121,7 +120,7 @@
             Соглашения и безусловно принимаю их.</span>
         </div>
       </div>
-      <div class="form-button-block-column-column">
+      <div class="form-button-block-column">
         <button class="form-button" mat-raised-button color="primary" matStepperPrevious>Назад</button>
         <button class="form-button" mat-raised-button color="primary" [disabled]="!isAgree"
           (click)="onSubmit()">Принять</button>

@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
       - name: b2b-front
-        image: greenfield0000/b2b-front:5.0.2
+        image: greenfield0000/b2b-front:5.0.4
         ports:
         - containerPort: 4200

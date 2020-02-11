@@ -62,17 +62,17 @@
 
 .dialog-conteiner {
   max-width: 1000px;
-  max-height: 500px;
+  max-height: inherit;
   width: 1000px;
-  height: 500px;
+  height: inherit;
   overflow: hidden;
 }
 
 .dialog-message {
- font-size: large;
-    margin-top: 10%;
-    padding: 20px;
-    white-space: pre-line;
-    vertical-align: middle;
-    text-align: center;
+  font-size: large;
+  margin-top: 10%;
+  padding: 20px;
+  white-space: pre-line;
+  vertical-align: middle;
+  text-align: center;
 }
