@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zookeeper-deployment
+  name: zookeeper
   namespace: default
   labels:
-    app: bus-layer
+    app: zookeper
 spec:
   selector:
     matchLabels:
-      app: bus-layer
+      app: zookeeper
   template:
     metadata:
       labels:
-        app: bus-layer
+        app: zookeeper
     spec:
       volumes:
       - name: base-shared-data
