@@ -1,5 +1,10 @@
 #!/bin/sh
 
-#kubectl -f ./backend/*.yaml apply
-kubectl -f $(find  -printf "%f\n" | grep .yaml) apply
+#deploy
 
+for f in **/deploy.sh; do 
+   result=$(echo "$f" | sed "s/\/deploy.sh//g")
+   cd $result
+   sh *.sh
+   cd -
+done
