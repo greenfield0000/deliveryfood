@@ -23,8 +23,3 @@ services:
       - "9079:8787"
     depends_on:
       - personal-db
-
-networks:
-  default:
-    external:
-      name: deliveryfood_default

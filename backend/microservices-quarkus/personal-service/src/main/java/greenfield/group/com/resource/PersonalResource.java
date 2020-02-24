@@ -1,7 +1,7 @@
-package greenfield.group.com;
+package greenfield.group.com.resource;
 
-import greenfield.group.com.model.User;
-import greenfield.group.com.services.UserRepository;
+import greenfield.group.com.entity.User;
+import greenfield.group.com.services.crud.impl.UserCrudService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -9,10 +9,12 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/personal")
-public class Gate {
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class PersonalResource {
 
     @Inject
-    private UserRepository userRepository;
+    UserCrudService<User> userCrudService;
 
     /**
      * Журнальный метод для загрузки данных журнала "Персонал"
@@ -21,10 +23,8 @@ public class Gate {
      */
     @GET
     @Path("/loadJournal")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public List<User> loadJournal() {
-        return userRepository.findAll();
+        return userCrudService.findAll();
     }
 
 
@@ -36,10 +36,8 @@ public class Gate {
      */
     @POST
     @Path("/create")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public List<User> create(User user) {
-        return userRepository.create(user);
+        return userCrudService.create(user);
     }
 
 
@@ -51,10 +49,8 @@ public class Gate {
      */
     @POST
     @Path("/delete")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public List<User> delete(User user) {
-        return userRepository.delete(user);
+        return userCrudService.delete(user);
     }
 
     /**
@@ -65,10 +61,8 @@ public class Gate {
      */
     @POST
     @Path("/update")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public List<User> update(User user) {
-        return userRepository.update(user);
+        return userCrudService.update(user);
     }
 
 }
