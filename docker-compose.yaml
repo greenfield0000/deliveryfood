@@ -23,15 +23,15 @@ services:
       - zookeeper
         
   #frontend
-  b2b:
-    container_name: b2b
-    image: greenfield0000/b2b-front:5.0.4
+  #  b2b:
+  #  container_name: b2b
+  #  image: greenfield0000/b2b-front:5.0.4
     #    build: frontend/admin/sources/dist/
-    ports:
-      - "4200:4200"
-    volumes:
-      - "~/repository/deliveryfood/frontend/admin/sources:/angular/interface-admin"
-    network_mode: host
+    #   ports:
+    #    - "4200:4200"
+        # volumes:
+        #  - "~/repository/deliveryfood/frontend/admin/sources:/angular/interface-admin"
+        #    network_mode: host
 
   #auth-service
   auth-service:

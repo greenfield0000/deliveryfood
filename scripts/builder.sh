@@ -7,7 +7,7 @@ function main() {
 	echo "Build java modules ?"
 	select yn in "Yes" "No"; do
 	    case $yn in
-	        Yes ) mvn clean install -f ./backend/pom.xml; break;;
+	        Yes ) mvn clean install -f ../backend/pom.xml; break;;
 	        No ) break;;
 	    esac
 	done	

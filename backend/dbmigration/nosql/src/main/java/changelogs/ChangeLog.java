@@ -5,7 +5,8 @@ import com.github.mongobee.exception.MongobeeException;
 import exceptions.MongoCMigrationRunnerException;
 import migrations.MongoConfiguration;
 import migrations.MongoMigrationRunner;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class ChangeLog {
 
-    private final static Logger logger = Logger.getLogger("ChangeLogLogger");
+    private final static Logger logger = LoggerFactory.getLogger("ChangeLogLogger");
 
     public static void main(String[] args) {
         // Мигрант для пунктов меню
