@@ -1,0 +1,48 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="create_j_journal_column_param_table" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="j_journal_column_param"/>
+            </not>
+        </preConditions>
+        <createTable tableName="j_journal_column_param">
+            <column name="ID" type="NUMBER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="HEADERNAME" type="VARCHAR(50)"/>
+            <column name="FIELD" type="VARCHAR(50)"/>
+            <column name="SORTABLE" type="BOOLEAN"/>
+            <column name="FILTER" type="BOOLEAN"/>
+            <column name="CHECKBOXSELECTION" type="BOOLEAN"/>
+            <column name="JOURNALCOLUMNDESCRID" type="NUMBER"/>
+        </createTable>
+        <addPrimaryKey tableName="j_journal_column_param" columnNames="ID"/>
+        <addForeignKeyConstraint baseTableName="j_journal_column_param" baseColumnNames="JOURNALCOLUMNDESCRID" constraintName="FK_JOURNAL_COLUMN_DESCIPTION_ID" referencedTableName="j_journal_column_description"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+
+    <changeSet id="registry_j_journal_column_param_table_personal" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) from j_journal_column_param;
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            INSERT INTO j_journal_column_param (ID, HEADERNAME, FIELD, SORTABLE, FILTER, CHECKBOXSELECTION, JOURNALCOLUMNDESCRID) VALUES (1, 'Имя', 'name', true, false, false, 1);
+            INSERT INTO j_journal_column_param (ID, HEADERNAME, FIELD, SORTABLE, FILTER, CHECKBOXSELECTION, JOURNALCOLUMNDESCRID) VALUES (2, 'Фамилия', 'surName', true, false, false, 1);
+            INSERT INTO j_journal_column_param (ID, HEADERNAME, FIELD, SORTABLE, FILTER, CHECKBOXSELECTION, JOURNALCOLUMNDESCRID) VALUES (3, 'Отчество', 'lastName', true, false, false, 1);
+            INSERT INTO j_journal_column_param (ID, HEADERNAME, FIELD, SORTABLE, FILTER, CHECKBOXSELECTION, JOURNALCOLUMNDESCRID) VALUES (4, 'Дата рождения', 'birthDay', true, false, false, 1);
+            INSERT INTO j_journal_column_param (ID, HEADERNAME, FIELD, SORTABLE, FILTER, CHECKBOXSELECTION, JOURNALCOLUMNDESCRID) VALUES (5, 'Должность', 'employeePosition', true, false, false, 1);
+            INSERT INTO j_journal_column_param (ID, HEADERNAME, FIELD, SORTABLE, FILTER, CHECKBOXSELECTION, JOURNALCOLUMNDESCRID) VALUES (6, 'Телефон', 'phone', true, false, false, 1);
+            INSERT INTO j_journal_column_param (ID, HEADERNAME, FIELD, SORTABLE, FILTER, CHECKBOXSELECTION, JOURNALCOLUMNDESCRID) VALUES (7, 'Почта', 'email', true, false, false, 1);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
+

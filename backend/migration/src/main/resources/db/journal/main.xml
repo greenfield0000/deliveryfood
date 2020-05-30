@@ -1,0 +1,38 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="create_journal_table" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="j_journal"/>
+            </not>
+        </preConditions>
+        <createTable tableName="j_journal">
+            <column name="ID" type="NUMBER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(50)"/>
+            <column name="SYSNAME" type="VARCHAR(50)"/>
+            <column name="SERVICENAME" type="VARCHAR(50)"/>
+            <column name="GATENAME" type="VARCHAR(50)"/>
+        </createTable>
+        <addPrimaryKey tableName="j_journal" columnNames="ID"/>
+    </changeSet>
+
+    <changeSet id="add-personal-j_journal-info" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) from j_journal where SYSNAME in ('Personals-jrnl', 'Dish-jrnl')
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            INSERT INTO j_journal (ID, NAME, SYSNAME, SERVICENAME, GATENAME) VALUES (1,  'Журнал для работы с сущностью \"Персонал\"', 'Personals-jrnl', 'http://personal-service:8080', 'personal');
+            INSERT INTO j_journal (ID, NAME, SYSNAME, SERVICENAME, GATENAME) VALUES (2,   'Журнал позиций','Dish-jrnl','http://kitchen-service:8085','kitchen');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
+

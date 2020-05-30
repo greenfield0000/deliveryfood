@@ -1,0 +1,38 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="create_j_journal_column_description_table" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="j_journal_column_description"/>
+            </not>
+        </preConditions>
+        <createTable tableName="j_journal_column_description">
+            <column name="ID" type="NUMBER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOTE" type="VARCHAR(50)"/>
+            <column name="SYSNAME" type="VARCHAR(50)"/>
+            <column name="JOURNALID" type="NUMBER"/>
+        </createTable>
+        <addPrimaryKey tableName="j_journal_column_description" columnNames="ID"/>
+        <addForeignKeyConstraint baseTableName="j_journal_column_description" baseColumnNames="JOURNALID" constraintName="fk_journal_id" referencedTableName="j_journal"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="registry_j_journal_column_description_table_personal" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) from j_journal_column_description;
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            INSERT INTO j_journal_column_description (ID, NOTE, SYSNAME, JOURNALID) VALUES (1,  'Набор колонок для журнала \"Персонал\"', 'PersonalJournalColumnDescription', 1);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
+

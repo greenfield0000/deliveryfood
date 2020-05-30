@@ -7,6 +7,7 @@ import greenfield.group.com.journalservice.repositories.JournalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,11 +29,12 @@ public class JournalRepositoryImpl implements JournalRepository {
         Aggregation aggregation = Aggregation.newAggregation(
                 Aggregation.project("id", "serviceName", "gateName"),
                 // Выбираем кнопки
-                Aggregation.lookup("journal-button", "button_id", "id", "buttonList"),
+                Aggregation.lookup("journal-button", "sysname", "journalSysName", "buttonList"),
                 // Выбираем колонки
                 Aggregation.lookup("journal-column", "column_id", "id", "columnMetaData"),
                 Aggregation.lookup("journal-preset", "preset_id", "id", "presetList"),
-                Aggregation.unwind("columnMetaData")
+                Aggregation.unwind("columnMetaData"),
+                Aggregation.match(Criteria.byExample(new Criteria("sysname").in(journalSysName)))
         );
         List<JournalMetadataCommon> journalList = mongoTemplate.aggregate(aggregation, JOURNAL, JournalMetadataCommon.class)
                 .getMappedResults();

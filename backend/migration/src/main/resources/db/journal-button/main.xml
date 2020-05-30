@@ -1,0 +1,46 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="create_journal_button_table" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="j_journal_button"/>
+            </not>
+        </preConditions>
+        <createTable tableName="j_journal_button">
+            <column name="ID" type="NUMBER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(50)"/>
+            <column name="HINT" type="VARCHAR(50)"/>
+            <column name="CSSIMAGENAME" type="VARCHAR(50)"/>
+            <column name="HANDLERFNNAME" type="VARCHAR(50)"/>
+            <column name="JOURNALID" type="NUMBER"/>
+        </createTable>
+        <addPrimaryKey tableName="j_journal_button" columnNames="ID"/>
+        <addForeignKeyConstraint baseTableName="j_journal_button" baseColumnNames="JOURNALID" constraintName="fk_button_journal_id" referencedTableName="j_journal"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="registry-personal-dish-journal-button" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) from j_journal_button;
+                </sqlCheck>
+        </preConditions>
+        <sql>
+            INSERT INTO j_journal_button (ID, NAME, HINT, CSSIMAGENAME, HANDLERFNNAME) VALUES (1,  'createNewPerson', 'Добавление нового сотрудника', 'add-btn', 'createNewPerson');
+            INSERT INTO j_journal_button (ID, NAME, HINT, CSSIMAGENAME, HANDLERFNNAME) VALUES (2,  'deletePerson','Удаление сотрудника','delete-btn','deletePerson');
+            INSERT INTO j_journal_button (ID, NAME, HINT, CSSIMAGENAME, HANDLERFNNAME) VALUES (3,  'editPerson','Редактирование сотрудника','edit-btn','editPerson');
+
+            INSERT INTO j_journal_button (ID, NAME, HINT, CSSIMAGENAME, HANDLERFNNAME) VALUES (4,  'dishCreate', 'Добавление новой позиции', 'add-btn', 'dishCreate');
+            INSERT INTO j_journal_button (ID, NAME, HINT, CSSIMAGENAME, HANDLERFNNAME) VALUES (5,  'dishDelete','Удаление позиции','delete-btn','dishDelete');
+            INSERT INTO j_journal_button (ID, NAME, HINT, CSSIMAGENAME, HANDLERFNNAME) VALUES (6,  'dishEdit','Редактирование позиции','edit-btn','dishEdit');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
+

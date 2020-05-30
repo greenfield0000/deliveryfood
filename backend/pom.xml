@@ -30,8 +30,8 @@
     <modules>
         <module>microservices-spring</module>
         <module>utils</module>
-        <module>dbmigration</module>
         <module>microservices-quarkus</module>
+        <module>migration</module>
         <!--        <module>querybuilder</module>-->
     </modules>
 
@@ -40,7 +40,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.16.4</version>
+                <version>1.18.12</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
