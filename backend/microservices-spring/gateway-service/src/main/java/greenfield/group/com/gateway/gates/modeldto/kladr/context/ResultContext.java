@@ -1,9 +1,6 @@
 package greenfield.group.com.gateway.gates.modeldto.kladr.context;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -11,9 +8,6 @@ import java.util.List;
  * @author Ivanov Roman
  * @since 27.06.19
  **/
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class ResultContext {
 
     @JsonProperty("searchContext")

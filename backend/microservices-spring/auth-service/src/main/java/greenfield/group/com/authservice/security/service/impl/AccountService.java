@@ -4,7 +4,6 @@ import greenfield.group.com.authservice.model.Account;
 import greenfield.group.com.authservice.model.Role;
 import greenfield.group.com.authservice.model.Status;
 import greenfield.group.com.authservice.security.repository.AccountRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,6 @@ import java.util.List;
  * @version 1.0
  */
 
-@Slf4j
 @Service
 public class AccountService {
 
@@ -41,20 +39,20 @@ public class AccountService {
 
         Account registeredAccount = accountRepository.save(account);
 
-        log.info("IN register - Account: {} successfully registered", registeredAccount);
+        //log.info("IN register - Account: {} successfully registered", registeredAccount);
 
         return registeredAccount;
     }
 
     public List<Account> getAll() {
         List<Account> result = accountRepository.findAll();
-        log.info("IN getAll - {} Accounts found", result.size());
+        //log.info("IN getAll - {} Accounts found", result.size());
         return result;
     }
 
     public Account findByLogin(String nickName) {
         Account result = accountRepository.findByNickName(nickName);
-        log.info("IN findByLogin - Account: {} found by Accountname: {}", result, nickName);
+        //log.info("IN findByLogin - Account: {} found by Accountname: {}", result, nickName);
         return result;
     }
 
@@ -62,16 +60,16 @@ public class AccountService {
         Account result = accountRepository.findById(id).orElse(null);
 
         if (result == null) {
-            log.warn("IN findById - no Account found by id: {}", id);
+          //  log.warn("IN findById - no Account found by id: {}", id);
             return null;
         }
 
-        log.info("IN findById - Account: {} found by id: {}", result);
+        //log.info("IN findById - Account: {} found by id: {}", result);
         return result;
     }
 
     public void delete(Long id) {
         accountRepository.deleteById(id);
-        log.info("IN delete - Account with id: {} successfully deleted");
+        //log.info("IN delete - Account with id: {} successfully deleted");
     }
 }

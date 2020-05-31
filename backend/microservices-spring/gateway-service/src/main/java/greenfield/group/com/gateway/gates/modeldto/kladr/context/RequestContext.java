@@ -1,9 +1,5 @@
 package greenfield.group.com.gateway.gates.modeldto.kladr.context;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 /**
  * Класс контекста поиска. Хранит основную информацию для запроса
  *
@@ -11,9 +7,6 @@ import lombok.NoArgsConstructor;
  * @date 27.06.19
  * @since 8
  **/
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class RequestContext {
 
     private final String url = "https://kladr-greenfield.group.com.model.ru/greenfield.group.com.model.php?";

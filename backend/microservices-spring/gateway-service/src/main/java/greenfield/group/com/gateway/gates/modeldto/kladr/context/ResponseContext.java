@@ -1,9 +1,5 @@
 package greenfield.group.com.gateway.gates.modeldto.kladr.context;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 /**
@@ -13,9 +9,6 @@ import java.util.List;
  * @date 27.06.19
  * @since 8
  **/
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ResponseContext {
 
     private String cadnum;

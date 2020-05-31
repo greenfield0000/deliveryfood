@@ -19,10 +19,14 @@ public abstract class Gate {
     protected static final String MENU_SERVICE = "menu-gate";
     protected static final String JOURNAL_SERVICE = "journal-gate";
     protected static final String KLADR_SERVICE = "kladr-gate";
-    private static final String AUTH_SERVICE_URL = "http://auth-service:8081/auth";
-    private static final String MENU_SERVICE_URL = "http://menu-service:8082/menu";
-    private static final String JOURNAL_SERVICE_URL = "http://journal-service:8083/journal";
-    private static final String KLADR_SERVICE_URL = "http://kladr-service:8084/kladr";
+//    private static final String AUTH_SERVICE_URL = "http://auth-service:8081/auth";
+//    private static final String MENU_SERVICE_URL = "http://menu-service:8082/menu";
+//    private static final String JOURNAL_SERVICE_URL = "http://journal-service:8083/journal";
+//    private static final String KLADR_SERVICE_URL = "http://kladr-service:8084/kladr";
+    private static final String AUTH_SERVICE_URL =      "http://0.0.0.0:8081/auth";
+    private static final String MENU_SERVICE_URL =      "http://0.0.0.0:8082/menu";
+    private static final String JOURNAL_SERVICE_URL =   "http://0.0.0.0:8083/journal";
+    private static final String KLADR_SERVICE_URL =     "http://0.0.0.0:8084/kladr";
 
     static {
         serviceRegistry.put(AUTH_SERVICE, AUTH_SERVICE_URL);
