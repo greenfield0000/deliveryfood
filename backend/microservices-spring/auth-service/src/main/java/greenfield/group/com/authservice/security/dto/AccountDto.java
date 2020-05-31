@@ -2,7 +2,6 @@ package greenfield.group.com.authservice.security.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import greenfield.group.com.authservice.model.Account;
-import lombok.Data;
 
 /**
  * DTO class for Account requests by ROLE_Account
@@ -11,7 +10,6 @@ import lombok.Data;
  * @version 1.0
  */
 
-@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AccountDto {
     private Long id;
@@ -31,5 +29,45 @@ public class AccountDto {
         Account.setId(id);
 
         return Account;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAccountname() {
+        return Accountname;
+    }
+
+    public void setAccountname(String accountname) {
+        Accountname = accountname;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

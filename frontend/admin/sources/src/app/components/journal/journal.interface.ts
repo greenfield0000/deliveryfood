@@ -15,4 +15,9 @@ export interface IJournal<T> {
    */
   getComponentContext(): T;
 
+  /**
+   * Отображаемое имя в заголовке журнала
+   */
+  getJournalHeader(): string;
+
 }

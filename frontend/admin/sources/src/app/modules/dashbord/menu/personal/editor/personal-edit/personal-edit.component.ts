@@ -36,7 +36,7 @@ export class PersonalEditComponent extends PersonalComponent implements OnInit {
     console.log('User for update ', this.user);
     const queryParams = {
       buttonAction: 'update',
-      journalSysName: this.journalSysName,
+      journalSysName: this.getJournalSysName(),
       entity: this.user
     };
     this._http.post<SimpleResult<User[]>>(environment.gatePath.journal_location + '/doButtonHandler', queryParams)

@@ -6,17 +6,15 @@ import { AbstractJournalMenu } from '../abstract-journal-menu';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent extends AbstractJournalMenu<MenuComponent> {
-
+export class DishComponent extends AbstractJournalMenu<DishComponent> {
+  
   getJournalHeader(): string {
-    throw new Error("Method not implemented.");
+    return "Журнал позиций";
   }
-
   getJournalSysName(): string {
-    return "Menu-jrnl";
+    return "Dish-jrnl";
   }
-
-  getComponentContext(): MenuComponent {
+  getComponentContext(): DishComponent {
     return this;
   }
 

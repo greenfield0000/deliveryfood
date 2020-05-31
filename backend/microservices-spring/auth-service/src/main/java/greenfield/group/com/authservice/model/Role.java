@@ -1,7 +1,5 @@
 package greenfield.group.com.authservice.model;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -10,7 +8,6 @@ import java.util.Set;
 /**
  * Роли аккаунта
  */
-@Data
 @Entity
 @Table(name = "b_role")
 public class Role extends BaseEntity {
@@ -32,4 +29,41 @@ public class Role extends BaseEntity {
     private String name = "Официант";
     @ManyToMany(mappedBy = "roles")
     private Set<Account> accounts;
+
+    public Role() {
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSysname() {
+        return sysname;
+    }
+
+    public void setSysname(String sysname) {
+        this.sysname = sysname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
+    }
 }

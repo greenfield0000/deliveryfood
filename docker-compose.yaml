@@ -21,11 +21,10 @@ services:
       - "8081:8081"
       - "9081:9081"
     depends_on:
-      - auth-db
+      - central-db
       - gateway-service
     links:
-      - auth-db:auth-db
-      - kafka:kafka  
+      - central-db:central-db
 
   #menu-service
   menu-service:
@@ -82,8 +81,6 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata/central-db
     volumes:
       - "~/backup_database/postgres/central-db:/var/lib/postgresql/data/pgdata/central-db"
-    depends_on:
-      - kafka
 
   personal-service:
     container_name: personal-service
@@ -100,7 +97,4 @@ services:
     ports:
       - "8084:8084"
       - "9085:9085"
-    depends_on:
-      - kitchen-db
-
 

@@ -1,14 +1,8 @@
 import { PersonalComponent } from './../../journal-page/personal.component';
-import { JournalService } from './../../../../../../services/journal-service/journal.service';
-import { HttpService } from './../../../../../../services/http-service/http.service';
 import { Component, OnInit, Injector } from '@angular/core';
-import { AppRouteService } from 'src/app/services/app-route-service/app-route.service';
-import { PersonalService } from '../../personal.service';
-import { AccountEntity } from 'src/app/classes/accountEntity';
 import { User } from 'src/app/classes/user';
 import { SimpleResult } from 'src/app/utils/simple-result.class';
 import { environment } from 'src/environments/environment';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'personal-add',
@@ -41,7 +35,7 @@ export class PersonalAddComponent extends PersonalComponent implements OnInit {
     console.log('Try save = ', this.user);
     const queryParams = {
       buttonAction: 'create',
-      journalSysName: this.journalSysName,
+      journalSysName: this.getJournalSysName(),
       entity: this.user
     };
     this._http.post<SimpleResult<User[]>>(environment.gatePath.journal_location + '/doButtonHandler', queryParams)

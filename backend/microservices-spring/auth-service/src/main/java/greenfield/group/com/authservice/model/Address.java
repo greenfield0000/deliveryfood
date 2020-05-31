@@ -1,7 +1,5 @@
 package greenfield.group.com.authservice.model;
 
-import lombok.Data;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -11,7 +9,6 @@ import java.util.Set;
 /**
  * Описание сущности адрес
  */
-@Data
 @Entity
 @Table(name = "b_address")
 public class Address extends BaseEntity {
@@ -31,4 +28,15 @@ public class Address extends BaseEntity {
     private String zip;
     @ManyToMany(mappedBy = "addresses")
     private Set<User> users;
+
+    public Address() {
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

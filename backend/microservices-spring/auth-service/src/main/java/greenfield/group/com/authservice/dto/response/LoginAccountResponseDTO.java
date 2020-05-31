@@ -2,9 +2,7 @@ package greenfield.group.com.authservice.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import greenfield.group.com.authservice.model.Account;
-import lombok.Data;
 
-@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LoginAccountResponseDTO {
     private String uuid;
@@ -24,5 +22,37 @@ public class LoginAccountResponseDTO {
                 account.getLogin(),
                 account.getPassword()
         );
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

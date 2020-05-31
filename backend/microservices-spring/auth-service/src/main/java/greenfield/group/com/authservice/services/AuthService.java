@@ -2,7 +2,6 @@ package greenfield.group.com.authservice.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import greenfield.group.com.authservice.dto.response.LoginAccountResponseDTO;
-import greenfield.group.com.authservice.kafka.KafkaSenderService;
 import greenfield.group.com.authservice.model.Account;
 import greenfield.group.com.authservice.model.Role;
 import greenfield.group.com.authservice.model.User;
@@ -29,8 +28,6 @@ public class AuthService {
     private AccountRepository accountRepository;
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
-    @Autowired
-    private KafkaSenderService kafkaSenderService;
 
     /**
      * Залогиниться
@@ -112,7 +109,6 @@ public class AuthService {
             final Account savedAccount = accountRepository.saveAndFlush(account);
             // Отправляем информацию о новом пользователе в другие сервисы
             User user = account.getUser();
-            kafkaSenderService.send(user);
             return new SimpleResult<>(Status.OK, savedAccount);
         }
 
