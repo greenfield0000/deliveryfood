@@ -1,7 +1,6 @@
-import { OnInit, HostBinding, ViewChild, Injector } from "@angular/core";
+import { OnInit, ViewChild, Injector } from "@angular/core";
 import { IJournal } from "src/app/components/journal/journal.interface";
 import { JournalComponent } from "src/app/components/journal/journal.component";
-import { MenuComponent } from "./menu/menu.component";
 import { AppRouteService } from "src/app/services/app-route-service/app-route.service";
 import { PersonalService } from "./personal/personal.service";
 import { HttpService } from "src/app/services/http-service/http.service";
@@ -11,10 +10,8 @@ import { ModalWindowService } from "src/app/services/modal-window-service/modal-
 /**
  * Общий абстрактный класс для журналов
  */
-export abstract class AbstractJournalMenu<T> implements OnInit, IJournal<T> {
+export class AbstractJournalMenu<T> implements OnInit, IJournal<T> {
 
-    @HostBinding('class')
-    private className = 'form';
     public journalHeader: string = "Журнал позиций";
     @ViewChild('journal') journal: JournalComponent<T>;
 
@@ -31,11 +28,16 @@ export abstract class AbstractJournalMenu<T> implements OnInit, IJournal<T> {
         this._journalService = this.serviceInjector.get(JournalService);
         this._modalWindowService = this.serviceInjector.get(ModalWindowService);
     }
+    getJournalSysName(): string {
+        throw new Error("Method not implemented.");
+    }
+    getComponentContext(): T {
+        throw new Error("Method not implemented.");
+    }
+    getJournalHeader(): string {
+        throw new Error("Method not implemented.");
+    }
     
-    abstract getJournalHeader(): string;
-    abstract getJournalSysName(): string;
-    abstract getComponentContext(): T;
-
     ngOnInit() {
         this.journal.load(this.getJournalSysName());
     }

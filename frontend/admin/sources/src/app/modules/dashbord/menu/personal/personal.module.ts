@@ -10,7 +10,6 @@ import { AgGridModule } from 'ag-grid-angular';
 import { RowNumberRenderer } from 'src/app/components/journal/cell-renders/rownumber-renderer.component';
 import { MatPaginatorModule, MatProgressSpinnerModule, MatMenuModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule, MatOptionModule, MatDatepickerModule } from '@angular/material';
 import { PersonInfoEditorComponent } from 'src/app/components/person-info-editor/person-info-editor.component';
-import { AddressKladrComponent } from 'src/app/components/address-kladr/address-kladr.component';
 import { AuthModule } from 'src/app/modules/auth/auth.module';
 import { ReactiveFormsModule } from '@angular/forms';
 

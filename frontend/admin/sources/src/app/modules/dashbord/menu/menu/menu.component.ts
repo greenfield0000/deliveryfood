@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { AbstractJournalMenu } from '../abstract-journal-menu';
 
 @Component({
@@ -18,6 +18,10 @@ export class MenuComponent extends AbstractJournalMenu<MenuComponent> {
 
   getComponentContext(): MenuComponent {
     return this;
+  }
+
+  constructor(protected serviceInjector: Injector) {
+    super(serviceInjector);
   }
 
 }

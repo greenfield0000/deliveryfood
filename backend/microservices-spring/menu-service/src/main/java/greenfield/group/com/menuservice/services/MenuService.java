@@ -1,7 +1,5 @@
 package greenfield.group.com.menuservice.services;
 
-import greenfield.group.com.menuservice.Menu;
-import greenfield.group.com.menuservice.repository.MenuRepository;
 import greenfield.group.com.menuservice.security.JwtTokenService;
 import greenfield.group.com.menuservice.security.exceptions.JwtAuthenticationException;
 import lombok.extern.log4j.Log4j2;
@@ -16,8 +14,6 @@ public class MenuService {
 
     @Autowired
     private JwtTokenService tokenService;
-    @Autowired
-    private MenuRepository menuRepository;
 
     /**
      * Получить структуру меню согласно токену пользователя
@@ -31,14 +27,15 @@ public class MenuService {
             List<String> roleList = tokenService.getRole(authorizationToken);
             if ((roleList != null) && (!roleList.isEmpty())) {
                 // Получили меню, по системному имени
-                List<Menu> menuListByOwner = menuRepository
-                        .findByOwnerRoleIn(roleList);
+//                List<Menu> menuListByOwner = menuRepository
+//                        .findByOwnerRoleIn(roleList);
                 // Меню должно быть в единственном экземпляре
-                if ((menuListByOwner == null) || (menuListByOwner.size() != 1)) {
-                    return "";
-                }
-                Menu menu = menuListByOwner.get(0);
-                return (menu != null) ? menu.getJsonMenu() : "";
+//                if ((menuListByOwner == null) || (menuListByOwner.size() != 1)) {
+//                    return "";
+//                }
+                return "";
+//                Menu menu = menuListByOwner.get(0);
+//                return (menu != null) ? menu.getJsonMenu() : "";
             }
         } catch (JwtAuthenticationException e) {
             log.error(e);

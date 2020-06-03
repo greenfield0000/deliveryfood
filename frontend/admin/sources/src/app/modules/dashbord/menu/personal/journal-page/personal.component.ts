@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { IJournal } from 'src/app/components/journal/journal.interface';
 import { IDialogType } from 'src/app/services/modal-window-service/idialog.type';
 import { DialogComponent } from 'src/app/components/modal-window/common/dialog/dialog.component';
@@ -25,6 +25,10 @@ export class PersonalComponent extends AbstractJournalMenu<PersonalComponent> {
 
   getComponentContext(): PersonalComponent {
     return this;
+  }
+
+  constructor(protected serviceInjector: Injector) {
+    super(serviceInjector);
   }
 
   /**
