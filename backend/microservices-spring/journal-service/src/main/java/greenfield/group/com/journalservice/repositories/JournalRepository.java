@@ -1,20 +1,24 @@
 package greenfield.group.com.journalservice.repositories;
 
-
-import greenfield.group.com.journalservice.exceptions.JournalRepositoryException;
-import greenfield.group.com.journalservice.model.journal.JournalMetadataCommon;
+import greenfield.group.com.menuservice.repository.model.Journal;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
- * Описание crud операций для работы с журналом
+ * Repository interface that extends {@link JpaRepository} for class {@link Account}.
+ *
+ * @author Ivanov Roman
+ * @version 1.0
  */
-public interface JournalRepository {
 
-    /**
-     * Загрузка метаинформации журнала
-     *
-     * @param journalSysName системное имя журнала
-     * @return объект журнала
-     */
-    JournalMetadataCommon metaDataLoad(String journalSysName) throws JournalRepositoryException;
+@Repository
+public interface JournalRepository extends JpaRepository<Journal, Long> {
 
+//    Account findByNickName(String name);
+//
+//    Optional<Account> findByLoginAndPassword(String login, String password);
+//
+//    Optional<Account> findByLogin(String login);
+//
+//    Optional<Account> findByUuid(String uuid);
 }

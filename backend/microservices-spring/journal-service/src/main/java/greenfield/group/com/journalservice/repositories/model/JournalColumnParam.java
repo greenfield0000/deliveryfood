@@ -1,4 +1,4 @@
-package greenfield.group.com.menuservice.repository.model;
+package greenfield.group.com.journalservice.repositories.model;
 
 import javax.persistence.*;
 

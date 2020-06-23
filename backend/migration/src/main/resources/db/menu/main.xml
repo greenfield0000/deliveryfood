@@ -1,0 +1,132 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="create_m_menudescriptor_table" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="m_menudescriptor"/>
+            </not>
+        </preConditions>
+        <createTable tableName="m_menudescriptor">
+            <column name="ID" type="NUMBER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(50)"/>
+            <column name="SYSNAME" type="VARCHAR(50)"/>
+            <column name="JSON_MENU" type="VARCHAR(4096)"/>
+            <column name="ROLENAME" type="VARCHAR(50)"/>
+        </createTable>
+        <addPrimaryKey tableName="m_menudescriptor" columnNames="ID"/>
+    </changeSet>
+
+    <changeSet id="fill_m_menudescriptor_data" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*)
+                from m_menudescriptor;
+            </sqlCheck>
+        </preConditions>
+        <sql>
+           insert into m_menudescriptor (id, name, sysname, json_menu, rolename)
+            values (1, 'Меню для роли ROOT', 'ROOT_MENU', '{
+            "node-1": {
+            "sysname": "Personals",
+            "name": "Персонал",
+            "pathOfDash": "personal",
+            "image": "personal",
+            "children": [
+            {
+            "node-1-1": {
+            "sysname": "WorkSchedule",
+            "name": "Рабочий график",
+            "pathOfDash": "work-schedule",
+            "image": "work-schedule"
+            }
+            },
+            {
+            "node-1-2": {
+            "sysname": "VacationSchedule",
+            "name": "График отпусков",
+            "pathOfDash": "vacation-schedule",
+            "image": "vacation-schedule"
+            }
+            },
+            {
+            "node-1-3": {
+            "sysname": "ProfessionalStaffTraining",
+            "name": "Проф подготовка",
+            "pathOfDash": "professional-staff-training",
+            "image": "professional-staff-training"
+            }
+            }
+            ]
+            },
+            "node-2": {
+            "sysname": "Reservations",
+            "name": "Бронирование столов",
+            "pathOfDash": "reservations",
+            "image": "reservations"
+            },
+            "node-3": {
+            "sysname": "Orders",
+            "name": "Заказы (beta)",
+            "pathOfDash": "orders",
+            "image": "orders"
+            },
+            "node-4": {
+            "sysname": "SuggestNews",
+            "name": "Предложить новость",
+            "pathOfDash": "suggest-news",
+            "image": "suggest-news"
+            },
+            "node-5": {
+            "sysname": "Menu",
+            "name": "Меню",
+            "pathOfDash": "menu",
+            "image": "menu",
+            "children": [
+            {
+            "node-5-1": {
+            "sysname": "StopSheet",
+            "name": "Стоп лист",
+            "pathOfDash": "stop-sheet",
+            "image": "stop-sheet"
+            }
+            }
+            ]
+            },
+            "node-6": {
+            "sysname": "Delivery",
+            "name": "Доставка",
+            "pathOfDash": "delivery",
+            "image": "delivery"
+            },
+            "node-7": {
+            "sysname": "MasterClasses",
+            "name": "Мастерклассы",
+            "pathOfDash": "master-classes",
+            "image": "master-classes"
+            },
+            "node-8": {
+            "sysname": "Festivals",
+            "name": "Фестивали",
+            "pathOfDash": "festivals",
+            "image": "festivals"
+            },
+            "node-9": {
+            "sysname": "Purchases",
+            "name": "Закупки",
+            "pathOfDash": "purchases",
+            "image": "purchases"
+            }
+            }', 'USER')
+        </sql>
+    </changeSet>
+
+
+
+</databaseChangeLog>
+

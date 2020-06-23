@@ -1,4 +1,6 @@
-package greenfield.group.com.menuservice.repository.model;
+package greenfield.group.com.journalservice.repositories.model;
+
+import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.util.HashSet;

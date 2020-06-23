@@ -35,7 +35,6 @@
             <groupId>greenfield.group.com</groupId>
             <artifactId>gateway-common-utils</artifactId>
             <version>0.0.1</version>
-            <scope>compile</scope>
         </dependency>
 
         <!-- Spring data -->

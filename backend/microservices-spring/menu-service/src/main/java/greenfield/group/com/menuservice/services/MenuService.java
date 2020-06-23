@@ -1,7 +1,7 @@
 package greenfield.group.com.menuservice.services;
 
-import greenfield.group.com.menuservice.repository.JournalRepository;
-import greenfield.group.com.menuservice.repository.model.Journal;
+import greenfield.group.com.menuservice.repository.MenuRepository;
+import greenfield.group.com.menuservice.repository.model.MenuDescriptor;
 import greenfield.group.com.menuservice.security.JwtTokenService;
 import greenfield.group.com.menuservice.security.exceptions.JwtAuthenticationException;
 import lombok.extern.log4j.Log4j2;
@@ -17,7 +17,7 @@ public class MenuService {
     @Autowired
     private JwtTokenService tokenService;
     @Autowired
-    private JournalRepository journalRepository;
+    private MenuRepository menuRepository;
 
 
     /**
@@ -27,21 +27,14 @@ public class MenuService {
      * @return строка, список меню в формате json
      */
     public String getMenu(String authorizationToken) {
-        String ownerSysName;
         try {
             List<String> roleList = tokenService.getRole(authorizationToken);
             if ((roleList != null) && (!roleList.isEmpty())) {
-                List<Journal> all = journalRepository.findAll();
-                // Получили меню, по системному имени
-//                List<Menu> menuListByOwner = menuRepository
-//                        .findByOwnerRoleIn(roleList);
-                // Меню должно быть в единственном экземпляре
-//                if ((menuListByOwner == null) || (menuListByOwner.size() != 1)) {
-//                    return "";
-//                }
-                return "";
-//                Menu menu = menuListByOwner.get(0);
-//                return (menu != null) ? menu.getJsonMenu() : "";
+                String roleName = roleList.stream()
+                        .findFirst()
+                        .get();
+                MenuDescriptor menuDescriptor = menuRepository.findByRoleName(roleName);
+                return menuDescriptor.getJsonMenu();
             }
         } catch (JwtAuthenticationException e) {
             log.error(e);
