@@ -7,7 +7,7 @@ import lombok.Data;
  * Дескриптор фильтрации журнала
  */
 @Data
-public class JournalFilterItem {
+public class JournalFilterItemDTO {
     private String name;
     private Type type;
     private Object value;

@@ -15,7 +15,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class JournalData extends JournalMetadataCommon {
+public class JournalDataDTO extends JournalMetadataCommonDTO {
     private List<Object> rows;
     private int pageNumber;
 }

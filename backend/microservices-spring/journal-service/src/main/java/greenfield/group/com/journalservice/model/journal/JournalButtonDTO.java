@@ -1,13 +1,15 @@
 package greenfield.group.com.journalservice.model.journal;
 
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 /**
  * Класс-описатель журнальной кнопки
  */
 
 @Data
-public class JournalButton {
+@SuperBuilder
+public class JournalButtonDTO {
     private String id;
     private String name;
     private String hint;

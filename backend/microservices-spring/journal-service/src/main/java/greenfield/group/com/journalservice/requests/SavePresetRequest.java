@@ -1,6 +1,6 @@
 package greenfield.group.com.journalservice.requests;
 
-import greenfield.group.com.journalservice.model.journal.Preset;
+import greenfield.group.com.journalservice.model.journal.PresetDTO;
 import lombok.Data;
 
 /**
@@ -12,5 +12,5 @@ import lombok.Data;
  **/
 @Data
 public class SavePresetRequest {
-    private Preset preset;
+    private PresetDTO presetDTO;
 }

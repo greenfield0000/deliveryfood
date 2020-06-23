@@ -9,9 +9,9 @@ public class JournalColumnParam {
     @Id
     private Long id;
     @Column(name = "headername")
-    private Long headerName;
+    private String headerName;
     @Column(name = "field")
-    private Long field;
+    private String field;
     @Column(name = "sortable")
     private Boolean sortable;
     @Column(name = "filter")
@@ -33,19 +33,19 @@ public class JournalColumnParam {
         this.id = id;
     }
 
-    public Long getHeaderName() {
+    public String getHeaderName() {
         return headerName;
     }
 
-    public void setHeaderName(Long headerName) {
+    public void setHeaderName(String headerName) {
         this.headerName = headerName;
     }
 
-    public Long getField() {
+    public String getField() {
         return field;
     }
 
-    public void setField(Long field) {
+    public void setField(String field) {
         this.field = field;
     }
 

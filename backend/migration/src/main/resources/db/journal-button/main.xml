@@ -25,7 +25,7 @@
                                  referencedColumnNames="id"/>
     </changeSet>
 
-    <changeSet id="registry-personal-dish-journal-button" author="Ivanov Roman">
+    <changeSet id="registry-personal-dish-journalService-button" author="Ivanov Roman">
         <preConditions onFail="MARK_RAN">
                 <sqlCheck expectedResult="0">
                     SELECT COUNT(*) from j_journal_button;

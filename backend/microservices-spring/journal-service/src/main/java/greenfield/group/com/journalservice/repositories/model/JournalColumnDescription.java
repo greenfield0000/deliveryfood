@@ -1,7 +1,5 @@
 package greenfield.group.com.journalservice.repositories.model;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +11,7 @@ public class JournalColumnDescription {
     private Long id;
     @Column(name = "note")
     private String note;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "journalid")
     private Journal journal;
     @OneToMany(mappedBy = "journalColumnDescription", fetch = FetchType.EAGER)
@@ -34,8 +32,8 @@ public class JournalColumnDescription {
         return note;
     }
 
-    public void setNote(String name) {
-        this.note = name;
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public Journal getJournal() {
@@ -44,6 +42,10 @@ public class JournalColumnDescription {
 
     public void setJournal(Journal journal) {
         this.journal = journal;
+    }
+
+    public Set<JournalColumnParam> getJournalColumnParams() {
+        return journalColumnParams;
     }
 }
 

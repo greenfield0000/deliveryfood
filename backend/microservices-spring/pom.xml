@@ -14,7 +14,7 @@
     <modules>
         <module>auth-service</module>
         <module>menu-service</module>
-        <module>journal-service</module>
+        <module>journalService-service</module>
         <module>fiascloudkladr-service</module>
         <module>gateway-service</module>
     </modules>

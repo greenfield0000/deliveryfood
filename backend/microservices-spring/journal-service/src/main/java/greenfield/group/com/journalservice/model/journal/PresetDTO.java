@@ -8,10 +8,10 @@ import java.util.List;
  * Пресет для журнала
  */
 @Data
-public class Preset {
+public class PresetDTO {
     // название пресета
     private String name;
     // является ли пресет избранным
     private boolean isElected;
-    private List<JournalFilterItem> itemList;
+    private List<JournalFilterItemDTO> itemList;
 }

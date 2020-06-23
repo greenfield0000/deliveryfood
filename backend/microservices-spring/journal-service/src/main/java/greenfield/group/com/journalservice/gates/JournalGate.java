@@ -2,14 +2,14 @@ package greenfield.group.com.journalservice.gates;
 
 import greenfield.group.com.gatecommon.SimpleResult;
 import greenfield.group.com.gatecommon.Status;
-import greenfield.group.com.journalservice.model.journal.JournalData;
-import greenfield.group.com.journalservice.model.journal.JournalMetadataCommon;
+import greenfield.group.com.journalservice.model.journal.JournalDataDTO;
+import greenfield.group.com.journalservice.model.journal.JournalMetadataCommonDTO;
 import greenfield.group.com.journalservice.requests.ButtonHandlerRequest;
 import greenfield.group.com.journalservice.requests.FilterRequest;
 import greenfield.group.com.journalservice.requests.LoadJournalRequest;
 import greenfield.group.com.journalservice.requests.SavePresetRequest;
 import greenfield.group.com.journalservice.response.JournalDataResponse;
-import greenfield.group.com.journalservice.services.JournalService;
+import greenfield.group.com.journalservice.services.JournalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class JournalGate {
 
     @Autowired
-    private JournalService journalService;
+    private JournalServiceImpl journalServiceImpl;
 
     /**
      * Метод загрузки метаданных-журнала согласно его системному имени
@@ -30,9 +30,9 @@ public class JournalGate {
      * @return
      */
     @RequestMapping(path = "/load", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public SimpleResult<JournalMetadataCommon> load(@RequestBody LoadJournalRequest loadJournalRequest) {
+    public SimpleResult<JournalMetadataCommonDTO> load(@RequestBody LoadJournalRequest loadJournalRequest) {
         return new SimpleResult<>(
-                Status.OK, journalService.metaDataLoadJournal(loadJournalRequest.getJournalSysName())
+                Status.OK, journalServiceImpl.metaDataLoadJournal(loadJournalRequest.getJournalSysName())
         );
     }
 
@@ -44,7 +44,7 @@ public class JournalGate {
      */
     @RequestMapping(path = "/loadData", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<JournalDataResponse> loadData(@RequestBody LoadJournalRequest loadJournalRequest) {
-        JournalData journalData = journalService.loadJournalData(
+        JournalDataDTO journalData = journalServiceImpl.loadJournalData(
                 loadJournalRequest.getJournalSysName(),
                 loadJournalRequest.getPageNumber()
         );
@@ -63,7 +63,7 @@ public class JournalGate {
      */
     @RequestMapping(path = "/doFilter", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult<JournalDataResponse> doFilter(@RequestBody FilterRequest filterRequest) {
-        JournalData journalData = journalService.doFilter(filterRequest.getSysName(), filterRequest.getItemList());
+        JournalDataDTO journalData = journalServiceImpl.doFilter(filterRequest.getSysName(), filterRequest.getItemList());
         JournalDataResponse journalDataResponse = new JournalDataResponse(journalData);
         return new SimpleResult<>(
                 Status.OK
@@ -81,7 +81,7 @@ public class JournalGate {
     public SimpleResult savePreset(@RequestBody SavePresetRequest savePresetRequest) {
         return new SimpleResult<>(
                 Status.OK
-                , journalService.savePreset(savePresetRequest.getPreset())
+                , journalServiceImpl.savePreset(savePresetRequest.getPresetDTO())
         );
     }
 
@@ -96,7 +96,7 @@ public class JournalGate {
             , produces = MediaType.APPLICATION_JSON_VALUE
     )
     public SimpleResult doButtonHandler(@RequestBody ButtonHandlerRequest buttonHandlerRequest) {
-        JournalData journalData = journalService.doButtonHandler(
+        JournalDataDTO journalData = journalServiceImpl.doButtonHandler(
                 buttonHandlerRequest.getRequestMethod()
                 , buttonHandlerRequest.getJournalSysName()
                 , buttonHandlerRequest.getButtonAction()

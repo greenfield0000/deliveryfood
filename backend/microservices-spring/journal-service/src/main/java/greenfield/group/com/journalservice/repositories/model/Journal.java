@@ -10,13 +10,13 @@ public class Journal {
     @Id
     private Long id;
     @Column(name = "name")
-    private Long name;
+    private String name;
     @Column(name = "sysname")
-    private Long sysName;
+    private String sysName;
     @Column(name = "servicename")
-    private Long serviceName;
+    private String serviceName;
     @Column(name = "gatename")
-    private Long gateName;
+    private String gateName;
     @OneToMany(mappedBy = "journal", fetch = FetchType.EAGER)
     private Set<JournalButton> buttonSet = new HashSet<>();
     @OneToOne(mappedBy = "journal", fetch = FetchType.EAGER)
@@ -33,27 +33,35 @@ public class Journal {
         this.id = id;
     }
 
-    public Long getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Long name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Long getSysName() {
+    public String getSysName() {
         return sysName;
     }
 
-    public void setSysName(Long sysName) {
+    public void setSysName(String sysName) {
         this.sysName = sysName;
     }
 
-    public Long getGateName() {
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public String getGateName() {
         return gateName;
     }
 
-    public void setGateName(Long gateName) {
+    public void setGateName(String gateName) {
         this.gateName = gateName;
     }
 
@@ -71,13 +79,5 @@ public class Journal {
 
     public void setJournalColumnDescription(JournalColumnDescription journalColumnDescription) {
         this.journalColumnDescription = journalColumnDescription;
-    }
-
-    public Long getServiceName() {
-        return serviceName;
-    }
-
-    public void setServiceName(Long serviceName) {
-        this.serviceName = serviceName;
     }
 }

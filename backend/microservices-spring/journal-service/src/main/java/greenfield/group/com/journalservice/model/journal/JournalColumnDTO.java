@@ -1,12 +1,14 @@
 package greenfield.group.com.journalservice.model.journal;
 
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 /**
  * Дескриптор колонки журнала
  */
 @Data
-public class JournalColumn {
+@SuperBuilder
+public class JournalColumnDTO {
     private String headerName;
     private String field;
     private boolean sortable;

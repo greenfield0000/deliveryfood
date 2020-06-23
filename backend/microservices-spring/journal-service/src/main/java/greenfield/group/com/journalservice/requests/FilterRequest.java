@@ -1,6 +1,6 @@
 package greenfield.group.com.journalservice.requests;
 
-import greenfield.group.com.journalservice.model.journal.JournalFilterItem;
+import greenfield.group.com.journalservice.model.journal.JournalFilterItemDTO;
 import lombok.Data;
 
 import java.util.List;
@@ -11,5 +11,5 @@ import java.util.List;
 @Data
 public class FilterRequest {
     private String sysName;
-    private List<JournalFilterItem> itemList;
+    private List<JournalFilterItemDTO> itemList;
 }

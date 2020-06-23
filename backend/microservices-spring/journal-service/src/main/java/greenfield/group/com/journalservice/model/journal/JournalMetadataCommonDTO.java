@@ -3,16 +3,17 @@ package greenfield.group.com.journalservice.model.journal;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Метаданные журнала
  */
 @Data
-public class JournalMetadataCommon {
+public class JournalMetadataCommonDTO {
     protected String id;
     private String serviceName = "";
     private String gateName = "";
-    private List<JournalButton> buttonList;
-    private JournalColumnMetaData columnMetaData;
-    private List<Preset> presetList;
+    private Set<JournalButtonDTO> buttonList;
+    private JournalColumnMetaDataDTO columnMetaData;
+    private List<PresetDTO> presetDTOList;
 }
