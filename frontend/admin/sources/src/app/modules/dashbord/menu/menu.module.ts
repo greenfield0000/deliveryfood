@@ -18,6 +18,7 @@ import { PurchasesComponent } from './purchases/purchases.component';
 import { VacationScheduleComponent } from './vacation-schedule/vacation-schedule.component';
 import { ProfessionalStaffTrainingComponent } from './professional-staff-training/professional-staff-training.component';
 import { PersonalModule } from './personal/personal.module';
+import { DishComponent } from './dish/dish.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PersonalModule } from './personal/personal.module';
     PurchasesComponent,
     VacationScheduleComponent,
     ProfessionalStaffTrainingComponent,
+    DishComponent
   ],
   imports: [
     CommonModule,

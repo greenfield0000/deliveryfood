@@ -14,6 +14,7 @@ import { VacationScheduleComponent } from './vacation-schedule/vacation-schedule
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 import { PersonalModule } from './personal/personal.module';
 import { MenuComponent } from './menu/menu.component';
+import { DishComponent } from './dish/dish.component';
 
 const routes: Routes = [
 
@@ -32,7 +33,8 @@ const routes: Routes = [
   { path: 'stop-sheet', component: StopSheetComponent },
   { path: 'suggest-news', component: SuggestNewsComponent },
   { path: 'vacation-schedule', component: VacationScheduleComponent },
-  { path: 'work-schedule', component: WorkScheduleComponent }
+  { path: 'work-schedule', component: WorkScheduleComponent },
+  { path: 'dish', component: DishComponent }
 ];
 
 @NgModule({

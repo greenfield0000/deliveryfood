@@ -9,7 +9,7 @@ import { AbstractJournalMenu } from '../abstract-journal-menu';
 export class MenuComponent extends AbstractJournalMenu<MenuComponent> {
 
   getJournalHeader(): string {
-    throw new Error("Method not implemented.");
+    return "Журнал \"Меню\"";
   }
 
   getJournalSysName(): string {

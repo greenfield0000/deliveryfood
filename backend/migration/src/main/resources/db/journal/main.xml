@@ -34,5 +34,18 @@
         </sql>
     </changeSet>
 
+    <changeSet id="add-dish-journal" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*)
+                from j_journal journal
+                where journal.sysname = 'Dish-jrnl';
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            INSERT INTO j_journal (ID, NAME, SYSNAME, SERVICENAME, GATENAME) VALUES (3,  'Журнал для работы с позициями меню', 'Dish-jrnl', 'http://kitchen-service:8085', 'kitchen');
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
 

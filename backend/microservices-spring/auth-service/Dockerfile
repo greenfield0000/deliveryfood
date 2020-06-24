@@ -9,4 +9,4 @@ COPY /target /auth-service
 USER root
 
 #run service
-ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,address=9081,suspend=n,server=y" ,"-jar", "auth-service-0.0.1.jar"]
+ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,address=*:9081,suspend=n,server=y" ,"-jar", "auth-service-0.0.1.jar"]

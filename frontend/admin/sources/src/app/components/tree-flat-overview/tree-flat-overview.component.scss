@@ -42,10 +42,12 @@
 .stop-sheet,
 .work-schedule,
 .suggest-news,
-.vacation-schedule {
+.vacation-schedule,
+.check-mark {
   width: 40px;
   height: 40px;
   margin: 0px 10px 0px 10px;
+
 }
 
 .personal {
@@ -110,5 +112,10 @@
 
 .professional-staff-training {
   background: url("../../../assets/i/png/professional-staff-training.png");
+  background-size: contain;
+}
+
+.check-mark {
+  background: url("../../../assets/i/png/check-mark.png");
   background-size: contain;
 }

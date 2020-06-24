@@ -12,7 +12,7 @@ import { ModalWindowService } from "src/app/services/modal-window-service/modal-
  */
 export class AbstractJournalMenu<T> implements OnInit, IJournal<T> {
 
-    public journalHeader: string = "Журнал позиций";
+    public journalHeader: string = "";
     @ViewChild('journal') journal: JournalComponent<T>;
 
     protected _appRouterService: AppRouteService;

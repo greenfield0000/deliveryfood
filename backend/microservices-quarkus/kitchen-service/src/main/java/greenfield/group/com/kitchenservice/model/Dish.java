@@ -14,6 +14,9 @@ import java.util.Set;
 @Table(name = "k_dish")
 @EqualsAndHashCode(callSuper = true)
 public class Dish extends BaseEntity {
+    // Название блюда
+    @Column(name = "name")
+    public String name;
     // ингридиенты блюда
     @ManyToMany
     @JoinTable(

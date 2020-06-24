@@ -44,5 +44,20 @@
         </sql>
     </changeSet>
 
+    <changeSet id="registry_j_journal_column_param_table_dish" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*)
+                from j_journal_column_param cparam
+                where cparam.journalcolumndescrid = 2;
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            INSERT INTO j_journal_column_param (ID, HEADERNAME, FIELD, SORTABLE, FILTER, CHECKBOXSELECTION, JOURNALCOLUMNDESCRID) VALUES (8, 'Название', 'name', true, false, false, 2);
+            INSERT INTO j_journal_column_param (ID, HEADERNAME, FIELD, SORTABLE, FILTER, CHECKBOXSELECTION, JOURNALCOLUMNDESCRID) VALUES (9, 'Стоимость', 'cost', true, false, false, 2);
+            INSERT INTO j_journal_column_param (ID, HEADERNAME, FIELD, SORTABLE, FILTER, CHECKBOXSELECTION, JOURNALCOLUMNDESCRID) VALUES (10, 'Вес', 'weight', true, false, false, 2);
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
 

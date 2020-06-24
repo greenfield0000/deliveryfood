@@ -48,6 +48,36 @@
         </sql>
     </changeSet>
 
+    <changeSet id="add-dish-menu" author="Ivanov Roman">
+        <preConditions>
+            <sqlCheck expectedResult="1">
+                select count (*) from m_menudescriptor where sysname = 'ROOT_MENU'
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            update m_menudescriptor set json_menu = '{
+            "node-1":{
+            "image":"work-schedule",
+            "name":"Рабочий график",
+            "pathOfDash":"work-schedule",
+            "sysname":"WorkSchedule"
+            },
+            "node-2":{
+            "image":"menu",
+            "name":"Меню",
+            "pathOfDash":"menu",
+            "sysname":"Menu"
+            },
+            "node-3":{
+            "image":"check-mark",
+            "name":"Позиции",
+            "pathOfDash":"dish",
+            "sysname":"Dish"
+            }
+            }' where sysname = 'ROOT_MENU'
+        </sql>
+    </changeSet>
+
 
 
 </databaseChangeLog>

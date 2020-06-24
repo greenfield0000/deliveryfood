@@ -34,5 +34,18 @@
         </sql>
     </changeSet>
 
+    <changeSet id="registry_j_journal_column_description_table_dish" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*)
+                from j_journal_column_description d
+                where d.journalid = 3;
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            INSERT INTO j_journal_column_description (ID, NOTE, SYSNAME, JOURNALID) VALUES (2,  'Набор колонок для журнала \"Позиция меню\"', 'DishJournalColumnDescription', 3);
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
 

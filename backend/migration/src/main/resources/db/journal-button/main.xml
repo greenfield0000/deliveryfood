@@ -59,5 +59,18 @@
         </sql>
     </changeSet>
 
+    <changeSet id="create-link-with-journal-dish" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="3">
+                select count(*)
+                from j_journal_button btn
+                where btn.handlerfnname in ('dishCreate','dishDelete','dishEdit');
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            update j_journal_button set journalid = 3 where handlerfnname in ('dishCreate','dishDelete','dishEdit');
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
 

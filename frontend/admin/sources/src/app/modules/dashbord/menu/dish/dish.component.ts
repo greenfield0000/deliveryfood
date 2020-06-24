@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { AbstractJournalMenu } from '../abstract-journal-menu';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  selector: 'app-dish',
+  templateUrl: './dish.component.html',
+  styleUrls: ['./dish.component.scss']
 })
 export class DishComponent extends AbstractJournalMenu<DishComponent> {
   
   getJournalHeader(): string {
-    return "Журнал позиций";
+    return "Журнал \"Позиция меню\"";
   }
   getJournalSysName(): string {
     return "Dish-jrnl";
   }
   getComponentContext(): DishComponent {
     return this;
+  }
+
+  constructor(protected serviceInjector: Injector) {
+    super(serviceInjector);
   }
 
 }
