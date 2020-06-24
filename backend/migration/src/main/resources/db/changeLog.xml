@@ -4,11 +4,11 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <!--    journalService-->
-    <include file="db/journalService/main.xml"/>
-    <include file="db/journalService-button/main.xml"/>
-    <include file="db/journalService-column-description/main.xml"/>
-    <include file="db/journalService-column-param/main.xml"/>
+    <!--    journal-->
+    <include file="db/journal/main.xml"/>
+    <include file="db/journal-button/main.xml"/>
+    <include file="db/journal-column-description/main.xml"/>
+    <include file="db/journal-column-param/main.xml"/>
 
     <!--    menu-->
     <include file="db/menu/main.xml"/>

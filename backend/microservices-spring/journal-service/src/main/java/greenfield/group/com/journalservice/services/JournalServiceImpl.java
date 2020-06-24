@@ -47,6 +47,9 @@ public class JournalServiceImpl implements JournalService {
         JournalMetadataCommonDTO journalMetadata = new JournalMetadataCommonDTO();
         try {
             Journal journal = journalRepository.findJournalBySysName(sysName);
+            if (journal != null) {
+                return journalMetadata;
+            }
             journalMetadata.setServiceName(journal.getServiceName());
             journalMetadata.setGateName(journal.getGateName());
 

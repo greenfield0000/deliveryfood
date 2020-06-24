@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:11
 
 #create workdir
 RUN mkdir journal-service
@@ -8,4 +8,4 @@ ADD /target /journal-service
 #create user
 USER root
 #run service
-ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,address=9083,suspend=n,server=y" ,"-jar", "journalService-service-0.0.1.jar"]
+ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,address=*:9083,suspend=n,server=y" ,"-jar", "journal-service-0.0.1.jar"]

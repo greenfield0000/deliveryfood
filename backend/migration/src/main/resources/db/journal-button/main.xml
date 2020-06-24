@@ -42,5 +42,22 @@
         </sql>
     </changeSet>
 
+    <changeSet id="create-link-with-journal-menu" author="Ivanov Roman">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) from j_journal_button;
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            INSERT INTO j_journal_button (ID, NAME, HINT, CSSIMAGENAME, HANDLERFNNAME) VALUES (1,  'createNewPerson', 'Добавление нового сотрудника', 'add-btn', 'createNewPerson');
+            INSERT INTO j_journal_button (ID, NAME, HINT, CSSIMAGENAME, HANDLERFNNAME) VALUES (2,  'deletePerson','Удаление сотрудника','delete-btn','deletePerson');
+            INSERT INTO j_journal_button (ID, NAME, HINT, CSSIMAGENAME, HANDLERFNNAME) VALUES (3,  'editPerson','Редактирование сотрудника','edit-btn','editPerson');
+
+            INSERT INTO j_journal_button (ID, NAME, HINT, CSSIMAGENAME, HANDLERFNNAME) VALUES (4,  'dishCreate', 'Добавление новой позиции', 'add-btn', 'dishCreate');
+            INSERT INTO j_journal_button (ID, NAME, HINT, CSSIMAGENAME, HANDLERFNNAME) VALUES (5,  'dishDelete','Удаление позиции','delete-btn','dishDelete');
+            INSERT INTO j_journal_button (ID, NAME, HINT, CSSIMAGENAME, HANDLERFNNAME) VALUES (6,  'dishEdit','Редактирование позиции','edit-btn','dishEdit');
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
 

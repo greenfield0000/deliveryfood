@@ -25,12 +25,12 @@
     <changeSet id="add-personal-j_journal-info" author="Ivanov Roman">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
-                SELECT COUNT(*) from j_journal where SYSNAME in ('Personals-jrnl', 'Dish-jrnl')
+                SELECT COUNT(*) from j_journal where SYSNAME in ('Personals-jrnl', 'Menu-jrnl')
             </sqlCheck>
         </preConditions>
         <sql>
-            INSERT INTO j_journal (ID, NAME, SYSNAME, SERVICENAME, GATENAME) VALUES (1,  'Журнал для работы с сущностью \"Персонал\"', 'Personals-jrnl', 'http://personal-service:8080', 'personal');
-            INSERT INTO j_journal (ID, NAME, SYSNAME, SERVICENAME, GATENAME) VALUES (2,   'Журнал позиций','Dish-jrnl','http://kitchen-service:8085','kitchen');
+            INSERT INTO j_journal (ID, NAME, SYSNAME, SERVICENAME, GATENAME) VALUES (1,  'Журнал для работы с сущностью \"Персонал\"', 'Personals-jrnl', 'http://personal-service:8079', 'personal');
+            INSERT INTO j_journal (ID, NAME, SYSNAME, SERVICENAME, GATENAME) VALUES (2,   'Журнал позиций','Menu-jrnl','http://kitchen-service:8085','kitchen');
         </sql>
     </changeSet>
 

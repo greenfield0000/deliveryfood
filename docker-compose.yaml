@@ -16,7 +16,7 @@ services:
   #auth-service
   auth-service:
     container_name: auth-service
-    image: greenfield0000/auth-service:1.0.0
+    image: greenfield0000/auth-service:1.0.1
     ports:
       - "8081:8081"
       - "9081:9081"
@@ -29,7 +29,7 @@ services:
   #menu-service
   menu-service:
     container_name: menu-service
-    image: greenfield0000/menu-service:1.0.0
+    image: greenfield0000/menu-service:1.0.1
     ports:
       - "8082:8082"
       - "9082:9082"
@@ -43,7 +43,7 @@ services:
   #journal-service
   journal-service:
     container_name: journal-service
-    image: greenfield0000/journal-service:1.0.0
+    image: greenfield0000/journal-service:1.0.1
     restart: always
     ports:
       - "8083:8083"
@@ -84,7 +84,7 @@ services:
 
   personal-service:
     container_name: personal-service
-    image: greenfield0000/personal-service:1.0.0
+    image: greenfield0000/personal-service:1.0.1
     ports:
       - "8079:8080"
       - "9079:8787"
