@@ -18,6 +18,19 @@ export class DishComponent extends AbstractJournalMenu<DishComponent> {
     return this;
   }
 
+  dishCreate() {
+    alert('dish create')
+  }
+
+  dishDelete() {
+    alert('dish delete')
+  }
+  
+  dishEdit() {
+    alert('dish edit')
+  }
+  
+
   constructor(protected serviceInjector: Injector) {
     super(serviceInjector);
   }
